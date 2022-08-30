@@ -1,0 +1,601 @@
+\hypertarget{tetramini_8h}{}\doxysection{C\+:/temp/\+X-\/\+Tetris/tetramini.h File Reference}
+\label{tetramini_8h}\index{C:/temp/X-\/Tetris/tetramini.h@{C:/temp/X-\/Tetris/tetramini.h}}
+
+
+Include tutti vettori dei tetramini, ogni tetramino viene costruito con questa regola\+:  
+
+
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{tetramini_8h_aece949dcac4360a3141f73eaec44e155}{row}}~15
+\item 
+\#define \mbox{\hyperlink{tetramini_8h_ac5a3a1569e5f4d986ec6ece10286c08a}{column}}~10
+\item 
+\#define \mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}~4
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\textbf{ }\par
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{tetramini_8h_ad6fc8f02b9b9dd16cbb053cb94d9d75d}{I\+\_\+free}} = 20
+\item 
+int \mbox{\hyperlink{tetramini_8h_a486a6c33397876c16f1eed6ee6db9a6e}{I\+\_\+}} \mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,1,1,1\}
+\item 
+int \mbox{\hyperlink{tetramini_8h_a70bb3debf589d0e6cb018c995b9b55b7}{I\+\_\+180}} \mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{7,0,0,0\}
+\end{DoxyCompactItemize}
+
+\textbf{ }\par
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{tetramini_8h_abddddcaa391b55ca521a2dd642ecd67c}{J\+\_\+free}} = 20
+\item 
+int \mbox{\hyperlink{tetramini_8h_ad87da70e163fd593f54677543e410206}{J\+\_\+}} \mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{2,1,1,0\}
+\item 
+int \mbox{\hyperlink{tetramini_8h_acc13d1df0c48a8feb07a5533efd2a8ff}{J\+\_\+90}} \mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{3,5,0,0\}
+\item 
+int \mbox{\hyperlink{tetramini_8h_ad5f4569ab3b3091256882b93d2beae7c}{J\+\_\+180}} \mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{4,4,2,0\}
+\item 
+int \mbox{\hyperlink{tetramini_8h_a68d167cb3b6f4e8adbaa34c220e5d91a}{J\+\_\+270}} \mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,3,0,0\}
+\end{DoxyCompactItemize}
+
+\textbf{ }\par
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{tetramini_8h_a62a7aff152eb2b680f14719a0946b0cd}{L\+\_\+free}} = 20
+\item 
+int \mbox{\hyperlink{tetramini_8h_a4e55fdb7954a23a3d4225301663b5e42}{L\+\_\+}} \mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,1,2,0\}
+\item 
+int \mbox{\hyperlink{tetramini_8h_a71b2c3c341368dba402df00349b08f71}{L\+\_\+90}} \mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{3,1,0,0\}
+\item 
+int \mbox{\hyperlink{tetramini_8h_a9506433791b39d653329d2e43b3509ba}{L\+\_\+180}} \mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{2,4,4,0\}
+\item 
+int \mbox{\hyperlink{tetramini_8h_a896b7db002fccfe1fe4f9fc7c219a775}{L\+\_\+270}} \mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{5,3,0,0\}
+\end{DoxyCompactItemize}
+
+\textbf{ }\par
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{tetramini_8h_a6bc5b256b323182ec7dde63f1e11f7f7}{O\+\_\+free}} = 20
+\item 
+int \mbox{\hyperlink{tetramini_8h_ababe806de57c7e08be051e69f74aa3be}{O\+\_\+}} \mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{2,2,0,0\}
+\end{DoxyCompactItemize}
+
+\textbf{ }\par
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{tetramini_8h_aa8602cf3d17bdad9ea477d87502198f1}{S\+\_\+free}} = 20
+\item 
+int \mbox{\hyperlink{tetramini_8h_a6f6ed46d5320ee68c879f776fc6633f9}{S\+\_\+}} \mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,2,4,0\}
+\item 
+int \mbox{\hyperlink{tetramini_8h_ad64bd433759655e26f3b0d937d2576ec}{S\+\_\+90}} \mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{6,2,0,0\}
+\end{DoxyCompactItemize}
+
+\textbf{ }\par
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{tetramini_8h_afa13dff6dc6c64568b7d13a46631815e}{T\+\_\+free}} = 20
+\item 
+int \mbox{\hyperlink{tetramini_8h_aa44c256536afa00286b5506d5f0823e2}{T\+\_\+}} \mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,2,1,0\}
+\item 
+int \mbox{\hyperlink{tetramini_8h_a5c83b710aff3e681d3db4c312c6a0b46}{T\+\_\+90}} \mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{3,4,0,0\}
+\item 
+int \mbox{\hyperlink{tetramini_8h_a16fdec22fb412c8aca0c79119e3651b0}{T\+\_\+180}} \mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{4,2,4,0\}
+\item 
+int \mbox{\hyperlink{tetramini_8h_a3616df84af6179d88eaac1e6344007ab}{T\+\_\+270}} \mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{4,3,0,0\}
+\end{DoxyCompactItemize}
+
+\textbf{ }\par
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{tetramini_8h_a260e6987b9e21f6b802bee83d8b5db7e}{Z\+\_\+free}} = 20
+\item 
+int \mbox{\hyperlink{tetramini_8h_a5c3eaa3f69b2e26e70acd0793f79b03f}{Z\+\_\+}} \mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{4,2,1,0\}
+\item 
+int \mbox{\hyperlink{tetramini_8h_ac66a4244f70d4b26a6571c38fb877310}{Z\+\_\+90}} \mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{2,6,0,0\}
+\end{DoxyCompactItemize}
+
+
+
+\doxysubsection{Detailed Description}
+Include tutti vettori dei tetramini, ogni tetramino viene costruito con questa regola\+: 
+
+\begin{DoxyAuthor}{Author}
+Alessandro Cecchin (\href{mailto:859869@stud.unive.it}{\texttt{ 859869@stud.\+unive.\+it}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+9.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/07-\/19
+\end{DoxyDate}
+
+
+tipo di pezzi del Tetris\+: I, J, L, O, S, T, Z
+
+immagine tetramini posizione 0 \+: \href{https://upload.wikimedia.org/wikipedia/commons/3/39/Tetrominoes_IJLO_STZ_Worlds.svg}{\texttt{ https\+://upload.\+wikimedia.\+org/wikipedia/commons/3/39/\+Tetrominoes\+\_\+\+IJLO\+\_\+\+STZ\+\_\+\+Worlds.\+svg}}\hypertarget{tetramini_8h_logica}{}\doxysubsection{Logica di costruzione del tetramino \+:}\label{tetramini_8h_logica}
+cosa vogliono dire i numeri all\textquotesingle{}interno degli array dei tetramini\+:~\newline
+1 = 1 bloccho occupato; 2 = 2 blocchi sovrapposti; 3 = 3 blocchi sovrapposti~\newline
+4 = 1 blocco vuoto e sopra di esso uno pien0; 5 = due blocchi vuoti e uno sopra di essi pieno~\newline
+6 = un blocco vuoto e sopra di esso due pieni; 7 = 4 blocchi sovrapposti uno all\textquotesingle{}altro \hypertarget{tetramini_8h_I}{}\doxysubsubsection{I\+\_\+\mbox{[}4\mbox{]} = \{1,1,1,1\}}\label{tetramini_8h_I}
+vuol dire che il tetramino è in posizione 0 e occupa un solo blocco in altezza per ogni colonna~\newline
+\+\_\+ \+\_\+ \+\_\+ \+\_\+~\newline
+X X X X~\newline
+0 1 2 3 \hypertarget{tetramini_8h_L}{}\doxysubsubsection{J\+\_\+90\mbox{[}4\mbox{]}=\{3,5,0,0\}}\label{tetramini_8h_L}
+il tetramino è in poszione ruotata di 90 gradi e occupa con la prima casella 3 blocchi in altezza,~\newline
+nella seconda casella sempre 3 blocchi i altezza ma 2 sono vuoti e 1 è pieno e occupato.~\newline
+i restanti a 0 sono invece colonne libere~\newline
+ \+\_\+ \+\_\+ \+\_\+ \+\_\+~\newline
+X X \+\_\+ \+\_\+~\newline
+X \+\_\+ \+\_\+ \+\_\+~\newline
+X \+\_\+ \+\_\+ \+\_\+~\newline
+0 1 2 3 
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{tetramini_8h_ac5a3a1569e5f4d986ec6ece10286c08a}\label{tetramini_8h_ac5a3a1569e5f4d986ec6ece10286c08a}} 
+\index{tetramini.h@{tetramini.h}!column@{column}}
+\index{column@{column}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{column}{column}}
+{\footnotesize\ttfamily \#define column~10}
+
+\mbox{\Hypertarget{tetramini_8h_aece949dcac4360a3141f73eaec44e155}\label{tetramini_8h_aece949dcac4360a3141f73eaec44e155}} 
+\index{tetramini.h@{tetramini.h}!row@{row}}
+\index{row@{row}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{row}{row}}
+{\footnotesize\ttfamily \#define row~15}
+
+\mbox{\Hypertarget{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}\label{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}} 
+\index{tetramini.h@{tetramini.h}!size@{size}}
+\index{size@{size}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily \#define size~4}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{tetramini_8h_a486a6c33397876c16f1eed6ee6db9a6e}\label{tetramini_8h_a486a6c33397876c16f1eed6ee6db9a6e}} 
+\index{tetramini.h@{tetramini.h}!I\_@{I\_}}
+\index{I\_@{I\_}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{I\_}{I\_}}
+{\footnotesize\ttfamily int I\+\_\+\mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,1,1,1\}}
+
+Differenti versioni del tetramino I 
+\begin{DoxyParams}{Parameters}
+{\em I\+\_\+free} & quanti tetramino I sono disponibili \\
+\hline
+{\em I\+\_\+} & tetramino i in posizione base \\
+\hline
+{\em I\+\_\+180} & tetramino i in posizione verticale \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_a70bb3debf589d0e6cb018c995b9b55b7}\label{tetramini_8h_a70bb3debf589d0e6cb018c995b9b55b7}} 
+\index{tetramini.h@{tetramini.h}!I\_180@{I\_180}}
+\index{I\_180@{I\_180}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{I\_180}{I\_180}}
+{\footnotesize\ttfamily int I\+\_\+180\mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{7,0,0,0\}}
+
+Differenti versioni del tetramino I 
+\begin{DoxyParams}{Parameters}
+{\em I\+\_\+free} & quanti tetramino I sono disponibili \\
+\hline
+{\em I\+\_\+} & tetramino i in posizione base \\
+\hline
+{\em I\+\_\+180} & tetramino i in posizione verticale \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_ad6fc8f02b9b9dd16cbb053cb94d9d75d}\label{tetramini_8h_ad6fc8f02b9b9dd16cbb053cb94d9d75d}} 
+\index{tetramini.h@{tetramini.h}!I\_free@{I\_free}}
+\index{I\_free@{I\_free}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{I\_free}{I\_free}}
+{\footnotesize\ttfamily int I\+\_\+free = 20}
+
+Differenti versioni del tetramino I 
+\begin{DoxyParams}{Parameters}
+{\em I\+\_\+free} & quanti tetramino I sono disponibili \\
+\hline
+{\em I\+\_\+} & tetramino i in posizione base \\
+\hline
+{\em I\+\_\+180} & tetramino i in posizione verticale \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_ad87da70e163fd593f54677543e410206}\label{tetramini_8h_ad87da70e163fd593f54677543e410206}} 
+\index{tetramini.h@{tetramini.h}!J\_@{J\_}}
+\index{J\_@{J\_}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{J\_}{J\_}}
+{\footnotesize\ttfamily int J\+\_\+\mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{2,1,1,0\}}
+
+Differenti versioni del tetramino J 
+\begin{DoxyParams}{Parameters}
+{\em J\+\_\+free} & quanti tetramino J sono disponibili \\
+\hline
+{\em J\+\_\+} & tetramino J in posizione base \\
+\hline
+{\em J\+\_\+90} & tetramino J ruotata di 90 gradi \\
+\hline
+{\em J\+\_\+180} & tetramino J ruotata di 180 gradi \\
+\hline
+{\em J\+\_\+270} & tetramino J ruotata di 270 gradi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_ad5f4569ab3b3091256882b93d2beae7c}\label{tetramini_8h_ad5f4569ab3b3091256882b93d2beae7c}} 
+\index{tetramini.h@{tetramini.h}!J\_180@{J\_180}}
+\index{J\_180@{J\_180}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{J\_180}{J\_180}}
+{\footnotesize\ttfamily int J\+\_\+180\mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{4,4,2,0\}}
+
+Differenti versioni del tetramino J 
+\begin{DoxyParams}{Parameters}
+{\em J\+\_\+free} & quanti tetramino J sono disponibili \\
+\hline
+{\em J\+\_\+} & tetramino J in posizione base \\
+\hline
+{\em J\+\_\+90} & tetramino J ruotata di 90 gradi \\
+\hline
+{\em J\+\_\+180} & tetramino J ruotata di 180 gradi \\
+\hline
+{\em J\+\_\+270} & tetramino J ruotata di 270 gradi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_a68d167cb3b6f4e8adbaa34c220e5d91a}\label{tetramini_8h_a68d167cb3b6f4e8adbaa34c220e5d91a}} 
+\index{tetramini.h@{tetramini.h}!J\_270@{J\_270}}
+\index{J\_270@{J\_270}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{J\_270}{J\_270}}
+{\footnotesize\ttfamily int J\+\_\+270\mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,3,0,0\}}
+
+Differenti versioni del tetramino J 
+\begin{DoxyParams}{Parameters}
+{\em J\+\_\+free} & quanti tetramino J sono disponibili \\
+\hline
+{\em J\+\_\+} & tetramino J in posizione base \\
+\hline
+{\em J\+\_\+90} & tetramino J ruotata di 90 gradi \\
+\hline
+{\em J\+\_\+180} & tetramino J ruotata di 180 gradi \\
+\hline
+{\em J\+\_\+270} & tetramino J ruotata di 270 gradi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_acc13d1df0c48a8feb07a5533efd2a8ff}\label{tetramini_8h_acc13d1df0c48a8feb07a5533efd2a8ff}} 
+\index{tetramini.h@{tetramini.h}!J\_90@{J\_90}}
+\index{J\_90@{J\_90}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{J\_90}{J\_90}}
+{\footnotesize\ttfamily int J\+\_\+90\mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{3,5,0,0\}}
+
+Differenti versioni del tetramino J 
+\begin{DoxyParams}{Parameters}
+{\em J\+\_\+free} & quanti tetramino J sono disponibili \\
+\hline
+{\em J\+\_\+} & tetramino J in posizione base \\
+\hline
+{\em J\+\_\+90} & tetramino J ruotata di 90 gradi \\
+\hline
+{\em J\+\_\+180} & tetramino J ruotata di 180 gradi \\
+\hline
+{\em J\+\_\+270} & tetramino J ruotata di 270 gradi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_abddddcaa391b55ca521a2dd642ecd67c}\label{tetramini_8h_abddddcaa391b55ca521a2dd642ecd67c}} 
+\index{tetramini.h@{tetramini.h}!J\_free@{J\_free}}
+\index{J\_free@{J\_free}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{J\_free}{J\_free}}
+{\footnotesize\ttfamily int J\+\_\+free = 20}
+
+Differenti versioni del tetramino J 
+\begin{DoxyParams}{Parameters}
+{\em J\+\_\+free} & quanti tetramino J sono disponibili \\
+\hline
+{\em J\+\_\+} & tetramino J in posizione base \\
+\hline
+{\em J\+\_\+90} & tetramino J ruotata di 90 gradi \\
+\hline
+{\em J\+\_\+180} & tetramino J ruotata di 180 gradi \\
+\hline
+{\em J\+\_\+270} & tetramino J ruotata di 270 gradi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_a4e55fdb7954a23a3d4225301663b5e42}\label{tetramini_8h_a4e55fdb7954a23a3d4225301663b5e42}} 
+\index{tetramini.h@{tetramini.h}!L\_@{L\_}}
+\index{L\_@{L\_}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{L\_}{L\_}}
+{\footnotesize\ttfamily int L\+\_\+\mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,1,2,0\}}
+
+Differenti versioni del tetramino L 
+\begin{DoxyParams}{Parameters}
+{\em L\+\_\+free} & quanti tetramino L sono disponibili \\
+\hline
+{\em L\+\_\+} & tetramino L in posizione base \\
+\hline
+{\em L\+\_\+90} & tetramino L ruotata di 90 gradi \\
+\hline
+{\em L\+\_\+180} & tetramino L ruotata di 180 gradi \\
+\hline
+{\em L\+\_\+270} & tetramino L ruotata di 270 gradi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_a9506433791b39d653329d2e43b3509ba}\label{tetramini_8h_a9506433791b39d653329d2e43b3509ba}} 
+\index{tetramini.h@{tetramini.h}!L\_180@{L\_180}}
+\index{L\_180@{L\_180}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{L\_180}{L\_180}}
+{\footnotesize\ttfamily int L\+\_\+180\mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{2,4,4,0\}}
+
+Differenti versioni del tetramino L 
+\begin{DoxyParams}{Parameters}
+{\em L\+\_\+free} & quanti tetramino L sono disponibili \\
+\hline
+{\em L\+\_\+} & tetramino L in posizione base \\
+\hline
+{\em L\+\_\+90} & tetramino L ruotata di 90 gradi \\
+\hline
+{\em L\+\_\+180} & tetramino L ruotata di 180 gradi \\
+\hline
+{\em L\+\_\+270} & tetramino L ruotata di 270 gradi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_a896b7db002fccfe1fe4f9fc7c219a775}\label{tetramini_8h_a896b7db002fccfe1fe4f9fc7c219a775}} 
+\index{tetramini.h@{tetramini.h}!L\_270@{L\_270}}
+\index{L\_270@{L\_270}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{L\_270}{L\_270}}
+{\footnotesize\ttfamily int L\+\_\+270\mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{5,3,0,0\}}
+
+Differenti versioni del tetramino L 
+\begin{DoxyParams}{Parameters}
+{\em L\+\_\+free} & quanti tetramino L sono disponibili \\
+\hline
+{\em L\+\_\+} & tetramino L in posizione base \\
+\hline
+{\em L\+\_\+90} & tetramino L ruotata di 90 gradi \\
+\hline
+{\em L\+\_\+180} & tetramino L ruotata di 180 gradi \\
+\hline
+{\em L\+\_\+270} & tetramino L ruotata di 270 gradi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_a71b2c3c341368dba402df00349b08f71}\label{tetramini_8h_a71b2c3c341368dba402df00349b08f71}} 
+\index{tetramini.h@{tetramini.h}!L\_90@{L\_90}}
+\index{L\_90@{L\_90}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{L\_90}{L\_90}}
+{\footnotesize\ttfamily int L\+\_\+90\mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{3,1,0,0\}}
+
+Differenti versioni del tetramino L 
+\begin{DoxyParams}{Parameters}
+{\em L\+\_\+free} & quanti tetramino L sono disponibili \\
+\hline
+{\em L\+\_\+} & tetramino L in posizione base \\
+\hline
+{\em L\+\_\+90} & tetramino L ruotata di 90 gradi \\
+\hline
+{\em L\+\_\+180} & tetramino L ruotata di 180 gradi \\
+\hline
+{\em L\+\_\+270} & tetramino L ruotata di 270 gradi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_a62a7aff152eb2b680f14719a0946b0cd}\label{tetramini_8h_a62a7aff152eb2b680f14719a0946b0cd}} 
+\index{tetramini.h@{tetramini.h}!L\_free@{L\_free}}
+\index{L\_free@{L\_free}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{L\_free}{L\_free}}
+{\footnotesize\ttfamily int L\+\_\+free = 20}
+
+Differenti versioni del tetramino L 
+\begin{DoxyParams}{Parameters}
+{\em L\+\_\+free} & quanti tetramino L sono disponibili \\
+\hline
+{\em L\+\_\+} & tetramino L in posizione base \\
+\hline
+{\em L\+\_\+90} & tetramino L ruotata di 90 gradi \\
+\hline
+{\em L\+\_\+180} & tetramino L ruotata di 180 gradi \\
+\hline
+{\em L\+\_\+270} & tetramino L ruotata di 270 gradi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_ababe806de57c7e08be051e69f74aa3be}\label{tetramini_8h_ababe806de57c7e08be051e69f74aa3be}} 
+\index{tetramini.h@{tetramini.h}!O\_@{O\_}}
+\index{O\_@{O\_}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{O\_}{O\_}}
+{\footnotesize\ttfamily int O\+\_\+\mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{2,2,0,0\}}
+
+Differenti versioni del tetramino O. 
+\begin{DoxyParams}{Parameters}
+{\em O\+\_\+free} & Tetramini O disponibili \\
+\hline
+{\em O\+\_\+} & tetramino O in posizione base \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_a6bc5b256b323182ec7dde63f1e11f7f7}\label{tetramini_8h_a6bc5b256b323182ec7dde63f1e11f7f7}} 
+\index{tetramini.h@{tetramini.h}!O\_free@{O\_free}}
+\index{O\_free@{O\_free}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{O\_free}{O\_free}}
+{\footnotesize\ttfamily int O\+\_\+free = 20}
+
+Differenti versioni del tetramino O. 
+\begin{DoxyParams}{Parameters}
+{\em O\+\_\+free} & Tetramini O disponibili \\
+\hline
+{\em O\+\_\+} & tetramino O in posizione base \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_a6f6ed46d5320ee68c879f776fc6633f9}\label{tetramini_8h_a6f6ed46d5320ee68c879f776fc6633f9}} 
+\index{tetramini.h@{tetramini.h}!S\_@{S\_}}
+\index{S\_@{S\_}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{S\_}{S\_}}
+{\footnotesize\ttfamily int S\+\_\+\mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,2,4,0\}}
+
+Differenti versioni del tetramino S. 
+\begin{DoxyParams}{Parameters}
+{\em S\+\_\+free} & Tetramini S disponibili \\
+\hline
+{\em S\+\_\+} & tetramino S in posizione base \\
+\hline
+{\em S\+\_\+90} & tetramino S ruotata di 90 gradi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_ad64bd433759655e26f3b0d937d2576ec}\label{tetramini_8h_ad64bd433759655e26f3b0d937d2576ec}} 
+\index{tetramini.h@{tetramini.h}!S\_90@{S\_90}}
+\index{S\_90@{S\_90}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{S\_90}{S\_90}}
+{\footnotesize\ttfamily int S\+\_\+90\mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{6,2,0,0\}}
+
+Differenti versioni del tetramino S. 
+\begin{DoxyParams}{Parameters}
+{\em S\+\_\+free} & Tetramini S disponibili \\
+\hline
+{\em S\+\_\+} & tetramino S in posizione base \\
+\hline
+{\em S\+\_\+90} & tetramino S ruotata di 90 gradi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_aa8602cf3d17bdad9ea477d87502198f1}\label{tetramini_8h_aa8602cf3d17bdad9ea477d87502198f1}} 
+\index{tetramini.h@{tetramini.h}!S\_free@{S\_free}}
+\index{S\_free@{S\_free}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{S\_free}{S\_free}}
+{\footnotesize\ttfamily int S\+\_\+free = 20}
+
+Differenti versioni del tetramino S. 
+\begin{DoxyParams}{Parameters}
+{\em S\+\_\+free} & Tetramini S disponibili \\
+\hline
+{\em S\+\_\+} & tetramino S in posizione base \\
+\hline
+{\em S\+\_\+90} & tetramino S ruotata di 90 gradi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_aa44c256536afa00286b5506d5f0823e2}\label{tetramini_8h_aa44c256536afa00286b5506d5f0823e2}} 
+\index{tetramini.h@{tetramini.h}!T\_@{T\_}}
+\index{T\_@{T\_}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{T\_}{T\_}}
+{\footnotesize\ttfamily int T\+\_\+\mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,2,1,0\}}
+
+Differenti versioni del tetramino T 
+\begin{DoxyParams}{Parameters}
+{\em T\+\_\+free} & Tetramini T disponibili \\
+\hline
+{\em T\+\_\+} & tetramino T in posizione base \\
+\hline
+{\em T\+\_\+90} & tetramino T ruotata di 90 gradi \\
+\hline
+{\em T\+\_\+180} & tetramino T ruotata di 180 gradi \\
+\hline
+{\em T\+\_\+270} & tetramino T ruotata di 270 gradi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_a16fdec22fb412c8aca0c79119e3651b0}\label{tetramini_8h_a16fdec22fb412c8aca0c79119e3651b0}} 
+\index{tetramini.h@{tetramini.h}!T\_180@{T\_180}}
+\index{T\_180@{T\_180}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{T\_180}{T\_180}}
+{\footnotesize\ttfamily int T\+\_\+180\mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{4,2,4,0\}}
+
+Differenti versioni del tetramino T 
+\begin{DoxyParams}{Parameters}
+{\em T\+\_\+free} & Tetramini T disponibili \\
+\hline
+{\em T\+\_\+} & tetramino T in posizione base \\
+\hline
+{\em T\+\_\+90} & tetramino T ruotata di 90 gradi \\
+\hline
+{\em T\+\_\+180} & tetramino T ruotata di 180 gradi \\
+\hline
+{\em T\+\_\+270} & tetramino T ruotata di 270 gradi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_a3616df84af6179d88eaac1e6344007ab}\label{tetramini_8h_a3616df84af6179d88eaac1e6344007ab}} 
+\index{tetramini.h@{tetramini.h}!T\_270@{T\_270}}
+\index{T\_270@{T\_270}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{T\_270}{T\_270}}
+{\footnotesize\ttfamily int T\+\_\+270\mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{4,3,0,0\}}
+
+Differenti versioni del tetramino T 
+\begin{DoxyParams}{Parameters}
+{\em T\+\_\+free} & Tetramini T disponibili \\
+\hline
+{\em T\+\_\+} & tetramino T in posizione base \\
+\hline
+{\em T\+\_\+90} & tetramino T ruotata di 90 gradi \\
+\hline
+{\em T\+\_\+180} & tetramino T ruotata di 180 gradi \\
+\hline
+{\em T\+\_\+270} & tetramino T ruotata di 270 gradi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_a5c83b710aff3e681d3db4c312c6a0b46}\label{tetramini_8h_a5c83b710aff3e681d3db4c312c6a0b46}} 
+\index{tetramini.h@{tetramini.h}!T\_90@{T\_90}}
+\index{T\_90@{T\_90}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{T\_90}{T\_90}}
+{\footnotesize\ttfamily int T\+\_\+90\mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{3,4,0,0\}}
+
+Differenti versioni del tetramino T 
+\begin{DoxyParams}{Parameters}
+{\em T\+\_\+free} & Tetramini T disponibili \\
+\hline
+{\em T\+\_\+} & tetramino T in posizione base \\
+\hline
+{\em T\+\_\+90} & tetramino T ruotata di 90 gradi \\
+\hline
+{\em T\+\_\+180} & tetramino T ruotata di 180 gradi \\
+\hline
+{\em T\+\_\+270} & tetramino T ruotata di 270 gradi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_afa13dff6dc6c64568b7d13a46631815e}\label{tetramini_8h_afa13dff6dc6c64568b7d13a46631815e}} 
+\index{tetramini.h@{tetramini.h}!T\_free@{T\_free}}
+\index{T\_free@{T\_free}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{T\_free}{T\_free}}
+{\footnotesize\ttfamily int T\+\_\+free = 20}
+
+Differenti versioni del tetramino T 
+\begin{DoxyParams}{Parameters}
+{\em T\+\_\+free} & Tetramini T disponibili \\
+\hline
+{\em T\+\_\+} & tetramino T in posizione base \\
+\hline
+{\em T\+\_\+90} & tetramino T ruotata di 90 gradi \\
+\hline
+{\em T\+\_\+180} & tetramino T ruotata di 180 gradi \\
+\hline
+{\em T\+\_\+270} & tetramino T ruotata di 270 gradi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_a5c3eaa3f69b2e26e70acd0793f79b03f}\label{tetramini_8h_a5c3eaa3f69b2e26e70acd0793f79b03f}} 
+\index{tetramini.h@{tetramini.h}!Z\_@{Z\_}}
+\index{Z\_@{Z\_}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{Z\_}{Z\_}}
+{\footnotesize\ttfamily int Z\+\_\+\mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{4,2,1,0\}}
+
+Differenti versioni del tetramino Z. 
+\begin{DoxyParams}{Parameters}
+{\em Z\+\_\+free} & Tetramini Z disponibili \\
+\hline
+{\em Z\+\_\+} & tetramino Z in posizione base \\
+\hline
+{\em Z\+\_\+90} & tetramino Z ruotata di 90 gradi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_ac66a4244f70d4b26a6571c38fb877310}\label{tetramini_8h_ac66a4244f70d4b26a6571c38fb877310}} 
+\index{tetramini.h@{tetramini.h}!Z\_90@{Z\_90}}
+\index{Z\_90@{Z\_90}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{Z\_90}{Z\_90}}
+{\footnotesize\ttfamily int Z\+\_\+90\mbox{[}\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{2,6,0,0\}}
+
+Differenti versioni del tetramino Z. 
+\begin{DoxyParams}{Parameters}
+{\em Z\+\_\+free} & Tetramini Z disponibili \\
+\hline
+{\em Z\+\_\+} & tetramino Z in posizione base \\
+\hline
+{\em Z\+\_\+90} & tetramino Z ruotata di 90 gradi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetramini_8h_a260e6987b9e21f6b802bee83d8b5db7e}\label{tetramini_8h_a260e6987b9e21f6b802bee83d8b5db7e}} 
+\index{tetramini.h@{tetramini.h}!Z\_free@{Z\_free}}
+\index{Z\_free@{Z\_free}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{Z\_free}{Z\_free}}
+{\footnotesize\ttfamily int Z\+\_\+free = 20}
+
+Differenti versioni del tetramino Z. 
+\begin{DoxyParams}{Parameters}
+{\em Z\+\_\+free} & Tetramini Z disponibili \\
+\hline
+{\em Z\+\_\+} & tetramino Z in posizione base \\
+\hline
+{\em Z\+\_\+90} & tetramino Z ruotata di 90 gradi \\
+\hline
+\end{DoxyParams}

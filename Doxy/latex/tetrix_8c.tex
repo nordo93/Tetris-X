@@ -1,0 +1,440 @@
+\hypertarget{tetrix_8c}{}\doxysection{C\+:/temp/\+X-\/\+Tetris/tetrix.c File Reference}
+\label{tetrix_8c}\index{C:/temp/X-\/Tetris/tetrix.c@{C:/temp/X-\/Tetris/tetrix.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}tetramini.\+h\char`\"{}}\newline
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0fa}{giocatori}} \mbox{\hyperlink{tetrix_8c_a727a6f710e0f7bcf136b908b5cff365d}{giocatori\+\_\+t}}
+\item 
+typedef enum \mbox{\hyperlink{tetrix_8c_aacae98a513bf46f84ca1f3554bae431b}{riquadro}} \mbox{\hyperlink{tetrix_8c_aa7f1ff8f4ac9b5f9dc398111841d9d77}{riquadro\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{tetrix_8c_aa7f1ff8f4ac9b5f9dc398111841d9d77}{riquadro\+\_\+t}} $\ast$ \mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}
+\begin{DoxyCompactList}\small\item\em nota\+: campo\+\_\+di\+\_\+gioco e\textquotesingle{} un puntatore che punt al campo di gioco \end{DoxyCompactList}\item 
+typedef enum \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848}{bool\+\_\+e}} \mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0fa}{giocatori}} \{ \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faae0c9d3e5c71ae4b23a63b36eaac2f918}{SINGLE\+\_\+\+PLAYER}} = 1
+, \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faaf64ffcc804f85cc65366369011db5768}{MULTI\+\_\+\+PLAYER}} = 2
+, \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faa616ede6b6f3a1d38a724d1168ddf1adf}{NOT\+\_\+\+SELECTED}} = -\/99
+ \}
+\item 
+enum \mbox{\hyperlink{tetrix_8c_aacae98a513bf46f84ca1f3554bae431b}{riquadro}} \{ \mbox{\hyperlink{tetrix_8c_aacae98a513bf46f84ca1f3554bae431baf9428c94346b50d578b820a28ca79855}{VUOTO}}
+, \mbox{\hyperlink{tetrix_8c_aacae98a513bf46f84ca1f3554bae431ba86eb6f31a721a0cffb9e409a63428cb7}{OCCUPATO}}
+ \}
+\item 
+enum \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848}{bool\+\_\+e}} \{ \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa1e095cc966dbecf6a0d8aad75348d1a}{FALSE}} = 0
+, \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa82764c3079aea4e60c80e45befbb839}{TRUE}} = 1
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{tetrix_8c_a5888954e236254cc7e6ff5cffedbf90f}{init}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano, int riga, int colonna)
+\begin{DoxyCompactList}\small\item\em Inizializzatore\+: inizializza il campo da gioco a VUOTO. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetrix_8c_abeb1901c55d057632a6bd4a45fe6d75b}{stampa\+\_\+anteprima}} (int colonna\+\_\+scelta\+\_\+dal\+\_\+giocatore, int $\ast$\mbox{\hyperlink{_r_e_a_d_m_e_8txt_aaebfd5b14b4a150d6a8857eed11d8a59}{tetramino}})
+\begin{DoxyCompactList}\small\item\em Funzione che uso per visualizzare un ateprima del tetramino scelto dal giocatore. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetrix_8c_a2444104362cf4314a0b97fa2eaf0d58e}{verifica\+\_\+uscita}} (int $\ast$\mbox{\hyperlink{test__case_8txt_a24d9752995a19a6e21b0d13e449ab5bb}{p}}, int righe\+\_\+rimanenti, int colonna, int \mbox{\hyperlink{test__case_8txt_af94a27e3a3758f029c515a69a1bdf8cc}{contatto}})
+\begin{DoxyCompactList}\small\item\em verifica che il tetramino inserito non superi il limite di colonne e righe massime \end{DoxyCompactList}\item 
+\mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} \mbox{\hyperlink{tetrix_8c_a8a0b7e3b055bd38e37aa36052cbc1609}{verifica\+\_\+occupata}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano, int \mbox{\hyperlink{tetrix_8c_a10f58b6e2a1be6042acd8ecf38be8027}{scelta}}, int $\ast$\mbox{\hyperlink{test__case_8txt_a24d9752995a19a6e21b0d13e449ab5bb}{p}})
+\item 
+int \mbox{\hyperlink{tetrix_8c_a18f5b9291b9589c18c9f53d9d3531b5c}{contatto}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano, int \mbox{\hyperlink{test__case_8txt_a66fa170ba64e0871242cfceefa28d77e}{scelta\+\_\+colonna}}, int $\ast$\mbox{\hyperlink{test__case_8txt_a24d9752995a19a6e21b0d13e449ab5bb}{p}})
+\item 
+\mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} \mbox{\hyperlink{tetrix_8c_ad4f5c4e816365358b2219ae64992fd84}{salva\+\_\+tetramino}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano, int $\ast$\mbox{\hyperlink{test__case_8txt_a24d9752995a19a6e21b0d13e449ab5bb}{p}}, int \mbox{\hyperlink{test__case_8txt_a66fa170ba64e0871242cfceefa28d77e}{scelta\+\_\+colonna}})
+\item 
+int $\ast$ \mbox{\hyperlink{tetrix_8c_ac2497028945dde5abdc42fdbb5ecf2f2}{rotazione}} (char code, int colonna\+\_\+scelta\+\_\+dal\+\_\+giocatore)
+\item 
+void \mbox{\hyperlink{tetrix_8c_aa3bc71145727910fda60fad153a740bd}{Visualizza\+\_\+pezzi\+\_\+disponibili}} ()
+\item 
+int $\ast$ \mbox{\hyperlink{tetrix_8c_a10f58b6e2a1be6042acd8ecf38be8027}{scelta}} (int colonna\+\_\+scelta\+\_\+dal\+\_\+giocatore)
+\item 
+void \mbox{\hyperlink{tetrix_8c_a6e65a46c4e3bacc4754e0fe0af59ede6}{seleziona\+\_\+tetramino}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano, int \mbox{\hyperlink{test__case_8txt_af738b94a0528cf8ec70228f14a1a1512}{RIGHE}}, int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}}, int turno)
+\item 
+void \mbox{\hyperlink{tetrix_8c_a3fd5c682f4d1f903342251a529d0ee0e}{rimuovi\+\_\+riga}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano, int riga\+\_\+punto, int colonna)
+\item 
+int \mbox{\hyperlink{tetrix_8c_a682f38efcb81ebea210a63c2d1dc6aca}{calcola\+\_\+punti}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano, int \mbox{\hyperlink{test__case_8txt_af738b94a0528cf8ec70228f14a1a1512}{RIGHE}}, int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}})
+\item 
+void \mbox{\hyperlink{tetrix_8c_adc63289992b5330a17a91eb5e8924fd0}{stampa}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano, \mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano2, int \mbox{\hyperlink{test__case_8txt_af738b94a0528cf8ec70228f14a1a1512}{RIGHE}}, int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}}, \mbox{\hyperlink{tetrix_8c_a727a6f710e0f7bcf136b908b5cff365d}{giocatori\+\_\+t}} \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0fa}{giocatori}})
+\item 
+void \mbox{\hyperlink{tetrix_8c_a3db906a4d562c2e7b2e92b92849943ca}{raddoppia\+\_\+tetramini}} ()
+\item 
+void \mbox{\hyperlink{tetrix_8c_aa11dce9cbdbceb69cc11f68db2609547}{inverti\+\_\+campo\+\_\+di\+\_\+gioco}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} campo\+\_\+giocatore, int \mbox{\hyperlink{test__case_8txt_af738b94a0528cf8ec70228f14a1a1512}{RIGHE}}, int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}})
+\item 
+void \mbox{\hyperlink{tetrix_8c_adf818de7cbdc4a4cf738bfbfe3be289c}{TEST\+\_\+\+INVERTI}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} campo\+\_\+giocatore, int \mbox{\hyperlink{test__case_8txt_af738b94a0528cf8ec70228f14a1a1512}{RIGHE}}, int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}})
+\item 
+void \mbox{\hyperlink{tetrix_8c_a96526f8643da2c5248062e5d2832f069}{test}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano, int \mbox{\hyperlink{test__case_8txt_af738b94a0528cf8ec70228f14a1a1512}{RIGHE}}, int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}})
+\begin{DoxyCompactList}\small\item\em funzione che uso a scopo di test \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetrix_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{tetrix_8c_ae9f8d8d635995b45444dd02143e0a102}{RIGHE}} = \mbox{\hyperlink{tetramini_8h_aece949dcac4360a3141f73eaec44e155}{row}}
+\begin{DoxyCompactList}\small\item\em Definisco delle costanti per il numero di righe e colonne. \end{DoxyCompactList}\item 
+const int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}} = \mbox{\hyperlink{tetramini_8h_ac5a3a1569e5f4d986ec6ece10286c08a}{column}}
+\item 
+\mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} \mbox{\hyperlink{tetrix_8c_a41c911f3da02a829ac482dd61c0d8528}{Perdita\+\_\+uscita\+\_\+campo}} = \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa1e095cc966dbecf6a0d8aad75348d1a}{FALSE}}
+\begin{DoxyCompactList}\small\item\em Definisco variabili globali per l\textquotesingle{}errore di uscire dalle righe colonne. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} \mbox{\hyperlink{tetrix_8c_a051ce5d94ece76dfba76cd03264c2486}{inverti\+\_\+campo}} = \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa1e095cc966dbecf6a0d8aad75348d1a}{FALSE}}
+\begin{DoxyCompactList}\small\item\em Definisco una variabile globale per il bonus da 3 punti o + per il multiplayer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Alessandro Cecchin (\href{mailto:859869@stud.unive.it}{\texttt{ 859869@stud.\+unive.\+it}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+9.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/08-\/19
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}\label{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}} 
+\index{tetrix.c@{tetrix.c}!bool\_t@{bool\_t}}
+\index{bool\_t@{bool\_t}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{bool\_t}{bool\_t}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848}{bool\+\_\+e}} \mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}}}
+
+\mbox{\Hypertarget{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}\label{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}} 
+\index{tetrix.c@{tetrix.c}!campo\_di\_gioco@{campo\_di\_gioco}}
+\index{campo\_di\_gioco@{campo\_di\_gioco}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{campo\_di\_gioco}{campo\_di\_gioco}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{tetrix_8c_aa7f1ff8f4ac9b5f9dc398111841d9d77}{riquadro\+\_\+t}}$\ast$ \mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}
+
+
+
+nota\+: campo\+\_\+di\+\_\+gioco e\textquotesingle{} un puntatore che punt al campo di gioco 
+
+\mbox{\Hypertarget{tetrix_8c_a727a6f710e0f7bcf136b908b5cff365d}\label{tetrix_8c_a727a6f710e0f7bcf136b908b5cff365d}} 
+\index{tetrix.c@{tetrix.c}!giocatori\_t@{giocatori\_t}}
+\index{giocatori\_t@{giocatori\_t}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{giocatori\_t}{giocatori\_t}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0fa}{giocatori}} \mbox{\hyperlink{tetrix_8c_a727a6f710e0f7bcf136b908b5cff365d}{giocatori\+\_\+t}}}
+
+\mbox{\Hypertarget{tetrix_8c_aa7f1ff8f4ac9b5f9dc398111841d9d77}\label{tetrix_8c_aa7f1ff8f4ac9b5f9dc398111841d9d77}} 
+\index{tetrix.c@{tetrix.c}!riquadro\_t@{riquadro\_t}}
+\index{riquadro\_t@{riquadro\_t}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{riquadro\_t}{riquadro\_t}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{tetrix_8c_aacae98a513bf46f84ca1f3554bae431b}{riquadro}} \mbox{\hyperlink{tetrix_8c_aa7f1ff8f4ac9b5f9dc398111841d9d77}{riquadro\+\_\+t}}}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{tetrix_8c_a3c5c82810d69281c45ae525b29779848}\label{tetrix_8c_a3c5c82810d69281c45ae525b29779848}} 
+\index{tetrix.c@{tetrix.c}!bool\_e@{bool\_e}}
+\index{bool\_e@{bool\_e}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{bool\_e}{bool\_e}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848}{bool\+\_\+e}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FALSE@{FALSE}!tetrix.c@{tetrix.c}}\index{tetrix.c@{tetrix.c}!FALSE@{FALSE}}}\mbox{\Hypertarget{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa1e095cc966dbecf6a0d8aad75348d1a}\label{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa1e095cc966dbecf6a0d8aad75348d1a}} 
+FALSE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TRUE@{TRUE}!tetrix.c@{tetrix.c}}\index{tetrix.c@{tetrix.c}!TRUE@{TRUE}}}\mbox{\Hypertarget{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa82764c3079aea4e60c80e45befbb839}\label{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa82764c3079aea4e60c80e45befbb839}} 
+TRUE&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0fa}\label{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0fa}} 
+\index{tetrix.c@{tetrix.c}!giocatori@{giocatori}}
+\index{giocatori@{giocatori}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{giocatori}{giocatori}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0fa}{giocatori}}}
+
+Definisco una variabile per il numero di giocatori \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SINGLE\_PLAYER@{SINGLE\_PLAYER}!tetrix.c@{tetrix.c}}\index{tetrix.c@{tetrix.c}!SINGLE\_PLAYER@{SINGLE\_PLAYER}}}\mbox{\Hypertarget{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faae0c9d3e5c71ae4b23a63b36eaac2f918}\label{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faae0c9d3e5c71ae4b23a63b36eaac2f918}} 
+SINGLE\+\_\+\+PLAYER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MULTI\_PLAYER@{MULTI\_PLAYER}!tetrix.c@{tetrix.c}}\index{tetrix.c@{tetrix.c}!MULTI\_PLAYER@{MULTI\_PLAYER}}}\mbox{\Hypertarget{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faaf64ffcc804f85cc65366369011db5768}\label{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faaf64ffcc804f85cc65366369011db5768}} 
+MULTI\+\_\+\+PLAYER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NOT\_SELECTED@{NOT\_SELECTED}!tetrix.c@{tetrix.c}}\index{tetrix.c@{tetrix.c}!NOT\_SELECTED@{NOT\_SELECTED}}}\mbox{\Hypertarget{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faa616ede6b6f3a1d38a724d1168ddf1adf}\label{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faa616ede6b6f3a1d38a724d1168ddf1adf}} 
+NOT\+\_\+\+SELECTED&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{tetrix_8c_aacae98a513bf46f84ca1f3554bae431b}\label{tetrix_8c_aacae98a513bf46f84ca1f3554bae431b}} 
+\index{tetrix.c@{tetrix.c}!riquadro@{riquadro}}
+\index{riquadro@{riquadro}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{riquadro}{riquadro}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{tetrix_8c_aacae98a513bf46f84ca1f3554bae431b}{riquadro}}}
+
+casella del piano di gioco che può essere occupato o meno. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VUOTO@{VUOTO}!tetrix.c@{tetrix.c}}\index{tetrix.c@{tetrix.c}!VUOTO@{VUOTO}}}\mbox{\Hypertarget{tetrix_8c_aacae98a513bf46f84ca1f3554bae431baf9428c94346b50d578b820a28ca79855}\label{tetrix_8c_aacae98a513bf46f84ca1f3554bae431baf9428c94346b50d578b820a28ca79855}} 
+VUOTO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OCCUPATO@{OCCUPATO}!tetrix.c@{tetrix.c}}\index{tetrix.c@{tetrix.c}!OCCUPATO@{OCCUPATO}}}\mbox{\Hypertarget{tetrix_8c_aacae98a513bf46f84ca1f3554bae431ba86eb6f31a721a0cffb9e409a63428cb7}\label{tetrix_8c_aacae98a513bf46f84ca1f3554bae431ba86eb6f31a721a0cffb9e409a63428cb7}} 
+OCCUPATO&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{tetrix_8c_a682f38efcb81ebea210a63c2d1dc6aca}\label{tetrix_8c_a682f38efcb81ebea210a63c2d1dc6aca}} 
+\index{tetrix.c@{tetrix.c}!calcola\_punti@{calcola\_punti}}
+\index{calcola\_punti@{calcola\_punti}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{calcola\_punti()}{calcola\_punti()}}
+{\footnotesize\ttfamily int calcola\+\_\+punti (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{piano,  }\item[{int}]{RIGHE,  }\item[{int}]{COLONNE }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_a18f5b9291b9589c18c9f53d9d3531b5c}\label{tetrix_8c_a18f5b9291b9589c18c9f53d9d3531b5c}} 
+\index{tetrix.c@{tetrix.c}!contatto@{contatto}}
+\index{contatto@{contatto}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{contatto()}{contatto()}}
+{\footnotesize\ttfamily int contatto (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{piano,  }\item[{int}]{scelta\+\_\+colonna,  }\item[{int $\ast$}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_a5888954e236254cc7e6ff5cffedbf90f}\label{tetrix_8c_a5888954e236254cc7e6ff5cffedbf90f}} 
+\index{tetrix.c@{tetrix.c}!init@{init}}
+\index{init@{init}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{piano,  }\item[{int}]{riga,  }\item[{int}]{colonna }\end{DoxyParamCaption})}
+
+
+
+Inizializzatore\+: inizializza il campo da gioco a VUOTO. 
+
+\mbox{\Hypertarget{tetrix_8c_aa11dce9cbdbceb69cc11f68db2609547}\label{tetrix_8c_aa11dce9cbdbceb69cc11f68db2609547}} 
+\index{tetrix.c@{tetrix.c}!inverti\_campo\_di\_gioco@{inverti\_campo\_di\_gioco}}
+\index{inverti\_campo\_di\_gioco@{inverti\_campo\_di\_gioco}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{inverti\_campo\_di\_gioco()}{inverti\_campo\_di\_gioco()}}
+{\footnotesize\ttfamily void inverti\+\_\+campo\+\_\+di\+\_\+gioco (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{campo\+\_\+giocatore,  }\item[{int}]{RIGHE,  }\item[{int}]{COLONNE }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{tetrix_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{tetrix.c@{tetrix.c}!main@{main}}
+\index{main@{main}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+main\+: chiede all\textquotesingle{}utente di immettere un codice, poi ~\newline
+ chiama una funzione per eseguire l\textquotesingle{}azione ~\newline
+ richiesta. Continua fino a quando la variabile ~\newline
+ fine\+\_\+gioco non diventa positiva. stampa messaggio ~\newline
+ di errore quando il codice e\textquotesingle{} sbagliato. ~\newline
+ Variabili per utilizzo del menu\+: 
+\begin{DoxyParams}{Parameters}
+{\em fine\+\_\+gioco} & indica quando il main chiudo il ciclo e finisce il gioco \\
+\hline
+{\em select} & indica che voce del menu ho selezionato \\
+\hline
+{\em turno} & indica il turno del giocatore attuale \\
+\hline
+{\em giocatori} & indica la modalità di gioco multi o single player\\
+\hline
+\end{DoxyParams}
+Variabili per il punteggio dei giocatori\+: 
+\begin{DoxyParams}{Parameters}
+{\em punteggio\+\_\+1} & indica il punteggio del giocatore 1 \\
+\hline
+{\em punteggio\+\_\+2} & indica il punteggio del giocatore 2 \\
+\hline
+{\em vittoria} & indica che uno dei due giocatori ha vinto\\
+\hline
+\end{DoxyParams}
+creo i campi da gioco del giocatore 1 e 2 
+\begin{DoxyParams}{Parameters}
+{\em campo\+\_\+giocatore\+\_\+1} & puntatore al campo del giocatore 1 \\
+\hline
+{\em campo\+\_\+giocatore\+\_\+2} & puntatore al campo del giocatore 2\\
+\hline
+\end{DoxyParams}
+inizializzare i campi da gioco \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{tetrix_8c_a5888954e236254cc7e6ff5cffedbf90f}{init(campo\+\_\+di\+\_\+gioco piano, int riga, int colonna)}}
+\end{DoxySeeAlso}
+messaggio di benvenuto
+
+Vittoria dopo i 50 punti\mbox{\Hypertarget{tetrix_8c_a3db906a4d562c2e7b2e92b92849943ca}\label{tetrix_8c_a3db906a4d562c2e7b2e92b92849943ca}} 
+\index{tetrix.c@{tetrix.c}!raddoppia\_tetramini@{raddoppia\_tetramini}}
+\index{raddoppia\_tetramini@{raddoppia\_tetramini}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{raddoppia\_tetramini()}{raddoppia\_tetramini()}}
+{\footnotesize\ttfamily void raddoppia\+\_\+tetramini (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_a3fd5c682f4d1f903342251a529d0ee0e}\label{tetrix_8c_a3fd5c682f4d1f903342251a529d0ee0e}} 
+\index{tetrix.c@{tetrix.c}!rimuovi\_riga@{rimuovi\_riga}}
+\index{rimuovi\_riga@{rimuovi\_riga}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{rimuovi\_riga()}{rimuovi\_riga()}}
+{\footnotesize\ttfamily void rimuovi\+\_\+riga (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{piano,  }\item[{int}]{riga\+\_\+punto,  }\item[{int}]{colonna }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_ac2497028945dde5abdc42fdbb5ecf2f2}\label{tetrix_8c_ac2497028945dde5abdc42fdbb5ecf2f2}} 
+\index{tetrix.c@{tetrix.c}!rotazione@{rotazione}}
+\index{rotazione@{rotazione}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{rotazione()}{rotazione()}}
+{\footnotesize\ttfamily int $\ast$ rotazione (\begin{DoxyParamCaption}\item[{char}]{code,  }\item[{int}]{colonna\+\_\+scelta\+\_\+dal\+\_\+giocatore }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_ad4f5c4e816365358b2219ae64992fd84}\label{tetrix_8c_ad4f5c4e816365358b2219ae64992fd84}} 
+\index{tetrix.c@{tetrix.c}!salva\_tetramino@{salva\_tetramino}}
+\index{salva\_tetramino@{salva\_tetramino}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{salva\_tetramino()}{salva\_tetramino()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} salva\+\_\+tetramino (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{piano,  }\item[{int $\ast$}]{p,  }\item[{int}]{scelta\+\_\+colonna }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_a10f58b6e2a1be6042acd8ecf38be8027}\label{tetrix_8c_a10f58b6e2a1be6042acd8ecf38be8027}} 
+\index{tetrix.c@{tetrix.c}!scelta@{scelta}}
+\index{scelta@{scelta}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{scelta()}{scelta()}}
+{\footnotesize\ttfamily int $\ast$ scelta (\begin{DoxyParamCaption}\item[{int}]{colonna\+\_\+scelta\+\_\+dal\+\_\+giocatore }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_a6e65a46c4e3bacc4754e0fe0af59ede6}\label{tetrix_8c_a6e65a46c4e3bacc4754e0fe0af59ede6}} 
+\index{tetrix.c@{tetrix.c}!seleziona\_tetramino@{seleziona\_tetramino}}
+\index{seleziona\_tetramino@{seleziona\_tetramino}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{seleziona\_tetramino()}{seleziona\_tetramino()}}
+{\footnotesize\ttfamily void seleziona\+\_\+tetramino (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{piano,  }\item[{int}]{RIGHE,  }\item[{int}]{COLONNE,  }\item[{int}]{turno }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_adc63289992b5330a17a91eb5e8924fd0}\label{tetrix_8c_adc63289992b5330a17a91eb5e8924fd0}} 
+\index{tetrix.c@{tetrix.c}!stampa@{stampa}}
+\index{stampa@{stampa}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{stampa()}{stampa()}}
+{\footnotesize\ttfamily void stampa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{piano,  }\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{piano2,  }\item[{int}]{RIGHE,  }\item[{int}]{COLONNE,  }\item[{\mbox{\hyperlink{tetrix_8c_a727a6f710e0f7bcf136b908b5cff365d}{giocatori\+\_\+t}}}]{giocatori }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_abeb1901c55d057632a6bd4a45fe6d75b}\label{tetrix_8c_abeb1901c55d057632a6bd4a45fe6d75b}} 
+\index{tetrix.c@{tetrix.c}!stampa\_anteprima@{stampa\_anteprima}}
+\index{stampa\_anteprima@{stampa\_anteprima}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{stampa\_anteprima()}{stampa\_anteprima()}}
+{\footnotesize\ttfamily void stampa\+\_\+anteprima (\begin{DoxyParamCaption}\item[{int}]{colonna\+\_\+scelta\+\_\+dal\+\_\+giocatore,  }\item[{int $\ast$}]{tetramino }\end{DoxyParamCaption})}
+
+
+
+Funzione che uso per visualizzare un ateprima del tetramino scelto dal giocatore. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetramino} & viene passato il tetramino scelto come j, l, t ecc.. \\
+\hline
+{\em colonna\+\_\+scelta\+\_\+dal\+\_\+giocatore} & la colonna selezionata dal giocatore viene passata alla funzione \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetrix_8c_a96526f8643da2c5248062e5d2832f069}\label{tetrix_8c_a96526f8643da2c5248062e5d2832f069}} 
+\index{tetrix.c@{tetrix.c}!test@{test}}
+\index{test@{test}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{test()}{test()}}
+{\footnotesize\ttfamily void test (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{piano,  }\item[{int}]{RIGHE,  }\item[{int}]{COLONNE }\end{DoxyParamCaption})}
+
+
+
+funzione che uso a scopo di test 
+
+
+\begin{DoxyParams}{Parameters}
+{\em piano} & \\
+\hline
+{\em RIGHE} & \\
+\hline
+{\em COLONNE} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{tetrix_8c_adf818de7cbdc4a4cf738bfbfe3be289c}\label{tetrix_8c_adf818de7cbdc4a4cf738bfbfe3be289c}} 
+\index{tetrix.c@{tetrix.c}!TEST\_INVERTI@{TEST\_INVERTI}}
+\index{TEST\_INVERTI@{TEST\_INVERTI}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{TEST\_INVERTI()}{TEST\_INVERTI()}}
+{\footnotesize\ttfamily void TEST\+\_\+\+INVERTI (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{campo\+\_\+giocatore,  }\item[{int}]{RIGHE,  }\item[{int}]{COLONNE }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_a8a0b7e3b055bd38e37aa36052cbc1609}\label{tetrix_8c_a8a0b7e3b055bd38e37aa36052cbc1609}} 
+\index{tetrix.c@{tetrix.c}!verifica\_occupata@{verifica\_occupata}}
+\index{verifica\_occupata@{verifica\_occupata}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{verifica\_occupata()}{verifica\_occupata()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} verifica\+\_\+occupata (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{piano,  }\item[{int}]{scelta,  }\item[{int $\ast$}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_a2444104362cf4314a0b97fa2eaf0d58e}\label{tetrix_8c_a2444104362cf4314a0b97fa2eaf0d58e}} 
+\index{tetrix.c@{tetrix.c}!verifica\_uscita@{verifica\_uscita}}
+\index{verifica\_uscita@{verifica\_uscita}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{verifica\_uscita()}{verifica\_uscita()}}
+{\footnotesize\ttfamily int verifica\+\_\+uscita (\begin{DoxyParamCaption}\item[{int $\ast$}]{p,  }\item[{int}]{righe\+\_\+rimanenti,  }\item[{int}]{colonna,  }\item[{int}]{contatto }\end{DoxyParamCaption})}
+
+
+
+verifica che il tetramino inserito non superi il limite di colonne e righe massime 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & indica il tetramino scelto dal giocatore \\
+\hline
+{\em righe\+\_\+rimanenti} & il numero di righe rimaste vuote, quindi un tetramino I in verticale non ci starà se le righe rimaneti sono solo 3 \\
+\hline
+{\em colonna} & questa indica la colonna scelta dal giocatore e aumenta di valore in base a quanto occupa il tetrmaino in termini di larghezza \\
+\hline
+{\em contatto} & questo è dove il tetramino è appogiato, lo uso come valore di entrata e uscita per verificare gli errori, se il valore cambia allora il tetramino è uscito dallo spazio di gioco \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ritrona di nuovo contatto se non ci sono errori, sennò ritorna -\/1 
+\end{DoxyReturn}
+\begin{DoxyAttention}{Attention}
+guardare note sotto, aggiungo questa condizione perchè in caso di tetramini come l a 90 gradi il primo valore del vettore è più alto del secondo 
+\end{DoxyAttention}
+\begin{DoxySeeAlso}{See also}
+
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em Perdita\+\_\+uscita\+\_\+campo} & quando è a TRUE indica l\textquotesingle{}uscita dal campo e il giocatore perde\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+if($\ast$p == 1 \&\& sottrazione\+\_\+riga == 0)
+\end{DoxyNote}
+\mbox{\Hypertarget{tetrix_8c_aa3bc71145727910fda60fad153a740bd}\label{tetrix_8c_aa3bc71145727910fda60fad153a740bd}} 
+\index{tetrix.c@{tetrix.c}!Visualizza\_pezzi\_disponibili@{Visualizza\_pezzi\_disponibili}}
+\index{Visualizza\_pezzi\_disponibili@{Visualizza\_pezzi\_disponibili}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{Visualizza\_pezzi\_disponibili()}{Visualizza\_pezzi\_disponibili()}}
+{\footnotesize\ttfamily void Visualizza\+\_\+pezzi\+\_\+disponibili (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}\label{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}} 
+\index{tetrix.c@{tetrix.c}!COLONNE@{COLONNE}}
+\index{COLONNE@{COLONNE}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{COLONNE}{COLONNE}}
+{\footnotesize\ttfamily const int COLONNE = \mbox{\hyperlink{tetramini_8h_ac5a3a1569e5f4d986ec6ece10286c08a}{column}}}
+
+\mbox{\Hypertarget{tetrix_8c_a051ce5d94ece76dfba76cd03264c2486}\label{tetrix_8c_a051ce5d94ece76dfba76cd03264c2486}} 
+\index{tetrix.c@{tetrix.c}!inverti\_campo@{inverti\_campo}}
+\index{inverti\_campo@{inverti\_campo}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{inverti\_campo}{inverti\_campo}}
+{\footnotesize\ttfamily \mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} inverti\+\_\+campo = \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa1e095cc966dbecf6a0d8aad75348d1a}{FALSE}}}
+
+
+
+Definisco una variabile globale per il bonus da 3 punti o + per il multiplayer. 
+
+\mbox{\Hypertarget{tetrix_8c_a41c911f3da02a829ac482dd61c0d8528}\label{tetrix_8c_a41c911f3da02a829ac482dd61c0d8528}} 
+\index{tetrix.c@{tetrix.c}!Perdita\_uscita\_campo@{Perdita\_uscita\_campo}}
+\index{Perdita\_uscita\_campo@{Perdita\_uscita\_campo}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{Perdita\_uscita\_campo}{Perdita\_uscita\_campo}}
+{\footnotesize\ttfamily \mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} Perdita\+\_\+uscita\+\_\+campo = \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa1e095cc966dbecf6a0d8aad75348d1a}{FALSE}}}
+
+
+
+Definisco variabili globali per l\textquotesingle{}errore di uscire dalle righe colonne. 
+
+\mbox{\Hypertarget{tetrix_8c_ae9f8d8d635995b45444dd02143e0a102}\label{tetrix_8c_ae9f8d8d635995b45444dd02143e0a102}} 
+\index{tetrix.c@{tetrix.c}!RIGHE@{RIGHE}}
+\index{RIGHE@{RIGHE}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{RIGHE}{RIGHE}}
+{\footnotesize\ttfamily const int RIGHE = \mbox{\hyperlink{tetramini_8h_aece949dcac4360a3141f73eaec44e155}{row}}}
+
+
+
+Definisco delle costanti per il numero di righe e colonne. 
+
+
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+ \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{tetramini_8h}{tetramini.\+h}} 
+\end{DoxySeeAlso}

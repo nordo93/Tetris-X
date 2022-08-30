@@ -1,0 +1,346 @@
+TEST programma TETRI-X:
+
+---TEST----
+
+   0   1   2   3   4   5   6   7   8   9
+  10  11  12  13  14  15  16  17  18  19
+  20  21  22  23  24  25  26  27  28  29
+  30  31  32  33  34  35  36  37  38  39
+  40  41  42  43  44  45  46  47  48  49
+  50  51  52  53  54  55  56  57  58  59
+  60  61  62  63  64  65  66  67  68  69
+  70  71  72  73  74  75  76  77  78  79
+  80  81  82  83  84  85  86  87  88  89
+  90  91  92  93  94  95  96  97  98  99
+ 100 101 102 103 104 105 106 107 108 109
+ 110 111 112 113 114 115 116 117 118 119
+ 120 121 122 123 124 125 126 127 128 129
+ 130 131 132 133 134 135 136 137 138 139
+ 140 141 142 143 144 145 146 147 148 149
+ * 0 = nessun blocco presente
+ *                  #
+ * # 1 = 1 bloccho  # 2 = 2 blocchi sovrapposti
+ *
+ * #            
+ * #                             #
+ * # 3 = 3 blocchi sovrapposti   0  4 = un posto vuoto con blocco sopra                         
+ *
+ * #                                                   #
+ * 0                                                   #
+ * 0 5 =due posti vuoti sovrapposti con blocco sopra   0 6 = un posto vuoto con due blocchi sopra
+ * 
+ * #
+ * #
+ * #
+ * # 7 = 4 blocchi sovrapposti
+
+
+- -----ERRORE CASELLA OCCUPATE------
+- seleziona colonna 1
+    LOOP /*ERRORE qui*/
+
+
+TEST 2 programma TETRI-X:
+
+-  turno g1 :   1
+- colonna :     9
+- tetrmaino :   j
+- rotazione :   4
+- !!! ATTENZIONE !!!:     il tetramino è uscito dalle colonne. seleziona tutto da capo
+- colonna :     8
+    LOOP /*ERRORE qui*/
+
+
+TEST 3 programma TETRI-X:
+
+- truno g1 :    1
+- colonna :     8
+- tetramino :   j
+- rotazione :   4
+- turno g2 :    2
+- truno g1 :    1
+- colonna :     8
+- tetramino :   j
+- rotazione :   4
+- ERRORE CASELLE OCCUPATE /*errore perchè dovrebbe appoggiarsi sopra dove segno con O*/
+ _  _  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  _  _  _  _  _  _  _  _  0    _  _  _  _  _  _  _  _  _  _
+ _  _  _  _  _  _  _  _  _  0    _  _  _  _  _  _  _  _  _  _
+ _  _  _  _  _  _  _  _  0  0    _  _  _  _  _  _  _  _  _  _
+ X  X  _  _  _  _  _  _  _  X    _  _  _  _  _  _  _  _  _  _
+ X  _  _  _  _  _  _  _  _  X    _  _  _  _  _  _  _  _  _  _
+ X  _  _  _  _  _  _  _  X  X    _  _  _  _  _  _  _  _  _  _ 
+ 0  1  2  3  4  5  6  7  8  9    10 11 12 13 14 15 16 17 18 19
+
+
+TEST 4 programma TETRI-X:
+
+ Dopo introduzione di nuova funzione contatto 
+    int contatto_test (piano_t piano, int scelta_colonna, int *p){
+	
+	    int test = *p;
+	    int r, c, i;
+	    int contatto = (row*column) - (column- scelta_colonna);
+	
+	    for (c = scelta_colonna; c < contatto; ){
+
+		    for(i = 0; i < size ; i++){
+		      if(piano[c + i] == PLAYER_1){
+		        printf("trovato contatto a : %d\n", c + i);
+        	    if(*p == 4 || *p == 6)
+        	        contatto = c;
+      	  	        else if (*p == 5)
+        	  	        contatto = c + column;
+        	  	        else if (*p == 1 || *p == 2 || *p == 3)
+        	  	            contatto = c - column;
+						    else
+						        i++; /*ottimizzo il ciclo perchè se c'è uno zero lo sarà anche il prossimo*/
+						}
+		
+		        p++;
+		    }
+		    c = c + column;
+	    }
+	    return contatto;
+    }
+
+Risultato buono ma c'è da risolvere questo :
+  _  _  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  _  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  _  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  _  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  _  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  _  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  _  X  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _ 
+ _  _  X  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  _  X  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  _  X  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  _  _  X  X  X  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  _  _  _  _  X  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ X  X  _  _  X  X  _  _  _  _    _  _  _  _  _  _  _  _  _  _ 
+ X  _  _  _  X  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ X  _  _  _  X  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ 0  1  2  3  4  5  6  7  8  9    10 11 12 13 14 15 16 17 18 19
+
+
+ un altra cosa da risolvere:
+
+  _  _  _  _ _  X  X  X  X  _    _  _  _  _  _  _  _  _  _  _ 
+ X  X  _  _  X  X  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ X  _  _  _  X  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ X  _  _  _  X  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ 0  1  2  3  4  5  6  7  8  9
+
+ Se seleziono colonna 4, j che non sia 90 gradi dice occupato
+
+
+ un altra :
+
+ _  _  _  X  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _ 
+ _  _  _  X  _  _  X  X  X  X    _  _  _  _  _  _  _  _  _  _ 
+ X  X  X  X  X  X  X  _  _  _    _  _  _  _  _  _  _  _  _  _ 
+ X  _  _  X  X  X  X  _  _  _    _  _  _  _  _  _  _  _  _  _
+ X  _  _  _  _  X  _  _  _  _    _  _  _  _  _  _  _  _  _  _ 
+ 0  1  2  3  4  5  6  7  8  9    10 11 12 13 14 15 16 17 18 19
+
+ seleziono colonna 4 , j 90 gradi dice occupato
+
+
+
+PRBLEMI ELIMINAZIONE RIGHE 1
+ _  _  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ X  _  _  _  _  _  _  _  _  _    X  _  _  _  _  _  _  _  _  _ 
+ X  X  _  _  _  _  _  _  _  X    X  _  _  _  _  _  _  _  _  _ 
+ X  X  _  _  _  _  _  _  _  X    X  X  _  _  _  _  _  _  _  X
+ X  X  X  X  X  X  X  X  X  X    _  X  _  _  _  _  _  _  _  X
+ X  X  X  X  X  _  _  _  X  X    X  X  X  X  X  _  _  _  X  X
+ _  X  X  X  X  X  _  X  X  X    _  X  X  X  X  X  _  X  X  X
+ 0  1  2  3  4  5  6  7  8  9    10 11 12 13 14 15 16 17 18 19
+
+PRBLEMI ELIMINAZIONE RIGHE 2
+ _  _  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  X  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  X  _  _  _  _  _  _  _  _    _  X  _  _  _  _  _  _  _  _  _
+ X  X  _  _  _  X  X  X  X  _    X  X  _  _  _  _  _  _  _  _  
+ X  X  X  X  X  X  X  X  X  X    _  X  _  _  _  X  X  X  X  _
+ _  X  _  _  X  _  X  _  X  X    _  X  _  _  X  _  X  _  X  X 
+ _  X  _  _  X  _  X  _  X  X    _  X  _  _  X  _  X  _  X  X 
+ X  X  _  _  X  X  X  X  X  X    X  X  _  _  X  X  X  X  X  X
+ 0  1  2  3  4  5  6  7  8  9    10 11 12 13 14 15 16 17 18 19
+
+PRBLEMI ELIMINAZIONE RIGHE 3
+ _  _  _  _  _  X  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  _  _  _  _  X  X  X  _  _    _  _  _  _  _  X  _  _  _  _
+ X  X  X  X  X  X  X  X  X  X    _  _  _  _  _  X  X  X  _  _  
+ X  X  X  X  X  X  X  X  X  X    _  X  X  X  X  X  X  X  X  X
+ _  X  _  _  X  _  X  X  X  _    _  X  _  _  X  _  X  X  X  _
+ _  X  _  _  X  _  X  X  X  _    _  X  _  _  X  _  X  X  X  _
+ X  X  _  X  X  _  X  X  X  _    X  X  _  X  X  _  X  X  X  _  
+ 0  1  2  3  4  5  6  7  8  9    10 11 12 13 14 15 16 17 18 19
+
+PRBLEMI ELIMINAZIONE RIGHE 4
+ _  _  _  _  _  _  _  _  _  X    _  _  _  _  _  _  _  _  _  _
+ _  _  _  _  X  _  _  _  _  X    _  _  _  _  _  _  _  _  _  X
+ X  X  X  X  X  X  X  X  X  X    _  _  _  _  X  _  _  _  _  X   
+ X  _  _  X  X  X  X  X  X  X    Y  _  _  X  X  X  X  X  X  X  
+ X  _  X  X  X  X  X  X  X  X    X  _  X  X  X  X  X  X  X  X   
+ X  _  X  X  X  X  X  X  X  X    X  _  X  X  X  X  X  X  X  X 
+ X  _  _  X  X  _  _  _  X  X    X  _  _  X  X  _  _  _  X  X
+ 0  1  2  3  4  5  6  7  8  9    10 11 12 13 14 15 16 17 18 19
+
+PRBLEMI ELIMINAZIONE RIGHE : risolto su tetrix 17
+
+
+test case:  (risolto su tetris 15)
+
+ X  _  _  _  _  _  X  X  X  X    _  _  _  _  _  _  _  _  _  _
+ X  _  _  _  _  _  X  X  X  X    _  _  _  _  _  _  _  _  _  _
+ X  _  _  _  _  _  X  X  X  X    _  _  _  _  _  _  _  _  _  _
+ 0  1  2  3  4  5  6  7  8  9    10 11 12 13 14 15 16 17 18 19
+
+
+Menu
+
+Scelta: 1
+
+Seleziona la colonna dove inserire il tetramini:
+Scelta: 2
+
+Scegli un tetramino tra i seguenti i, j, o, s, l, t o z:
+Scelta: i
+
+Scelgli la rotazione per questo tetramino i:
+
+Scelgli la rotazione per questo tetramino i:
+
+1. i orrizzontale
+2. i verticale
+Scelta: 1
+
+-----ERRORE CASELLA OCCUPATE------
+
+
+
+- riga 316 e 320 perdita e posizionamento da verificare 
+
+- TEST NON PERDE XCHE
+
+ _  _  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  _  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _ 
+ _  X  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  X  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  X  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _ 
+ _  X  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  X  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  X  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  X  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  X  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  X  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  X  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _ 
+ _  X  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  X  _  _  _  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _
+ _  X  X  X  X  _  _  _  _  _    _  _  _  _  _  _  _  _  _  _ 
+ 0  1  2  3  4  5  6  7  8  9    10 11 12 13 14 15 16 17 18 19
+Turno del giocatore 1.
+Punteggio: 0.
+
+Menu
+Scelta: 1
+
+Seleziona la colonna dove inserire il tetramini:
+Scelta: 0
+Scegli un tetramino tra i seguenti i, j, o, s, l, t o z:
+Scelta: j
+Scelgli la rotazione per questo tetramino j:
+
+Scelta: 4
+
+DOVREBBE PERDERE 
+
+
+<<<<<<< HEAD
+TEST CASE 5:
+=======
+TEST CASE:
+>>>>>>> 3f90e59ad176d8714b75b23af27cb6a29621d412
+
+dopo che giocatore 2 ha sbagliato scelta,
+
+
+Scelta: 1
+
+Seleziona la colonna dove inserire il tetramini:
+Scelta: 1
+
+Scegli un tetramino tra i seguenti i, j, o, s, l, t o z:
+Scelta: t
+
+Scelgli la rotazione per questo tetramino t:
+3. ruotare di 180 gradi
+
+
+TEST CASE 6 ERRORE riquadro OCCUPATE------
+
+ X  X  X  _  X  X  X  _  _  _    
+ _  X  X  X  X  X  _  _  _  _   
+ _  _  _  X  X  X  _  _  _  _   
+ _  _  _  _  X  X  _  _  _  _    
+ _  _  _  _  X  X  _  _  _  _     
+ _  _  _  _  X  _  _  _  _  _    
+ _  _  _  _  X  _  _  _  _  _    
+ X  X  X  X  X  X  X  X  _  _    
+ X  X  X  X  X  X  X  X  _  _   
+ X  X  X  X  X  X  X  X  _  _    
+ 0  1  2  3  4  5  6  7  8  9 
+
+Seleziona la colonna dove inserire il tetramini:
+Scelta: 6
+
+Scegli un tetramino tra i seguenti i, j, o, s, l, t o z:
+Scelta: l
+
+Scelgli la rotazione per questo tetramino l:
+1. nessuna rotazione
+2. ruotare di 90 gradi
+3. ruotare di 180 gradi
+4. ruotare di 270 gradi
+-ANTEPRIMA scelta 1-
+ _  _  _  _
+ _  _  _  _
+ _  _  X  _
+ X  X  X  _
+ 6  7  8  9
+Scelta: 4
+
+TEST CASE 7 , inserisco j a 90 gradi , quando è presente un tetramino 
+X  _  X  _  _  _  _  _  _  _
+_  _  X  _  X  X  X  X  _  _ 
+10 11 12 13 14 15 16 17 18 19
+
+Menu
+
+Scelta: 1
+
+colonna dove inserire il tetramini:
+Scelta: 13
+
+Scegli un tetramino
+Scelta: j
+
+Scelgli la rotazione per questo tetramino j:
+1. nessuna rotazione
+2. ruotare di 90 gradi
+3. ruotare di 180 gradi
+4. ruotare di 270 gradi
+-ANTEPRIMA scelta 1-
+ _  _  _  _
+ _  _  _  _
+ X  _  _  _
+ X  X  X  _
+ 13  14  15  16
+Scelta: 2
+
+Risultato:
+X  _  X  X  X  _  _  _  _  _ 
+_  _  X  X  X  X  X  X  _  _  
+10 11 12 13 14 15 16 17 18 19

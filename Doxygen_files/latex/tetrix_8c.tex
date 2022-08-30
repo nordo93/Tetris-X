@@ -1,0 +1,616 @@
+\hypertarget{tetrix_8c}{}\doxysection{Riferimenti per il file C\+:/\+Users/acecchin/\+One\+Drive -\/ Sirmax Spa/\+Documenti/\+MEGA/\+X-\/\+Tetris/tetrix.c}
+\label{tetrix_8c}\index{C:/Users/acecchin/OneDrive -\/ Sirmax Spa/Documenti/MEGA/X-\/Tetris/tetrix.c@{C:/Users/acecchin/OneDrive -\/ Sirmax Spa/Documenti/MEGA/X-\/Tetris/tetrix.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+\doxysubsection*{Definizioni}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{tetrix_8c_aece949dcac4360a3141f73eaec44e155}{row}}~15
+\item 
+\#define \mbox{\hyperlink{tetrix_8c_ac5a3a1569e5f4d986ec6ece10286c08a}{column}}~10
+\item 
+\#define \mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}~4
+\end{DoxyCompactItemize}
+\doxysubsection*{Ridefinizioni di tipo (typedef)}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0fa}{giocatori}} \mbox{\hyperlink{tetrix_8c_a727a6f710e0f7bcf136b908b5cff365d}{giocatori\+\_\+t}}
+\item 
+typedef enum \mbox{\hyperlink{tetrix_8c_aacae98a513bf46f84ca1f3554bae431b}{riquadro}} \mbox{\hyperlink{tetrix_8c_aa7f1ff8f4ac9b5f9dc398111841d9d77}{riquadro\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{tetrix_8c_aa7f1ff8f4ac9b5f9dc398111841d9d77}{riquadro\+\_\+t}} $\ast$ \mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}
+\item 
+typedef enum \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848}{bool\+\_\+e}} \mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Tipi enumerati (enum)}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0fa}{giocatori}} \{ \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faae0c9d3e5c71ae4b23a63b36eaac2f918}{SINGLE\+\_\+\+PLAYER}} = 1
+, \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faaf64ffcc804f85cc65366369011db5768}{MULTI\+\_\+\+PLAYER}} = 2
+, \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faa616ede6b6f3a1d38a724d1168ddf1adf}{NOT\+\_\+\+SELECTED}} = -\/99
+ \}
+\item 
+enum \mbox{\hyperlink{tetrix_8c_aacae98a513bf46f84ca1f3554bae431b}{riquadro}} \{ \mbox{\hyperlink{tetrix_8c_aacae98a513bf46f84ca1f3554bae431baf9428c94346b50d578b820a28ca79855}{VUOTO}}
+, \mbox{\hyperlink{tetrix_8c_aacae98a513bf46f84ca1f3554bae431ba86eb6f31a721a0cffb9e409a63428cb7}{OCCUPATO}}
+ \}
+\item 
+enum \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848}{bool\+\_\+e}} \{ \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa1e095cc966dbecf6a0d8aad75348d1a}{FALSE}} = 0
+, \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa82764c3079aea4e60c80e45befbb839}{TRUE}} = 1
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{tetrix_8c_a5888954e236254cc7e6ff5cffedbf90f}{init}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano, int riga, int colonna)
+\begin{DoxyCompactList}\small\item\em Inizializzatore\+: inizializza il campo da gioco a VUOTO. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetrix_8c_afac1e7216112bd154f7d7fb52aad0085}{stampa\+\_\+anteprima}} (int $\ast$tetramino)
+\begin{DoxyCompactList}\small\item\em Funzione che uso per visualizzare un ateprima del tetramino scelto dal giocatore. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetrix_8c_a0264ab91445469301bf9c6a551a393d3}{verifica\+\_\+uscita}} (int $\ast$p, int riga, int colonna, int \mbox{\hyperlink{tetrix_8c_a18f5b9291b9589c18c9f53d9d3531b5c}{contatto}})
+\item 
+\mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} \mbox{\hyperlink{tetrix_8c_a8a0b7e3b055bd38e37aa36052cbc1609}{verifica\+\_\+occupata}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano, int \mbox{\hyperlink{tetrix_8c_a96821f09192799c1acbb4d1850e9b2ab}{scelta}}, int $\ast$p)
+\item 
+int \mbox{\hyperlink{tetrix_8c_a18f5b9291b9589c18c9f53d9d3531b5c}{contatto}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano, int scelta\+\_\+colonna, int $\ast$p)
+\item 
+\mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} \mbox{\hyperlink{tetrix_8c_ad4f5c4e816365358b2219ae64992fd84}{salva\+\_\+tetramino}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano, int $\ast$p, int scelta\+\_\+colonna)
+\item 
+int $\ast$ \mbox{\hyperlink{tetrix_8c_a9b06a0886ac03e59e886c6266da9508f}{rotazione}} (char code)
+\item 
+void \mbox{\hyperlink{tetrix_8c_aa3bc71145727910fda60fad153a740bd}{Visualizza\+\_\+pezzi\+\_\+disponibili}} ()
+\item 
+int $\ast$ \mbox{\hyperlink{tetrix_8c_a96821f09192799c1acbb4d1850e9b2ab}{scelta}} ()
+\item 
+void \mbox{\hyperlink{tetrix_8c_a6e65a46c4e3bacc4754e0fe0af59ede6}{seleziona\+\_\+tetramino}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano, int \mbox{\hyperlink{tetrix_8c_ae9f8d8d635995b45444dd02143e0a102}{RIGHE}}, int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}}, int turno)
+\item 
+void \mbox{\hyperlink{tetrix_8c_a3fd5c682f4d1f903342251a529d0ee0e}{rimuovi\+\_\+riga}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano, int riga\+\_\+punto, int colonna)
+\item 
+int \mbox{\hyperlink{tetrix_8c_a682f38efcb81ebea210a63c2d1dc6aca}{calcola\+\_\+punti}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano, int \mbox{\hyperlink{tetrix_8c_ae9f8d8d635995b45444dd02143e0a102}{RIGHE}}, int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}})
+\item 
+void \mbox{\hyperlink{tetrix_8c_a96526f8643da2c5248062e5d2832f069}{test}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano, int \mbox{\hyperlink{tetrix_8c_ae9f8d8d635995b45444dd02143e0a102}{RIGHE}}, int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}})
+\item 
+void \mbox{\hyperlink{tetrix_8c_adc63289992b5330a17a91eb5e8924fd0}{stampa}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano, \mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano2, int \mbox{\hyperlink{tetrix_8c_ae9f8d8d635995b45444dd02143e0a102}{RIGHE}}, int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}}, \mbox{\hyperlink{tetrix_8c_a727a6f710e0f7bcf136b908b5cff365d}{giocatori\+\_\+t}} \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0fa}{giocatori}})
+\item 
+void \mbox{\hyperlink{tetrix_8c_a3db906a4d562c2e7b2e92b92849943ca}{raddoppia\+\_\+tetramini}} ()
+\item 
+void \mbox{\hyperlink{tetrix_8c_aa11dce9cbdbceb69cc11f68db2609547}{inverti\+\_\+campo\+\_\+di\+\_\+gioco}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} campo\+\_\+giocatore, int \mbox{\hyperlink{tetrix_8c_ae9f8d8d635995b45444dd02143e0a102}{RIGHE}}, int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}})
+\item 
+void \mbox{\hyperlink{tetrix_8c_adf818de7cbdc4a4cf738bfbfe3be289c}{TEST\+\_\+\+INVERTI}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} campo\+\_\+giocatore, int \mbox{\hyperlink{tetrix_8c_ae9f8d8d635995b45444dd02143e0a102}{RIGHE}}, int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}})
+\item 
+int \mbox{\hyperlink{tetrix_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variabili}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{tetrix_8c_ad6fc8f02b9b9dd16cbb053cb94d9d75d}{I\+\_\+free}} = 20
+\item 
+int \mbox{\hyperlink{tetrix_8c_a486a6c33397876c16f1eed6ee6db9a6e}{I\+\_\+}} \mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,1,1,1\}
+\item 
+int \mbox{\hyperlink{tetrix_8c_a70bb3debf589d0e6cb018c995b9b55b7}{I\+\_\+180}} \mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{7,0,0,0\}
+\item 
+int \mbox{\hyperlink{tetrix_8c_abddddcaa391b55ca521a2dd642ecd67c}{J\+\_\+free}} = 20
+\item 
+int \mbox{\hyperlink{tetrix_8c_ad87da70e163fd593f54677543e410206}{J\+\_\+}} \mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{2,1,1,0\}
+\item 
+int \mbox{\hyperlink{tetrix_8c_acc13d1df0c48a8feb07a5533efd2a8ff}{J\+\_\+90}} \mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{3,5,0,0\}
+\item 
+int \mbox{\hyperlink{tetrix_8c_ad5f4569ab3b3091256882b93d2beae7c}{J\+\_\+180}} \mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{4,4,2,0\}
+\item 
+int \mbox{\hyperlink{tetrix_8c_a68d167cb3b6f4e8adbaa34c220e5d91a}{J\+\_\+270}} \mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,3,0,0\}
+\item 
+int \mbox{\hyperlink{tetrix_8c_a62a7aff152eb2b680f14719a0946b0cd}{L\+\_\+free}} = 20
+\item 
+int \mbox{\hyperlink{tetrix_8c_a4e55fdb7954a23a3d4225301663b5e42}{L\+\_\+}} \mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,1,2,0\}
+\item 
+int \mbox{\hyperlink{tetrix_8c_a71b2c3c341368dba402df00349b08f71}{L\+\_\+90}} \mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{3,1,0,0\}
+\item 
+int \mbox{\hyperlink{tetrix_8c_a9506433791b39d653329d2e43b3509ba}{L\+\_\+180}} \mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{2,4,4,0\}
+\item 
+int \mbox{\hyperlink{tetrix_8c_a896b7db002fccfe1fe4f9fc7c219a775}{L\+\_\+270}} \mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,3,0,0\}
+\item 
+int \mbox{\hyperlink{tetrix_8c_a6bc5b256b323182ec7dde63f1e11f7f7}{O\+\_\+free}} = 20
+\item 
+int \mbox{\hyperlink{tetrix_8c_ababe806de57c7e08be051e69f74aa3be}{O\+\_\+}} \mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{2,2,0,0\}
+\item 
+int \mbox{\hyperlink{tetrix_8c_aa8602cf3d17bdad9ea477d87502198f1}{S\+\_\+free}} = 20
+\item 
+int \mbox{\hyperlink{tetrix_8c_a6f6ed46d5320ee68c879f776fc6633f9}{S\+\_\+}} \mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,2,4,0\}
+\item 
+int \mbox{\hyperlink{tetrix_8c_ad64bd433759655e26f3b0d937d2576ec}{S\+\_\+90}} \mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{6,2,0,0\}
+\item 
+int \mbox{\hyperlink{tetrix_8c_afa13dff6dc6c64568b7d13a46631815e}{T\+\_\+free}} = 20
+\item 
+int \mbox{\hyperlink{tetrix_8c_aa44c256536afa00286b5506d5f0823e2}{T\+\_\+}} \mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,2,1,0\}
+\item 
+int \mbox{\hyperlink{tetrix_8c_a5c83b710aff3e681d3db4c312c6a0b46}{T\+\_\+90}} \mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{3,4,0,0\}
+\item 
+int \mbox{\hyperlink{tetrix_8c_a16fdec22fb412c8aca0c79119e3651b0}{T\+\_\+180}} \mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{4,2,4,0\}
+\item 
+int \mbox{\hyperlink{tetrix_8c_a3616df84af6179d88eaac1e6344007ab}{T\+\_\+270}} \mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{4,3,0,0\}
+\item 
+int \mbox{\hyperlink{tetrix_8c_a260e6987b9e21f6b802bee83d8b5db7e}{Z\+\_\+free}} = 20
+\item 
+int \mbox{\hyperlink{tetrix_8c_a5c3eaa3f69b2e26e70acd0793f79b03f}{Z\+\_\+}} \mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{4,2,1,0\}
+\item 
+int \mbox{\hyperlink{tetrix_8c_ac66a4244f70d4b26a6571c38fb877310}{Z\+\_\+90}} \mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{2,6,0,0\}
+\item 
+const int \mbox{\hyperlink{tetrix_8c_ae9f8d8d635995b45444dd02143e0a102}{RIGHE}} = \mbox{\hyperlink{tetrix_8c_aece949dcac4360a3141f73eaec44e155}{row}}
+\begin{DoxyCompactList}\small\item\em Definisco delle costanti per il numero di righe e colonne. \end{DoxyCompactList}\item 
+const int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}} = \mbox{\hyperlink{tetrix_8c_ac5a3a1569e5f4d986ec6ece10286c08a}{column}}
+\item 
+\mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} \mbox{\hyperlink{tetrix_8c_a41c911f3da02a829ac482dd61c0d8528}{Perdita\+\_\+uscita\+\_\+campo}} = \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa1e095cc966dbecf6a0d8aad75348d1a}{FALSE}}
+\begin{DoxyCompactList}\small\item\em Definisco variabili globali per l\textquotesingle{}errore di uscire dalle righe colonne. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} \mbox{\hyperlink{tetrix_8c_a051ce5d94ece76dfba76cd03264c2486}{inverti\+\_\+campo}} = \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa1e095cc966dbecf6a0d8aad75348d1a}{FALSE}}
+\begin{DoxyCompactList}\small\item\em Definisco una variabile globale per il bonus da 3 punti o + per il multiplayer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrizione dettagliata}
+\begin{DoxyAuthor}{Autore}
+Alessandro Cecchin (\href{mailto:859869@stud.unive.it}{\texttt{ 859869@stud.\+unive.\+it}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versione}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Data}
+2022-\/08-\/19
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Documentazione delle definizioni}
+\mbox{\Hypertarget{tetrix_8c_ac5a3a1569e5f4d986ec6ece10286c08a}\label{tetrix_8c_ac5a3a1569e5f4d986ec6ece10286c08a}} 
+\index{tetrix.c@{tetrix.c}!column@{column}}
+\index{column@{column}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{column}{column}}
+{\footnotesize\ttfamily \#define column~10}
+
+\mbox{\Hypertarget{tetrix_8c_aece949dcac4360a3141f73eaec44e155}\label{tetrix_8c_aece949dcac4360a3141f73eaec44e155}} 
+\index{tetrix.c@{tetrix.c}!row@{row}}
+\index{row@{row}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{row}{row}}
+{\footnotesize\ttfamily \#define row~15}
+
+\mbox{\Hypertarget{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}\label{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}} 
+\index{tetrix.c@{tetrix.c}!size@{size}}
+\index{size@{size}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily \#define size~4}
+
+
+
+\doxysubsection{Documentazione delle ridefinizioni di tipo (typedef)}
+\mbox{\Hypertarget{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}\label{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}} 
+\index{tetrix.c@{tetrix.c}!bool\_t@{bool\_t}}
+\index{bool\_t@{bool\_t}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{bool\_t}{bool\_t}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848}{bool\+\_\+e}} \mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}}}
+
+\mbox{\Hypertarget{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}\label{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}} 
+\index{tetrix.c@{tetrix.c}!campo\_di\_gioco@{campo\_di\_gioco}}
+\index{campo\_di\_gioco@{campo\_di\_gioco}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{campo\_di\_gioco}{campo\_di\_gioco}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{tetrix_8c_aa7f1ff8f4ac9b5f9dc398111841d9d77}{riquadro\+\_\+t}}$\ast$ \mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}
+
+\mbox{\Hypertarget{tetrix_8c_a727a6f710e0f7bcf136b908b5cff365d}\label{tetrix_8c_a727a6f710e0f7bcf136b908b5cff365d}} 
+\index{tetrix.c@{tetrix.c}!giocatori\_t@{giocatori\_t}}
+\index{giocatori\_t@{giocatori\_t}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{giocatori\_t}{giocatori\_t}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0fa}{giocatori}} \mbox{\hyperlink{tetrix_8c_a727a6f710e0f7bcf136b908b5cff365d}{giocatori\+\_\+t}}}
+
+\mbox{\Hypertarget{tetrix_8c_aa7f1ff8f4ac9b5f9dc398111841d9d77}\label{tetrix_8c_aa7f1ff8f4ac9b5f9dc398111841d9d77}} 
+\index{tetrix.c@{tetrix.c}!riquadro\_t@{riquadro\_t}}
+\index{riquadro\_t@{riquadro\_t}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{riquadro\_t}{riquadro\_t}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{tetrix_8c_aacae98a513bf46f84ca1f3554bae431b}{riquadro}} \mbox{\hyperlink{tetrix_8c_aa7f1ff8f4ac9b5f9dc398111841d9d77}{riquadro\+\_\+t}}}
+
+
+
+\doxysubsection{Documentazione dei tipi enumerati}
+\mbox{\Hypertarget{tetrix_8c_a3c5c82810d69281c45ae525b29779848}\label{tetrix_8c_a3c5c82810d69281c45ae525b29779848}} 
+\index{tetrix.c@{tetrix.c}!bool\_e@{bool\_e}}
+\index{bool\_e@{bool\_e}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{bool\_e}{bool\_e}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848}{bool\+\_\+e}}}
+
+\begin{DoxyEnumFields}{Valori del tipo enumerato}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FALSE@{FALSE}!tetrix.c@{tetrix.c}}\index{tetrix.c@{tetrix.c}!FALSE@{FALSE}}}\mbox{\Hypertarget{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa1e095cc966dbecf6a0d8aad75348d1a}\label{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa1e095cc966dbecf6a0d8aad75348d1a}} 
+FALSE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TRUE@{TRUE}!tetrix.c@{tetrix.c}}\index{tetrix.c@{tetrix.c}!TRUE@{TRUE}}}\mbox{\Hypertarget{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa82764c3079aea4e60c80e45befbb839}\label{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa82764c3079aea4e60c80e45befbb839}} 
+TRUE&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0fa}\label{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0fa}} 
+\index{tetrix.c@{tetrix.c}!giocatori@{giocatori}}
+\index{giocatori@{giocatori}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{giocatori}{giocatori}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0fa}{giocatori}}}
+
+\begin{DoxyEnumFields}{Valori del tipo enumerato}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SINGLE\_PLAYER@{SINGLE\_PLAYER}!tetrix.c@{tetrix.c}}\index{tetrix.c@{tetrix.c}!SINGLE\_PLAYER@{SINGLE\_PLAYER}}}\mbox{\Hypertarget{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faae0c9d3e5c71ae4b23a63b36eaac2f918}\label{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faae0c9d3e5c71ae4b23a63b36eaac2f918}} 
+SINGLE\+\_\+\+PLAYER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MULTI\_PLAYER@{MULTI\_PLAYER}!tetrix.c@{tetrix.c}}\index{tetrix.c@{tetrix.c}!MULTI\_PLAYER@{MULTI\_PLAYER}}}\mbox{\Hypertarget{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faaf64ffcc804f85cc65366369011db5768}\label{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faaf64ffcc804f85cc65366369011db5768}} 
+MULTI\+\_\+\+PLAYER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NOT\_SELECTED@{NOT\_SELECTED}!tetrix.c@{tetrix.c}}\index{tetrix.c@{tetrix.c}!NOT\_SELECTED@{NOT\_SELECTED}}}\mbox{\Hypertarget{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faa616ede6b6f3a1d38a724d1168ddf1adf}\label{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faa616ede6b6f3a1d38a724d1168ddf1adf}} 
+NOT\+\_\+\+SELECTED&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{tetrix_8c_aacae98a513bf46f84ca1f3554bae431b}\label{tetrix_8c_aacae98a513bf46f84ca1f3554bae431b}} 
+\index{tetrix.c@{tetrix.c}!riquadro@{riquadro}}
+\index{riquadro@{riquadro}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{riquadro}{riquadro}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{tetrix_8c_aacae98a513bf46f84ca1f3554bae431b}{riquadro}}}
+
+\begin{DoxyEnumFields}{Valori del tipo enumerato}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VUOTO@{VUOTO}!tetrix.c@{tetrix.c}}\index{tetrix.c@{tetrix.c}!VUOTO@{VUOTO}}}\mbox{\Hypertarget{tetrix_8c_aacae98a513bf46f84ca1f3554bae431baf9428c94346b50d578b820a28ca79855}\label{tetrix_8c_aacae98a513bf46f84ca1f3554bae431baf9428c94346b50d578b820a28ca79855}} 
+VUOTO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OCCUPATO@{OCCUPATO}!tetrix.c@{tetrix.c}}\index{tetrix.c@{tetrix.c}!OCCUPATO@{OCCUPATO}}}\mbox{\Hypertarget{tetrix_8c_aacae98a513bf46f84ca1f3554bae431ba86eb6f31a721a0cffb9e409a63428cb7}\label{tetrix_8c_aacae98a513bf46f84ca1f3554bae431ba86eb6f31a721a0cffb9e409a63428cb7}} 
+OCCUPATO&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Documentazione delle funzioni}
+\mbox{\Hypertarget{tetrix_8c_a682f38efcb81ebea210a63c2d1dc6aca}\label{tetrix_8c_a682f38efcb81ebea210a63c2d1dc6aca}} 
+\index{tetrix.c@{tetrix.c}!calcola\_punti@{calcola\_punti}}
+\index{calcola\_punti@{calcola\_punti}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{calcola\_punti()}{calcola\_punti()}}
+{\footnotesize\ttfamily int calcola\+\_\+punti (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{piano,  }\item[{int}]{RIGHE,  }\item[{int}]{COLONNE }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_a18f5b9291b9589c18c9f53d9d3531b5c}\label{tetrix_8c_a18f5b9291b9589c18c9f53d9d3531b5c}} 
+\index{tetrix.c@{tetrix.c}!contatto@{contatto}}
+\index{contatto@{contatto}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{contatto()}{contatto()}}
+{\footnotesize\ttfamily int contatto (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{piano,  }\item[{int}]{scelta\+\_\+colonna,  }\item[{int $\ast$}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_a5888954e236254cc7e6ff5cffedbf90f}\label{tetrix_8c_a5888954e236254cc7e6ff5cffedbf90f}} 
+\index{tetrix.c@{tetrix.c}!init@{init}}
+\index{init@{init}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{piano,  }\item[{int}]{riga,  }\item[{int}]{colonna }\end{DoxyParamCaption})}
+
+
+
+Inizializzatore\+: inizializza il campo da gioco a VUOTO. 
+
+\mbox{\Hypertarget{tetrix_8c_aa11dce9cbdbceb69cc11f68db2609547}\label{tetrix_8c_aa11dce9cbdbceb69cc11f68db2609547}} 
+\index{tetrix.c@{tetrix.c}!inverti\_campo\_di\_gioco@{inverti\_campo\_di\_gioco}}
+\index{inverti\_campo\_di\_gioco@{inverti\_campo\_di\_gioco}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{inverti\_campo\_di\_gioco()}{inverti\_campo\_di\_gioco()}}
+{\footnotesize\ttfamily void inverti\+\_\+campo\+\_\+di\+\_\+gioco (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{campo\+\_\+giocatore,  }\item[{int}]{RIGHE,  }\item[{int}]{COLONNE }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{tetrix_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{tetrix.c@{tetrix.c}!main@{main}}
+\index{main@{main}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+main\+: chiede all\textquotesingle{}utente di immettere un codice, poi ~\newline
+ chiama una funzione per eseguire l\textquotesingle{}azione ~\newline
+ richiesta. Continua fino a quando la variabile ~\newline
+ fine\+\_\+gioco non diventa positiva. stampa messaggio ~\newline
+ di errore quando il codice e\textquotesingle{} sbagliato. ~\newline
+ Variabili per utilizzo del menu\+: 
+\begin{DoxyParams}{Parametri}
+{\em fine\+\_\+gioco} & indica quando il main chiudo il ciclo e finisce il gioco \\
+\hline
+{\em select} & indica che voce del menu ho selezionato \\
+\hline
+{\em turno} & indica il turno del giocatore attuale \\
+\hline
+{\em giocatori} & indica la modalità di gioco multi o single player\\
+\hline
+\end{DoxyParams}
+Variabili per il punteggio dei giocatori\+: 
+\begin{DoxyParams}{Parametri}
+{\em punteggio\+\_\+1} & indica il punteggio del giocatore 1 \\
+\hline
+{\em punteggio\+\_\+2} & indica il punteggio del giocatore 2 \\
+\hline
+{\em vittoria} & indica che uno dei due giocatori ha vinto\\
+\hline
+\end{DoxyParams}
+creo i campi da gioco del giocatore 1 e 2 
+\begin{DoxyParams}{Parametri}
+{\em campo\+\_\+giocatore\+\_\+1} & puntatore al campo del giocatore 1 \\
+\hline
+{\em campo\+\_\+giocatore\+\_\+2} & puntatore al campo del giocatore 2\\
+\hline
+\end{DoxyParams}
+inizializzare i campi da gioco \begin{DoxySeeAlso}{Si veda anche}
+\mbox{\hyperlink{tetrix_8c_a5888954e236254cc7e6ff5cffedbf90f}{init(campo\+\_\+di\+\_\+gioco piano, int riga, int colonna)}}
+\end{DoxySeeAlso}
+messaggio di benvenuto
+
+Vittoria dopo i 50 punti\mbox{\Hypertarget{tetrix_8c_a3db906a4d562c2e7b2e92b92849943ca}\label{tetrix_8c_a3db906a4d562c2e7b2e92b92849943ca}} 
+\index{tetrix.c@{tetrix.c}!raddoppia\_tetramini@{raddoppia\_tetramini}}
+\index{raddoppia\_tetramini@{raddoppia\_tetramini}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{raddoppia\_tetramini()}{raddoppia\_tetramini()}}
+{\footnotesize\ttfamily void raddoppia\+\_\+tetramini (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_a3fd5c682f4d1f903342251a529d0ee0e}\label{tetrix_8c_a3fd5c682f4d1f903342251a529d0ee0e}} 
+\index{tetrix.c@{tetrix.c}!rimuovi\_riga@{rimuovi\_riga}}
+\index{rimuovi\_riga@{rimuovi\_riga}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{rimuovi\_riga()}{rimuovi\_riga()}}
+{\footnotesize\ttfamily void rimuovi\+\_\+riga (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{piano,  }\item[{int}]{riga\+\_\+punto,  }\item[{int}]{colonna }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_a9b06a0886ac03e59e886c6266da9508f}\label{tetrix_8c_a9b06a0886ac03e59e886c6266da9508f}} 
+\index{tetrix.c@{tetrix.c}!rotazione@{rotazione}}
+\index{rotazione@{rotazione}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{rotazione()}{rotazione()}}
+{\footnotesize\ttfamily int $\ast$ rotazione (\begin{DoxyParamCaption}\item[{char}]{code }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_ad4f5c4e816365358b2219ae64992fd84}\label{tetrix_8c_ad4f5c4e816365358b2219ae64992fd84}} 
+\index{tetrix.c@{tetrix.c}!salva\_tetramino@{salva\_tetramino}}
+\index{salva\_tetramino@{salva\_tetramino}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{salva\_tetramino()}{salva\_tetramino()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} salva\+\_\+tetramino (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{piano,  }\item[{int $\ast$}]{p,  }\item[{int}]{scelta\+\_\+colonna }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_a96821f09192799c1acbb4d1850e9b2ab}\label{tetrix_8c_a96821f09192799c1acbb4d1850e9b2ab}} 
+\index{tetrix.c@{tetrix.c}!scelta@{scelta}}
+\index{scelta@{scelta}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{scelta()}{scelta()}}
+{\footnotesize\ttfamily int $\ast$ scelta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_a6e65a46c4e3bacc4754e0fe0af59ede6}\label{tetrix_8c_a6e65a46c4e3bacc4754e0fe0af59ede6}} 
+\index{tetrix.c@{tetrix.c}!seleziona\_tetramino@{seleziona\_tetramino}}
+\index{seleziona\_tetramino@{seleziona\_tetramino}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{seleziona\_tetramino()}{seleziona\_tetramino()}}
+{\footnotesize\ttfamily void seleziona\+\_\+tetramino (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{piano,  }\item[{int}]{RIGHE,  }\item[{int}]{COLONNE,  }\item[{int}]{turno }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_adc63289992b5330a17a91eb5e8924fd0}\label{tetrix_8c_adc63289992b5330a17a91eb5e8924fd0}} 
+\index{tetrix.c@{tetrix.c}!stampa@{stampa}}
+\index{stampa@{stampa}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{stampa()}{stampa()}}
+{\footnotesize\ttfamily void stampa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{piano,  }\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{piano2,  }\item[{int}]{RIGHE,  }\item[{int}]{COLONNE,  }\item[{\mbox{\hyperlink{tetrix_8c_a727a6f710e0f7bcf136b908b5cff365d}{giocatori\+\_\+t}}}]{giocatori }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_afac1e7216112bd154f7d7fb52aad0085}\label{tetrix_8c_afac1e7216112bd154f7d7fb52aad0085}} 
+\index{tetrix.c@{tetrix.c}!stampa\_anteprima@{stampa\_anteprima}}
+\index{stampa\_anteprima@{stampa\_anteprima}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{stampa\_anteprima()}{stampa\_anteprima()}}
+{\footnotesize\ttfamily void stampa\+\_\+anteprima (\begin{DoxyParamCaption}\item[{int $\ast$}]{tetramino }\end{DoxyParamCaption})}
+
+
+
+Funzione che uso per visualizzare un ateprima del tetramino scelto dal giocatore. 
+
+
+\begin{DoxyParams}{Parametri}
+{\em tetramino} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetrix_8c_a96526f8643da2c5248062e5d2832f069}\label{tetrix_8c_a96526f8643da2c5248062e5d2832f069}} 
+\index{tetrix.c@{tetrix.c}!test@{test}}
+\index{test@{test}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{test()}{test()}}
+{\footnotesize\ttfamily void test (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{piano,  }\item[{int}]{RIGHE,  }\item[{int}]{COLONNE }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_adf818de7cbdc4a4cf738bfbfe3be289c}\label{tetrix_8c_adf818de7cbdc4a4cf738bfbfe3be289c}} 
+\index{tetrix.c@{tetrix.c}!TEST\_INVERTI@{TEST\_INVERTI}}
+\index{TEST\_INVERTI@{TEST\_INVERTI}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{TEST\_INVERTI()}{TEST\_INVERTI()}}
+{\footnotesize\ttfamily void TEST\+\_\+\+INVERTI (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{campo\+\_\+giocatore,  }\item[{int}]{RIGHE,  }\item[{int}]{COLONNE }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_a8a0b7e3b055bd38e37aa36052cbc1609}\label{tetrix_8c_a8a0b7e3b055bd38e37aa36052cbc1609}} 
+\index{tetrix.c@{tetrix.c}!verifica\_occupata@{verifica\_occupata}}
+\index{verifica\_occupata@{verifica\_occupata}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{verifica\_occupata()}{verifica\_occupata()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} verifica\+\_\+occupata (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{piano,  }\item[{int}]{scelta,  }\item[{int $\ast$}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_a0264ab91445469301bf9c6a551a393d3}\label{tetrix_8c_a0264ab91445469301bf9c6a551a393d3}} 
+\index{tetrix.c@{tetrix.c}!verifica\_uscita@{verifica\_uscita}}
+\index{verifica\_uscita@{verifica\_uscita}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{verifica\_uscita()}{verifica\_uscita()}}
+{\footnotesize\ttfamily int verifica\+\_\+uscita (\begin{DoxyParamCaption}\item[{int $\ast$}]{p,  }\item[{int}]{riga,  }\item[{int}]{colonna,  }\item[{int}]{contatto }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_aa3bc71145727910fda60fad153a740bd}\label{tetrix_8c_aa3bc71145727910fda60fad153a740bd}} 
+\index{tetrix.c@{tetrix.c}!Visualizza\_pezzi\_disponibili@{Visualizza\_pezzi\_disponibili}}
+\index{Visualizza\_pezzi\_disponibili@{Visualizza\_pezzi\_disponibili}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{Visualizza\_pezzi\_disponibili()}{Visualizza\_pezzi\_disponibili()}}
+{\footnotesize\ttfamily void Visualizza\+\_\+pezzi\+\_\+disponibili (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Documentazione delle variabili}
+\mbox{\Hypertarget{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}\label{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}} 
+\index{tetrix.c@{tetrix.c}!COLONNE@{COLONNE}}
+\index{COLONNE@{COLONNE}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{COLONNE}{COLONNE}}
+{\footnotesize\ttfamily const int COLONNE = \mbox{\hyperlink{tetrix_8c_ac5a3a1569e5f4d986ec6ece10286c08a}{column}}}
+
+\mbox{\Hypertarget{tetrix_8c_a486a6c33397876c16f1eed6ee6db9a6e}\label{tetrix_8c_a486a6c33397876c16f1eed6ee6db9a6e}} 
+\index{tetrix.c@{tetrix.c}!I\_@{I\_}}
+\index{I\_@{I\_}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{I\_}{I\_}}
+{\footnotesize\ttfamily int I\+\_\+\mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,1,1,1\}}
+
+\mbox{\Hypertarget{tetrix_8c_a70bb3debf589d0e6cb018c995b9b55b7}\label{tetrix_8c_a70bb3debf589d0e6cb018c995b9b55b7}} 
+\index{tetrix.c@{tetrix.c}!I\_180@{I\_180}}
+\index{I\_180@{I\_180}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{I\_180}{I\_180}}
+{\footnotesize\ttfamily int I\+\_\+180\mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{7,0,0,0\}}
+
+\mbox{\Hypertarget{tetrix_8c_ad6fc8f02b9b9dd16cbb053cb94d9d75d}\label{tetrix_8c_ad6fc8f02b9b9dd16cbb053cb94d9d75d}} 
+\index{tetrix.c@{tetrix.c}!I\_free@{I\_free}}
+\index{I\_free@{I\_free}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{I\_free}{I\_free}}
+{\footnotesize\ttfamily int I\+\_\+free = 20}
+
+\mbox{\Hypertarget{tetrix_8c_a051ce5d94ece76dfba76cd03264c2486}\label{tetrix_8c_a051ce5d94ece76dfba76cd03264c2486}} 
+\index{tetrix.c@{tetrix.c}!inverti\_campo@{inverti\_campo}}
+\index{inverti\_campo@{inverti\_campo}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{inverti\_campo}{inverti\_campo}}
+{\footnotesize\ttfamily \mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} inverti\+\_\+campo = \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa1e095cc966dbecf6a0d8aad75348d1a}{FALSE}}}
+
+
+
+Definisco una variabile globale per il bonus da 3 punti o + per il multiplayer. 
+
+\mbox{\Hypertarget{tetrix_8c_ad87da70e163fd593f54677543e410206}\label{tetrix_8c_ad87da70e163fd593f54677543e410206}} 
+\index{tetrix.c@{tetrix.c}!J\_@{J\_}}
+\index{J\_@{J\_}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{J\_}{J\_}}
+{\footnotesize\ttfamily int J\+\_\+\mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{2,1,1,0\}}
+
+\mbox{\Hypertarget{tetrix_8c_ad5f4569ab3b3091256882b93d2beae7c}\label{tetrix_8c_ad5f4569ab3b3091256882b93d2beae7c}} 
+\index{tetrix.c@{tetrix.c}!J\_180@{J\_180}}
+\index{J\_180@{J\_180}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{J\_180}{J\_180}}
+{\footnotesize\ttfamily int J\+\_\+180\mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{4,4,2,0\}}
+
+\mbox{\Hypertarget{tetrix_8c_a68d167cb3b6f4e8adbaa34c220e5d91a}\label{tetrix_8c_a68d167cb3b6f4e8adbaa34c220e5d91a}} 
+\index{tetrix.c@{tetrix.c}!J\_270@{J\_270}}
+\index{J\_270@{J\_270}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{J\_270}{J\_270}}
+{\footnotesize\ttfamily int J\+\_\+270\mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,3,0,0\}}
+
+\mbox{\Hypertarget{tetrix_8c_acc13d1df0c48a8feb07a5533efd2a8ff}\label{tetrix_8c_acc13d1df0c48a8feb07a5533efd2a8ff}} 
+\index{tetrix.c@{tetrix.c}!J\_90@{J\_90}}
+\index{J\_90@{J\_90}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{J\_90}{J\_90}}
+{\footnotesize\ttfamily int J\+\_\+90\mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{3,5,0,0\}}
+
+\mbox{\Hypertarget{tetrix_8c_abddddcaa391b55ca521a2dd642ecd67c}\label{tetrix_8c_abddddcaa391b55ca521a2dd642ecd67c}} 
+\index{tetrix.c@{tetrix.c}!J\_free@{J\_free}}
+\index{J\_free@{J\_free}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{J\_free}{J\_free}}
+{\footnotesize\ttfamily int J\+\_\+free = 20}
+
+\mbox{\Hypertarget{tetrix_8c_a4e55fdb7954a23a3d4225301663b5e42}\label{tetrix_8c_a4e55fdb7954a23a3d4225301663b5e42}} 
+\index{tetrix.c@{tetrix.c}!L\_@{L\_}}
+\index{L\_@{L\_}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{L\_}{L\_}}
+{\footnotesize\ttfamily int L\+\_\+\mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,1,2,0\}}
+
+\mbox{\Hypertarget{tetrix_8c_a9506433791b39d653329d2e43b3509ba}\label{tetrix_8c_a9506433791b39d653329d2e43b3509ba}} 
+\index{tetrix.c@{tetrix.c}!L\_180@{L\_180}}
+\index{L\_180@{L\_180}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{L\_180}{L\_180}}
+{\footnotesize\ttfamily int L\+\_\+180\mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{2,4,4,0\}}
+
+\mbox{\Hypertarget{tetrix_8c_a896b7db002fccfe1fe4f9fc7c219a775}\label{tetrix_8c_a896b7db002fccfe1fe4f9fc7c219a775}} 
+\index{tetrix.c@{tetrix.c}!L\_270@{L\_270}}
+\index{L\_270@{L\_270}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{L\_270}{L\_270}}
+{\footnotesize\ttfamily int L\+\_\+270\mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,3,0,0\}}
+
+\mbox{\Hypertarget{tetrix_8c_a71b2c3c341368dba402df00349b08f71}\label{tetrix_8c_a71b2c3c341368dba402df00349b08f71}} 
+\index{tetrix.c@{tetrix.c}!L\_90@{L\_90}}
+\index{L\_90@{L\_90}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{L\_90}{L\_90}}
+{\footnotesize\ttfamily int L\+\_\+90\mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{3,1,0,0\}}
+
+\mbox{\Hypertarget{tetrix_8c_a62a7aff152eb2b680f14719a0946b0cd}\label{tetrix_8c_a62a7aff152eb2b680f14719a0946b0cd}} 
+\index{tetrix.c@{tetrix.c}!L\_free@{L\_free}}
+\index{L\_free@{L\_free}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{L\_free}{L\_free}}
+{\footnotesize\ttfamily int L\+\_\+free = 20}
+
+\mbox{\Hypertarget{tetrix_8c_ababe806de57c7e08be051e69f74aa3be}\label{tetrix_8c_ababe806de57c7e08be051e69f74aa3be}} 
+\index{tetrix.c@{tetrix.c}!O\_@{O\_}}
+\index{O\_@{O\_}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{O\_}{O\_}}
+{\footnotesize\ttfamily int O\+\_\+\mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{2,2,0,0\}}
+
+\mbox{\Hypertarget{tetrix_8c_a6bc5b256b323182ec7dde63f1e11f7f7}\label{tetrix_8c_a6bc5b256b323182ec7dde63f1e11f7f7}} 
+\index{tetrix.c@{tetrix.c}!O\_free@{O\_free}}
+\index{O\_free@{O\_free}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{O\_free}{O\_free}}
+{\footnotesize\ttfamily int O\+\_\+free = 20}
+
+\mbox{\Hypertarget{tetrix_8c_a41c911f3da02a829ac482dd61c0d8528}\label{tetrix_8c_a41c911f3da02a829ac482dd61c0d8528}} 
+\index{tetrix.c@{tetrix.c}!Perdita\_uscita\_campo@{Perdita\_uscita\_campo}}
+\index{Perdita\_uscita\_campo@{Perdita\_uscita\_campo}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{Perdita\_uscita\_campo}{Perdita\_uscita\_campo}}
+{\footnotesize\ttfamily \mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} Perdita\+\_\+uscita\+\_\+campo = \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa1e095cc966dbecf6a0d8aad75348d1a}{FALSE}}}
+
+
+
+Definisco variabili globali per l\textquotesingle{}errore di uscire dalle righe colonne. 
+
+\mbox{\Hypertarget{tetrix_8c_ae9f8d8d635995b45444dd02143e0a102}\label{tetrix_8c_ae9f8d8d635995b45444dd02143e0a102}} 
+\index{tetrix.c@{tetrix.c}!RIGHE@{RIGHE}}
+\index{RIGHE@{RIGHE}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{RIGHE}{RIGHE}}
+{\footnotesize\ttfamily const int RIGHE = \mbox{\hyperlink{tetrix_8c_aece949dcac4360a3141f73eaec44e155}{row}}}
+
+
+
+Definisco delle costanti per il numero di righe e colonne. 
+
+\mbox{\Hypertarget{tetrix_8c_a6f6ed46d5320ee68c879f776fc6633f9}\label{tetrix_8c_a6f6ed46d5320ee68c879f776fc6633f9}} 
+\index{tetrix.c@{tetrix.c}!S\_@{S\_}}
+\index{S\_@{S\_}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{S\_}{S\_}}
+{\footnotesize\ttfamily int S\+\_\+\mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,2,4,0\}}
+
+\mbox{\Hypertarget{tetrix_8c_ad64bd433759655e26f3b0d937d2576ec}\label{tetrix_8c_ad64bd433759655e26f3b0d937d2576ec}} 
+\index{tetrix.c@{tetrix.c}!S\_90@{S\_90}}
+\index{S\_90@{S\_90}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{S\_90}{S\_90}}
+{\footnotesize\ttfamily int S\+\_\+90\mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{6,2,0,0\}}
+
+\mbox{\Hypertarget{tetrix_8c_aa8602cf3d17bdad9ea477d87502198f1}\label{tetrix_8c_aa8602cf3d17bdad9ea477d87502198f1}} 
+\index{tetrix.c@{tetrix.c}!S\_free@{S\_free}}
+\index{S\_free@{S\_free}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{S\_free}{S\_free}}
+{\footnotesize\ttfamily int S\+\_\+free = 20}
+
+\mbox{\Hypertarget{tetrix_8c_aa44c256536afa00286b5506d5f0823e2}\label{tetrix_8c_aa44c256536afa00286b5506d5f0823e2}} 
+\index{tetrix.c@{tetrix.c}!T\_@{T\_}}
+\index{T\_@{T\_}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{T\_}{T\_}}
+{\footnotesize\ttfamily int T\+\_\+\mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{1,2,1,0\}}
+
+\mbox{\Hypertarget{tetrix_8c_a16fdec22fb412c8aca0c79119e3651b0}\label{tetrix_8c_a16fdec22fb412c8aca0c79119e3651b0}} 
+\index{tetrix.c@{tetrix.c}!T\_180@{T\_180}}
+\index{T\_180@{T\_180}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{T\_180}{T\_180}}
+{\footnotesize\ttfamily int T\+\_\+180\mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{4,2,4,0\}}
+
+\mbox{\Hypertarget{tetrix_8c_a3616df84af6179d88eaac1e6344007ab}\label{tetrix_8c_a3616df84af6179d88eaac1e6344007ab}} 
+\index{tetrix.c@{tetrix.c}!T\_270@{T\_270}}
+\index{T\_270@{T\_270}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{T\_270}{T\_270}}
+{\footnotesize\ttfamily int T\+\_\+270\mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{4,3,0,0\}}
+
+\mbox{\Hypertarget{tetrix_8c_a5c83b710aff3e681d3db4c312c6a0b46}\label{tetrix_8c_a5c83b710aff3e681d3db4c312c6a0b46}} 
+\index{tetrix.c@{tetrix.c}!T\_90@{T\_90}}
+\index{T\_90@{T\_90}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{T\_90}{T\_90}}
+{\footnotesize\ttfamily int T\+\_\+90\mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{3,4,0,0\}}
+
+\mbox{\Hypertarget{tetrix_8c_afa13dff6dc6c64568b7d13a46631815e}\label{tetrix_8c_afa13dff6dc6c64568b7d13a46631815e}} 
+\index{tetrix.c@{tetrix.c}!T\_free@{T\_free}}
+\index{T\_free@{T\_free}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{T\_free}{T\_free}}
+{\footnotesize\ttfamily int T\+\_\+free = 20}
+
+\mbox{\Hypertarget{tetrix_8c_a5c3eaa3f69b2e26e70acd0793f79b03f}\label{tetrix_8c_a5c3eaa3f69b2e26e70acd0793f79b03f}} 
+\index{tetrix.c@{tetrix.c}!Z\_@{Z\_}}
+\index{Z\_@{Z\_}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{Z\_}{Z\_}}
+{\footnotesize\ttfamily int Z\+\_\+\mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{4,2,1,0\}}
+
+\mbox{\Hypertarget{tetrix_8c_ac66a4244f70d4b26a6571c38fb877310}\label{tetrix_8c_ac66a4244f70d4b26a6571c38fb877310}} 
+\index{tetrix.c@{tetrix.c}!Z\_90@{Z\_90}}
+\index{Z\_90@{Z\_90}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{Z\_90}{Z\_90}}
+{\footnotesize\ttfamily int Z\+\_\+90\mbox{[}\mbox{\hyperlink{tetrix_8c_aa23c661441688350614bd6a350d2b6ff}{size}}\mbox{]} =\{2,6,0,0\}}
+
+\mbox{\Hypertarget{tetrix_8c_a260e6987b9e21f6b802bee83d8b5db7e}\label{tetrix_8c_a260e6987b9e21f6b802bee83d8b5db7e}} 
+\index{tetrix.c@{tetrix.c}!Z\_free@{Z\_free}}
+\index{Z\_free@{Z\_free}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{Z\_free}{Z\_free}}
+{\footnotesize\ttfamily int Z\+\_\+free = 20}
+
