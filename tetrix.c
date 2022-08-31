@@ -25,7 +25,8 @@ typedef enum giocatori
 {
     SINGLE_PLAYER = 1,  /**< Quando la modalità selezionata è giocatore singolo*/
     MULTI_PLAYER = 2,   /**< Quando la modalità selezionata è multigiocatore*/
-    NOT_SELECTED = -99  /**< Quando la modalità non è stata selezionata*/
+    NOT_SELECTED = -99,  /**< Quando la modalità non è stata selezionata*/
+	CPU_PLAYER = 3       /**< Quando la modalità è CPU vs PLAYER*/
 } giocatori_t;
 
 /** @brief  Definisco un enumeratore per sapere lo stato della casella del piano di gioco*/
@@ -907,6 +908,34 @@ void inverti_campo_di_gioco(campo_di_gioco campo_giocatore, int RIGHE, int COLON
 	}
 }
 
+void seleziona_CPU(campo_di_gioco piano, int RIGHE, int COLONNE)
+{
+	bool_t is_ok = FALSE;
+	int scelta_colonna = -1;
+	int tetramino[size] = {1,1,1,1};
+
+	/*inserisco un ciclo while per selezionare la colonna e il tetramino corretto e utilizzabile*/
+	while (is_ok == FALSE){
+      /*Schermata di caricamento molto semplice*/
+	  printf("Sto pensando");
+	   int i,j,a;
+       for (i = 0; i < 10; i++){
+		   for(j=0; j < 100000000; j++)
+		     a = j;
+           printf(".");
+       }
+       printf("\n");
+       return;
+    
+	    int *p;
+        /*scelgo a quale tetramino punterà il mio puntatore*/ 
+	    p = scelta(scelta_colonna);
+        
+		/*salva tetramino oltre a modificare il campo di gioco in base alle mie scelte restituisce anche errori evenutali is_ok in questo caso sarà false*/
+	    is_ok = salva_tetramino(piano, p, scelta_colonna);
+	  }
+}
+
 void TEST_INVERTI(campo_di_gioco campo_giocatore, int RIGHE, int COLONNE){
 	int r,c;
 	for (r=RIGHE - 3; r<RIGHE; r++) {
@@ -1064,10 +1093,11 @@ int main()
   test(campo_giocatore_1,RIGHE,COLONNE);
 do
 {
-  if(giocatori != MULTI_PLAYER && giocatori != SINGLE_PLAYER){
+  if(giocatori == NOT_SELECTED){
     printf("Ciao :), In quanti giocate?\n\n");
     printf("1. Single Player - Un solo giocatore\n");
     printf("2. Multiplayer - due giocatori\n");
+	printf("3. CPU vs Player\n");
     printf("Scelta: ");
     scanf(" %d", &giocatori);
 	  while (getchar() != '\n') /*salta alla fine della riga*/
@@ -1080,7 +1110,9 @@ do
         case 2: printf("Giochi in compagnia, bene!\n");
                 TEST_INVERTI(campo_giocatore_1, RIGHE, COLONNE);
                 raddoppia_tetramini(); /*Raddopia il numero di tetramini per il multiplayer*/
-              break;
+				break;
+		case 3: printf("Ti piace la sfida!\n");
+                break;
         default: printf("!!! ATTENZIONE !!!:\tScelta sbagliata. Selezionane un altra.\n");
 		      
       }
@@ -1201,6 +1233,80 @@ if(giocatori == MULTI_PLAYER)
 	     fine_gioco = TRUE;
       
 }  
+
+if(giocatori == CPU_PLAYER)   
+{ 
+  	if(turno == 1)
+	{
+	  stampa(campo_giocatore_1,campo_giocatore_2, RIGHE, COLONNE, CPU_PLAYER);
+  	  printf("Turno del giocatore 1.\nPunteggio: %d.\n\n", punteggio_1);
+	  printf("Menu\n\n");
+      printf("1. Seleziona tetramino\n");
+      printf("2. Pezzi disponibili\n");
+      printf("3. Exit\n");
+      
+	  printf("Scelta: ");
+      scanf(" %d", &select);
+		while (getchar() != '\n') /*salta alla fine della riga*/
+		  ;
+      printf("\n");
+      }
+	  else{
+		stampa(campo_giocatore_1,campo_giocatore_2, RIGHE, COLONNE, CPU_PLAYER);
+      	printf("Turno del giocatore 2.\nPunteggio: %d.\n\n", punteggio_2);
+		select = 1;
+	    }
+
+      switch (select)
+      {
+        case 1: if (turno == 1){
+                  seleziona_tetramino(campo_giocatore_1, RIGHE, COLONNE, turno);
+                  punteggio_1 = punteggio_1 + calcola_punti(campo_giocatore_1,RIGHE, COLONNE);
+                  turno = 2;
+                  }
+                  else if(turno == 2){
+                    seleziona_CPU(campo_giocatore_2, RIGHE, COLONNE);
+                    punteggio_2 = punteggio_2 + calcola_punti(campo_giocatore_2,RIGHE, COLONNE);
+   		            turno = 1;
+                    }
+              break;
+        case 2: Visualizza_pezzi_disponibili();
+              break;
+        case 3: printf("Arrivederci\n");
+	          fine_gioco = TRUE; 
+              break;
+
+        default: printf("!!! ATTENZIONE !!!:\tScelta sbagliata. Salti il turno!.\n"); /*Cambio turno per scelta sbagliata*/
+		         if(turno == 1)
+                   turno = 2;
+		           else
+   		             turno = 1;
+              break;
+      }
+/**Controllo Vittoria dopo i 50 punti e Perdita per uscita dal campo*/
+	     vittoria = Controlla_vittoria(punteggio_1,punteggio_2,turno);
+
+/*la variabile inverti_campo diventa TRUE nella funzione calcola punti e quindi chiamo funzione inverti campo da gioco*/
+	  if(inverti_campo != FALSE && turno == 1 && vittoria != TRUE){
+	     inverti_campo = FALSE;
+		 printf("%40s%2s%40s\n"," ","**"," ");
+         printf("Il Giocatore 2 ha cancellato 3 o più righe, Campo giocatore 2 sarà invertito!\n");
+		 printf("%40s%2s%40s\n"," ","**"," ");
+		 inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE);
+         }
+	  if(inverti_campo != FALSE && turno == 2 && vittoria != TRUE){
+	     inverti_campo = FALSE;
+		 printf("%40s%2s%40s\n"," ","**"," ");
+         printf("Il Giocatore 1 ha cancellato 3 o più righe, Campo giocatore 2 sarà invertito!\n");
+		 printf("%40s%2s%40s\n"," ","**"," ");
+		 inverti_campo_di_gioco(campo_giocatore_2, RIGHE, COLONNE);
+         }
+
+
+	  if(vittoria != FALSE)
+	     fine_gioco = TRUE;
+      
+}
 
 } while (!fine_gioco);
   return 0;

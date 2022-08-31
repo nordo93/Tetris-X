@@ -34,7 +34,8 @@
  * 0  1  2  3
  * */
 
-
+#include <stdio.h>
+#include <stdlib.h>
 /** @brief row è il numero di righe da cui è composto il campo da gioco */
 #define row 15
 /** @brief column è il numero di colonne da cui è composto il campo da gioco */
@@ -43,6 +44,8 @@
 #define size 4 
 /** @brief Indica il punteggio per la vittoria */
 #define Punteggio_massimo 1
+
+
 
 /*
  * 0 = nessun blocco presente
@@ -129,5 +132,7 @@ int T_270[size]={4,3,0,0};/**@}*/
 int Z_free = 20;
 int Z_[size]={4,2,1,0};
 int Z_90[size]={2,6,0,0};/**@}*/
+
+
 
 
