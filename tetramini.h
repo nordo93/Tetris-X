@@ -40,6 +40,8 @@
 /** @def @param size indica la grandezza del vettore di ogni tetramino*/
 #define size 4 
 
+#define Punteggio_massimo 1
+
 /*
  * 0 = nessun blocco presente
  *                  #

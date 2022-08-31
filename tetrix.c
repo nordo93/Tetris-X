@@ -918,6 +918,45 @@ void TEST_INVERTI(campo_di_gioco campo_giocatore, int RIGHE, int COLONNE){
 	}
 }
 
+bool_t Controlla_vittoria(int punteggio_1, int punteggio_2, int turno){
+	if(punteggio_1 >= Punteggio_massimo){
+      printf("Complimenti Giocatore 1 hai raggiunto %d punti, HAI VINTO! arrivederci!\n", Punteggio_massimo);
+	  return TRUE;
+      }
+	  else if(punteggio_2 >= Punteggio_massimo){
+		printf("Complimenti Giocatore 2 hai raggiunto %d punti, HAI VINTO! arrivederci!\n", Punteggio_massimo);
+		return TRUE;
+		}
+	
+	if(Perdita_uscita_campo != FALSE && turno == 2){
+	  printf("%40s%2s%40s\n"," ","**"," ");
+      printf("Complimenti Giocatore 2 il Giocatore 1 è uscito dal campo, HAI VINTO! arrivederci!\n");
+	  printf("%40s%2s%40s\n"," ","**"," ");
+	  return TRUE;
+    }
+	if(Perdita_uscita_campo != FALSE && turno == 1){
+	  printf("%40s%2s%40s\n"," ","**"," ");
+      printf("Complimenti Giocatore 1 il Giocatore 2 è uscito dal campo, HAI VINTO! arrivederci!\n");
+	  printf("%40s%2s%40s\n"," ","**"," ");
+	  return TRUE;
+    }
+
+	  
+	/*Perdita per fine dei tetramini*/
+	if(I_free <= 0 && J_free <= 0 && L_free <= 0 && O_free <= 0 
+	&& S_free <= 0 && T_free <= 0 && Z_free <= 0){
+	  printf("I tetramini sono finiti!, vince il giocatore con il punteggio più alto : ");
+	  if(punteggio_1 > punteggio_2)
+	    printf("GIOCATORE 1, Complimenti\n");
+	    else if(punteggio_2 < punteggio_1)
+		  printf("GIOCATORE 2, Complimenti\n");
+		  else
+		    printf("PAREGGIO, Complimenti a tutti e due\n");
+	return TRUE;
+	}
+
+	return FALSE;
+}
 
 /**
  * @brief funzione che uso a scopo di test, stampa il campo da gioco e il numero di ogni casella
@@ -1130,29 +1169,9 @@ if(giocatori == MULTI_PLAYER)
    		             turno = 1;
               break;
       }
-/**Vittoria dopo i 50 punti*/
-	  if(punteggio_1 >= 50){
-	     vittoria = TRUE;
-         printf("Complimenti Giocatore 1 hai raggiunto 50 punti, HAI VINTO! arrivederci!\n");
-         }
-	     else if(punteggio_2 >= 50){
-			vittoria = TRUE;
-			printf("Complimenti Giocatore 2 hai raggiunto 50 punti, HAI VINTO! arrivederci!\n");
-		 }
-	  
-/*Perdita per uscita dal campo*/
-	  if(Perdita_uscita_campo != FALSE && turno == 2){
-	     vittoria = TRUE;
-		 printf("%40s%2s%40s\n"," ","**"," ");
-         printf("Complimenti Giocatore 2 il Giocatore 1 è uscito dal campo, HAI VINTO! arrivederci!\n");
-		 printf("%40s%2s%40s\n"," ","**"," ");
-         }
-	  if(Perdita_uscita_campo != FALSE && turno == 1){
-	     vittoria = TRUE;
-		 printf("%40s%2s%40s\n"," ","**"," ");
-         printf("Complimenti Giocatore 1 il Giocatore 2 è uscito dal campo, HAI VINTO! arrivederci!\n");
-		 printf("%40s%2s%40s\n"," ","**"," ");
-         }
+/**Controllo Vittoria dopo i 50 punti e Perdita per uscita dal campo*/
+	     vittoria = Controlla_vittoria(punteggio_1,punteggio_2,turno);
+
 /*la variabile inverti_campo diventa TRUE nella funzione calcola punti e quindi chiamo funzione inverti campo da gioco*/
 	  if(inverti_campo != FALSE && turno == 1){
 	     inverti_campo = FALSE;
@@ -1169,17 +1188,6 @@ if(giocatori == MULTI_PLAYER)
 		 inverti_campo_di_gioco(campo_giocatore_2, RIGHE, COLONNE);
          }
 
-	/*Perdita per fine dei tetramini*/
-	  if(I_free <= 0 && J_free <= 0 && L_free <= 0 && O_free <= 0 && S_free <= 0 && T_free <= 0 && Z_free <= 0){
-		printf("I tetramini sono finiti!, vince il giocatore con il punteggio più alto : ");
-		if(punteggio_1 > punteggio_2)
-		  printf("GIOCATORE 1, Complimenti\n");
-		  else if(punteggio_2 < punteggio_1)
-		    printf("GIOCATORE 2, Complimenti\n");
-			else
-		      printf("PAREGGIO, Complimenti a tutti e due\n");
-		vittoria = TRUE;
-	  }
 
 	  if(vittoria != FALSE)
 	     fine_gioco = TRUE;
