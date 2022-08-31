@@ -251,7 +251,7 @@ int contatto (campo_di_gioco piano, int scelta_colonna, int *p){
 	bool_t found = FALSE;
 	bool_t contatto_minore = FALSE; /*Questa variabile mi serve per il caso in cui il tetramino si appoggi ma il prossimo blocco invece no*/
     /*contatto è uguale all'ultimo numero della colonna, quindi se colonna 2 allora sara 142 il numero contatto*/
-	for (c = scelta_colonna; c < contatto; ){
+	for (c = scelta_colonna; c < contatto; ){ /*ciao*/
 		for(i = 0; i < size ; i++){
 		  if(piano[c + i] == OCCUPATO && *p > 0 && contatto_minore == FALSE){
 		    printf("trovato contatto a : %d\n", c + i);  /*printf inutile, lo tengo per eventuali errori nel codice*/
