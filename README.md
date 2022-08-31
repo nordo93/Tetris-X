@@ -45,13 +45,14 @@ e per riempirlo in base alla colonna e al tetramino scelto.
 
 ## Logica di costruzione del tetramino
 
-tipo di pezzi del Tetris: I, J, L, O, S, T, Z 👀 hano lo stesso ordine dell'immagine qui sopra.\n
+### - tipo di pezzi del Tetris: I, J, L, O, S, T, Z 
+👀 hano lo stesso ordine dell'immagine qui sopra.\n
 Ogni tetramino è indicato da un vettore di 4 elementi.\n
 Un tetramino può essere indicato da diversi vettori in base alla rotazione. L_90 è il tetramino a forma L e ruotato di 90 gradi.\n
 immagine tetramini posizione 0 : https://upload.wikimedia.org/wikipedia/commons/3/39/Tetrominoes_IJLO_STZ_Worlds.svg\n
 
-\n
-cosa vogliono dire i numeri all'interno degli array dei tetramini:\n
+
+### - cosa vogliono dire i numeri all'interno degli array dei tetramini:
 1 = 1 bloccho occupato; 2 = 2 blocchi sovrapposti; 3 = 3 blocchi sovrapposti\n
 4 = 1 blocco vuoto e sopra di esso uno pien0; 5 = due blocchi vuoti e uno sopra di essi pieno\n
 6 = un blocco vuoto e sopra di esso due pieni; 7 = 4 blocchi sovrapposti uno all'altro\n
