@@ -918,6 +918,14 @@ void TEST_INVERTI(campo_di_gioco campo_giocatore, int RIGHE, int COLONNE){
 	}
 }
 
+/**
+ * @brief Riceve i punteggi di uno o due giocatori e verifica se uno dei due ha vinto. 
+ * controlla anche i tetramini disponibili perchè è una condizione di vittoria.
+ * @param punteggio_1 il punteggio del giocatore 1
+ * @param punteggio_2 il punteggio del giocatore 2
+ * @param turno il turno indica quale giocatore sta giocando al momento 1 = giocatore 1 2 = giocatore 2
+ * @return bool_t ritorna il valore TRUE se uno dei giocatori vince, FALSE se non c'è una vittoria
+ */
 bool_t Controlla_vittoria(int punteggio_1, int punteggio_2, int turno){
 	if(punteggio_1 >= Punteggio_massimo){
       printf("Complimenti Giocatore 1 hai raggiunto %d punti, HAI VINTO! arrivederci!\n", Punteggio_massimo);
@@ -1173,14 +1181,14 @@ if(giocatori == MULTI_PLAYER)
 	     vittoria = Controlla_vittoria(punteggio_1,punteggio_2,turno);
 
 /*la variabile inverti_campo diventa TRUE nella funzione calcola punti e quindi chiamo funzione inverti campo da gioco*/
-	  if(inverti_campo != FALSE && turno == 1){
+	  if(inverti_campo != FALSE && turno == 1 && vittoria != TRUE){
 	     inverti_campo = FALSE;
 		 printf("%40s%2s%40s\n"," ","**"," ");
          printf("Il Giocatore 2 ha cancellato 3 o più righe, Campo giocatore 2 sarà invertito!\n");
 		 printf("%40s%2s%40s\n"," ","**"," ");
 		 inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE);
          }
-	  if(inverti_campo != FALSE && turno == 2){
+	  if(inverti_campo != FALSE && turno == 2 && vittoria != TRUE){
 	     inverti_campo = FALSE;
 		 printf("%40s%2s%40s\n"," ","**"," ");
          printf("Il Giocatore 1 ha cancellato 3 o più righe, Campo giocatore 2 sarà invertito!\n");

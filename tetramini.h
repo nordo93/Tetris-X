@@ -4,13 +4,15 @@
  * @version 0.9.1
  * @date 2022-07-19
  * 
- * @brief Include tutti vettori dei tetramini, ogni tetramino viene costruito con questa regola:
- * 
- * tipo di pezzi del Tetris: I, J, L, O, S, T, Z
- * 
- * immagine tetramini posizione 0 : https://upload.wikimedia.org/wikipedia/commons/3/39/Tetrominoes_IJLO_STZ_Worlds.svg
- * 
+ * @brief Include tutti vettori dei tetramini e le definizioni.
+ *  
  * @section logica Logica di costruzione del tetramino :
+ * tipo di pezzi del Tetris: I, J, L, O, S, T, Z.\n
+ * Ogni tetramino è indicato da un vettore di 4 elementi.\n
+ * Un tetramino può essere indicato da diversi vettori in base alla rotazione. L_90 è il tetramino a forma L e ruotato di 90 gradi.\n
+ * 
+ * immagine tetramini posizione 0 : https://upload.wikimedia.org/wikipedia/commons/3/39/Tetrominoes_IJLO_STZ_Worlds.svg \n
+ * 
  * cosa vogliono dire i numeri all'interno degli array dei tetramini:\n
  * 1 = 1 bloccho occupato; 2 = 2 blocchi sovrapposti; 3 = 3 blocchi sovrapposti\n
  * 4 = 1 blocco vuoto e sopra di esso uno pien0; 5 = due blocchi vuoti e uno sopra di essi pieno\n
