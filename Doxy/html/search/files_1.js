@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['readme_2emd_0',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
-  ['readme_2etxt_1',['README.txt',['../_r_e_a_d_m_e_8txt.html',1,'']]]
+  ['tetramini_2eh_0',['tetramini.h',['../tetramini_8h.html',1,'']]],
+  ['tetrix_2ec_1',['tetrix.c',['../tetrix_8c.html',1,'']]]
 ];

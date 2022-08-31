@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['false_0',['FALSE',['../tetrix_8c.html#a3c5c82810d69281c45ae525b29779848aa1e095cc966dbecf6a0d8aad75348d1a',1,'tetrix.c']]],
-  ['for_1',['for',['../test__case_8txt.html#aa0aa756bdc1cee8b58db04f7f8b83958',1,'test_case.txt']]]
+  ['giocatori_0',['giocatori',['../tetrix_8c.html#a62f731b0931d5118f6d2d1fa92f6f0fa',1,'tetrix.c']]],
+  ['giocatori_5ft_1',['giocatori_t',['../tetrix_8c.html#a727a6f710e0f7bcf136b908b5cff365d',1,'tetrix.c']]]
 ];

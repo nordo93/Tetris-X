@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['main_0',['main',['../tetrix_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'tetrix.c']]],
-  ['mainpage_2etxt_1',['mainpage.txt',['../mainpage_8txt.html',1,'']]],
-  ['mossa_2',['mossa',['../_r_e_a_d_m_e_8txt.html#a4942d1a5485147d169acc9f92c14c1cc',1,'README.txt']]],
-  ['multi_5fplayer_3',['MULTI_PLAYER',['../tetrix_8c.html#a62f731b0931d5118f6d2d1fa92f6f0faaf64ffcc804f85cc65366369011db5768',1,'tetrix.c']]]
+  ['o_5f_0',['O_',['../tetramini_8h.html#ababe806de57c7e08be051e69f74aa3be',1,'tetramini.h']]],
+  ['o_5ffree_1',['O_free',['../tetramini_8h.html#a6bc5b256b323182ec7dde63f1e11f7f7',1,'tetramini.h']]],
+  ['occupato_2',['OCCUPATO',['../tetrix_8c.html#aacae98a513bf46f84ca1f3554bae431ba86eb6f31a721a0cffb9e409a63428cb7',1,'tetrix.c']]]
 ];

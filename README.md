@@ -9,7 +9,7 @@ Wikipedia https://it.wikipedia.org/wiki/Tetris.
 
 - Autore Alessandro Cecchin
 - Progetto per il corso IaP dell'Università di Venezia
-- ✨Magic ✨
+- ✨Magic ✨ click on image per andare alla pagina github
 
 ## Features
 
@@ -44,18 +44,20 @@ e per riempirlo in base alla colonna e al tetramino scelto.
 
 ## Logica di costruzione del tetramino
 
-tipo di pezzi del Tetris: I, J, L, O, S, T, Z
+tipo di pezzi del Tetris: I, J, L, O, S, T, Z 👀 hano lo stesso ordine dell'immagine qui sopra.
 
 immagine tetramini posizione 0 : https://upload.wikimedia.org/wikipedia/commons/3/39/Tetrominoes_IJLO_STZ_Worlds.svg
 
-
-cosa vogliono dire i numeri all'interno degli array dei tetramini:
-1 = 1 bloccho occupato; 2 = 2 blocchi sovrapposti; 3 = 3 blocchi sovrapposti
-4 = 1 blocco vuoto e sopra di esso uno pien0; 5 = due blocchi vuoti e uno sopra di essi pieno
-6 = un blocco vuoto e sopra di esso due pieni; 7 = 4 blocchi sovrapposti uno all'altro
-
+\n
+cosa vogliono dire i numeri all'interno degli array dei tetramini:\n
+1 = 1 bloccho occupato; 2 = 2 blocchi sovrapposti; 3 = 3 blocchi sovrapposti\n
+4 = 1 blocco vuoto e sopra di esso uno pien0; 5 = due blocchi vuoti e uno sopra di essi pieno\n
+6 = un blocco vuoto e sopra di esso due pieni; 7 = 4 blocchi sovrapposti uno all'altro\n
+\n
 I_[4] = {1,1,1,1}
 vuol dire che il tetramino è in posizione 0 e occupa un solo blocco in altezza per ogni colonna
+\n
+
 X X X X
 0 1 2 3
 
@@ -63,7 +65,8 @@ J_90[4]={3,5,0,0}
 il tetramino è in poszione ruotata di 90 gradi e occupa con la prima casella 3 blocchi in altezza,
 nella seconda casella sempre 3 blocchi i altezza ma 2 sono vuoti e 1 è pieno e occupato.
 i restanti a 0 sono invece colonne libere
-X X _ _
-X _ _ _
-X _ _ _
-0 1 2 3
+\n
+X X _ _\n
+X _ _ _\n
+X _ _ _\n
+0 1 2 3\n

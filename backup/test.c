@@ -14,7 +14,7 @@
 /**
  * @include tetramini.h @see tetramini.h
  */
-#include "tetramini.h"
+/*#include "tetramini.h"*/
 
 /** @brief Definisco delle costanti per il numero di righe e colonne*/
 const int RIGHE = row;
@@ -31,8 +31,8 @@ typedef enum giocatori
 /** @brief  Definisco un enumeratore per sapere lo stato della casella del piano di gioco*/
 typedef enum riquadro
 { 
-    VUOTO,    /**< se la casella non contiene un pezzo di tetramino*/
-    OCCUPATO  /**< quando la casella contiene un pezzo del tetramino*/
+    VUOTO, 		/**< se la casella non contiene un pezzo di tetramino*/
+    OCCUPATO 	/**< quando la casella contiene un pezzo del tetramino*/
 } riquadro_t;
 
 /** @brief campo_di_gioco e' un puntatore che punt al campo di gioco */
@@ -79,8 +79,8 @@ void stampa_anteprima(int colonna_scelta_dal_giocatore, int * tetramino){
 	printf("-ANTEPRIMA scelta 1-\n");
 
 	campo_di_gioco campo_tetramino = (campo_di_gioco) malloc(size*size*sizeof(riquadro_t));
-	int fondo_anteprima = (size*size) - (size); /*sono 16 caselle in tutto, un quadrato 4 x 4 , il fondo della prima colonna è il 12 quadrato quindi 4 x 4 - 4*/
-	init(campo_tetramino, 4, 4);
+	int fondo_anteprima = (size*size) - (size); /* sono 16 caselle in tutto, un quadrato 4 x 4 , il fondo della prima colonna è il 12 quadrato quindi 4 x 4 - 4*/
+	init(campo_tetramino, 4, 4);  /*Iniziallizza il campo tetramino a vuoto*/
 	int i,r,c;
 	/*Ciclo for che analizza l'array del tetramino passato dalla funzione
 	* Imposta a OCCUPATO o VOUTO il campo_tetramino in base al numero passato. guardare README.md per le regole di costruzione*/
@@ -118,7 +118,7 @@ void stampa_anteprima(int colonna_scelta_dal_giocatore, int * tetramino){
 							}
 		tetramino++;
         }
-        
+
         /*Ciclo for per stampare a video l'antetprima, simile alla funzione stampa*/
 		for (r=0; r<size; r++) {
           for (c=0; c<size; c++) {
@@ -159,7 +159,7 @@ int verifica_uscita(int *p, int righe_rimanenti, int colonna, int contatto){
       if(*p != 0)
         colonna++;  /*se il puntatore del tetramino non è zero allora vuol dire che occupera anche la prossima colonna*/
 
-	  /** @see @param Perdita_uscita_campo: quando è a TRUE indica l'uscita dal campo e il giocatore perde*/
+	  /** @see Perdita_uscita_campo imposto a true perchè sono uscito dal campo da gioco e ho quindi perso*/
       if(colonna > COLONNE || colonna < 0){
 	  Perdita_uscita_campo = TRUE;
       return -1;
@@ -254,7 +254,7 @@ int contatto (campo_di_gioco piano, int scelta_colonna, int *p){
 	for (c = scelta_colonna; c < contatto - COLONNE; ){
 		for(i = 0; i < size ; i++){
 		  if(piano[c + i] == OCCUPATO && *p > 0 && contatto_minore == FALSE){
-		    printf("trovato contatto a : %d\n", c + i);  /*printf inutile, lo tengo per eventuali errori nel codice*/
+		    printf("trovato contatto a : %d\n", c + i); /*printf inutile, lo tengo per eventuali errori nel codice*/
         	  if(*p == 4 || *p == 6){ /*Verifico se sotto il tetramino c'è qualcosa su cui appoggiare*/
                 contatto = c;
 				
@@ -389,7 +389,7 @@ int * rotazione(char code, int colonna_scelta_dal_giocatore){
   int chose = 0;
   bool_t is_ok = FALSE;
 
-  /*Funzione molto luga ma solo solo una serie di if che fanno scegliere al gicatore la rotazione e assegna a p il primo elemento di uno degli array*/
+/*Funzione molto luga ma solo solo una serie di if che fanno scegliere al gicatore la rotazione e assegna a p il primo elemento di uno degli array*/
   printf("Scelgli la rotazione per questo tetramino %c:\n", code);
   
   if( code == 'j'){
@@ -688,7 +688,7 @@ void seleziona_tetramino(campo_di_gioco piano, int RIGHE, int COLONNE, int turno
 	bool_t is_ok = FALSE;
 	int scelta_colonna = -1;
 	int tetramino[size] = {1,1,1,1};
-
+	
 	/*inserisco un ciclo while per selezionare la colonna e il tetramino corretto e utilizzabile*/
 	while (is_ok == FALSE){
 
@@ -700,9 +700,9 @@ void seleziona_tetramino(campo_di_gioco piano, int RIGHE, int COLONNE, int turno
       printf("\n");
 
 	  if( turno == 1 && scelta_colonna < 10 && scelta_colonna >= 0)
-	    is_ok = TRUE;   /*se il turno è del giocatore uno deve selezionare una colonna da 0 a 9*/
+	    is_ok = TRUE; /*se il turno è del giocatore uno deve selezionare una colonna da 0 a 9*/
 	    else if( turno == 2 && scelta_colonna >= 10 && scelta_colonna < 20 )
-	      is_ok = TRUE;  /*se il turno è del giocatore due deve selezionare una colonna da 10 a 19*/
+	      is_ok = TRUE; /*se il turno è del giocatore due deve selezionare una colonna da 10 a 19*/
 	      else{
 	      	printf("!!! ATTENZIONE !!!:\tScelta sbagliata. Hai selezionato una colonna sbagliata.\n");
 				  }
@@ -713,12 +713,12 @@ void seleziona_tetramino(campo_di_gioco piano, int RIGHE, int COLONNE, int turno
     
 	    int *p;
         int i;
-        /*scelgo a quale tetramino punterà il mio puntatore*/ 
+       /*scelgo a quale tetramino punterà il mio puntatore*/ 
 	    p = scelta(scelta_colonna);
-        
-		/*salva tetramino oltre a modificare il campo di gioco in base alle mie scelte restituisce anche errori evenutali is_ok in questo caso sarà false*/
+
+        /*salva tetramino oltre a modificare il campo di gioco in base alle mie scelte restituisce anche errori evenutali is_ok in questo caso sarà false*/
 		if(turno == 1)
-	      is_ok = salva_tetramino(piano, p, scelta_colonna);
+	      is_ok = salva_tetramino(piano, p, scelta_colonna); 
         /* Nel caso del giocatore 2 diminusco le colonne di 10 perchè la selezione nel campo2 va da 10 a 19 */
 		if(turno == 2)
 		  is_ok = salva_tetramino(piano, p, scelta_colonna - 10);

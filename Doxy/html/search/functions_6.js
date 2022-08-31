@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['test_0',['test',['../tetrix_8c.html#a96526f8643da2c5248062e5d2832f069',1,'tetrix.c']]],
-  ['test_5finverti_1',['TEST_INVERTI',['../tetrix_8c.html#adf818de7cbdc4a4cf738bfbfe3be289c',1,'tetrix.c']]]
+  ['verifica_5foccupata_0',['verifica_occupata',['../tetrix_8c.html#a8a0b7e3b055bd38e37aa36052cbc1609',1,'tetrix.c']]],
+  ['verifica_5fuscita_1',['verifica_uscita',['../tetrix_8c.html#a2444104362cf4314a0b97fa2eaf0d58e',1,'tetrix.c']]],
+  ['visualizza_5fpezzi_5fdisponibili_2',['Visualizza_pezzi_disponibili',['../tetrix_8c.html#aa3bc71145727910fda60fad153a740bd',1,'tetrix.c']]]
 ];

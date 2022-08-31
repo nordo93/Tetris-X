@@ -1,8 +1,11 @@
 var searchData=
 [
-  ['o_0',['o',['../test__case_8txt.html#a3870c6d8236123c65e7b4d245f140f0d',1,'test_case.txt']]],
-  ['o_1',['O',['../_r_e_a_d_m_e_8txt.html#a26d6333ccea58617f2707b1346944b1d',1,'README.txt']]],
-  ['o_5f_2',['O_',['../tetramini_8h.html#ababe806de57c7e08be051e69f74aa3be',1,'tetramini.h']]],
-  ['o_5ffree_3',['O_free',['../tetramini_8h.html#a6bc5b256b323182ec7dde63f1e11f7f7',1,'tetramini.h']]],
-  ['occupato_4',['OCCUPATO',['../tetrix_8c.html#aacae98a513bf46f84ca1f3554bae431ba86eb6f31a721a0cffb9e409a63428cb7',1,'tetrix.c']]]
+  ['raddoppia_5ftetramini_0',['raddoppia_tetramini',['../tetrix_8c.html#a3db906a4d562c2e7b2e92b92849943ca',1,'tetrix.c']]],
+  ['readme_2emd_1',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
+  ['righe_2',['RIGHE',['../tetrix_8c.html#ae9f8d8d635995b45444dd02143e0a102',1,'tetrix.c']]],
+  ['rimuovi_5friga_3',['rimuovi_riga',['../tetrix_8c.html#a3fd5c682f4d1f903342251a529d0ee0e',1,'tetrix.c']]],
+  ['riquadro_4',['riquadro',['../tetrix_8c.html#aacae98a513bf46f84ca1f3554bae431b',1,'tetrix.c']]],
+  ['riquadro_5ft_5',['riquadro_t',['../tetrix_8c.html#aa7f1ff8f4ac9b5f9dc398111841d9d77',1,'tetrix.c']]],
+  ['rotazione_6',['rotazione',['../tetrix_8c.html#ac2497028945dde5abdc42fdbb5ecf2f2',1,'tetrix.c']]],
+  ['row_7',['row',['../tetramini_8h.html#aece949dcac4360a3141f73eaec44e155',1,'tetramini.h']]]
 ];

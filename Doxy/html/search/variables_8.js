@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['o_0',['o',['../test__case_8txt.html#a3870c6d8236123c65e7b4d245f140f0d',1,'test_case.txt']]],
-  ['o_1',['O',['../_r_e_a_d_m_e_8txt.html#a26d6333ccea58617f2707b1346944b1d',1,'README.txt']]],
-  ['o_5f_2',['O_',['../tetramini_8h.html#ababe806de57c7e08be051e69f74aa3be',1,'tetramini.h']]],
-  ['o_5ffree_3',['O_free',['../tetramini_8h.html#a6bc5b256b323182ec7dde63f1e11f7f7',1,'tetramini.h']]]
+  ['t_5f_0',['T_',['../tetramini_8h.html#aa44c256536afa00286b5506d5f0823e2',1,'tetramini.h']]],
+  ['t_5f180_1',['T_180',['../tetramini_8h.html#a16fdec22fb412c8aca0c79119e3651b0',1,'tetramini.h']]],
+  ['t_5f270_2',['T_270',['../tetramini_8h.html#a3616df84af6179d88eaac1e6344007ab',1,'tetramini.h']]],
+  ['t_5f90_3',['T_90',['../tetramini_8h.html#a5c83b710aff3e681d3db4c312c6a0b46',1,'tetramini.h']]],
+  ['t_5ffree_4',['T_free',['../tetramini_8h.html#afa13dff6dc6c64568b7d13a46631815e',1,'tetramini.h']]]
 ];

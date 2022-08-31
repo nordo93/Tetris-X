@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['raddoppia_5ftetramini_0',['raddoppia_tetramini',['../tetrix_8c.html#a3db906a4d562c2e7b2e92b92849943ca',1,'tetrix.c']]],
-  ['rimuovi_5friga_1',['rimuovi_riga',['../tetrix_8c.html#a3fd5c682f4d1f903342251a529d0ee0e',1,'tetrix.c']]],
-  ['rotazione_2',['rotazione',['../tetrix_8c.html#ac2497028945dde5abdc42fdbb5ecf2f2',1,'tetrix.c']]]
+  ['salva_5ftetramino_0',['salva_tetramino',['../tetrix_8c.html#ad4f5c4e816365358b2219ae64992fd84',1,'tetrix.c']]],
+  ['scelta_1',['scelta',['../tetrix_8c.html#a10f58b6e2a1be6042acd8ecf38be8027',1,'tetrix.c']]],
+  ['seleziona_5ftetramino_2',['seleziona_tetramino',['../tetrix_8c.html#a6e65a46c4e3bacc4754e0fe0af59ede6',1,'tetrix.c']]],
+  ['stampa_3',['stampa',['../tetrix_8c.html#adc63289992b5330a17a91eb5e8924fd0',1,'tetrix.c']]],
+  ['stampa_5fanteprima_4',['stampa_anteprima',['../tetrix_8c.html#abeb1901c55d057632a6bd4a45fe6d75b',1,'tetrix.c']]]
 ];

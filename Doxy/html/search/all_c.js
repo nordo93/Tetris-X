@@ -1,8 +1,13 @@
 var searchData=
 [
-  ['p_0',['p',['../test__case_8txt.html#a24d9752995a19a6e21b0d13e449ab5bb',1,'test_case.txt']]],
-  ['perdita_5fuscita_5fcampo_1',['Perdita_uscita_campo',['../tetrix_8c.html#a41c911f3da02a829ac482dd61c0d8528',1,'tetrix.c']]],
-  ['posizione_2',['posizione',['../_r_e_a_d_m_e_8txt.html#abd6796233b2d48a784ddc152cae3045d',1,'README.txt']]],
-  ['punti_3',['punti',['../_r_e_a_d_m_e_8txt.html#a830eca477d5c4433410a4366b5a23d6f',1,'README.txt']]],
-  ['punto_4',['punto',['../_r_e_a_d_m_e_8txt.html#a36fef7b25cf9d55d33726b7cad9e1863',1,'README.txt']]]
+  ['s_5f_0',['S_',['../tetramini_8h.html#a6f6ed46d5320ee68c879f776fc6633f9',1,'tetramini.h']]],
+  ['s_5f90_1',['S_90',['../tetramini_8h.html#ad64bd433759655e26f3b0d937d2576ec',1,'tetramini.h']]],
+  ['s_5ffree_2',['S_free',['../tetramini_8h.html#aa8602cf3d17bdad9ea477d87502198f1',1,'tetramini.h']]],
+  ['salva_5ftetramino_3',['salva_tetramino',['../tetrix_8c.html#ad4f5c4e816365358b2219ae64992fd84',1,'tetrix.c']]],
+  ['scelta_4',['scelta',['../tetrix_8c.html#a10f58b6e2a1be6042acd8ecf38be8027',1,'tetrix.c']]],
+  ['seleziona_5ftetramino_5',['seleziona_tetramino',['../tetrix_8c.html#a6e65a46c4e3bacc4754e0fe0af59ede6',1,'tetrix.c']]],
+  ['single_5fplayer_6',['SINGLE_PLAYER',['../tetrix_8c.html#a62f731b0931d5118f6d2d1fa92f6f0faae0c9d3e5c71ae4b23a63b36eaac2f918',1,'tetrix.c']]],
+  ['size_7',['size',['../tetramini_8h.html#aa23c661441688350614bd6a350d2b6ff',1,'tetramini.h']]],
+  ['stampa_8',['stampa',['../tetrix_8c.html#adc63289992b5330a17a91eb5e8924fd0',1,'tetrix.c']]],
+  ['stampa_5fanteprima_9',['stampa_anteprima',['../tetrix_8c.html#abeb1901c55d057632a6bd4a45fe6d75b',1,'tetrix.c']]]
 ];

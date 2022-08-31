@@ -1,12 +1,8 @@
 var searchData=
 [
-  ['i_0',['i',['../test__case_8txt.html#acb559820d9ca11295b4500f179ef6392',1,'test_case.txt']]],
-  ['i_5f_1',['I_',['../tetramini_8h.html#a486a6c33397876c16f1eed6ee6db9a6e',1,'tetramini.h']]],
-  ['i_5f180_2',['I_180',['../tetramini_8h.html#a70bb3debf589d0e6cb018c995b9b55b7',1,'tetramini.h']]],
-  ['i_5ffree_3',['I_free',['../tetramini_8h.html#ad6fc8f02b9b9dd16cbb053cb94d9d75d',1,'tetramini.h']]],
-  ['init_4',['init',['../tetrix_8c.html#a5888954e236254cc7e6ff5cffedbf90f',1,'tetrix.c']]],
-  ['iniziale_5',['iniziale',['../_r_e_a_d_m_e_8txt.html#a7b736ebf71edacfad66415b47569d0c0',1,'README.txt']]],
-  ['intero_6',['intero',['../_r_e_a_d_m_e_8txt.html#a10be0d6dcb3c3e0e2267859fd240f680',1,'README.txt']]],
-  ['inverti_5fcampo_7',['inverti_campo',['../tetrix_8c.html#a051ce5d94ece76dfba76cd03264c2486',1,'tetrix.c']]],
-  ['inverti_5fcampo_5fdi_5fgioco_8',['inverti_campo_di_gioco',['../tetrix_8c.html#aa11dce9cbdbceb69cc11f68db2609547',1,'tetrix.c']]]
+  ['l_5f_0',['L_',['../tetramini_8h.html#a4e55fdb7954a23a3d4225301663b5e42',1,'tetramini.h']]],
+  ['l_5f180_1',['L_180',['../tetramini_8h.html#a9506433791b39d653329d2e43b3509ba',1,'tetramini.h']]],
+  ['l_5f270_2',['L_270',['../tetramini_8h.html#a896b7db002fccfe1fe4f9fc7c219a775',1,'tetramini.h']]],
+  ['l_5f90_3',['L_90',['../tetramini_8h.html#a71b2c3c341368dba402df00349b08f71',1,'tetramini.h']]],
+  ['l_5ffree_4',['L_free',['../tetramini_8h.html#a62a7aff152eb2b680f14719a0946b0cd',1,'tetramini.h']]]
 ];

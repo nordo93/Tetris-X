@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['salva_5ftetramino_0',['salva_tetramino',['../tetrix_8c.html#ad4f5c4e816365358b2219ae64992fd84',1,'tetrix.c']]],
-  ['scelta_1',['scelta',['../tetrix_8c.html#a10f58b6e2a1be6042acd8ecf38be8027',1,'tetrix.c']]],
-  ['seleziona_5ftetramino_2',['seleziona_tetramino',['../tetrix_8c.html#a6e65a46c4e3bacc4754e0fe0af59ede6',1,'tetrix.c']]],
-  ['stampa_3',['stampa',['../tetrix_8c.html#adc63289992b5330a17a91eb5e8924fd0',1,'tetrix.c']]],
-  ['stampa_5fanteprima_4',['stampa_anteprima',['../tetrix_8c.html#abeb1901c55d057632a6bd4a45fe6d75b',1,'tetrix.c']]]
+  ['test_0',['test',['../tetrix_8c.html#a96526f8643da2c5248062e5d2832f069',1,'tetrix.c']]],
+  ['test_5finverti_1',['TEST_INVERTI',['../tetrix_8c.html#adf818de7cbdc4a4cf738bfbfe3be289c',1,'tetrix.c']]]
 ];
