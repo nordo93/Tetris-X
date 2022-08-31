@@ -17,8 +17,8 @@
 /*#include "tetramini.h"*/
 
 /** @brief Definisco delle costanti per il numero di righe e colonne*/
-const int RIGHE = row;
-const int COLONNE = column;
+/*const int RIGHE = row;
+const int COLONNE = column;/*
 
 /** @brief Definisco un enumeratore per il numero di giocatori*/
 typedef enum giocatori
