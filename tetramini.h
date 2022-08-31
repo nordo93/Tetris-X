@@ -35,13 +35,13 @@
  * */
 
 
-/** @def @param row è il numero di righe \def */
+/** @brief row è il numero di righe da cui è composto il campo da gioco */
 #define row 15
-/** @def @param column è il numero di colonne*/
+/** @brief column è il numero di colonne da cui è composto il campo da gioco */
 #define column 10
-/** @def @param size indica la grandezza del vettore di ogni tetramino*/
+/** @brief size indica la grandezza del vettore di ogni tetramino*/
 #define size 4 
-
+/** @brief Indica il punteggio per la vittoria */
 #define Punteggio_massimo 1
 
 /*

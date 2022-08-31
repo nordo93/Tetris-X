@@ -1,7 +1,7 @@
 /**
  * @file tetrix.c
  * @author Alessandro Cecchin (859869@stud.unive.it)
- * @brief 
+ * @brief Include il manin e tutte le funzioni
  * @version 0.9.1
  * @date 2022-08-19
  * 

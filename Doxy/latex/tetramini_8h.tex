@@ -2,18 +2,20 @@
 \label{tetramini_8h}\index{C:/temp/Tetris-\/X/tetramini.h@{C:/temp/Tetris-\/X/tetramini.h}}
 
 
-Include tutti vettori dei tetramini, ogni tetramino viene costruito con questa regola\+:  
+Include tutti vettori dei tetramini e le definizioni.  
 
 
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \mbox{\hyperlink{tetramini_8h_aece949dcac4360a3141f73eaec44e155}{row}}~15
-\item 
+\begin{DoxyCompactList}\small\item\em row è il numero di righe da cui è composto il campo da gioco \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{tetramini_8h_ac5a3a1569e5f4d986ec6ece10286c08a}{column}}~10
-\item 
+\begin{DoxyCompactList}\small\item\em column è il numero di colonne da cui è composto il campo da gioco \end{DoxyCompactList}\item 
 \#define \mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}~4
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em size indica la grandezza del vettore di ogni tetramino \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{tetramini_8h_a88bbc67d08345002b98d03b5b3d25376}{Punteggio\+\_\+massimo}}~1
+\begin{DoxyCompactList}\small\item\em Indica il punteggio per la vittoria. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \textbf{ }\par
 \begin{DoxyCompactItemize}
@@ -98,7 +100,7 @@ int \mbox{\hyperlink{tetramini_8h_ac66a4244f70d4b26a6571c38fb877310}{Z\+\_\+90}}
 
 
 \doxysubsection{Detailed Description}
-Include tutti vettori dei tetramini, ogni tetramino viene costruito con questa regola\+: 
+Include tutti vettori dei tetramini e le definizioni. 
 
 \begin{DoxyAuthor}{Author}
 Alessandro Cecchin (\href{mailto:859869@stud.unive.it}{\texttt{ 859869@stud.\+unive.\+it}}) 
@@ -109,10 +111,12 @@ Alessandro Cecchin (\href{mailto:859869@stud.unive.it}{\texttt{ 859869@stud.\+un
 \begin{DoxyDate}{Date}
 2022-\/07-\/19
 \end{DoxyDate}
-tipo di pezzi del Tetris\+: I, J, L, O, S, T, Z
-
-immagine tetramini posizione 0 \+: \href{https://upload.wikimedia.org/wikipedia/commons/3/39/Tetrominoes_IJLO_STZ_Worlds.svg}{\texttt{ https\+://upload.\+wikimedia.\+org/wikipedia/commons/3/39/\+Tetrominoes\+\_\+\+IJLO\+\_\+\+STZ\+\_\+\+Worlds.\+svg}}\hypertarget{tetramini_8h_logica}{}\doxysubsection{Logica di costruzione del tetramino \+:}\label{tetramini_8h_logica}
-cosa vogliono dire i numeri all\textquotesingle{}interno degli array dei tetramini\+:~\newline
+\hypertarget{tetramini_8h_logica}{}\doxysubsection{Logica di costruzione del tetramino \+:}\label{tetramini_8h_logica}
+tipo di pezzi del Tetris\+: I, J, L, O, S, T, Z.~\newline
+Ogni tetramino è indicato da un vettore di 4 elementi.~\newline
+Un tetramino può essere indicato da diversi vettori in base alla rotazione. L\+\_\+90 è il tetramino a forma L e ruotato di 90 gradi.~\newline
+ immagine tetramini posizione 0 \+: \href{https://upload.wikimedia.org/wikipedia/commons/3/39/Tetrominoes_IJLO_STZ_Worlds.svg}{\texttt{ https\+://upload.\+wikimedia.\+org/wikipedia/commons/3/39/\+Tetrominoes\+\_\+\+IJLO\+\_\+\+STZ\+\_\+\+Worlds.\+svg}} ~\newline
+ cosa vogliono dire i numeri all\textquotesingle{}interno degli array dei tetramini\+:~\newline
 1 = 1 bloccho occupato; 2 = 2 blocchi sovrapposti; 3 = 3 blocchi sovrapposti~\newline
 4 = 1 blocco vuoto e sopra di esso uno pien0; 5 = due blocchi vuoti e uno sopra di essi pieno~\newline
 6 = un blocco vuoto e sopra di esso due pieni; 7 = 4 blocchi sovrapposti uno all\textquotesingle{}altro \hypertarget{tetramini_8h_I}{}\doxysubsubsection{I\+\_\+\mbox{[}4\mbox{]} = \{1,1,1,1\}}\label{tetramini_8h_I}
@@ -136,17 +140,39 @@ X \+\_\+ \+\_\+ \+\_\+~\newline
 \doxysubsubsection{\texorpdfstring{column}{column}}
 {\footnotesize\ttfamily \#define column~10}
 
+
+
+column è il numero di colonne da cui è composto il campo da gioco 
+
+\mbox{\Hypertarget{tetramini_8h_a88bbc67d08345002b98d03b5b3d25376}\label{tetramini_8h_a88bbc67d08345002b98d03b5b3d25376}} 
+\index{tetramini.h@{tetramini.h}!Punteggio\_massimo@{Punteggio\_massimo}}
+\index{Punteggio\_massimo@{Punteggio\_massimo}!tetramini.h@{tetramini.h}}
+\doxysubsubsection{\texorpdfstring{Punteggio\_massimo}{Punteggio\_massimo}}
+{\footnotesize\ttfamily \#define Punteggio\+\_\+massimo~1}
+
+
+
+Indica il punteggio per la vittoria. 
+
 \mbox{\Hypertarget{tetramini_8h_aece949dcac4360a3141f73eaec44e155}\label{tetramini_8h_aece949dcac4360a3141f73eaec44e155}} 
 \index{tetramini.h@{tetramini.h}!row@{row}}
 \index{row@{row}!tetramini.h@{tetramini.h}}
 \doxysubsubsection{\texorpdfstring{row}{row}}
 {\footnotesize\ttfamily \#define row~15}
 
+
+
+row è il numero di righe da cui è composto il campo da gioco 
+
 \mbox{\Hypertarget{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}\label{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}} 
 \index{tetramini.h@{tetramini.h}!size@{size}}
 \index{size@{size}!tetramini.h@{tetramini.h}}
 \doxysubsubsection{\texorpdfstring{size}{size}}
 {\footnotesize\ttfamily \#define size~4}
+
+
+
+size indica la grandezza del vettore di ogni tetramino 
 
 
 

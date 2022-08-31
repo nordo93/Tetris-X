@@ -1,5 +1,10 @@
 \hypertarget{tetrix_8c}{}\doxysection{C\+:/temp/\+Tetris-\/\+X/tetrix.c File Reference}
 \label{tetrix_8c}\index{C:/temp/Tetris-\/X/tetrix.c@{C:/temp/Tetris-\/X/tetrix.c}}
+
+
+Include il manin e tutte le funzioni.  
+
+
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}tetramini.\+h\char`\"{}}\newline
@@ -66,6 +71,8 @@ void \mbox{\hyperlink{tetrix_8c_aa11dce9cbdbceb69cc11f68db2609547}{inverti\+\_\+
  \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{tetrix_8c_adf818de7cbdc4a4cf738bfbfe3be289c}{TEST\+\_\+\+INVERTI}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} campo\+\_\+giocatore, int \mbox{\hyperlink{tetrix_8c_ae9f8d8d635995b45444dd02143e0a102}{RIGHE}}, int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}})
 \item 
+\mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} \mbox{\hyperlink{tetrix_8c_a44c9af5961ed406f47d941c3666c3142}{Controlla\+\_\+vittoria}} (int punteggio\+\_\+1, int punteggio\+\_\+2, int turno)
+\begin{DoxyCompactList}\small\item\em Riceve i punteggi di uno o due giocatori e verifica se uno dei due ha vinto. controlla anche i tetramini disponibili perchè è una condizione di vittoria. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{tetrix_8c_a96526f8643da2c5248062e5d2832f069}{test}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano, int \mbox{\hyperlink{tetrix_8c_ae9f8d8d635995b45444dd02143e0a102}{RIGHE}}, int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}})
 \begin{DoxyCompactList}\small\item\em funzione che uso a scopo di test, stampa il campo da gioco e il numero di ogni casella OUTPUT\+:~\newline
  ---TEST-\/---~\newline
@@ -102,6 +109,8 @@ const int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}
 
 
 \doxysubsection{Detailed Description}
+Include il manin e tutte le funzioni. 
+
 \begin{DoxyAuthor}{Author}
 Alessandro Cecchin (\href{mailto:859869@stud.unive.it}{\texttt{ 859869@stud.\+unive.\+it}}) 
 \end{DoxyAuthor}
@@ -277,6 +286,28 @@ Questa funzione parte ad analizzare tutta la colonna che il giocatore ha scelto,
 \begin{DoxyReturn}{Returns}
 int contatto indica dove il tetramino è caduto, in base alla colonna scelta dal giocatore 
 \end{DoxyReturn}
+\mbox{\Hypertarget{tetrix_8c_a44c9af5961ed406f47d941c3666c3142}\label{tetrix_8c_a44c9af5961ed406f47d941c3666c3142}} 
+\index{tetrix.c@{tetrix.c}!Controlla\_vittoria@{Controlla\_vittoria}}
+\index{Controlla\_vittoria@{Controlla\_vittoria}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{Controlla\_vittoria()}{Controlla\_vittoria()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} Controlla\+\_\+vittoria (\begin{DoxyParamCaption}\item[{int}]{punteggio\+\_\+1,  }\item[{int}]{punteggio\+\_\+2,  }\item[{int}]{turno }\end{DoxyParamCaption})}
+
+
+
+Riceve i punteggi di uno o due giocatori e verifica se uno dei due ha vinto. controlla anche i tetramini disponibili perchè è una condizione di vittoria. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em punteggio\+\_\+1} & il punteggio del giocatore 1 \\
+\hline
+{\em punteggio\+\_\+2} & il punteggio del giocatore 2 \\
+\hline
+{\em turno} & il turno indica quale giocatore sta giocando al momento 1 = giocatore 1 2 = giocatore 2 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool\+\_\+t ritorna il valore TRUE se uno dei giocatori vince, FALSE se non c\textquotesingle{}è una vittoria 
+\end{DoxyReturn}
 \mbox{\Hypertarget{tetrix_8c_a5888954e236254cc7e6ff5cffedbf90f}\label{tetrix_8c_a5888954e236254cc7e6ff5cffedbf90f}} 
 \index{tetrix.c@{tetrix.c}!init@{init}}
 \index{init@{init}!tetrix.c@{tetrix.c}}
@@ -362,7 +393,7 @@ inizializzare i campi da gioco \begin{DoxySeeAlso}{See also}
 \end{DoxySeeAlso}
 messaggio di benvenuto
 
-Vittoria dopo i 50 punti\mbox{\Hypertarget{tetrix_8c_a3db906a4d562c2e7b2e92b92849943ca}\label{tetrix_8c_a3db906a4d562c2e7b2e92b92849943ca}} 
+Controllo Vittoria dopo i 50 punti e Perdita per uscita dal campo\mbox{\Hypertarget{tetrix_8c_a3db906a4d562c2e7b2e92b92849943ca}\label{tetrix_8c_a3db906a4d562c2e7b2e92b92849943ca}} 
 \index{tetrix.c@{tetrix.c}!raddoppia\_tetramini@{raddoppia\_tetramini}}
 \index{raddoppia\_tetramini@{raddoppia\_tetramini}!tetrix.c@{tetrix.c}}
 \doxysubsubsection{\texorpdfstring{raddoppia\_tetramini()}{raddoppia\_tetramini()}}

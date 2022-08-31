@@ -11,26 +11,32 @@ X-\/\+Tetris è una versione avanzata del gioco originale del Tetris. Per le reg
 \item Progetto per il corso IaP dell\textquotesingle{}Università di Venezia
 \item ✨\+Magic ✨ click on image per andare alla pagina github
 \end{DoxyItemize}\hypertarget{index_autotoc_md2}{}\doxysection{Features}\label{index_autotoc_md2}
-
-\begin{DoxyItemize}
-\item Single Player A differenza del Tetris originale, in X-\/\+Tetris il giocatore ha inizialmente a disposizione 20 pezzi per ciascun tipo, detti tetramino, e una mossa consiste nello scegliere quale pezzo giocare,dove farlo cadere e con quale rotazione. Il campo di gioco è largo 10 e alto 15 posizioni. Una volta posizionato un tetramino, se una o più righe orizzontali vengono riempite per intero, queste righe vengono cancellate come nel tetris originale. La rimozione di una riga vale 1 punto, la rimozione di due righe con un solo pezzo vale 3 punti, tre righe 6 punti, quattro righe 12 punti. Il gioco termina quando finiscono i pezzi o il giocatore non riesce a posizionare un tetramino nel campo di gioco rispettando il limite di altezza e larghezza. oppure supera i 100 punti.
-\item Multi Player Il programma supporta una seconda modalità di gioco, selezionabile dal menu iniziale, in cui due giocatori giocano a turni alterni ciascuno nel proprio campo di gioco ma pescando dallo stesso insieme di tetramini. In questa modalità si avranno il doppio di pezzi a disposizione. Nel caso in cui un giocatore cancelli una o due linee simultaneamente, il gioco procede come per il caso single player. Nel caso il giocatore cancelli 3 o più linee con una singola mossa, il campo dell’avversario viene modificato invertendo il corrispondente numero di linee nella parte più bassa del campo di gioco\+: una posizione vuota diventa piena e viceversa. Un giocatore perde la partita se non posiziona correttamente un pezzo nel proprio campo di gioco. Se i pezzi finiscono vince il giocatore con il punteggio più alto. La modalità multi-\/player deve prevede la possibilità di giocare player vs. player
-\end{DoxyItemize}
-
-\begin{quote}
+\hypertarget{index_autotoc_md3}{}\doxysubsection{-\/ Single Player}\label{index_autotoc_md3}
+A differenza del Tetris originale, in X-\/\+Tetris il giocatore ha inizialmente a disposizione 20 pezzi per ciascun tipo, detti tetramino, e una mossa consiste nello scegliere quale pezzo giocare,dove farlo cadere e con quale rotazione.~\newline
+Il campo di gioco è largo 10 e alto 15 posizioni. Una volta posizionato un tetramino, se una o più righe orizzontali vengono riempite per intero, queste righe vengono cancellate come nel tetris originale.~\newline
+La rimozione di una riga vale 1 punto, la rimozione di due righe con un solo pezzo vale 3 punti, tre righe 6 punti, quattro righe 12 punti.~\newline
+Il gioco termina quando finiscono i pezzi o il giocatore non riesce a posizionare un tetramino nel campo di gioco rispettando il limite di altezza e larghezza. oppure supera i 50 punti.~\newline
+ \hypertarget{index_autotoc_md4}{}\doxysubsection{-\/ Multi Player}\label{index_autotoc_md4}
+Il programma supporta una seconda modalità di gioco, selezionabile dal menu iniziale, in cui due giocatori giocano a turni alterni ciascuno nel proprio campo di gioco ma pescando dallo stesso insieme di tetramini. ~\newline
+In questa modalità si avranno il doppio di pezzi a disposizione. Nel caso in cui un giocatore cancelli una o due linee simultaneamente, il gioco procede come per il caso single player.~\newline
+ Nel caso il giocatore cancelli 3 o più linee con una singola mossa, il campo dell’avversario viene modificato invertendo il corrispondente numero di linee nella parte più bassa del campo di gioco\+: una posizione vuota diventa piena e viceversa.~\newline
+Un giocatore perde la partita se non posiziona correttamente un pezzo nel proprio campo di gioco. Se i pezzi finiscono vince il giocatore con il punteggio più alto.~\newline
+Un giocatore vince la partita anche in caso di superamento dei 50 punti.~\newline
+La modalità multi-\/player prevede la possibilità di giocare player vs. player~\newline
+ \begin{quote}
 la costruzione del campo di gioco dei tetramini e di ogni cosa ha solamente utilizzato la funzione printf e le librerie standard di C \end{quote}
-\hypertarget{index_autotoc_md3}{}\doxysection{Logica di costruzione campo}\label{index_autotoc_md3}
+\hypertarget{index_autotoc_md5}{}\doxysection{Logica di costruzione campo}\label{index_autotoc_md5}
 Un puntatore punta ad una struttura composta da RIGHE x COLONNE riquadri. ad ogni turno il puntatore viene usato per stampare l\textquotesingle{}intero campo di gioco e per riempirlo in base alla colonna e al tetramino scelto.
 \begin{DoxyItemize}
 \item \mbox{[}riquadro\+\_\+t\mbox{]} -\/ enumeratore che indica la singola casella del campo di gioco
 \item \mbox{[}$\ast$ campo \+\_\+ di \+\_\+ gioco\mbox{]} -\/ putatore che punta alla struttura sopra
 \item \mbox{[}I\+\_\+90\mbox{]} -\/ esempio di tetramino, ogni tetramino è un vettore di 4 elementi.
-\end{DoxyItemize}\hypertarget{index_autotoc_md4}{}\doxysection{Logica di costruzione del tetramino}\label{index_autotoc_md4}
-tipo di pezzi del Tetris\+: I, J, L, O, S, T, Z 👀 hano lo stesso ordine dell\textquotesingle{}immagine qui sopra.
-
-immagine tetramini posizione 0 \+: \href{https://upload.wikimedia.org/wikipedia/commons/3/39/Tetrominoes_IJLO_STZ_Worlds.svg}{\texttt{ https\+://upload.\+wikimedia.\+org/wikipedia/commons/3/39/\+Tetrominoes\+\_\+\+IJLO\+\_\+\+STZ\+\_\+\+Worlds.\+svg}}
-
-~\newline
+\end{DoxyItemize}\hypertarget{index_autotoc_md6}{}\doxysection{Logica di costruzione del tetramino}\label{index_autotoc_md6}
+tipo di pezzi del Tetris\+: I, J, L, O, S, T, Z 👀 hano lo stesso ordine dell\textquotesingle{}immagine qui sopra.~\newline
+Ogni tetramino è indicato da un vettore di 4 elementi.~\newline
+Un tetramino può essere indicato da diversi vettori in base alla rotazione. L\+\_\+90 è il tetramino a forma L e ruotato di 90 gradi.~\newline
+immagine tetramini posizione 0 \+: \href{https://upload.wikimedia.org/wikipedia/commons/3/39/Tetrominoes_IJLO_STZ_Worlds.svg}{\texttt{ https\+://upload.\+wikimedia.\+org/wikipedia/commons/3/39/\+Tetrominoes\+\_\+\+IJLO\+\_\+\+STZ\+\_\+\+Worlds.\+svg}}~\newline
+ ~\newline
 cosa vogliono dire i numeri all\textquotesingle{}interno degli array dei tetramini\+:~\newline
 1 = 1 bloccho occupato; 2 = 2 blocchi sovrapposti; 3 = 3 blocchi sovrapposti~\newline
 4 = 1 blocco vuoto e sopra di esso uno pien0; 5 = due blocchi vuoti e uno sopra di essi pieno~\newline

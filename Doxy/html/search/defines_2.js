@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['size_0',['size',['../tetramini_8h.html#aa23c661441688350614bd6a350d2b6ff',1,'tetramini.h']]]
+  ['row_0',['row',['../tetramini_8h.html#aece949dcac4360a3141f73eaec44e155',1,'tetramini.h']]]
 ];
