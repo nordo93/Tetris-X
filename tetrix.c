@@ -912,6 +912,7 @@ void inverti_campo_di_gioco(campo_di_gioco campo_giocatore, int RIGHE, int COLON
 int * tetramino_random(){
 	int tetramino_random = rand() % 7; /*genera un numero compreso tra 0 e 6*/
 	int rotazione_random = 0;
+	
 	/*logica scelta del tetramino: I = 0, J = 1, L = 2, O = 3, S = 4, T = 5, Z = 6*/
 	if(tetramino_random == 0){
 	  I_free--; /*tolgo un tetramino disponibile*/
@@ -945,23 +946,26 @@ int * tetramino_random(){
 
 
 int * tetramino_CPU(campo_di_gioco campo_cpu, int spazio_vuoto){
+  /*la scelta migliore*/
+  if(campo_cpu[spazio_vuoto] == VUOTO && campo_cpu[spazio_vuoto - 1] == VUOTO &&
+	campo_cpu[spazio_vuoto - 2] == VUOTO && campo_cpu[spazio_vuoto - 3] == VUOTO) {
+    I_free--;
+    return I_;
+	}
 
-	if(campo_cpu[spazio_vuoto] == VUOTO || campo_cpu[spazio_vuoto - COLONNE] == VUOTO ||
-	   campo_cpu[spazio_vuoto - (COLONNE * 2)] == VUOTO || campo_cpu[spazio_vuoto - (COLONNE * 3)] == VUOTO) {
+	if(campo_cpu[spazio_vuoto] == VUOTO && campo_cpu[spazio_vuoto - COLONNE] == VUOTO &&
+	   campo_cpu[spazio_vuoto - (COLONNE * 2)] == VUOTO && campo_cpu[spazio_vuoto - (COLONNE * 3)] == VUOTO) {
 							I_free--;
 							return I_180;
 						    }
 
-	if(campo_cpu[spazio_vuoto] == VUOTO || campo_cpu[spazio_vuoto - RIGHE] == VUOTO ||
-	   campo_cpu[spazio_vuoto - (RIGHE * 2)] == VUOTO || campo_cpu[spazio_vuoto - (RIGHE * 3)] == VUOTO) {
-							I_free--;
-							return I_;
-						}
+
 }
 
 void Cpu_colonna(campo_di_gioco campo_cpu, int RIGHE, int COLONNE){
   int r, c, spazio_libero;
   int * tetramino = 0;
+  int colonna_random;
   srand(time(NULL));   /* Initialization, should only be called once.*/
   int random = rand();      /* Returns a pseudo-random integer between 0 and RAND_MAX.*/
   
@@ -971,20 +975,22 @@ void Cpu_colonna(campo_di_gioco campo_cpu, int RIGHE, int COLONNE){
 	    spazio_libero = r*COLONNE + c;
         riquadro_t riquadro = campo_cpu[spazio_libero];
 		if(riquadro == OCCUPATO){
-		  tetramino = tetramino_CPU(campo_cpu, spazio_libero);
+		  spazio_libero--; /*trova il primo spazio occupato, quindi il primo libero è il precedente*/
+		  tetramino = tetramino_CPU(campo_cpu, spazio_libero); 
 		  if(*tetramino != 0){
 	        salva_tetramino(campo_cpu,tetramino,c);
 			c = COLONNE;
 			r = RIGHE;
 		    }
-	        
-		}
-			  	  
+		  }	  	  
 		}
 	  }
+	/*a questo punto vuol dire che non ha trovato nessun spazio occupato*/
+    colonna_random = rand() % 10; /*genera un numero compreso tra 0 e 10*/
+	tetramino = tetramino_CPU(campo_cpu, spazio_libero); /*lo spazio libera sarà 149*/
 	}
 	else{
-	  int colonna_random = rand() % 10; /*genera un numero compreso tra 0 e 10*/
+	  colonna_random = rand() % 10; /*genera un numero compreso tra 0 e 10*/
 	  /*Some people object to this formula because it uses the low-order bits of the number given by rand(),
 	   and in older implementations of software pseudo-random number generators these were often less random
 	   than the high order bits, but on any modern system this method should be perfectly fine.*/
