@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 /**
  * @include tetramini.h @see tetramini.h
  */
@@ -908,11 +909,95 @@ void inverti_campo_di_gioco(campo_di_gioco campo_giocatore, int RIGHE, int COLON
 	}
 }
 
+int * tetramino_random(){
+	int tetramino_random = rand() % 7; /*genera un numero compreso tra 0 e 6*/
+	int rotazione_random = 0;
+	/*logica scelta del tetramino: I = 0, J = 1, L = 2, O = 3, S = 4, T = 5, Z = 6*/
+	if(tetramino_random == 0){
+	  I_free--; /*tolgo un tetramino disponibile*/
+	  rotazione_random = rand() % 1; /*genera un numero compreso tra 0 a 1*/
+	  if(rotazione_random == 0)
+	    return I_;
+		else
+		  return I_180;
+	  }
+	  else if(tetramino_random == 1){
+		J_free--;
+	    rotazione_random = rand() % 4; /*numero casuale tra 0 e 3*/
+		if(rotazione_random == 0)
+		  return J_;
+		  else if(rotazione_random == 1)
+		    return J_90;
+			else if(rotazione_random == 2)
+			  return J_180;
+			  else
+			    return J_270;
+		}
+	    else{
+		  Z_free--;
+		  rotazione_random = rand() % 2;
+		  if(rotazione_random == 0)
+		    return Z_;
+			else
+			  return Z_90;
+		}
+}
+
+
+int * tetramino_CPU(campo_di_gioco campo_cpu, int spazio_vuoto){
+
+	if(campo_cpu[spazio_vuoto] == VUOTO || campo_cpu[spazio_vuoto - COLONNE] == VUOTO ||
+	   campo_cpu[spazio_vuoto - (COLONNE * 2)] == VUOTO || campo_cpu[spazio_vuoto - (COLONNE * 3)] == VUOTO) {
+							I_free--;
+							return I_180;
+						    }
+
+	if(campo_cpu[spazio_vuoto] == VUOTO || campo_cpu[spazio_vuoto - RIGHE] == VUOTO ||
+	   campo_cpu[spazio_vuoto - (RIGHE * 2)] == VUOTO || campo_cpu[spazio_vuoto - (RIGHE * 3)] == VUOTO) {
+							I_free--;
+							return I_;
+						}
+}
+
+void Cpu_colonna(campo_di_gioco campo_cpu, int RIGHE, int COLONNE){
+  int r, c, spazio_libero;
+  int * tetramino = 0;
+  srand(time(NULL));   /* Initialization, should only be called once.*/
+  int random = rand();      /* Returns a pseudo-random integer between 0 and RAND_MAX.*/
+  
+  if(random % 2 == 0){
+    for (r=0; r<RIGHE; r++) {
+      for (c=0; c<COLONNE; c++) {
+	    spazio_libero = r*COLONNE + c;
+        riquadro_t riquadro = campo_cpu[spazio_libero];
+		if(riquadro == OCCUPATO){
+		  tetramino = tetramino_CPU(campo_cpu, spazio_libero);
+		  if(*tetramino != 0){
+	        salva_tetramino(campo_cpu,tetramino,c);
+			c = COLONNE;
+			r = RIGHE;
+		    }
+	        
+		}
+			  	  
+		}
+	  }
+	}
+	else{
+	  int colonna_random = rand() % 10; /*genera un numero compreso tra 0 e 10*/
+	  /*Some people object to this formula because it uses the low-order bits of the number given by rand(),
+	   and in older implementations of software pseudo-random number generators these were often less random
+	   than the high order bits, but on any modern system this method should be perfectly fine.*/
+	  tetramino = tetramino_random();
+	  salva_tetramino(campo_cpu,tetramino,colonna_random);
+	}
+}
+
 void seleziona_CPU(campo_di_gioco piano, int RIGHE, int COLONNE)
 {
 	bool_t is_ok = FALSE;
 	int scelta_colonna = -1;
-	int tetramino[size] = {1,1,1,1};
+	int * tetramino;
 
 	/*inserisco un ciclo while per selezionare la colonna e il tetramino corretto e utilizzabile*/
 	while (is_ok == FALSE){
@@ -925,14 +1010,11 @@ void seleziona_CPU(campo_di_gioco piano, int RIGHE, int COLONNE)
            printf(".");
        }
        printf("\n");
-       return;
-    
-	    int *p;
-        /*scelgo a quale tetramino punterà il mio puntatore*/ 
-	    p = scelta(scelta_colonna);
-        
-		/*salva tetramino oltre a modificare il campo di gioco in base alle mie scelte restituisce anche errori evenutali is_ok in questo caso sarà false*/
-	    is_ok = salva_tetramino(piano, p, scelta_colonna);
+       
+	   Cpu_colonna(piano, RIGHE, COLONNE);
+
+	   return;
+
 	  }
 }
 
