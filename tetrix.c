@@ -944,45 +944,67 @@ int * tetramino_random(){
 		}
 }
 
+bool_t controllo_verticale(campo_di_gioco campo_cpu, int colonna, int riga){
+	int r,c,i, spazio_libero;
+	int is_empty = 0;
+	for (c=colonna; c<colonna+1; c++) {
+      for (r=riga; r<riga +1; r++) {
+        for(i = 0; i< size; i++){
+		  spazio_libero = r*COLONNE + c;
+          riquadro_t riquadro = campo_cpu[spazio_libero];
+		  if(riquadro == VUOTO && campo_cpu[spazio_libero + 1] == OCCUPATO)
+		    is_empty++;
+		  if(is_empty == 4){
+            salva_tetramino(campo_cpu,I_,c);
+			return TRUE;
+		  }
+		}
+	  }
+	}
+	return FALSE;
+}
 
 int * tetramino_CPU(campo_di_gioco campo_cpu, int spazio_vuoto){
 
-  int r, c,i, spazio_libero, test;
-  riquadro_t is_ok;
+  int r, c,i, spazio_libero, is_empty = 0;
+  bool_t is_ok = FALSE;
   for (c=0; c<COLONNE; c++) {
       for (r=0; r<RIGHE; r++) {
 		spazio_libero = r*COLONNE + c;
         riquadro_t riquadro = campo_cpu[spazio_libero];
 		if(riquadro == VUOTO){
-			for(i = 0; i< size; i++){
-				is_ok = campo_cpu[spazio_libero + i];
-				if(is_ok == VUOTO){
-					if(i == 3 && campo_cpu[spazio_libero + i - column] == VUOTO)
-					  return J_180; salva_tetramino(campo_cpu,tetramino,c);
-					if(i == 4 && campo_cpu[spazio_libero + i] == VUOTO)
-					  return I_;salva_tetramino(campo_cpu,tetramino,c);
-					c++;
-					i = size;
-
-				}
-				  
-			}
-
-
-
-			if(is_ok == VUOTO)
-			  return I_;
-			for (i = 0; i < size; i++)
-			{  
-			  test =campo_cpu[spazio_libero + i];
-
-			}
 			
+			for(i = 0; i< size; i++){
 
+					if(i == 3 && campo_cpu[spazio_libero + i - column] == VUOTO){
+					  is_ok = TRUE;
+					  salva_tetramino(campo_cpu,J_180,c);}
+					if(i == 4 && campo_cpu[spazio_libero + i] == VUOTO){
+					  is_ok = TRUE;
+					  salva_tetramino(campo_cpu,I_,c);}
+					if(i == 4 && campo_cpu[spazio_libero + i] == OCCUPATO && campo_cpu[spazio_libero + COLONNE] && campo_cpu[spazio_libero + (COLONNE*2)] && campo_cpu[spazio_libero + (COLONNE * 3)]){
+					  salva_tetramino(campo_cpu,I_180,c);
+                      is_ok = TRUE;
+					}
+					
+					if(campo_cpu[spazio_libero + i] == VUOTO)
+		    		  is_empty++;
+		  			is_ok = controllo_verticale(campo_cpu,c,r);
+					if(is_empty == 4){
+           		   return I_;
+			        is_ok = TRUE;}
+					
+
+					if(is_ok == TRUE){
+					r= RIGHE;
+					c = COLONNE;
+					i = size;}
+				}
+			}
 		}
-	  }
-  }
-  /*la scelta migliore*/
+	 }
+   
+  /*la scelta migliore
   if(campo_cpu[spazio_vuoto] == VUOTO && campo_cpu[spazio_vuoto - 1] == VUOTO &&
 	campo_cpu[spazio_vuoto - 2] == VUOTO && campo_cpu[spazio_vuoto - 3] == VUOTO) {
     I_free--;
@@ -993,7 +1015,7 @@ int * tetramino_CPU(campo_di_gioco campo_cpu, int spazio_vuoto){
 	   campo_cpu[spazio_vuoto - (COLONNE * 2)] == VUOTO && campo_cpu[spazio_vuoto - (COLONNE * 3)] == VUOTO) {
 							I_free--;
 							return I_180;
-						    }
+						    }*/
 
 }
 
