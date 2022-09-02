@@ -946,6 +946,42 @@ int * tetramino_random(){
 
 
 int * tetramino_CPU(campo_di_gioco campo_cpu, int spazio_vuoto){
+
+  int r, c,i, spazio_libero, test;
+  riquadro_t is_ok;
+  for (c=0; c<COLONNE; c++) {
+      for (r=0; r<RIGHE; r++) {
+		spazio_libero = r*COLONNE + c;
+        riquadro_t riquadro = campo_cpu[spazio_libero];
+		if(riquadro == VUOTO){
+			for(i = 0; i< size; i++){
+				is_ok = campo_cpu[spazio_libero + i];
+				if(is_ok == VUOTO){
+					if(i == 3 && campo_cpu[spazio_libero + i - column] == VUOTO)
+					  return J_180; salva_tetramino(campo_cpu,tetramino,c);
+					if(i == 4 && campo_cpu[spazio_libero + i] == VUOTO)
+					  return I_;salva_tetramino(campo_cpu,tetramino,c);
+					c++;
+					i = size;
+
+				}
+				  
+			}
+
+
+
+			if(is_ok == VUOTO)
+			  return I_;
+			for (i = 0; i < size; i++)
+			{  
+			  test =campo_cpu[spazio_libero + i];
+
+			}
+			
+
+		}
+	  }
+  }
   /*la scelta migliore*/
   if(campo_cpu[spazio_vuoto] == VUOTO && campo_cpu[spazio_vuoto - 1] == VUOTO &&
 	campo_cpu[spazio_vuoto - 2] == VUOTO && campo_cpu[spazio_vuoto - 3] == VUOTO) {
@@ -959,7 +995,6 @@ int * tetramino_CPU(campo_di_gioco campo_cpu, int spazio_vuoto){
 							return I_180;
 						    }
 
-
 }
 
 void Cpu_colonna(campo_di_gioco campo_cpu, int RIGHE, int COLONNE){
@@ -970,8 +1005,8 @@ void Cpu_colonna(campo_di_gioco campo_cpu, int RIGHE, int COLONNE){
   int random = rand();      /* Returns a pseudo-random integer between 0 and RAND_MAX.*/
   
   if(random % 2 == 0){
-    for (r=0; r<RIGHE; r++) {
-      for (c=0; c<COLONNE; c++) {
+    for (c=0; c<COLONNE; c++) {
+      for (r=0; r<RIGHE; r++) {
 	    spazio_libero = r*COLONNE + c;
         riquadro_t riquadro = campo_cpu[spazio_libero];
 		if(riquadro == OCCUPATO){
@@ -988,6 +1023,7 @@ void Cpu_colonna(campo_di_gioco campo_cpu, int RIGHE, int COLONNE){
 	/*a questo punto vuol dire che non ha trovato nessun spazio occupato*/
     colonna_random = rand() % 10; /*genera un numero compreso tra 0 e 10*/
 	tetramino = tetramino_CPU(campo_cpu, spazio_libero); /*lo spazio libera sarà 149*/
+	salva_tetramino(campo_cpu,tetramino,colonna_random);
 	}
 	else{
 	  colonna_random = rand() % 10; /*genera un numero compreso tra 0 e 10*/
