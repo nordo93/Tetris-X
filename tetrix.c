@@ -909,27 +909,27 @@ void inverti_campo_di_gioco(campo_di_gioco campo_giocatore, int RIGHE, int COLON
 	}
 }
 
-int * tetramino_random(){
+int * tetramino_random(int colonna_random){
 	int tetramino_random = rand() % 7; /*genera un numero compreso tra 0 e 6*/
 	int rotazione_random = 0;
 	
 	/*logica scelta del tetramino: I = 0, J = 1, L = 2, O = 3, S = 4, T = 5, Z = 6*/
-	if(tetramino_random == 0){
+	if(tetramino_random == 0 || colonna_random == 9){
 	  I_free--; /*tolgo un tetramino disponibile*/
 	  rotazione_random = rand() % 1; /*genera un numero compreso tra 0 a 1*/
-	  if(rotazione_random == 0)
+	  if(rotazione_random == 0 && colonna_random < 7)
 	    return I_;
 		else
 		  return I_180;
 	  }
-	  else if(tetramino_random == 1){
+	  else if(tetramino_random == 1 && colonna_random < 8){
 		J_free--;
 	    rotazione_random = rand() % 4; /*numero casuale tra 0 e 3*/
 		if(rotazione_random == 0)
 		  return J_;
-		  else if(rotazione_random == 1)
+		  else if(rotazione_random == 1 && colonna_random < 9)
 		    return J_90;
-			else if(rotazione_random == 2)
+			else if(rotazione_random == 2 && colonna_random < 8)
 			  return J_180;
 			  else
 			    return J_270;
@@ -964,30 +964,25 @@ bool_t controllo_verticale(campo_di_gioco campo_cpu, int colonna, int riga){
 	return FALSE;
 }
 
-int * tetramino_CPU(campo_di_gioco campo_cpu, int spazio_vuoto){
+ int * tetramino_CPU(campo_di_gioco campo_cpu, int spazio_vuoto){
+  
+   int i, is_empty;
+   bool_t is_ok = FALSE;
 
-  int r, c,i, spazio_libero, is_empty = 0;
-  bool_t is_ok = FALSE;
-  for (c=0; c<COLONNE; c++) {
-      for (r=0; r<RIGHE; r++) {
-		spazio_libero = r*COLONNE + c;
-        riquadro_t riquadro = campo_cpu[spazio_libero];
-		if(riquadro == VUOTO){
-			
 			for(i = 0; i< size; i++){
 
-					if(i == 3 && campo_cpu[spazio_libero + i - column] == VUOTO){
+					if(i == 3 && campo_cpu[spazio_vuoto + i - column] != OCCUPATO){
 					  is_ok = TRUE;
 					  salva_tetramino(campo_cpu,J_180,c);}
-					if(i == 4 && campo_cpu[spazio_libero + i] == VUOTO){
+					if(i == 4 && campo_cpu[spazio_vuoto + i] == VUOTO){
 					  is_ok = TRUE;
 					  salva_tetramino(campo_cpu,I_,c);}
-					if(i == 4 && campo_cpu[spazio_libero + i] == OCCUPATO && campo_cpu[spazio_libero + COLONNE] && campo_cpu[spazio_libero + (COLONNE*2)] && campo_cpu[spazio_libero + (COLONNE * 3)]){
+					if(i == 4 && campo_cpu[spazio_vuoto + i] == OCCUPATO && campo_cpu[spazio_libero + COLONNE] && campo_cpu[spazio_libero + (COLONNE*2)] && campo_cpu[spazio_libero + (COLONNE * 3)]){
 					  salva_tetramino(campo_cpu,I_180,c);
                       is_ok = TRUE;
 					}
 					
-					if(campo_cpu[spazio_libero + i] == VUOTO)
+					if(campo_cpu[spazio_vuoto + i] == VUOTO)
 		    		  is_empty++;
 		  			is_ok = controllo_verticale(campo_cpu,c,r);
 					if(is_empty == 4){
@@ -1000,10 +995,9 @@ int * tetramino_CPU(campo_di_gioco campo_cpu, int spazio_vuoto){
 					c = COLONNE;
 					i = size;}
 				}
-			}
+			
 		}
-	 }
-   
+	   
   /*la scelta migliore
   if(campo_cpu[spazio_vuoto] == VUOTO && campo_cpu[spazio_vuoto - 1] == VUOTO &&
 	campo_cpu[spazio_vuoto - 2] == VUOTO && campo_cpu[spazio_vuoto - 3] == VUOTO) {
@@ -1017,7 +1011,6 @@ int * tetramino_CPU(campo_di_gioco campo_cpu, int spazio_vuoto){
 							return I_180;
 						    }*/
 
-}
 
 void Cpu_colonna(campo_di_gioco campo_cpu, int RIGHE, int COLONNE){
   int r, c, spazio_libero;
@@ -1052,7 +1045,7 @@ void Cpu_colonna(campo_di_gioco campo_cpu, int RIGHE, int COLONNE){
 	  /*Some people object to this formula because it uses the low-order bits of the number given by rand(),
 	   and in older implementations of software pseudo-random number generators these were often less random
 	   than the high order bits, but on any modern system this method should be perfectly fine.*/
-	  tetramino = tetramino_random();
+	  tetramino = tetramino_random(colonna_random);
 	  salva_tetramino(campo_cpu,tetramino,colonna_random);
 	}
 }
