@@ -200,39 +200,39 @@ int verifica_uscita(int *p, int righe_rimanenti, int colonna, int contatto){
 bool_t verifica_occupata (campo_di_gioco piano, int scelta, int * p){
   
   int i;
-  
+  bool_t occupata = FALSE;
   for(i = 0; i<size; i++){
-    if(*p == 6){
-	  if(piano[scelta - COLONNE] == OCCUPATO || piano[scelta - (COLONNE * 2)] == OCCUPATO) return TRUE;
+     if(*p == 6){
+	  if(piano[scelta - COLONNE] == OCCUPATO || piano[scelta - (COLONNE * 2)] == OCCUPATO) occupata = TRUE;
 	  }
 	  else if(*p == 2){
-	    if(piano[scelta - COLONNE] == OCCUPATO) return TRUE;
+	    if(piano[scelta - COLONNE] == OCCUPATO) occupata = TRUE;
 		}
 		else if(*p == 0){;}
 		  else if(*p == 3){
 			if(piano[scelta - COLONNE] == OCCUPATO ||
 			   piano[scelta - (COLONNE * 2)] == OCCUPATO) 
-               return TRUE;
+               occupata = TRUE;
 			   }
 			  else if(*p == 4){
-			    if(piano[scelta - COLONNE] == OCCUPATO) return TRUE;
+			    if(piano[scelta - COLONNE] == OCCUPATO) occupata = TRUE;
 				}
 				  else if(*p == 5){
-				    if(piano[scelta - (COLONNE * 2)] == OCCUPATO) return TRUE;
+				    if(piano[scelta - (COLONNE * 2)] == OCCUPATO) occupata = TRUE;
 					}
 					else if(*p == 7){
 				      if(piano[scelta] == OCCUPATO ||
 				        piano[scelta - COLONNE] == OCCUPATO ||
 				        piano[scelta - (COLONNE * 2)] == OCCUPATO ||
-						piano[scelta - (COLONNE * 3)] == OCCUPATO) return TRUE;
+						piano[scelta - (COLONNE * 3)] == OCCUPATO) occupata = TRUE;
 					      }
 					      else if(*p == 1){
-					      if(piano[scelta] == OCCUPATO) return TRUE;
+					      if(piano[scelta] == OCCUPATO) occupata = TRUE;
 						    }
 			scelta++;
 			p++;
             }
-    return FALSE;
+    return occupata;
 }
 
 /**
@@ -1098,6 +1098,28 @@ int * tetramino_CPU(campo_di_gioco campo_cpu, int spazio_vuoto){
 							return I_180;
 						    }*/
 
+int * mosse_tetramino[5] = {I_,O_,O_,I_,O_};
+int mosse_colonna [5] = {0,4,6,0,8};
+int mossa_numero = 0;
+
+// Random Function to that returns 0 or 1 with
+// equal probability
+int rand50()
+{
+    // rand() function will generate odd or even
+    // number with equal probability. If rand()
+    // generates odd number, the function will
+    // return 1 else it will return 0.
+    return rand() & 1;
+}
+
+// Random Function to that returns 1 with 87.5%
+// probability and 0 with 12% probability using
+// Bitwise OR   0.5*0.5*0.5 = 0.125
+bool_t rand75()
+{
+    return rand50() | rand50() || rand50();
+}
 
 void Cpu_colonna(campo_di_gioco campo_cpu, int RIGHE, int COLONNE){
   int r, c, spazio_libero;
@@ -1107,14 +1129,18 @@ void Cpu_colonna(campo_di_gioco campo_cpu, int RIGHE, int COLONNE){
   srand(time(NULL));   /* Initialization, should only be called once.*/
   int random = rand();      /* Returns a pseudo-random integer between 0 and RAND_MAX.*/
   
-  if(random % 2 == 0 || random % 5 == 0 ){ /*Vero se la sua ultima cifra è 0 o 5. oppure è pari.*/
-    for (c=0; c<COLONNE; c++) {
+  if(/*random % 2 == 0 || random % 5 == 0*/ rand75() == 1 ){ /*Vero se la sua ultima cifra è 0 o 5. oppure è pari.*/
+   salva_tetramino(campo_cpu,mosse_tetramino[mossa_numero],mosse_colonna[mossa_numero]);
+   mossa_numero++;
+   if(mossa_numero == 5)
+     mossa_numero = 0;
+   /* for (c=0; c<COLONNE; c++) {
       for (r=0; r<RIGHE; r++) {
 	    spazio_libero = r*COLONNE + c;
         
 		if(campo_cpu[spazio_libero] == OCCUPATO){
-		  spazio_libero--; /*trova il primo spazio occupato, quindi il primo libero è il precedente*/
-		  tetramino = tetramino_CPU(campo_cpu, spazio_libero); 
+		  spazio_libero++; /*trova il primo spazio occupato, quindi il primo libero è il precedente*/
+	/*	  tetramino = tetramino_CPU(campo_cpu, spazio_libero); 
 		  if(*tetramino != 0){
 			trovato = TRUE;
 	        salva_tetramino(campo_cpu,tetramino,c);
@@ -1123,12 +1149,12 @@ void Cpu_colonna(campo_di_gioco campo_cpu, int RIGHE, int COLONNE){
 		    }
 		  }	  	  
 		}
-	  }
-	if(trovato == FALSE){
-	/*a questo punto vuol dire che non ha trovato nessun spazio occupato*/
-    colonna_random = rand() % 8; /*genera un numero compreso tra 0 e 8*/
-	tetramino = tetramino_CPU(campo_cpu, spazio_libero); /*lo spazio libera sarà 149*/
-	salva_tetramino(campo_cpu,tetramino,colonna_random);}
+	  }*/
+//	if(trovato == FALSE){
+//	/*a questo punto vuol dire che non ha trovato nessun spazio occupato*/
+//    colonna_random = rand() % 8; /*genera un numero compreso tra 0 e 8*/
+//	tetramino = tetramino_CPU(campo_cpu, spazio_libero); /*lo spazio libera sarà 149*/
+//	salva_tetramino(campo_cpu,tetramino,colonna_random);}*/
 	}
 	else{
 	  colonna_random = rand() % 10; /*genera un numero compreso tra 0 e 10*/
