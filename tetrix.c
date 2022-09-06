@@ -998,7 +998,7 @@ bool_t rand75()
 }
 
 /**
- * @brief Funzione usata dalla cpu per inserire il tetramino, molte volte inserisce i tetramini secondo questo ordine @see mosse_tetramino in determinate colonne @see mosse_colonna.
+ * @brief Funzione usata dalla cpu per inserire il tetramino, molte volte inserisce i tetramini secondo questo ordine @see mosse_tetramino[5] in determinate colonne @see mosse_colonna [5] .
  * Alcune volte (il 12 per cento delle volte) inserisce i tetramini casualmente.
  * 
  * @param campo_cpu punta al campo di gioco della CPU.
