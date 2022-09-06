@@ -1,0 +1,84 @@
+int * tetramino_CPU(campo_di_gioco campo_cpu, int spazio_vuoto){
+  int i;
+
+  if(verifica_occupata(campo_cpu,spazio_vuoto,I_) == FALSE){
+	I_free--;
+    return I_;
+	}
+  if(verifica_occupata(campo_cpu,spazio_vuoto,I_180) == FALSE){
+    I_free--;
+	return I_180;
+	}
+  if(verifica_occupata(campo_cpu,spazio_vuoto,O_) == FALSE){
+    O_free--;
+	return O_;
+	}
+  if(verifica_occupata(campo_cpu,spazio_vuoto,J_) == FALSE){
+    J_free--;
+	return J_;
+	}
+  if(verifica_occupata(campo_cpu,spazio_vuoto,J_90) == FALSE){
+    J_free--;
+	return J_90;
+	}
+  if(verifica_occupata(campo_cpu,spazio_vuoto,J_180) == FALSE){
+    J_free--;
+	return J_180;
+	}
+  if(verifica_occupata(campo_cpu,spazio_vuoto,J_270) == FALSE){
+    J_free--;
+	return J_270;
+	}
+  if(verifica_occupata(campo_cpu,spazio_vuoto,L_) == FALSE){
+    L_free--;
+	return L_;
+	}
+  if(verifica_occupata(campo_cpu,spazio_vuoto,L_90) == FALSE){
+    L_free--;
+	return L_90;
+	}
+  if(verifica_occupata(campo_cpu,spazio_vuoto,L_180) == FALSE){
+    L_free--;
+	return L_180;
+	}
+  if(verifica_occupata(campo_cpu,spazio_vuoto,L_270) == FALSE){
+    L_free--;
+	return L_270;
+	}
+  if(verifica_occupata(campo_cpu,spazio_vuoto,S_) == FALSE){
+    S_free--;
+	return S_;
+	}
+  if(verifica_occupata(campo_cpu,spazio_vuoto,S_90) == FALSE){
+    S_free--;
+	return S_90;
+	}
+  if(verifica_occupata(campo_cpu,spazio_vuoto,Z_) == FALSE){
+    Z_free--;
+	return Z_;
+	}
+  if(verifica_occupata(campo_cpu,spazio_vuoto,Z_90) == FALSE){
+    Z_free--;
+	return Z_90;
+	}
+  if(verifica_occupata(campo_cpu,spazio_vuoto,T_) == FALSE){
+    T_free--;
+	return T_;
+	}
+  if(verifica_occupata(campo_cpu,spazio_vuoto,T_90) == FALSE){
+    T_free--;
+	return T_90;
+	}
+  if(verifica_occupata(campo_cpu,spazio_vuoto,T_180) == FALSE){
+    T_free--;
+	return T_180;
+	}
+  if(verifica_occupata(campo_cpu,spazio_vuoto,T_270) == FALSE){
+    T_free--;
+	return T_270;
+	}
+	  
+	return 0;
+
+
+   }  /*fichè lo spazio è occupato*/

@@ -43,7 +43,7 @@
 /** @brief size indica la grandezza del vettore di ogni tetramino*/
 #define size 4 
 /** @brief Indica il punteggio per la vittoria */
-#define Punteggio_massimo 1
+#define Punteggio_massimo 50
 
 
 

@@ -909,6 +909,12 @@ void inverti_campo_di_gioco(campo_di_gioco campo_giocatore, int RIGHE, int COLON
 	}
 }
 
+/**
+ * @brief funzione che seleziona un tetramino casuale in base alla colonna scelta.
+ * @note un tetramino I_ orrizontale non può starci nella colonna 8 perchè và fuori dal campo.
+ * @param colonna_random colonna passata dalla funzione, da 0 a 7
+ * @return int* ritorna un puntatore ad un tetramino casuale 
+ */
 int * tetramino_random(int colonna_random){
 	int tetramino_random = rand() % 7; /*genera un numero compreso tra 0 e 6*/
 	int rotazione_random = 0;
@@ -964,209 +970,74 @@ bool_t controllo_verticale(campo_di_gioco campo_cpu, int colonna, int riga){
 	return FALSE;
 }
 
-int * tetramino_CPU(campo_di_gioco campo_cpu, int spazio_vuoto){
-  int i;
-
-  if(verifica_occupata(campo_cpu,spazio_vuoto,I_) == FALSE){
-	I_free--;
-    return I_;
-	}
-  if(verifica_occupata(campo_cpu,spazio_vuoto,I_180) == FALSE){
-    I_free--;
-	return I_180;
-	}
-  if(verifica_occupata(campo_cpu,spazio_vuoto,O_) == FALSE){
-    O_free--;
-	return O_;
-	}
-  if(verifica_occupata(campo_cpu,spazio_vuoto,J_) == FALSE){
-    J_free--;
-	return J_;
-	}
-  if(verifica_occupata(campo_cpu,spazio_vuoto,J_90) == FALSE){
-    J_free--;
-	return J_90;
-	}
-  if(verifica_occupata(campo_cpu,spazio_vuoto,J_180) == FALSE){
-    J_free--;
-	return J_180;
-	}
-  if(verifica_occupata(campo_cpu,spazio_vuoto,J_270) == FALSE){
-    J_free--;
-	return J_270;
-	}
-  if(verifica_occupata(campo_cpu,spazio_vuoto,L_) == FALSE){
-    L_free--;
-	return L_;
-	}
-  if(verifica_occupata(campo_cpu,spazio_vuoto,L_90) == FALSE){
-    L_free--;
-	return L_90;
-	}
-  if(verifica_occupata(campo_cpu,spazio_vuoto,L_180) == FALSE){
-    L_free--;
-	return L_180;
-	}
-  if(verifica_occupata(campo_cpu,spazio_vuoto,L_270) == FALSE){
-    L_free--;
-	return L_270;
-	}
-  if(verifica_occupata(campo_cpu,spazio_vuoto,S_) == FALSE){
-    S_free--;
-	return S_;
-	}
-  if(verifica_occupata(campo_cpu,spazio_vuoto,S_90) == FALSE){
-    S_free--;
-	return S_90;
-	}
-  if(verifica_occupata(campo_cpu,spazio_vuoto,Z_) == FALSE){
-    Z_free--;
-	return Z_;
-	}
-  if(verifica_occupata(campo_cpu,spazio_vuoto,Z_90) == FALSE){
-    Z_free--;
-	return Z_90;
-	}
-  if(verifica_occupata(campo_cpu,spazio_vuoto,T_) == FALSE){
-    T_free--;
-	return T_;
-	}
-  if(verifica_occupata(campo_cpu,spazio_vuoto,T_90) == FALSE){
-    T_free--;
-	return T_90;
-	}
-  if(verifica_occupata(campo_cpu,spazio_vuoto,T_180) == FALSE){
-    T_free--;
-	return T_180;
-	}
-  if(verifica_occupata(campo_cpu,spazio_vuoto,T_270) == FALSE){
-    T_free--;
-	return T_270;
-	}
-	  
-	return 0;
-
-
-   }  /*fichè lo spazio è occupato*/
-
-
-/*
-			for(i = 0; i< size; i++){
-             if(campo_cpu[spazio_vuoto + (COLONNE*i)] == VUOTO);
-			 
-					if(i == 3 && campo_cpu[spazio_vuoto + i - column] != OCCUPATO){
-					  is_ok = TRUE;
-					  return J_180;
-					  /*salva_tetramino(campo_cpu,J_180,c);*//*
-					}
-					if(i == 4 && campo_cpu[spazio_vuoto + i] == VUOTO){
-					  is_ok = TRUE;
-					  return I_;
-					  /*salva_tetramino(campo_cpu,I_,c);*//*}
-					if(i == 4 && campo_cpu[spazio_vuoto + i] == OCCUPATO && campo_cpu[spazio_vuoto + (COLONNE*i)] && campo_cpu[spazio_vuoto + (COLONNE*i)] && campo_cpu[spazio_vuoto + (COLONNE * i)]){
-					  /*salva_tetramino(campo_cpu,I_180,c);*//*
-                      is_ok = TRUE;
-					  return I_180;
-					}
-					
-					if(campo_cpu[spazio_vuoto + i] == VUOTO)
-		    		  is_empty++;
-		  			/*is_ok = controllo_verticale(campo_cpu,c,r);*//*
-					if(is_empty == 4){
-           		   return I_;
-			        is_ok = TRUE;}
-					
-
-					if(is_ok == TRUE){
-					/*r= RIGHE;
-					c = COLONNE;*//*
-					i = size;}
-				}
-			
-		    }
-	*/    
-  /*la scelta migliore
-  if(campo_cpu[spazio_vuoto] == VUOTO && campo_cpu[spazio_vuoto - 1] == VUOTO &&
-	campo_cpu[spazio_vuoto - 2] == VUOTO && campo_cpu[spazio_vuoto - 3] == VUOTO) {
-    I_free--;
-    return I_;
-	}
-
-	if(campo_cpu[spazio_vuoto] == VUOTO && campo_cpu[spazio_vuoto - COLONNE] == VUOTO &&
-	   campo_cpu[spazio_vuoto - (COLONNE * 2)] == VUOTO && campo_cpu[spazio_vuoto - (COLONNE * 3)] == VUOTO) {
-							I_free--;
-							return I_180;
-						    }*/
-
+/** @brief Sequenza di mosse predefinita della cpu. */
 int * mosse_tetramino[5] = {I_,O_,O_,I_,O_};
+/** @brief Sequenza di scelta colonna predefinita della cpu. */
 int mosse_colonna [5] = {0,4,6,0,8};
+/** @brief indica a quale mossa predefinita è arrivata la CPU */
 int mossa_numero = 0;
 
-// Random Function to that returns 0 or 1 with
-// equal probability
-int rand50()
+/**
+ * @brief Funzione casuale che restituisce 0 o 1 con uguale probabilità
+ * @return bool_t 0 o 1 al 50% 
+ * @note La funzione rand() genererà un numero dispari o pari con uguale probabilità.
+ */
+bool_t rand50()
 {
-    // rand() function will generate odd or even
-    // number with equal probability. If rand()
-    // generates odd number, the function will
-    // return 1 else it will return 0.
     return rand() & 1;
 }
 
-// Random Function to that returns 1 with 87.5%
-// probability and 0 with 12% probability using
-// Bitwise OR   0.5*0.5*0.5 = 0.125
+/**
+ * @brief Funzione casuale che restituisce 1 con 87,5% di probabilità e 0 con 12% di probabilità utilizzando
+ * @return bool_t restituisce 0 12 volte su 100 e il restante 1
+ * @note la funzione rand50 genera 1 o 0 con uguale probabilità quindi 0.5*0.5*0.5 = 0.125
+ */
 bool_t rand75()
 {
     return rand50() | rand50() || rand50();
 }
 
+/**
+ * @brief Funzione usata dalla cpu per inserire il tetramino, molte volte inserisce i tetramini secondo questo ordine @see mosse_tetramino in determinate colonne @see mosse_colonna.
+ * Alcune volte (il 12 per cento delle volte) inserisce i tetramini casualmente.
+ * 
+ * @param campo_cpu punta al campo di gioco della CPU.
+ * @param RIGHE numero di righe del campo di gioco
+ * @param COLONNE numero di colonne del campo di gioco
+ */
 void Cpu_colonna(campo_di_gioco campo_cpu, int RIGHE, int COLONNE){
   int r, c, spazio_libero;
   bool_t trovato = FALSE;
   int * tetramino = 0;
   int colonna_random;
-  srand(time(NULL));   /* Initialization, should only be called once.*/
-  int random = rand();      /* Returns a pseudo-random integer between 0 and RAND_MAX.*/
+  srand(time(NULL));   /* iniziallizazione, dovrebbe essere chiamato solo una volta.*/
+  int random = rand();      /* Restituisce un numero intero pseudocasuale compreso tra 0 e RAND_MAX.*/
   
-  if(/*random % 2 == 0 || random % 5 == 0*/ rand75() == 1 ){ /*Vero se la sua ultima cifra è 0 o 5. oppure è pari.*/
+  if(rand75() == 1 ){ /*uguale a 1 l' 87.5% delle volte*/
    salva_tetramino(campo_cpu,mosse_tetramino[mossa_numero],mosse_colonna[mossa_numero]);
    mossa_numero++;
    if(mossa_numero == 5)
      mossa_numero = 0;
-   /* for (c=0; c<COLONNE; c++) {
-      for (r=0; r<RIGHE; r++) {
-	    spazio_libero = r*COLONNE + c;
-        
-		if(campo_cpu[spazio_libero] == OCCUPATO){
-		  spazio_libero++; /*trova il primo spazio occupato, quindi il primo libero è il precedente*/
-	/*	  tetramino = tetramino_CPU(campo_cpu, spazio_libero); 
-		  if(*tetramino != 0){
-			trovato = TRUE;
-	        salva_tetramino(campo_cpu,tetramino,c);
-			c = COLONNE+1;
-			r = RIGHE+1;
-		    }
-		  }	  	  
-		}
-	  }*/
-//	if(trovato == FALSE){
-//	/*a questo punto vuol dire che non ha trovato nessun spazio occupato*/
-//    colonna_random = rand() % 8; /*genera un numero compreso tra 0 e 8*/
-//	tetramino = tetramino_CPU(campo_cpu, spazio_libero); /*lo spazio libera sarà 149*/
-//	salva_tetramino(campo_cpu,tetramino,colonna_random);}*/
 	}
 	else{
 	  colonna_random = rand() % 10; /*genera un numero compreso tra 0 e 10*/
-	  /*Some people object to this formula because it uses the low-order bits of the number given by rand(),
-	   and in older implementations of software pseudo-random number generators these were often less random
-	   than the high order bits, but on any modern system this method should be perfectly fine.*/
+	  /** @note Alcune persone non piace questa formula perché utilizza i bit di ordine inferiore del numero dato da rand(),
+       e nelle implementazioni più vecchie di numeri pseudo-casuali software questi erano spesso meno casuali
+        rispetto ai bit di ordine elevato, ma su qualsiasi sistema moderno questo metodo dovrebbe andare bene.*/
 	  tetramino = tetramino_random(colonna_random);
 	  salva_tetramino(campo_cpu,tetramino,colonna_random);
 	}
 }
 
-void seleziona_CPU(campo_di_gioco piano, int RIGHE, int COLONNE)
+/**
+ * @brief funzione che simula un caricamento e chiama funzione di inserimento tetramino dalla cpu
+ * 
+ * @param campo_cpu punta al campo di gioco della CPU.
+ * @param RIGHE numero di righe del campo di gioco
+ * @param COLONNE numero di colonne del campo di gioco
+ * @note il tempo di caricamento dipende dalla macchina in cui si esegue il programma.
+ */
+void seleziona_CPU(campo_di_gioco campo_cpu, int RIGHE, int COLONNE)
 {
 	bool_t is_ok = FALSE;
 	int scelta_colonna = -1;
@@ -1184,13 +1055,20 @@ void seleziona_CPU(campo_di_gioco piano, int RIGHE, int COLONNE)
        }
        printf("\n");
        
-	   Cpu_colonna(piano, RIGHE, COLONNE);
+	   Cpu_colonna(campo_cpu, RIGHE, COLONNE);
 
 	   return;
 
 	  }
 }
 
+/**
+ * @brief Funzione usata a scopo di test, inserisce 3 righe piene fino alla colonna 7.
+ * @note usata per testare l'inversione del campo avversario
+ * @param campo_giocatore campo giocatore 1
+ * @param RIGHE numero righe campo giocatore 1, portate a -3 per riempire 3 righe
+ * @param COLONNE numero colonne giocatore 1 portate a -2 per riempore 8 colonne
+ */
 void TEST_INVERTI(campo_di_gioco campo_giocatore, int RIGHE, int COLONNE){
 	int r,c;
 	for (r=RIGHE - 3; r<RIGHE; r++) {
@@ -1345,7 +1223,7 @@ int main()
   printf("Per iniziare a giocare premi INVIO.\n");
   getchar();
   printf("\n\n");
-  test(campo_giocatore_1,RIGHE,COLONNE);
+  /*test(campo_giocatore_1,RIGHE,COLONNE);*/ /*Funzione usata a scopo di test durate la programmazione*/
 do
 {
   if(giocatori == NOT_SELECTED){
@@ -1363,7 +1241,7 @@ do
         case 1: printf("Giochi da solo, bene!\n");
               break;
         case 2: printf("Giochi in compagnia, bene!\n");
-                TEST_INVERTI(campo_giocatore_1, RIGHE, COLONNE);
+                TEST_INVERTI(campo_giocatore_2, RIGHE, COLONNE);
                 raddoppia_tetramini(); /*Raddopia il numero di tetramini per il multiplayer*/
 				break;
 		case 3: printf("Ti piace la sfida!\n");
