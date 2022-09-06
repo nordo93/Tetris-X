@@ -7,6 +7,7 @@ Include il manin e tutte le funzioni.
 
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}tetramini.\+h\char`\"{}}\newline
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
@@ -25,6 +26,7 @@ typedef enum \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848}{bool\
 enum \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0fa}{giocatori}} \{ \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faae0c9d3e5c71ae4b23a63b36eaac2f918}{SINGLE\+\_\+\+PLAYER}} = 1
 , \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faaf64ffcc804f85cc65366369011db5768}{MULTI\+\_\+\+PLAYER}} = 2
 , \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faa616ede6b6f3a1d38a724d1168ddf1adf}{NOT\+\_\+\+SELECTED}} = -\/99
+, \mbox{\hyperlink{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faa537108fa956a460fcb193c4e6416551e}{CPU\+\_\+\+PLAYER}} = 3
  \}
 \begin{DoxyCompactList}\small\item\em Definisco un enumeratore per il numero di giocatori. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{tetrix_8c_aacae98a513bf46f84ca1f3554bae431b}{riquadro}} \{ \mbox{\hyperlink{tetrix_8c_aacae98a513bf46f84ca1f3554bae431baf9428c94346b50d578b820a28ca79855}{VUOTO}}
@@ -69,8 +71,20 @@ void \mbox{\hyperlink{tetrix_8c_a3db906a4d562c2e7b2e92b92849943ca}{raddoppia\+\_
 void \mbox{\hyperlink{tetrix_8c_aa11dce9cbdbceb69cc11f68db2609547}{inverti\+\_\+campo\+\_\+di\+\_\+gioco}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} campo\+\_\+giocatore, int \mbox{\hyperlink{tetrix_8c_ae9f8d8d635995b45444dd02143e0a102}{RIGHE}}, int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}})
 \begin{DoxyCompactList}\small\item\em Nel caso il giocatore cancelli 3 o più linee con una singola mossa, la variabile inverti\+\_\+campo diventa TRUE e il campo dell’avversario viene modificato invertendo il corrispondente numero di linee nella parte più bassa del campo di gioco\+: una posizione vuota diventa piena e viceversa. ~\newline
  \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{tetrix_8c_adf818de7cbdc4a4cf738bfbfe3be289c}{TEST\+\_\+\+INVERTI}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} campo\+\_\+giocatore, int \mbox{\hyperlink{tetrix_8c_ae9f8d8d635995b45444dd02143e0a102}{RIGHE}}, int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}})
+int $\ast$ \mbox{\hyperlink{tetrix_8c_a1d973462182b0b3a20de6905eff63793}{tetramino\+\_\+random}} (int colonna\+\_\+random)
+\begin{DoxyCompactList}\small\item\em funzione che seleziona un tetramino casuale in base alla colonna scelta. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} \mbox{\hyperlink{tetrix_8c_a50e68327f7ef40b1c9100aaa30d953cf}{controllo\+\_\+verticale}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} campo\+\_\+cpu, int colonna, int riga)
 \item 
+\mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} \mbox{\hyperlink{tetrix_8c_a88e4f867eb8e5b012e3a4c98880bf276}{rand50}} ()
+\begin{DoxyCompactList}\small\item\em Funzione casuale che restituisce 0 o 1 con uguale probabilità \end{DoxyCompactList}\item 
+\mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} \mbox{\hyperlink{tetrix_8c_a4eefadcc3b4b83e7161af6a35d00261c}{rand75}} ()
+\begin{DoxyCompactList}\small\item\em Funzione casuale che restituisce 1 con 87,5\% di probabilità e 0 con 12\% di probabilità utilizzando. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetrix_8c_ab3f8f66eb2a718d9bfcf6c92a9c9a6b3}{Cpu\+\_\+colonna}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} campo\+\_\+cpu, int \mbox{\hyperlink{tetrix_8c_ae9f8d8d635995b45444dd02143e0a102}{RIGHE}}, int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}})
+\begin{DoxyCompactList}\small\item\em Funzione usata dalla cpu per inserire il tetramino, molte volte inserisce i tetramini secondo questo ordine. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetrix_8c_a17eeb78930956a73025616a347045485}{seleziona\+\_\+\+CPU}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} campo\+\_\+cpu, int \mbox{\hyperlink{tetrix_8c_ae9f8d8d635995b45444dd02143e0a102}{RIGHE}}, int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}})
+\begin{DoxyCompactList}\small\item\em funzione che simula un caricamento e chiama funzione di inserimento tetramino dalla cpu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetrix_8c_adf818de7cbdc4a4cf738bfbfe3be289c}{TEST\+\_\+\+INVERTI}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} campo\+\_\+giocatore, int \mbox{\hyperlink{tetrix_8c_ae9f8d8d635995b45444dd02143e0a102}{RIGHE}}, int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}})
+\begin{DoxyCompactList}\small\item\em Funzione usata a scopo di test, inserisce 3 righe piene fino alla colonna 7. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} \mbox{\hyperlink{tetrix_8c_a44c9af5961ed406f47d941c3666c3142}{Controlla\+\_\+vittoria}} (int punteggio\+\_\+1, int punteggio\+\_\+2, int turno)
 \begin{DoxyCompactList}\small\item\em Riceve i punteggi di uno o due giocatori e verifica se uno dei due ha vinto. controlla anche i tetramini disponibili perchè è una condizione di vittoria. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{tetrix_8c_a96526f8643da2c5248062e5d2832f069}{test}} (\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}} piano, int \mbox{\hyperlink{tetrix_8c_ae9f8d8d635995b45444dd02143e0a102}{RIGHE}}, int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}})
@@ -105,7 +119,13 @@ const int \mbox{\hyperlink{tetrix_8c_ae45bf4c0e6b1d99fc99e157f74cb1ea0}{COLONNE}
 \mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} \mbox{\hyperlink{tetrix_8c_a41c911f3da02a829ac482dd61c0d8528}{Perdita\+\_\+uscita\+\_\+campo}} = \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa1e095cc966dbecf6a0d8aad75348d1a}{FALSE}}
 \begin{DoxyCompactList}\small\item\em Definisco variabili globali per l\textquotesingle{}errore di uscire dalle righe colonne Uguale a TRUE quando un giocatore esce dal campo e quindi dovrà perdere la partita. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} \mbox{\hyperlink{tetrix_8c_a051ce5d94ece76dfba76cd03264c2486}{inverti\+\_\+campo}} = \mbox{\hyperlink{tetrix_8c_a3c5c82810d69281c45ae525b29779848aa1e095cc966dbecf6a0d8aad75348d1a}{FALSE}}
-\begin{DoxyCompactList}\small\item\em Definisco una variabile globale per il bonus da 3 punti o + per il multiplayer Uguale a TRUE quando uno dei due giocatori cancella 3 righe o + contemporanamente. Inverto quindi il campo dell\textquotesingle{}avversario. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Definisco una variabile globale per il bonus da 3 punti o + per il multiplayer Uguale a TRUE quando uno dei due giocatori cancella 3 righe o + contemporanamente. Inverto quindi il campo dell\textquotesingle{}avversario. \end{DoxyCompactList}\item 
+int $\ast$ \mbox{\hyperlink{tetrix_8c_a66fec582ecf5254d8ea156495e2e509a}{mosse\+\_\+tetramino}} \mbox{[}5\mbox{]} = \{\mbox{\hyperlink{tetramini_8h_a486a6c33397876c16f1eed6ee6db9a6e}{I\+\_\+}},\mbox{\hyperlink{tetramini_8h_ababe806de57c7e08be051e69f74aa3be}{O\+\_\+}},\mbox{\hyperlink{tetramini_8h_ababe806de57c7e08be051e69f74aa3be}{O\+\_\+}},\mbox{\hyperlink{tetramini_8h_a486a6c33397876c16f1eed6ee6db9a6e}{I\+\_\+}},\mbox{\hyperlink{tetramini_8h_ababe806de57c7e08be051e69f74aa3be}{O\+\_\+}}\}
+\begin{DoxyCompactList}\small\item\em Sequenza di mosse predefinita della cpu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetrix_8c_aa16c627065a844ca6e9f953412930776}{mosse\+\_\+colonna}} \mbox{[}5\mbox{]} = \{0,4,6,0,8\}
+\begin{DoxyCompactList}\small\item\em Sequenza di scelta colonna predefinita della cpu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetrix_8c_a534d073608b5a61dc164f21df5cb8c7b}{mossa\+\_\+numero}} = 0
+\begin{DoxyCompactList}\small\item\em indica a quale mossa predefinita è arrivata la CPU \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -212,6 +232,10 @@ MULTI\+\_\+\+PLAYER&Quando la modalità selezionata è multigiocatore \\
 NOT\+\_\+\+SELECTED&Quando la modalità non è stata selezionata \\
 \hline
 
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CPU\_PLAYER@{CPU\_PLAYER}!tetrix.c@{tetrix.c}}\index{tetrix.c@{tetrix.c}!CPU\_PLAYER@{CPU\_PLAYER}}}\mbox{\Hypertarget{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faa537108fa956a460fcb193c4e6416551e}\label{tetrix_8c_a62f731b0931d5118f6d2d1fa92f6f0faa537108fa956a460fcb193c4e6416551e}} 
+CPU\+\_\+\+PLAYER&Quando la modalità è CPU vs PLAYER \\
+\hline
+
 \end{DoxyEnumFields}
 \mbox{\Hypertarget{tetrix_8c_aacae98a513bf46f84ca1f3554bae431b}\label{tetrix_8c_aacae98a513bf46f84ca1f3554bae431b}} 
 \index{tetrix.c@{tetrix.c}!riquadro@{riquadro}}
@@ -308,6 +332,39 @@ Riceve i punteggi di uno o due giocatori e verifica se uno dei due ha vinto. con
 \begin{DoxyReturn}{Returns}
 bool\+\_\+t ritorna il valore TRUE se uno dei giocatori vince, FALSE se non c\textquotesingle{}è una vittoria 
 \end{DoxyReturn}
+\mbox{\Hypertarget{tetrix_8c_a50e68327f7ef40b1c9100aaa30d953cf}\label{tetrix_8c_a50e68327f7ef40b1c9100aaa30d953cf}} 
+\index{tetrix.c@{tetrix.c}!controllo\_verticale@{controllo\_verticale}}
+\index{controllo\_verticale@{controllo\_verticale}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{controllo\_verticale()}{controllo\_verticale()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} controllo\+\_\+verticale (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{campo\+\_\+cpu,  }\item[{int}]{colonna,  }\item[{int}]{riga }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tetrix_8c_ab3f8f66eb2a718d9bfcf6c92a9c9a6b3}\label{tetrix_8c_ab3f8f66eb2a718d9bfcf6c92a9c9a6b3}} 
+\index{tetrix.c@{tetrix.c}!Cpu\_colonna@{Cpu\_colonna}}
+\index{Cpu\_colonna@{Cpu\_colonna}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{Cpu\_colonna()}{Cpu\_colonna()}}
+{\footnotesize\ttfamily void Cpu\+\_\+colonna (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{campo\+\_\+cpu,  }\item[{int}]{RIGHE,  }\item[{int}]{COLONNE }\end{DoxyParamCaption})}
+
+
+
+Funzione usata dalla cpu per inserire il tetramino, molte volte inserisce i tetramini secondo questo ordine. 
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{tetrix_8c_a66fec582ecf5254d8ea156495e2e509a}{mosse\+\_\+tetramino}} in determinate colonne 
+
+\mbox{\hyperlink{tetrix_8c_aa16c627065a844ca6e9f953412930776}{mosse\+\_\+colonna}}. Alcune volte (il 12 per cento delle volte) inserisce i tetramini casualmente.
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em campo\+\_\+cpu} & punta al campo di gioco della CPU. \\
+\hline
+{\em RIGHE} & numero di righe del campo di gioco \\
+\hline
+{\em COLONNE} & numero di colonne del campo di gioco \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Alcune persone non piace questa formula perché utilizza i bit di ordine inferiore del numero dato da rand(), e nelle implementazioni più vecchie di numeri pseudo-\/casuali software questi erano spesso meno casuali rispetto ai bit di ordine elevato, ma su qualsiasi sistema moderno questo metodo dovrebbe andare bene.
+\end{DoxyNote}
 \mbox{\Hypertarget{tetrix_8c_a5888954e236254cc7e6ff5cffedbf90f}\label{tetrix_8c_a5888954e236254cc7e6ff5cffedbf90f}} 
 \index{tetrix.c@{tetrix.c}!init@{init}}
 \index{init@{init}!tetrix.c@{tetrix.c}}
@@ -393,6 +450,8 @@ inizializzare i campi da gioco \begin{DoxySeeAlso}{See also}
 \end{DoxySeeAlso}
 messaggio di benvenuto
 
+Controllo Vittoria dopo i 50 punti e Perdita per uscita dal campo
+
 Controllo Vittoria dopo i 50 punti e Perdita per uscita dal campo\mbox{\Hypertarget{tetrix_8c_a3db906a4d562c2e7b2e92b92849943ca}\label{tetrix_8c_a3db906a4d562c2e7b2e92b92849943ca}} 
 \index{tetrix.c@{tetrix.c}!raddoppia\_tetramini@{raddoppia\_tetramini}}
 \index{raddoppia\_tetramini@{raddoppia\_tetramini}!tetrix.c@{tetrix.c}}
@@ -403,6 +462,38 @@ Controllo Vittoria dopo i 50 punti e Perdita per uscita dal campo\mbox{\Hypertar
 
 Usata nel Multiplayer In questa modalità si avranno il doppio di pezzi a disposizione. 
 
+\mbox{\Hypertarget{tetrix_8c_a88e4f867eb8e5b012e3a4c98880bf276}\label{tetrix_8c_a88e4f867eb8e5b012e3a4c98880bf276}} 
+\index{tetrix.c@{tetrix.c}!rand50@{rand50}}
+\index{rand50@{rand50}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{rand50()}{rand50()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} rand50 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Funzione casuale che restituisce 0 o 1 con uguale probabilità 
+
+\begin{DoxyReturn}{Returns}
+bool\+\_\+t 0 o 1 al 50\% 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+La funzione rand() genererà un numero dispari o pari con uguale probabilità. 
+\end{DoxyNote}
+\mbox{\Hypertarget{tetrix_8c_a4eefadcc3b4b83e7161af6a35d00261c}\label{tetrix_8c_a4eefadcc3b4b83e7161af6a35d00261c}} 
+\index{tetrix.c@{tetrix.c}!rand75@{rand75}}
+\index{rand75@{rand75}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{rand75()}{rand75()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{tetrix_8c_aa3a317bac4a25cedbce8bdb3a0e0d42d}{bool\+\_\+t}} rand75 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Funzione casuale che restituisce 1 con 87,5\% di probabilità e 0 con 12\% di probabilità utilizzando. 
+
+\begin{DoxyReturn}{Returns}
+bool\+\_\+t restituisce 0 12 volte su 100 e il restante 1 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+la funzione rand50 genera 1 o 0 con uguale probabilità quindi 0.\+5$\ast$0.5$\ast$0.5 = 0.\+125 
+\end{DoxyNote}
 \mbox{\Hypertarget{tetrix_8c_a3fd5c682f4d1f903342251a529d0ee0e}\label{tetrix_8c_a3fd5c682f4d1f903342251a529d0ee0e}} 
 \index{tetrix.c@{tetrix.c}!rimuovi\_riga@{rimuovi\_riga}}
 \index{rimuovi\_riga@{rimuovi\_riga}!tetrix.c@{tetrix.c}}
@@ -497,6 +588,28 @@ int$\ast$ passa un puntatore che punta al primo elemento dell\textquotesingle{}a
 \begin{DoxySeeAlso}{See also}
 \mbox{\hyperlink{tetrix_8c_ac2497028945dde5abdc42fdbb5ecf2f2}{rotazione}} 
 \end{DoxySeeAlso}
+\mbox{\Hypertarget{tetrix_8c_a17eeb78930956a73025616a347045485}\label{tetrix_8c_a17eeb78930956a73025616a347045485}} 
+\index{tetrix.c@{tetrix.c}!seleziona\_CPU@{seleziona\_CPU}}
+\index{seleziona\_CPU@{seleziona\_CPU}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{seleziona\_CPU()}{seleziona\_CPU()}}
+{\footnotesize\ttfamily void seleziona\+\_\+\+CPU (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{campo\+\_\+cpu,  }\item[{int}]{RIGHE,  }\item[{int}]{COLONNE }\end{DoxyParamCaption})}
+
+
+
+funzione che simula un caricamento e chiama funzione di inserimento tetramino dalla cpu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em campo\+\_\+cpu} & punta al campo di gioco della CPU. \\
+\hline
+{\em RIGHE} & numero di righe del campo di gioco \\
+\hline
+{\em COLONNE} & numero di colonne del campo di gioco \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+il tempo di caricamento dipende dalla macchina in cui si esegue il programma. 
+\end{DoxyNote}
 \mbox{\Hypertarget{tetrix_8c_a6e65a46c4e3bacc4754e0fe0af59ede6}\label{tetrix_8c_a6e65a46c4e3bacc4754e0fe0af59ede6}} 
 \index{tetrix.c@{tetrix.c}!seleziona\_tetramino@{seleziona\_tetramino}}
 \index{seleziona\_tetramino@{seleziona\_tetramino}!tetrix.c@{tetrix.c}}
@@ -610,6 +723,43 @@ void
 \doxysubsubsection{\texorpdfstring{TEST\_INVERTI()}{TEST\_INVERTI()}}
 {\footnotesize\ttfamily void TEST\+\_\+\+INVERTI (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetrix_8c_ac5a058fd5c1d22d70656dc12dac0c2a9}{campo\+\_\+di\+\_\+gioco}}}]{campo\+\_\+giocatore,  }\item[{int}]{RIGHE,  }\item[{int}]{COLONNE }\end{DoxyParamCaption})}
 
+
+
+Funzione usata a scopo di test, inserisce 3 righe piene fino alla colonna 7. 
+
+\begin{DoxyNote}{Note}
+usata per testare l\textquotesingle{}inversione del campo avversario 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em campo\+\_\+giocatore} & campo giocatore 1 \\
+\hline
+{\em RIGHE} & numero righe campo giocatore 1, portate a -\/3 per riempire 3 righe \\
+\hline
+{\em COLONNE} & numero colonne giocatore 1 portate a -\/2 per riempore 8 colonne \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tetrix_8c_a1d973462182b0b3a20de6905eff63793}\label{tetrix_8c_a1d973462182b0b3a20de6905eff63793}} 
+\index{tetrix.c@{tetrix.c}!tetramino\_random@{tetramino\_random}}
+\index{tetramino\_random@{tetramino\_random}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{tetramino\_random()}{tetramino\_random()}}
+{\footnotesize\ttfamily int $\ast$ tetramino\+\_\+random (\begin{DoxyParamCaption}\item[{int}]{colonna\+\_\+random }\end{DoxyParamCaption})}
+
+
+
+funzione che seleziona un tetramino casuale in base alla colonna scelta. 
+
+\begin{DoxyNote}{Note}
+un tetramino I\+\_\+ orrizontale non può starci nella colonna 8 perchè và fuori dal campo. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em colonna\+\_\+random} & colonna passata dalla funzione, da 0 a 7 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int$\ast$ ritorna un puntatore ad un tetramino casuale 
+\end{DoxyReturn}
 \mbox{\Hypertarget{tetrix_8c_a8a0b7e3b055bd38e37aa36052cbc1609}\label{tetrix_8c_a8a0b7e3b055bd38e37aa36052cbc1609}} 
 \index{tetrix.c@{tetrix.c}!verifica\_occupata@{verifica\_occupata}}
 \index{verifica\_occupata@{verifica\_occupata}!tetrix.c@{tetrix.c}}
@@ -705,6 +855,36 @@ Definisco una variabile globale per il bonus da 3 punti o + per il multiplayer U
 \begin{DoxySeeAlso}{See also}
 \mbox{\hyperlink{tetrix_8c_aa11dce9cbdbceb69cc11f68db2609547}{inverti\+\_\+campo\+\_\+di\+\_\+gioco}} 
 \end{DoxySeeAlso}
+\mbox{\Hypertarget{tetrix_8c_a534d073608b5a61dc164f21df5cb8c7b}\label{tetrix_8c_a534d073608b5a61dc164f21df5cb8c7b}} 
+\index{tetrix.c@{tetrix.c}!mossa\_numero@{mossa\_numero}}
+\index{mossa\_numero@{mossa\_numero}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{mossa\_numero}{mossa\_numero}}
+{\footnotesize\ttfamily int mossa\+\_\+numero = 0}
+
+
+
+indica a quale mossa predefinita è arrivata la CPU 
+
+\mbox{\Hypertarget{tetrix_8c_aa16c627065a844ca6e9f953412930776}\label{tetrix_8c_aa16c627065a844ca6e9f953412930776}} 
+\index{tetrix.c@{tetrix.c}!mosse\_colonna@{mosse\_colonna}}
+\index{mosse\_colonna@{mosse\_colonna}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{mosse\_colonna}{mosse\_colonna}}
+{\footnotesize\ttfamily int mosse\+\_\+colonna\mbox{[}5\mbox{]} = \{0,4,6,0,8\}}
+
+
+
+Sequenza di scelta colonna predefinita della cpu. 
+
+\mbox{\Hypertarget{tetrix_8c_a66fec582ecf5254d8ea156495e2e509a}\label{tetrix_8c_a66fec582ecf5254d8ea156495e2e509a}} 
+\index{tetrix.c@{tetrix.c}!mosse\_tetramino@{mosse\_tetramino}}
+\index{mosse\_tetramino@{mosse\_tetramino}!tetrix.c@{tetrix.c}}
+\doxysubsubsection{\texorpdfstring{mosse\_tetramino}{mosse\_tetramino}}
+{\footnotesize\ttfamily int$\ast$ mosse\+\_\+tetramino\mbox{[}5\mbox{]} = \{\mbox{\hyperlink{tetramini_8h_a486a6c33397876c16f1eed6ee6db9a6e}{I\+\_\+}},\mbox{\hyperlink{tetramini_8h_ababe806de57c7e08be051e69f74aa3be}{O\+\_\+}},\mbox{\hyperlink{tetramini_8h_ababe806de57c7e08be051e69f74aa3be}{O\+\_\+}},\mbox{\hyperlink{tetramini_8h_a486a6c33397876c16f1eed6ee6db9a6e}{I\+\_\+}},\mbox{\hyperlink{tetramini_8h_ababe806de57c7e08be051e69f74aa3be}{O\+\_\+}}\}}
+
+
+
+Sequenza di mosse predefinita della cpu. 
+
 \mbox{\Hypertarget{tetrix_8c_a41c911f3da02a829ac482dd61c0d8528}\label{tetrix_8c_a41c911f3da02a829ac482dd61c0d8528}} 
 \index{tetrix.c@{tetrix.c}!Perdita\_uscita\_campo@{Perdita\_uscita\_campo}}
 \index{Perdita\_uscita\_campo@{Perdita\_uscita\_campo}!tetrix.c@{tetrix.c}}

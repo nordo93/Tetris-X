@@ -8,6 +8,7 @@ var searchData=
   ['test_5',['test',['../tetrix_8c.html#a96526f8643da2c5248062e5d2832f069',1,'tetrix.c']]],
   ['test_5finverti_6',['TEST_INVERTI',['../tetrix_8c.html#adf818de7cbdc4a4cf738bfbfe3be289c',1,'tetrix.c']]],
   ['tetramini_2eh_7',['tetramini.h',['../tetramini_8h.html',1,'']]],
-  ['tetrix_2ec_8',['tetrix.c',['../tetrix_8c.html',1,'']]],
-  ['true_9',['TRUE',['../tetrix_8c.html#a3c5c82810d69281c45ae525b29779848aa82764c3079aea4e60c80e45befbb839',1,'tetrix.c']]]
+  ['tetramino_5frandom_8',['tetramino_random',['../tetrix_8c.html#a1d973462182b0b3a20de6905eff63793',1,'tetrix.c']]],
+  ['tetrix_2ec_9',['tetrix.c',['../tetrix_8c.html',1,'']]],
+  ['true_10',['TRUE',['../tetrix_8c.html#a3c5c82810d69281c45ae525b29779848aa82764c3079aea4e60c80e45befbb839',1,'tetrix.c']]]
 ];

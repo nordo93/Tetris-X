@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vuoto_0',['VUOTO',['../tetrix_8c.html#aacae98a513bf46f84ca1f3554bae431baf9428c94346b50d578b820a28ca79855',1,'tetrix.c']]]
+  ['true_0',['TRUE',['../tetrix_8c.html#a3c5c82810d69281c45ae525b29779848aa82764c3079aea4e60c80e45befbb839',1,'tetrix.c']]]
 ];

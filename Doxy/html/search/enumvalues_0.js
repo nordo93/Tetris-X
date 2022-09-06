@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['false_0',['FALSE',['../tetrix_8c.html#a3c5c82810d69281c45ae525b29779848aa1e095cc966dbecf6a0d8aad75348d1a',1,'tetrix.c']]]
+  ['cpu_5fplayer_0',['CPU_PLAYER',['../tetrix_8c.html#a62f731b0931d5118f6d2d1fa92f6f0faa537108fa956a460fcb193c4e6416551e',1,'tetrix.c']]]
 ];

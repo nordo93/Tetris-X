@@ -2,55 +2,59 @@
 \mbox{\hyperlink{tetramini_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{1 }
-\DoxyCodeLine{39 \textcolor{preprocessor}{\#define row 15}}
-\DoxyCodeLine{41 \textcolor{preprocessor}{\#define column 10}}
-\DoxyCodeLine{43 \textcolor{preprocessor}{\#define size 4 }}
-\DoxyCodeLine{45 \textcolor{preprocessor}{\#define Punteggio\_massimo 1}}
-\DoxyCodeLine{46 }
-\DoxyCodeLine{47 \textcolor{comment}{/*}}
-\DoxyCodeLine{48 \textcolor{comment}{ * 0 = nessun blocco presente}}
-\DoxyCodeLine{49 \textcolor{comment}{ *                  \#}}
-\DoxyCodeLine{50 \textcolor{comment}{ * \# 1 = 1 bloccho  \# 2 = 2 blocchi sovrapposti}}
-\DoxyCodeLine{51 \textcolor{comment}{ *}}
-\DoxyCodeLine{52 \textcolor{comment}{ * \#            }}
-\DoxyCodeLine{53 \textcolor{comment}{ * \#                             \#}}
-\DoxyCodeLine{54 \textcolor{comment}{ * \# 3 = 3 blocchi sovrapposti   0  4 = un posto vuoto con blocco sopra                         }}
-\DoxyCodeLine{55 \textcolor{comment}{ *}}
-\DoxyCodeLine{56 \textcolor{comment}{ * \#                                                   \#}}
-\DoxyCodeLine{57 \textcolor{comment}{ * 0                                                   \#}}
-\DoxyCodeLine{58 \textcolor{comment}{ * 0 5 =due posti vuoti sovrapposti con blocco sopra   0 6 = un posto vuoto con due blocchi sopra}}
-\DoxyCodeLine{59 \textcolor{comment}{ * }}
-\DoxyCodeLine{60 \textcolor{comment}{ * \#}}
-\DoxyCodeLine{61 \textcolor{comment}{ * \#}}
-\DoxyCodeLine{62 \textcolor{comment}{ * \#}}
-\DoxyCodeLine{63 \textcolor{comment}{ * \# 7 = 4 blocchi sovrapposti}}
-\DoxyCodeLine{64 \textcolor{comment}{ */}}
-\DoxyCodeLine{65 }
-\DoxyCodeLine{71 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_ad6fc8f02b9b9dd16cbb053cb94d9d75d}{I\_free}} = 20; \textcolor{comment}{/*Indico quanti pezzi sono disponibili di I*/}}
-\DoxyCodeLine{72 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a486a6c33397876c16f1eed6ee6db9a6e}{I\_}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{1,1,1,1\};}
-\DoxyCodeLine{73 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a70bb3debf589d0e6cb018c995b9b55b7}{I\_180}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{7,0,0,0\};}
-\DoxyCodeLine{81 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_abddddcaa391b55ca521a2dd642ecd67c}{J\_free}} = 20;}
-\DoxyCodeLine{82 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_ad87da70e163fd593f54677543e410206}{J\_}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{2,1,1,0\};}
-\DoxyCodeLine{83 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_acc13d1df0c48a8feb07a5533efd2a8ff}{J\_90}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{3,5,0,0\};}
-\DoxyCodeLine{84 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_ad5f4569ab3b3091256882b93d2beae7c}{J\_180}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{4,4,2,0\};}
-\DoxyCodeLine{85 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a68d167cb3b6f4e8adbaa34c220e5d91a}{J\_270}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{1,3,0,0\};}
-\DoxyCodeLine{93 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a62a7aff152eb2b680f14719a0946b0cd}{L\_free}} = 20;}
-\DoxyCodeLine{94 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a4e55fdb7954a23a3d4225301663b5e42}{L\_}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{1,1,2,0\};}
-\DoxyCodeLine{95 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a71b2c3c341368dba402df00349b08f71}{L\_90}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{3,1,0,0\};}
-\DoxyCodeLine{96 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a9506433791b39d653329d2e43b3509ba}{L\_180}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{2,4,4,0\};}
-\DoxyCodeLine{97 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a896b7db002fccfe1fe4f9fc7c219a775}{L\_270}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{5,3,0,0\};}
-\DoxyCodeLine{102 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a6bc5b256b323182ec7dde63f1e11f7f7}{O\_free}} = 20;}
-\DoxyCodeLine{103 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_ababe806de57c7e08be051e69f74aa3be}{O\_}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{2,2,0,0\};}
-\DoxyCodeLine{109 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_aa8602cf3d17bdad9ea477d87502198f1}{S\_free}} = 20;}
-\DoxyCodeLine{110 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a6f6ed46d5320ee68c879f776fc6633f9}{S\_}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{1,2,4,0\};}
-\DoxyCodeLine{111 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_ad64bd433759655e26f3b0d937d2576ec}{S\_90}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{6,2,0,0\};}
-\DoxyCodeLine{119 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_afa13dff6dc6c64568b7d13a46631815e}{T\_free}} = 20;}
-\DoxyCodeLine{120 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_aa44c256536afa00286b5506d5f0823e2}{T\_}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{1,2,1,0\};}
-\DoxyCodeLine{121 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a5c83b710aff3e681d3db4c312c6a0b46}{T\_90}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{3,4,0,0\};}
-\DoxyCodeLine{122 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a16fdec22fb412c8aca0c79119e3651b0}{T\_180}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{4,2,4,0\};}
-\DoxyCodeLine{123 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a3616df84af6179d88eaac1e6344007ab}{T\_270}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{4,3,0,0\};}
-\DoxyCodeLine{129 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a260e6987b9e21f6b802bee83d8b5db7e}{Z\_free}} = 20;}
-\DoxyCodeLine{130 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a5c3eaa3f69b2e26e70acd0793f79b03f}{Z\_}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{4,2,1,0\};}
-\DoxyCodeLine{131 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_ac66a4244f70d4b26a6571c38fb877310}{Z\_90}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{2,6,0,0\};}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#define row 15}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#define column 10}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define size 4 }}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define Punteggio\_massimo 50}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50 \textcolor{comment}{/*}}
+\DoxyCodeLine{51 \textcolor{comment}{ * 0 = nessun blocco presente}}
+\DoxyCodeLine{52 \textcolor{comment}{ *                  \#}}
+\DoxyCodeLine{53 \textcolor{comment}{ * \# 1 = 1 bloccho  \# 2 = 2 blocchi sovrapposti}}
+\DoxyCodeLine{54 \textcolor{comment}{ *}}
+\DoxyCodeLine{55 \textcolor{comment}{ * \#            }}
+\DoxyCodeLine{56 \textcolor{comment}{ * \#                             \#}}
+\DoxyCodeLine{57 \textcolor{comment}{ * \# 3 = 3 blocchi sovrapposti   0  4 = un posto vuoto con blocco sopra                         }}
+\DoxyCodeLine{58 \textcolor{comment}{ *}}
+\DoxyCodeLine{59 \textcolor{comment}{ * \#                                                   \#}}
+\DoxyCodeLine{60 \textcolor{comment}{ * 0                                                   \#}}
+\DoxyCodeLine{61 \textcolor{comment}{ * 0 5 =due posti vuoti sovrapposti con blocco sopra   0 6 = un posto vuoto con due blocchi sopra}}
+\DoxyCodeLine{62 \textcolor{comment}{ * }}
+\DoxyCodeLine{63 \textcolor{comment}{ * \#}}
+\DoxyCodeLine{64 \textcolor{comment}{ * \#}}
+\DoxyCodeLine{65 \textcolor{comment}{ * \#}}
+\DoxyCodeLine{66 \textcolor{comment}{ * \# 7 = 4 blocchi sovrapposti}}
+\DoxyCodeLine{67 \textcolor{comment}{ */}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{74 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_ad6fc8f02b9b9dd16cbb053cb94d9d75d}{I\_free}} = 20; \textcolor{comment}{/*Indico quanti pezzi sono disponibili di I*/}}
+\DoxyCodeLine{75 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a486a6c33397876c16f1eed6ee6db9a6e}{I\_}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{1,1,1,1\};}
+\DoxyCodeLine{76 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a70bb3debf589d0e6cb018c995b9b55b7}{I\_180}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{7,0,0,0\};}
+\DoxyCodeLine{84 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_abddddcaa391b55ca521a2dd642ecd67c}{J\_free}} = 20;}
+\DoxyCodeLine{85 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_ad87da70e163fd593f54677543e410206}{J\_}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{2,1,1,0\};}
+\DoxyCodeLine{86 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_acc13d1df0c48a8feb07a5533efd2a8ff}{J\_90}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{3,5,0,0\};}
+\DoxyCodeLine{87 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_ad5f4569ab3b3091256882b93d2beae7c}{J\_180}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{4,4,2,0\};}
+\DoxyCodeLine{88 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a68d167cb3b6f4e8adbaa34c220e5d91a}{J\_270}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{1,3,0,0\};}
+\DoxyCodeLine{96 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a62a7aff152eb2b680f14719a0946b0cd}{L\_free}} = 20;}
+\DoxyCodeLine{97 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a4e55fdb7954a23a3d4225301663b5e42}{L\_}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{1,1,2,0\};}
+\DoxyCodeLine{98 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a71b2c3c341368dba402df00349b08f71}{L\_90}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{3,1,0,0\};}
+\DoxyCodeLine{99 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a9506433791b39d653329d2e43b3509ba}{L\_180}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{2,4,4,0\};}
+\DoxyCodeLine{100 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a896b7db002fccfe1fe4f9fc7c219a775}{L\_270}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{5,3,0,0\};}
+\DoxyCodeLine{105 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a6bc5b256b323182ec7dde63f1e11f7f7}{O\_free}} = 20;}
+\DoxyCodeLine{106 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_ababe806de57c7e08be051e69f74aa3be}{O\_}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{2,2,0,0\};}
+\DoxyCodeLine{112 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_aa8602cf3d17bdad9ea477d87502198f1}{S\_free}} = 20;}
+\DoxyCodeLine{113 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a6f6ed46d5320ee68c879f776fc6633f9}{S\_}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{1,2,4,0\};}
+\DoxyCodeLine{114 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_ad64bd433759655e26f3b0d937d2576ec}{S\_90}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{6,2,0,0\};}
+\DoxyCodeLine{122 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_afa13dff6dc6c64568b7d13a46631815e}{T\_free}} = 20;}
+\DoxyCodeLine{123 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_aa44c256536afa00286b5506d5f0823e2}{T\_}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{1,2,1,0\};}
+\DoxyCodeLine{124 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a5c83b710aff3e681d3db4c312c6a0b46}{T\_90}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{3,4,0,0\};}
+\DoxyCodeLine{125 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a16fdec22fb412c8aca0c79119e3651b0}{T\_180}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{4,2,4,0\};}
+\DoxyCodeLine{126 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a3616df84af6179d88eaac1e6344007ab}{T\_270}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{4,3,0,0\};}
+\DoxyCodeLine{132 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a260e6987b9e21f6b802bee83d8b5db7e}{Z\_free}} = 20;}
+\DoxyCodeLine{133 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_a5c3eaa3f69b2e26e70acd0793f79b03f}{Z\_}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{4,2,1,0\};}
+\DoxyCodeLine{134 \textcolor{keywordtype}{int} \mbox{\hyperlink{tetramini_8h_ac66a4244f70d4b26a6571c38fb877310}{Z\_90}}[\mbox{\hyperlink{tetramini_8h_aa23c661441688350614bd6a350d2b6ff}{size}}]=\{2,6,0,0\};}
 
 \end{DoxyCode}
