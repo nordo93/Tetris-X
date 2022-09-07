@@ -1287,7 +1287,7 @@ if(giocatori == SINGLE_PLAYER)
 	/*Perdita per uscita dal campo*/
 	if(Perdita_uscita_campo != FALSE){
       vittoria = TRUE;
-      printf("HAI PERSO! Sei uscito dal campo arrivederci!\n"); 
+      printf("HAI PERSO! Sei uscito dal campo arrivederci!\n");
       }
 	
 	if(vittoria != FALSE)
@@ -1442,5 +1442,8 @@ if(giocatori == CPU_PLAYER)
 }  
 
 } while (!fine_gioco);
+
+while (getchar() != '\n') /*premi invio per uscire dal gioco*/
+  ;
   return 0;
 }
