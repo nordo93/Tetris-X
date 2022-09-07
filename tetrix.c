@@ -150,12 +150,14 @@ void stampa_anteprima(int colonna_scelta_dal_giocatore, int * tetramino){
  * @return ritrona di nuovo contatto se non ci sono errori, sennò ritorna -1
  * @attention guardare note sotto, aggiungo questa condizione perchè in caso di tetramini come l a 90 gradi il primo valore del vettore è più alto del secondo
  */
-int verifica_uscita(int *p, int righe_rimanenti, int colonna, int contatto){
+int verifica_uscita(campo_di_gioco piano,int *p, int righe_rimanenti, int colonna, int contatto){
 	int i;
     int sottrazione_riga = 0;
 	/*Ciclo for che analizza l'array del tetramino passato dalla funzione
 	* Verifico se il tetramino ha un valore diverso da 0, quindi se occupa una colonna
 	*/
+    if(contatto <= 0)
+	  printf("\nDIO PORCO DIO PIPPO PAPERINO\n\n");
     for(i=0; i < size; i++){
 
       if(*p != 0)
@@ -166,15 +168,28 @@ int verifica_uscita(int *p, int righe_rimanenti, int colonna, int contatto){
 	  Perdita_uscita_campo = TRUE;
       return -1;
 	}
-
+    
+	/**
+	 * @brief la variabile contatto indica dove il tetramino comincierà ad essere disegnato, quindi se quella casella è occupata:
+	 * vuol dire che il tetramino è appoggiato ad un altro e quindi il numero di righe che occupa è minore. esempio:
+	 * OUTPUT:\n
+	 * X  X  _  TETRAMINO NON APPOGIATO AD UN ALTRO \n
+     * _  X  _ \n
+     * _  X  _ \n
+	 * X  X  X \n
+	 * */
 	if(*p == 1 && sottrazione_riga == 0) /** @note if(*p == 1 && sottrazione_riga == 0)*/
 	  sottrazione_riga = 1;
-      else if(*p == 2 || *p == 4 ) 
+      else if(*p == 2 || *p == 4 && piano[contatto] != OCCUPATO ) 
 	    sottrazione_riga = 2;
-		else if(*p == 3 || *p == 5 || *p == 6)
+		else if((*p == 3 || *p == 5 || *p == 6) && piano[contatto] != OCCUPATO )
 		  sottrazione_riga = 3;
 		  else if(*p == 7)
 		    sottrazione_riga = 4;
+			else if(*p == 4 || *p == 5 && piano[contatto] != VUOTO)
+			  sottrazione_riga = 1;
+			  else if(*p == 6 && piano[contatto] != VUOTO)
+			    sottrazione_riga = 2;
     p++;
 	}
 
@@ -287,7 +302,7 @@ int contatto (campo_di_gioco piano, int scelta_colonna, int *p){
         if(found == FALSE)
           riga++;
 	}
-    contatto = verifica_uscita(p,riga,scelta_colonna, contatto);
+    contatto = verifica_uscita(piano,p,riga,scelta_colonna, contatto);
 	p = inizio; /*ritorno all'inizio del mio tetramino*/
 	if(found == FALSE)
 	return contatto - size; /*tolgo size perchè ora non mi serve più per verificare se cella occupata*/
