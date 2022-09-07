@@ -180,16 +180,18 @@ int verifica_uscita(campo_di_gioco piano,int *p, int righe_rimanenti, int colonn
 	 * */
 	if(*p == 1 && sottrazione_riga == 0) /** @note if(*p == 1 && sottrazione_riga == 0)*/
 	  sottrazione_riga = 1;
-      else if(*p == 2 || *p == 4 && piano[contatto] != OCCUPATO ) 
+      else if((*p == 2 || *p == 4) && piano[contatto] != OCCUPATO ) 
 	    sottrazione_riga = 2;
-		else if((*p == 3 || *p == 5 || *p == 6) && piano[contatto] != OCCUPATO )
-		  sottrazione_riga = 3;
+		else if((*p == 3 || *p == 5 || *p == 6) && piano[contatto - COLONNE] != OCCUPATO )
+ 		  sottrazione_riga = 3;
 		  else if(*p == 7)
 		    sottrazione_riga = 4;
-			else if(*p == 4 || *p == 5 && piano[contatto] != VUOTO)
+			else if((*p == 4 || *p == 5) && piano[contatto - COLONNE] != VUOTO )
 			  sottrazione_riga = 1;
 			  else if(*p == 6 && piano[contatto] != VUOTO)
 			    sottrazione_riga = 2;
+				else if(*p == 4 && piano[contatto] != VUOTO)
+				  sottrazione_riga = 1;
     p++;
 	}
 
