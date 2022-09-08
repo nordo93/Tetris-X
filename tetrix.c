@@ -180,7 +180,7 @@ int verifica_uscita(campo_di_gioco piano,int *p, int righe_rimanenti, int colonn
 	 * */
 	if(*p == 1 && sottrazione_riga == 0) /** @note if(*p == 1 && sottrazione_riga == 0)*/
 	  sottrazione_riga = 1;
-	  else if(( *p == 2 && *(p - 1) == 4 ) || ( *p == 4 && *(p - 1) == 2 ) && piano[contatto + 2] == OCCUPATO ) /*Per il caso di t_180 appoggiato*/
+	  else if(( *p == 2 && *(p - 1) == 4 && *(p - 2) != 4 ) || ( *p == 4 && *(p - 1) == 2 ) && piano[contatto + 2] == OCCUPATO ) /*Per il caso di t_180 appoggiato , *(p - 2) != 4 aggiunto per l_180 su superfice piana*/
 	    sottrazione_riga = 1;
 	    else if(( *p == 3 && *(p - 1) == 4 ) && piano[contatto] == OCCUPATO ) /*Per il caso di t_270 appoggiato*/
 	      sottrazione_riga = 2;
@@ -188,20 +188,24 @@ int verifica_uscita(campo_di_gioco piano,int *p, int righe_rimanenti, int colonn
 	        sottrazione_riga = 2;
 	        else if(( *p == 4 && *(p - 1) == 3 ) && piano[contatto] != OCCUPATO ) /*Per il caso di t_270*/
 	          sottrazione_riga = 3;
-              else if((*p == 2 || *p == 4) && piano[contatto] != OCCUPATO ) 
+              else if(((*p == 2 || *p == 4) && *(p - 1) != 6 ) && piano[contatto] != OCCUPATO ) /*&& *(p - 1) == 6  per s verticale che occcupa 3 spazi*/
 	            sottrazione_riga = 2;
-		        else if(( *p == 5 && *(p - 1) == 3 ) && piano[contatto - COLONNE + 1] == OCCUPATO ) /*Per J_180 appoggiato*/
+		        else if(( *p == 5 && *(p - 1) == 3 ) && piano[contatto - COLONNE + 1] == OCCUPATO ) /*Per J_180 appoggiato e j_90*/
 		          sottrazione_riga = 1;
-		          else if((*p == 3 || *p == 5 || *p == 6) && piano[contatto - COLONNE] != OCCUPATO )
- 		            sottrazione_riga = 3;
-		            else if(*p == 7)
-		              sottrazione_riga = 4;
-			          else if((*p == 4 || *p == 5) && piano[contatto - COLONNE] != VUOTO )
-			            sottrazione_riga = 1;
-			            else if(*p == 6 && piano[contatto] != VUOTO)
-			              sottrazione_riga = 2;
-				          else if(*p == 4 && piano[contatto] != VUOTO) /*per t_180 a sx*/
+				  else if((*p == 6 && *(p - 1) == 2) && piano[contatto + 1] == OCCUPATO) /*aggiunto per z_90 verticale che poggia su tetramino*/
+				    sottrazione_riga = 2;
+		            else if((*p == 3 || *p == 5 || *p == 6) && piano[contatto - COLONNE] != OCCUPATO )
+ 		              sottrazione_riga = 3;
+		              else if(*p == 7)
+		                sottrazione_riga = 4;
+			            else if((*p == 4 || *p == 5) && piano[contatto - COLONNE] != VUOTO )
+			              sottrazione_riga = 1;
+			              else if(*p == 6 && piano[contatto] != VUOTO)
+			                sottrazione_riga = 2;
+				            else if(*p == 4 && piano[contatto] != VUOTO) /*per t_180 a sx*/
 				            sottrazione_riga = 1;
+							  else if((*p == 2 && *(p - 1) == 6 ) && piano[contatto] == OCCUPATO)
+ 							    sottrazione_riga = 2;
 				  
     p++;
 	}
