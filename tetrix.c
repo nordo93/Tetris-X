@@ -157,7 +157,7 @@ int verifica_uscita(campo_di_gioco piano,int *p, int righe_rimanenti, int colonn
 	* Verifico se il tetramino ha un valore diverso da 0, quindi se occupa una colonna
 	*/
     if(contatto <= 0)
-	  printf("\nDIO PORCO DIO PIPPO PAPERINO\n\n");
+	  printf("");
     for(i=0; i < size; i++){
 
       if(*p != 0)
@@ -782,10 +782,12 @@ void rimuovi_riga(campo_di_gioco piano, int riga_punto, int colonna){
     }
 
     /*considero colonna per colonna e sposto l'array indietro di una posizione*/
-    
+ 
 	for (c=0; c<COLONNE; c++) {
-      for (r=riga_punto-1; r>-1; r--) {
+      for (r=riga_punto-1; r>-2; r--) {
         riquadro_t riquadro_sotto = piano[r*COLONNE + c]; /*Questo passaggio mi permette di memorizzare il valore della riquadro sopra*/
+		if(r == - 1) /*Quando l'ultima riga presenta dei riquadri occupati, per spostarli nella riga sottostanze e azzerare l'ultima metto questa condizione*/
+		  riquadro_sotto = VUOTO;
         piano[(r+1)*COLONNE + c] = riquadro_sotto;
                 
 		}
