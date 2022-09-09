@@ -1,20 +1,18 @@
 /**
  * @file tetrix.c
  * @author Alessandro Cecchin (859869@stud.unive.it)
- * @brief Include il manin e tutte le funzioni
+ * @brief Include il main e tutte le funzioni necessarie allo svolgimento della partita.
  * @version 0.9.1
  * @date 2022-08-19
  * 
- * @copyright Copyright (c) 2022
- * 
+ * @copyright Copyright © 2007 Free Software Foundation, Inc. <https://fsf.org/>
  * */
+
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-/**
- * @include tetramini.h @see tetramini.h
- */
+/** @include tetramini.h @see tetramini.h*/
 #include "tetramini.h"
 
 /** @brief Definisco delle costanti per il numero di righe e colonne*/
@@ -23,35 +21,36 @@ const int COLONNE = column;
 
 /** @brief Definisco un enumeratore per il numero di giocatori*/
 typedef enum giocatori
-{
-    SINGLE_PLAYER = 1,  /**< Quando la modalità selezionata è giocatore singolo*/
-    MULTI_PLAYER = 2,   /**< Quando la modalità selezionata è multigiocatore*/
-    NOT_SELECTED = -99,  /**< Quando la modalità non è stata selezionata*/
-	CPU_PLAYER = 3       /**< Quando la modalità è CPU vs PLAYER*/
+{  
+  SINGLE_PLAYER = 1,  /**< Quando la modalità selezionata è giocatore singolo*/
+  MULTI_PLAYER = 2,   /**< Quando la modalità selezionata è multigiocatore*/
+  NOT_SELECTED = -99,  /**< Quando la modalità non è stata selezionata*/
+  CPU_PLAYER = 3       /**< Quando la modalità è CPU vs PLAYER*/
 } giocatori_t;
 
 /** @brief  Definisco un enumeratore per sapere lo stato della casella del piano di gioco*/
 typedef enum riquadro
 { 
-    VUOTO,    /**< se la casella non contiene un pezzo di tetramino*/
-    OCCUPATO  /**< quando la casella contiene un pezzo del tetramino*/
+  VUOTO,    /**< se la casella non contiene un pezzo di tetramino*/
+  OCCUPATO  /**< quando la casella contiene un pezzo del tetramino*/
 } riquadro_t;
 
-/** @brief campo_di_gioco e' un puntatore che punt al campo di gioco */
-typedef riquadro_t *campo_di_gioco;
 /** @brief uso questo enum per supportare il tipo bool anche su standard C89*/
 typedef enum bool_e
 {
-    FALSE = 0,  /**< FALSE = 0*/
-    TRUE = 1    /**< TRUE = 1*/
+  FALSE = 0,  /**< FALSE = 0*/
+  TRUE = 1    /**< TRUE = 1*/
 } bool_t;
 
-/** @brief Definisco variabili globali per l'errore di uscire dalle righe colonne
+/** @brief campo_di_gioco e' un puntatore che puntera poi al campo di gioco*/
+typedef riquadro_t *campo_di_gioco;
+
+/** @brief Definisco variabile globale per verificare uscita dal campo (sia da righe che colonne)
 *   Uguale a TRUE quando un giocatore esce dal campo e quindi dovrà perdere la partita. */
 bool_t Perdita_uscita_campo = FALSE;
 
-/** @brief Definisco una variabile globale per il bonus da 3 punti o + per il multiplayer
-*   Uguale a TRUE quando uno dei due giocatori cancella 3 righe o + contemporanamente.
+/** @brief Definisco una variabile globale per il bonus da 3 punti o piu' per il multiplayer
+*   Uguale a TRUE quando uno dei due giocatori cancella 3 righe o piu' contemporanamente.
 *   Inverto quindi il campo dell'avversario @see inverti_campo_di_gioco*/
 bool_t inverti_campo = FALSE;
 
@@ -63,12 +62,12 @@ bool_t inverti_campo = FALSE;
  * @param colonna viene passato il numero di colonne del campo
  */
 void init(campo_di_gioco piano, int riga, int colonna) {
-    int r,c;
-    for (r=0; r<riga; r++) {
-        for (c=0; c<colonna; c++) {
-            piano[r*colonna + c] = VUOTO;
-        }
+  int r,c;
+  for (r=0; r<riga; r++){
+    for (c=0; c<colonna; c++){
+      piano[r*colonna + c] = VUOTO; /*il campo da gioco è grande 10 * 15 caselle = 149 spazi*/ 
     }
+  }
 }
 
 /**
@@ -77,67 +76,72 @@ void init(campo_di_gioco piano, int riga, int colonna) {
  * @param colonna_scelta_dal_giocatore la colonna selezionata dal giocatore viene passata alla funzione
  */
 void stampa_anteprima(int colonna_scelta_dal_giocatore, int * tetramino){
-	
-	printf("-ANTEPRIMA scelta 1-\n");
+  printf("-ANTEPRIMA scelta 1-\n");
 
-	campo_di_gioco campo_tetramino = (campo_di_gioco) malloc(size*size*sizeof(riquadro_t));
-	int fondo_anteprima = (size*size) - (size); /*sono 16 caselle in tutto, un quadrato 4 x 4 , il fondo della prima colonna è il 12 quadrato quindi 4 x 4 - 4*/
-	init(campo_tetramino, 4, 4);
-	int i,r,c;
-	/*Ciclo for che analizza l'array del tetramino passato dalla funzione
-	* Imposta a OCCUPATO o VOUTO il campo_tetramino in base al numero passato. guardare README.md per le regole di costruzione*/
-    for (i=0; i<size; i++) {
-            if(*tetramino == 6){
-            		campo_tetramino[fondo_anteprima + i] = VUOTO;
-            		campo_tetramino[fondo_anteprima + i - size] = OCCUPATO;
-					campo_tetramino[fondo_anteprima + i - (size * 2)] = OCCUPATO;
+  campo_di_gioco campo_tetramino = (campo_di_gioco) malloc(size*size*sizeof(riquadro_t));
+  int fondo_anteprima = (size*size) - (size); /*sono 16 caselle in tutto, un quadrato 4 x 4 , il fondo della prima colonna è il 12 quadrato quindi 4 x 4 - 4*/
+  init(campo_tetramino, 4, 4);
+  int i,r,c;
+  /*Ciclo for che analizza l'array del tetramino passato dalla funzione
+  * Imposta a OCCUPATO o VOUTO il campo_tetramino in base al numero passato. guardare README.md per le regole di costruzione*/
+  for (i=0; i<size; i++) {
+    if(*tetramino == 6){
+      campo_tetramino[fondo_anteprima + i] = VUOTO;
+      campo_tetramino[fondo_anteprima + i - size] = OCCUPATO;
+	  campo_tetramino[fondo_anteprima + i - (size * 2)] = OCCUPATO;
+	  }
+	  else if(*tetramino == 2){
+	    campo_tetramino[fondo_anteprima + i] = OCCUPATO;
+        campo_tetramino[fondo_anteprima + i - size] = OCCUPATO;
+		}
+		else if(*tetramino == 0){
+		  }
+		  else if(*tetramino == 3){
+		    campo_tetramino[fondo_anteprima + i] = OCCUPATO;
+		    campo_tetramino[fondo_anteprima + i - size] = OCCUPATO;
+		    campo_tetramino[fondo_anteprima + i - (size * 2)] = OCCUPATO;
+		    }
+		    else if(*tetramino == 4){
+		      campo_tetramino[fondo_anteprima + i - size] = OCCUPATO;
+		      }
+			  else if(*tetramino == 5){
+			    campo_tetramino[fondo_anteprima + i - (size * 2)] = OCCUPATO;
 				}
-				  else if(*tetramino == 2){
-					campo_tetramino[fondo_anteprima + i] = OCCUPATO;
-            		campo_tetramino[fondo_anteprima + i - size] = OCCUPATO;
+				else if(*tetramino == 7){
+				  campo_tetramino[fondo_anteprima + i] = OCCUPATO;
+				  campo_tetramino[fondo_anteprima + i - size] = OCCUPATO;
+				  campo_tetramino[fondo_anteprima + i - (size * 2)] = OCCUPATO;
+				  campo_tetramino[fondo_anteprima + i - (size * 3)] = OCCUPATO;
 				  }
-				    else if(*tetramino == 0){
+				  else if(*tetramino == 1){
+					campo_tetramino[fondo_anteprima + i] = OCCUPATO;
 					}
-					  else if(*tetramino == 3){
-					  campo_tetramino[fondo_anteprima + i] = OCCUPATO;
-				      campo_tetramino[fondo_anteprima + i - size] = OCCUPATO;
-				      campo_tetramino[fondo_anteprima + i - (size * 2)] = OCCUPATO;
-					  }
-					    else if(*tetramino == 4){
-				        campo_tetramino[fondo_anteprima + i - size] = OCCUPATO;
-					    }
-					      else if(*tetramino == 5){
-				          campo_tetramino[fondo_anteprima + i - (size * 2)] = OCCUPATO;
-					      }
-						    else if(*tetramino == 7){
-				            campo_tetramino[fondo_anteprima + i] = OCCUPATO;
-				            campo_tetramino[fondo_anteprima + i - size] = OCCUPATO;
-				            campo_tetramino[fondo_anteprima + i - (size * 2)] = OCCUPATO;
-							campo_tetramino[fondo_anteprima + i - (size * 3)] = OCCUPATO;
-					        }
-					        else if(*tetramino == 1){
-					          campo_tetramino[fondo_anteprima + i] = OCCUPATO;
-							}
-		tetramino++;
-        }
+  tetramino++;
+  }
         
-        /*Ciclo for per stampare a video l'antetprima, simile alla funzione stampa*/
-		for (r=0; r<size; r++) {
-          for (c=0; c<size; c++) {
-            riquadro_t riquadro = campo_tetramino[r*size + c];
-            if (riquadro==VUOTO)
-                printf(" _ ");
-            else if (riquadro==OCCUPATO)
-                printf(" X ");
-            else
-                printf(" E "); /*E= error Segno eventuali valori diversi da OCCUPATO e VUOTO*/
-           }
-        /*vado a capo per creare la griglia*/
-        printf("\n");
-        }
-        for(i = colonna_scelta_dal_giocatore; i < colonna_scelta_dal_giocatore + size; i++)
-         printf(" %d ", i);
-        printf("\n");
+  /*Ciclo for per stampare a video l'antetprima, simile alla funzione stampa*/
+  for (r=0; r<size; r++) {
+    for (c=0; c<size; c++) {
+      riquadro_t riquadro = campo_tetramino[r*size + c];
+      if (riquadro==VUOTO)
+        printf(" _ ");
+        else if (riquadro==OCCUPATO)
+          printf(" X ");
+          else
+            printf(" E "); /*E= error Segno eventuali valori diversi da OCCUPATO e VUOTO*/
+    }
+	/*vado a capo per creare la griglia*/
+  printf("\n");
+  }
+  /** @brief stampo un anteprima delle colonne su cui scende il tetramino esempio:\n
+   * OUTPUT:\n
+   *  _  _  _  _ \n
+   *  X  _  _  _ \n
+   *  X  X  X  _ \n
+   *  6  7  8  9\n*/
+  for(i = colonna_scelta_dal_giocatore; i < colonna_scelta_dal_giocatore + size; i++)
+    printf(" %d ", i);
+  printf("\n");
 }
 
 /**
@@ -151,23 +155,23 @@ void stampa_anteprima(int colonna_scelta_dal_giocatore, int * tetramino){
  * @attention guardare note sotto, aggiungo questa condizione perchè in caso di tetramini come l a 90 gradi il primo valore del vettore è più alto del secondo
  */
 int verifica_uscita(campo_di_gioco piano,int *p, int righe_rimanenti, int colonna, int contatto){
-	int i;
-    int sottrazione_riga = 0;
-	/*Ciclo for che analizza l'array del tetramino passato dalla funzione
-	* Verifico se il tetramino ha un valore diverso da 0, quindi se occupa una colonna
-	*/
-    if(contatto <= 0)
-	  printf("");
-    for(i=0; i < size; i++){
+  int i;
+  int sottrazione_riga = 0;
+  /*Ciclo for che analizza l'array del tetramino passato dalla funzione
+  * Verifico se il tetramino ha un valore diverso da 0, quindi se occupa una colonna
+  */
+  if(contatto <= 0)
+    printf("");
+  for(i=0; i < size; i++){
 
-      if(*p != 0)
-        colonna++;  /*se il puntatore del tetramino non è zero allora vuol dire che occupera anche la prossima colonna*/
+    if(*p != 0)
+      colonna++;  /*se il puntatore del tetramino non è zero allora vuol dire che occupera anche la prossima colonna*/
 
-	  /** @see @param Perdita_uscita_campo: quando è a TRUE indica l'uscita dal campo e il giocatore perde*/
-      if(colonna > COLONNE || colonna < 0){
-	  Perdita_uscita_campo = TRUE;
+  /** @see @param Perdita_uscita_campo: quando è a TRUE indica l'uscita dal campo e il giocatore perde*/
+    if(colonna > COLONNE || colonna < 0){
+      Perdita_uscita_campo = TRUE;
       return -1;
-	}
+	  }
     
 	/**
 	 * @brief la variabile contatto indica dove il tetramino comincierà ad essere disegnato, quindi se quella casella è occupata:
@@ -178,7 +182,7 @@ int verifica_uscita(campo_di_gioco piano,int *p, int righe_rimanenti, int colonn
      * _  X  _ \n
 	 * X  X  X \n
 	 * */
-	if(*p == 1 && sottrazione_riga == 0) /** @note if(*p == 1 && sottrazione_riga == 0)*/
+    if(*p == 1 && sottrazione_riga == 0) /** @note if(*p == 1 && sottrazione_riga == 0)*/
 	  sottrazione_riga = 1;
 	  else if(( *p == 2 && *(p - 1) == 4 && *(p - 2) != 4 ) || ( *p == 4 && *(p - 1) == 2 ) && piano[contatto + 2] == OCCUPATO ) /*Per il caso di t_180 appoggiato , *(p - 2) != 4 aggiunto per l_180 su superfice piana*/
 	    sottrazione_riga = 1;
@@ -210,14 +214,14 @@ int verifica_uscita(campo_di_gioco piano,int *p, int righe_rimanenti, int colonn
     p++;
 	}
 
-    righe_rimanenti = righe_rimanenti - sottrazione_riga; /*lo faccio alla fine del ciclo perchè un tetramino non occupa sempre 4 righe ma in base a quanto è alto*/
+  righe_rimanenti = righe_rimanenti - sottrazione_riga; /*lo faccio alla fine del ciclo perchè un tetramino non occupa sempre 4 righe ma in base a quanto è alto*/
 
-    if(righe_rimanenti > RIGHE || righe_rimanenti < 0){
-	  Perdita_uscita_campo = TRUE;
-      return -1;
+  if(righe_rimanenti > RIGHE || righe_rimanenti < 0){
+    Perdita_uscita_campo = TRUE;
+    return -1;
 	}
 
-    return contatto;
+  return contatto;
 }
 
 
@@ -234,7 +238,7 @@ bool_t verifica_occupata (campo_di_gioco piano, int scelta, int * p){
   int i;
   bool_t occupata = FALSE;
   for(i = 0; i<size; i++){
-     if(*p == 6){
+    if(*p == 6){
 	  if(piano[scelta - COLONNE] == OCCUPATO || piano[scelta - (COLONNE * 2)] == OCCUPATO) occupata = TRUE;
 	  }
 	  else if(*p == 2){
@@ -278,54 +282,50 @@ bool_t verifica_occupata (campo_di_gioco piano, int scelta, int * p){
  */
 int contatto (campo_di_gioco piano, int scelta_colonna, int *p){
 	
-	int * inizio = p; /*salvo l'inizio del mio tetramino*/
-	int c, i;
-    int riga = 0; /*tengo conto della riga a cui siamo arrvati*/
-	int contatto = (RIGHE*COLONNE) - (COLONNE- scelta_colonna) + size; /*aggiungo size perchè se presente un sigolo blocco occupato a fine corsa non lo vede*/
-	bool_t found = FALSE;
-	bool_t contatto_minore = FALSE; /*Questa variabile mi serve per il caso in cui il tetramino si appoggi ma il prossimo blocco invece no*/
-    /*contatto è uguale all'ultimo numero della colonna, quindi se colonna 2 allora sara 142 il numero contatto*/
-	for (c = scelta_colonna; c < contatto; ){ /*ciao*/
-		for(i = 0; i < size ; i++){
-		  if(piano[c + i] == OCCUPATO && *p > 0 && contatto_minore == FALSE){
-		    printf("trovato contatto a : %d\n", c + i);  /*printf inutile, lo tengo per eventuali errori nel codice*/
-        	  if(*p == 4 || *p == 6){ /*Verifico se sotto il tetramino c'è qualcosa su cui appoggiare*/
-                contatto = c;
-				
-                found = TRUE;
-                }
-      	  	    else if (*p == 5 && found == FALSE ){ /* Inserisco anche la verifica che sotto il tetramino ci sia un pezzo,  
-																				  dove deve appoggiarsi. dovrò fare così anche con P = 4?*/
-                  contatto = c + COLONNE;
+  int * inizio = p; /*salvo l'inizio del mio tetramino*/
+  int c, i;
+  int riga = 0; /*tengo conto della riga a cui siamo arrvati*/
+  int contatto = (RIGHE*COLONNE) - (COLONNE- scelta_colonna) + size; /*aggiungo size perchè se presente un sigolo blocco occupato a fine corsa non lo vede*/
+  bool_t found = FALSE;
+  bool_t contatto_minore = FALSE; /*Questa variabile mi serve per il caso in cui il tetramino si appoggi ma il prossimo blocco invece no*/
+  /*contatto è uguale all'ultimo numero della colonna, quindi se colonna 2 allora sara 142 il numero contatto*/
+  for (c = scelta_colonna; c < contatto; ){ /*ciao*/
+    for(i = 0; i < size ; i++){
+      if(piano[c + i] == OCCUPATO && *p > 0 && contatto_minore == FALSE){
+        printf("trovato contatto a : %d\n", c + i);  /*printf inutile, lo tengo per eventuali errori nel codice*/
+        if(*p == 4 || *p == 6){ /*Verifico se sotto il tetramino c'è qualcosa su cui appoggiare*/
+          contatto = c;
+		  found = TRUE;
+          }
+      	  else if (*p == 5 && found == FALSE ){
+		    contatto = c + COLONNE;
+            found = TRUE;
+              }
+              else if(*inizio == 7){
+			  contatto = c - COLONNE;
+			  found = TRUE;
+			    }
+        	    else if (*p == 1 || *p == 2 || *p == 3){
+                  contatto = c - COLONNE;
+				  contatto_minore = TRUE;
                   found = TRUE;
-                  }
-                  else if(*inizio == 7){
-				    contatto = c - COLONNE;
-				    found = TRUE;
-					}
-        	        else if (*p == 1 || *p == 2 || *p == 3){
-                      contatto = c - COLONNE;
-					  contatto_minore = TRUE;
-                      found = TRUE;
-                      }   
-					  else
-					    i++; /*ottimizzo il ciclo perchè se c'è uno zero lo sarà anche il prossimo*/
-		}
-		
-		  p++;
-		}
-		p = inizio; /*ritorno all'inizio del mio tetramino*/
-		c = c + COLONNE;
-        if(found == FALSE)
-          riga++;
+                  }   
+				  else
+				    i++; /*ottimizzo il ciclo perchè se c'è uno zero lo sarà anche il prossimo*/
+	    }
+      p++;
+	  }
+    p = inizio; /*ritorno all'inizio del mio tetramino*/
+    c = c + COLONNE;
+    if(found == FALSE)
+    riga++;
 	}
-    contatto = verifica_uscita(piano,p,riga,scelta_colonna, contatto);
-	p = inizio; /*ritorno all'inizio del mio tetramino*/
-	if(found == FALSE)
-	return contatto - size; /*tolgo size perchè ora non mi serve più per verificare se cella occupata*/
-	  else
-	    return contatto; /*se ho trovato un contatto uso il valore calcolato*/
-
+  contatto = verifica_uscita(piano,p,riga,scelta_colonna, contatto);
+  p = inizio; /*ritorno all'inizio del mio tetramino*/
+  if(found == FALSE)
+    return contatto - size; /*tolgo size perchè ora non mi serve più per verificare se cella occupata*/
+	else
+	  return contatto; /*se ho trovato un contatto uso il valore calcolato*/
 }
 
 /**
@@ -336,80 +336,78 @@ int contatto (campo_di_gioco piano, int scelta_colonna, int *p){
  * @return bool_t FALSE se il giocatore è uscito da righe o colonne, TRUE se è andato tutto bene
  */
 bool_t salva_tetramino (campo_di_gioco piano, int *p, int scelta_colonna){
-	int r, c, i;
-	bool_t is_ok = FALSE, occupata = FALSE;
-	r = RIGHE;
-	c = scelta_colonna;
-	int scelta = contatto(piano, scelta_colonna, p);
-    int * inizio = p; /*salvo l'inizio del mio tetramino*/
+  int r, c, i;
+  bool_t is_ok = FALSE, occupata = FALSE;
+  r = RIGHE;
+  c = scelta_colonna;
+  int scelta = contatto(piano, scelta_colonna, p);
+  int * inizio = p; /*salvo l'inizio del mio tetramino*/
 
-			/******************************************************
-			*  scelta rappresenta la selezione attuale nel piano  *
-			*  aggiungendo e sottraendo colum mi verifico         *
-			*  le diverse posizioni del tetramino.                *
-			*******************************************************/
+  /******************************************************
+  *  scelta rappresenta la selezione attuale nel piano  *
+  *  aggiungendo e sottraendo colum mi verifico         *
+  *  le diverse posizioni del tetramino.                *
+  *******************************************************/
 
-    /*Se la scelta è uguale a -1 vuol dire che il giocatore ha sforato in altezza il campo da gioco*/
-	if (scelta == -1){
-	  printf("!!! ATTENZIONE !!!:\tHai perso la partita non hai posizionato correttamente un pezzo nel tuo campo di gioco.\n\n");
-	  return FALSE;
-      }
+  /*Se la scelta è uguale a -1 vuol dire che il giocatore ha sforato in altezza il campo da gioco*/
+  if(scelta == -1){
+    printf("!!! ATTENZIONE !!!:\tHai perso la partita non hai posizionato correttamente un pezzo nel tuo campo di gioco.\n\n");
+    return FALSE;
+    }
     if(scelta < 0){
-		printf("!!! ATTENZIONE !!!:\tHai perso la partita non hai posizionato correttamente un pezzo nel tuo campo di gioco. seleziona tutto da capo\n\n");
-					return FALSE;
-				} 		  
-    occupata = verifica_occupata(piano, scelta, p);
+      printf("!!! ATTENZIONE !!!:\tHai perso la partita non hai posizionato correttamente un pezzo nel tuo campo di gioco. seleziona tutto da capo\n\n");
+      return FALSE;
+      }
 
-	if(occupata == FALSE)
-	{
-	     is_ok == TRUE;
+  occupata = verifica_occupata(piano, scelta, p);
 
-          for(i = 0; i<size; i++){
-			/*******************************************************
-			*  scelta rappresenta la selezione attuale nel piano   *
-			*  riquadro_1 si trova sopra riquadro nel piano        *
-			*  riquadro_2 si trova sopra riquadro_1 nel piano      *
-			*******************************************************/
-            	if(*inizio == 6){
-            		piano[scelta - COLONNE] = OCCUPATO;
-            		piano[scelta - (COLONNE * 2)] = OCCUPATO;
-				}
-				  else if(*inizio == 2){
-					piano[scelta] = OCCUPATO;
-					piano[scelta - COLONNE] = OCCUPATO;
-				  }
-				    else if(*inizio == 0){
-					}
-					  else if(*inizio == 3){
-					  piano[scelta] = OCCUPATO;
-				      piano[scelta - COLONNE] = OCCUPATO;
-				      piano[scelta - (COLONNE * 2)] = OCCUPATO;
-					  }
-					    else if(*inizio == 4){
-				        piano[scelta - COLONNE] = OCCUPATO;
-					    }
-					      else if(*inizio == 5){
-				          piano[scelta - (COLONNE * 2)] = OCCUPATO;
-					      }
-						    else if(*inizio == 7){
-				            piano[scelta] = OCCUPATO;
-				            piano[scelta - COLONNE] = OCCUPATO;
-				            piano[scelta - (COLONNE * 2)] = OCCUPATO;
-							piano[scelta - (COLONNE * 3)] = OCCUPATO;
-					        }
-					        else if(*inizio == 1){
-					          piano[scelta] = OCCUPATO;
-							}
-            scelta++;
-			inizio++;
+  if(occupata == FALSE){
+    is_ok == TRUE;
+    for(i = 0; i<size; i++){
+      /*******************************************************
+      *  scelta rappresenta la selezione attuale nel piano   *
+      *  riquadro_1 si trova sopra riquadro nel piano        *
+      *  riquadro_2 si trova sopra riquadro_1 nel piano      *
+      *******************************************************/
+      if(*inizio == 6){
+        piano[scelta - COLONNE] = OCCUPATO;
+        piano[scelta - (COLONNE * 2)] = OCCUPATO;
+        }
+        else if(*inizio == 2){
+          piano[scelta] = OCCUPATO;
+          piano[scelta - COLONNE] = OCCUPATO;
+          }
+          else if(*inizio == 0){
             }
-	   }
-	     else{
-	  	   printf("\n\n-----ERRORE riquadro OCCUPATE------\n\n");
-	  	   return FALSE;
-	     }
-   return TRUE;        
-
+            else if(*inizio == 3){
+              piano[scelta] = OCCUPATO;
+              piano[scelta - COLONNE] = OCCUPATO;
+              piano[scelta - (COLONNE * 2)] = OCCUPATO;
+              }
+              else if(*inizio == 4){
+                piano[scelta - COLONNE] = OCCUPATO;
+                }
+                else if(*inizio == 5){
+                  piano[scelta - (COLONNE * 2)] = OCCUPATO;
+                  }
+                  else if(*inizio == 7){
+                    piano[scelta] = OCCUPATO;
+                    piano[scelta - COLONNE] = OCCUPATO;
+                    piano[scelta - (COLONNE * 2)] = OCCUPATO;
+                    piano[scelta - (COLONNE * 3)] = OCCUPATO;
+                    }
+                    else if(*inizio == 1){
+                      piano[scelta] = OCCUPATO;
+                      }
+      scelta++;
+      inizio++;
+        }
+    }
+    else{
+      printf("\n\n-----ERRORE riquadro OCCUPATE------\n\n");
+      return FALSE;
+      }
+  return TRUE;
 }
 
 /**
@@ -611,7 +609,6 @@ void Visualizza_pezzi_disponibili(){
   printf("Per continuare premi INVIO.\n");
   getchar();
   printf("\n\n");
-
 }
 
 /**
@@ -621,91 +618,89 @@ void Visualizza_pezzi_disponibili(){
  * @return int* passa un puntatore che punta al primo elemento dell'array del tetramino che ha selezionato il giocatore, in base alla funzione @see rotazione
  */
 int * scelta (int colonna_scelta_dal_giocatore){
-	char code;
-	int *p;
+  char code;
+  int *p;
+  bool_t is_ok = FALSE;
+  
+  while( is_ok == FALSE){
+    printf("Scegli un tetramino tra i seguenti i, j, o, s, l, t o z:\n");
 
-	bool_t is_ok = FALSE;
-	
-	while( is_ok == FALSE){
-		printf("Scegli un tetramino tra i seguenti i, j, o, s, l, t o z:\n");
-
-	    printf("Scelta: ");
-        scanf(" %c", &code);
-		  while (getchar() != '\n') /*salta alla fine della riga*/
-		    ;
-        printf("\n");
+    printf("Scelta: ");
+    scanf(" %c", &code);
+    while (getchar() != '\n') /*salta alla fine della riga*/
+      ;
+    printf("\n");
 		
-		switch(code){
-			case 'i': if(I_free <= 0){
-						printf("il pezzo %c è finito!\n", code);
-                        Visualizza_pezzi_disponibili();
-						break;
-					  }
-					  I_free--;
-			          p = rotazione(code, colonna_scelta_dal_giocatore);
-					  is_ok = TRUE;
-					  break;
-			case 'j': if(J_free <= 0){
-						printf("il pezzo %c è finito!\n", code);
-						Visualizza_pezzi_disponibili();
-						break;
-					  }
-					  J_free--;
-					  p = rotazione(code, colonna_scelta_dal_giocatore);
-					  is_ok = TRUE;
-			          break;
-			case 'l': if(L_free <= 0){
-						printf("il pezzo %c è finito!\n", code);
-						Visualizza_pezzi_disponibili();
-						break;
-					  }
-					  L_free--;
-					  p = rotazione(code, colonna_scelta_dal_giocatore);
-                      is_ok = TRUE;
-			          break;
-            case 'o': if(O_free <= 0){
-						printf("il pezzo %c è finito!\n", code);
-						Visualizza_pezzi_disponibili();
-						break;
-					  }
-					  O_free--;
-					  p = rotazione(code, colonna_scelta_dal_giocatore);
-                      is_ok = TRUE;
-			          break;
-            case 's': if(S_free <= 0){
-						printf("il pezzo %c è finito!\n", code);
-						Visualizza_pezzi_disponibili();
-						break;
-					  }
-					  S_free--;
-					  p = rotazione(code, colonna_scelta_dal_giocatore);
-                      is_ok = TRUE;
-			          break;
-            case 't': if(T_free <= 0){
-						printf("il pezzo %c è finito!\n", code);
-						Visualizza_pezzi_disponibili();
-						break;
-					  }
-					  T_free--;
-					  p = rotazione(code, colonna_scelta_dal_giocatore);
-                      is_ok = TRUE;
-			          break;
-            case 'z': if(Z_free <= 0){
-						printf("il pezzo %c è finito!\n", code);
-						Visualizza_pezzi_disponibili();
-						break;
-					  }
-					  Z_free--;
-					  p = rotazione(code, colonna_scelta_dal_giocatore);
-                      is_ok = TRUE;
-			          break;
-			default: printf("!!! ATTENZIONE !!!:\tScelta sbagliata. Selezionane un altra.\n");
+    switch(code){
+      case 'i': if(I_free <= 0){
+        printf("il pezzo %c è finito!\n", code);
+        Visualizza_pezzi_disponibili();
+        break;
+        }
+        I_free--;
+        p = rotazione(code, colonna_scelta_dal_giocatore);
+        is_ok = TRUE;
+        break;
+      case 'j': if(J_free <= 0){
+        printf("il pezzo %c è finito!\n", code);
+        Visualizza_pezzi_disponibili();
+        break;
+        }
+        J_free--;
+        p = rotazione(code, colonna_scelta_dal_giocatore);
+        is_ok = TRUE;
+        break;
+      case 'l': if(L_free <= 0){
+        printf("il pezzo %c è finito!\n", code);
+        Visualizza_pezzi_disponibili();
+        break;
+        }
+        L_free--;
+        p = rotazione(code, colonna_scelta_dal_giocatore);
+        is_ok = TRUE;
+        break;
+      case 'o': if(O_free <= 0){
+        printf("il pezzo %c è finito!\n", code);
+        Visualizza_pezzi_disponibili();
+        break;
+        }
+        O_free--;
+        p = rotazione(code, colonna_scelta_dal_giocatore);
+        is_ok = TRUE;
+        break;
+      case 's': if(S_free <= 0){
+        printf("il pezzo %c è finito!\n", code);
+        Visualizza_pezzi_disponibili();
+        break;
+        }
+        S_free--;
+        p = rotazione(code, colonna_scelta_dal_giocatore);
+        is_ok = TRUE;
+        break;
+      case 't': if(T_free <= 0){
+        printf("il pezzo %c è finito!\n", code);
+        Visualizza_pezzi_disponibili();
+        break;
+        }
+        T_free--;
+        p = rotazione(code, colonna_scelta_dal_giocatore);
+        is_ok = TRUE;
+        break;
+      case 'z': if(Z_free <= 0){
+        printf("il pezzo %c è finito!\n", code);
+        Visualizza_pezzi_disponibili();
+        break;
+        }
+        Z_free--;
+        p = rotazione(code, colonna_scelta_dal_giocatore);
+        is_ok = TRUE;
+        break;
+      default: printf("!!! ATTENZIONE !!!:\tScelta sbagliata. Selezionane un altra.\n");
 		}
-		printf("\n");	
-	}
-	return p;
+      printf("\n");	
+      }
+    return p;
 }
-
 	
 /**
  * @brief Funzione chiamata dal main per avviare tutte le funzioni relative alla selezione del tetramino,
