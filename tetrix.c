@@ -712,10 +712,9 @@ int * scelta (int colonna_scelta_dal_giocatore){
  * @param turno indica chi sta giocando se il giocatore 1 o 2
  * @return è presente un return in caso di errore. in quel caso la variabile globale sarà TRUE @see Perdita_uscita_campo
  */
-void seleziona_tetramino(campo_di_gioco piano, int RIGHE, int COLONNE, int turno)
-{
-	bool_t is_ok = FALSE;
-	int scelta_colonna = -1;
+void seleziona_tetramino(campo_di_gioco piano, int RIGHE, int COLONNE, int turno){
+  bool_t is_ok = FALSE;
+  int scelta_colonna = -1;
 	int tetramino[size] = {1,1,1,1};
 
 	/*inserisco un ciclo while per selezionare la colonna e il tetramino corretto e utilizzabile*/
@@ -736,13 +735,11 @@ void seleziona_tetramino(campo_di_gioco piano, int RIGHE, int COLONNE, int turno
 	      	printf("!!! ATTENZIONE !!!:\tScelta sbagliata. Hai selezionato una colonna sbagliata.\n");
 				  }
 	        
-	  
-      /*Se seleziono colonna corretta allora avanzo*/
+    /*Se seleziono colonna corretta allora avanzo*/
 	  if ( is_ok == TRUE ){
-    
 	    int *p;
-        int i;
-        /*scelgo a quale tetramino punterà il mio puntatore*/ 
+      int i;
+      /*scelgo a quale tetramino punterà il mio puntatore*/ 
 	    p = scelta(scelta_colonna);
         
 		/*salva tetramino oltre a modificare il campo di gioco in base alle mie scelte restituisce anche errori evenutali is_ok in questo caso sarà false*/
@@ -754,7 +751,6 @@ void seleziona_tetramino(campo_di_gioco piano, int RIGHE, int COLONNE, int turno
 		
 		if(Perdita_uscita_campo != FALSE && is_ok == FALSE)
 		  return;
-
 
 	  }
 	}
@@ -768,25 +764,22 @@ void seleziona_tetramino(campo_di_gioco piano, int RIGHE, int COLONNE, int turno
  * @param colonna la colonna a cui siamo arrivati, non la utilizzo ma è stata inserita per sviluppi futuri
  */
 void rimuovi_riga(campo_di_gioco piano, int riga_punto, int colonna){
-
-    int r= 1, c = 0, i;
+  int r= 1, c = 0, i;
 	/*vado a rimuovere la riga completata*/
-    for (c=0; c<COLONNE; c++) {
+  for (c=0; c<COLONNE; c++) {
     riquadro_t riquadro = VUOTO;
     piano[riga_punto*COLONNE + c] = riquadro;
     }
-
-    /*considero colonna per colonna e sposto l'array indietro di una posizione*/
- 
+  
+  /*considero colonna per colonna e sposto l'array indietro di una posizione*/
 	for (c=0; c<COLONNE; c++) {
-      for (r=riga_punto-1; r>-2; r--) {
-        riquadro_t riquadro_sotto = piano[r*COLONNE + c]; /*Questo passaggio mi permette di memorizzare il valore della riquadro sopra*/
-		if(r == - 1) /*Quando l'ultima riga presenta dei riquadri occupati, per spostarli nella riga sottostanze e azzerare l'ultima metto questa condizione*/
-		  riquadro_sotto = VUOTO;
-        piano[(r+1)*COLONNE + c] = riquadro_sotto;
-                
-		}
-	 }
+    for (r=riga_punto-1; r>-2; r--) {
+      riquadro_t riquadro_sotto = piano[r*COLONNE + c]; /*Questo passaggio mi permette di memorizzare il valore della riquadro sopra*/
+		  if(r == - 1) /*Quando l'ultima riga presenta dei riquadri occupati, per spostarli nella riga sottostanze e azzerare l'ultima metto questa condizione*/
+		    riquadro_sotto = VUOTO;
+      piano[(r+1)*COLONNE + c] = riquadro_sotto;          
+		  }
+	  }
 }
 
 /**
@@ -798,42 +791,41 @@ void rimuovi_riga(campo_di_gioco piano, int riga_punto, int colonna){
  * @return int Ritorna il numero di punti, 1 se il valore di bonus è 1 quindi ho eliminato una colonna, 3 se bonus = 2 , 6 se ne elimino 3 insieme e 4 in tutti gli altri casi
  */
 int calcola_punti(campo_di_gioco piano, int RIGHE, int COLONNE) {
-    int r, c;
+  int r, c;
 	int punteggio = 0;
 	int bonus = 0;
-      for (r=0; r<RIGHE; r++) {
-        for (c=0; c<COLONNE; c++) {
-          riquadro_t riquadro = piano[r*COLONNE + c];
+  for (r=0; r<RIGHE; r++) {
+    for (c=0; c<COLONNE; c++) {
+      riquadro_t riquadro = piano[r*COLONNE + c];
 		  if (riquadro==OCCUPATO){
 		    punteggio++;
-			}
-          if (punteggio >= COLONNE){
-			bonus++;
-            rimuovi_riga(piano, r, c);
-			punteggio = 0;
-			}
-		}
+			  }
+      if (punteggio >= COLONNE){
+			  bonus++;
+        rimuovi_riga(piano, r, c);
+			  punteggio = 0;
+			  }
+		  }
 	punteggio = 0;
     }
-	
-    if (bonus == 1){
+  
+  if (bonus == 1){
 	  return 1;			/*la rimozione di una riga vale un punto*/
 	  }
-      else if(bonus == 2){
+    else if(bonus == 2){
 	    return 3; 			/*la rimozione di due righe con un pezzo vale 3 punti*/
-		}    
-		else if(bonus == 3){
-		  inverti_campo = TRUE; /*Quando un giocatore cancella 3 o + righe in multyplayer questa variabile permette di richiamare la funzione inverti*/
-		  return 6; 		/*la rimozione di tre righe con un pezzo vale 6 punti*/
-		  }
-		  else if(bonus >= 4){
-			inverti_campo = TRUE;  /*Quando un giocatore cancella 3 o + righe in multyplayer questa variabile permette di richiamare la funzione inverti*/
-			return 12; 		/*la rimozione di 4 righe con un pezzo vale 12 punti*/
+		  }    
+		  else if(bonus == 3){
+		    inverti_campo = TRUE; /*Quando un giocatore cancella 3 o + righe in multyplayer questa variabile permette di richiamare la funzione inverti*/
+		    return 6; 		/*la rimozione di tre righe con un pezzo vale 6 punti*/
+		    }
+		    else if(bonus >= 4){
+			    inverti_campo = TRUE;  /*Quando un giocatore cancella 3 o + righe in multyplayer questa variabile permette di richiamare la funzione inverti*/
+			    return 12; 		/*la rimozione di 4 righe con un pezzo vale 12 punti*/
 	        }
-			else
-              return 0;
+			    else
+            return 0;
 }
-
 
 /**
  * @brief stampa il campo di gioco , assegno alla variabile riquadro il valore del piano nella posizione r e c.
@@ -845,59 +837,57 @@ int calcola_punti(campo_di_gioco piano, int RIGHE, int COLONNE) {
  * @param giocatori passo il numero di giocatori single player o multi player, perchè stampo o 1 o 2 campi da gioco.
  */
 void stampa(campo_di_gioco piano,campo_di_gioco piano2, int RIGHE, int COLONNE, giocatori_t giocatori) {
-    int r, c;
-
-    if(giocatori == SINGLE_PLAYER){
-        for (r=0; r<RIGHE; r++) {
-        for (c=0; c<COLONNE; c++) {
-            riquadro_t riquadro = piano[r*COLONNE + c];
-            if (riquadro==VUOTO)
-                printf(" _ ");
-            else if (riquadro==OCCUPATO)
-                printf(" X ");
+  int r, c;
+  
+  if(giocatori == SINGLE_PLAYER){
+    for (r=0; r<RIGHE; r++) {
+      for (c=0; c<COLONNE; c++) {
+        riquadro_t riquadro = piano[r*COLONNE + c];
+        if (riquadro==VUOTO)
+          printf(" _ ");
+          else if (riquadro==OCCUPATO)
+            printf(" X ");
             else
-                printf(" E "); /*E= error Segno eventuali valori diversi da OCCUPATO e VUOTO*/
-           }
-        /*vado a capo per creare la griglia*/
-        printf("\n");
-        /*stampo il numero della colonna al di sotto del piano di gioco*/
+              printf(" E "); /*E= error Segno eventuali valori diversi da OCCUPATO e VUOTO*/
         }
-        for (c=0; c<COLONNE; c++)
+      /*vado a capo per creare la griglia*/
+      printf("\n");
+      /*stampo il numero della colonna al di sotto del piano di gioco*/
+      }
+      for (c=0; c<COLONNE; c++)
         printf(" %d ", c);
-        printf("\n");
-        
+      printf("\n");
     }
-      else
-      {
-        for (r=0; r<RIGHE; r++) {
-          for (c=0; c<COLONNE; c++) {
-            riquadro_t riquadro = piano[r*COLONNE + c];
-            if (riquadro==VUOTO)
-                printf(" _ ");
+    else{
+      for (r=0; r<RIGHE; r++) {
+        for (c=0; c<COLONNE; c++) {
+          riquadro_t riquadro = piano[r*COLONNE + c];
+          if (riquadro==VUOTO)
+            printf(" _ ");
             else if (riquadro==OCCUPATO)
-                printf(" X ");
-            else
+              printf(" X ");
+              else
                 printf(" E "); /*E= error Segno eventuali valori diversi da OCCUPATO e VUOTO*/
-            }
+          }
         printf("  ");
         for (c=0; c<COLONNE; c++) {
-            riquadro_t riquadro2 = piano2[r*COLONNE + c];
-            if (riquadro2==VUOTO)
-                printf(" _ ");
+          riquadro_t riquadro2 = piano2[r*COLONNE + c];
+          if (riquadro2==VUOTO)
+            printf(" _ ");
             else if (riquadro2==OCCUPATO)
-                printf(" X ");
-            else
+              printf(" X ");
+              else
                 printf(" E "); /*E= error Segno eventuali valori diversi da OCCUPATO e VUOTO*/
-            }
+          }
         printf("\n");
-    }
-    /*stampo il numero della colonna al di sotto del piano di gioco*/
-    for (c=0; c<COLONNE; c++)
-        printf(" %d ", c);
-    printf("  ");
-    for (c=COLONNE; c<(COLONNE*2); c++)
-        printf(" %d", c);
-    printf("\n");
+        }
+  /*stampo il numero della colonna al di sotto del piano di gioco*/
+  for (c=0; c<COLONNE; c++)
+    printf(" %d ", c);
+  printf("  ");
+  for (c=COLONNE; c<(COLONNE*2); c++)
+    printf(" %d", c);
+  printf("\n");
   }
 }
 
@@ -928,16 +918,16 @@ void raddoppia_tetramini(){
  * @note il massimo numero di righe cancellabili è 4 con un tetramino I verticale
  */
 void inverti_campo_di_gioco(campo_di_gioco campo_giocatore, int RIGHE, int COLONNE, int righe_da_invertire){
-	int r,c;
+  int r,c;
 	for (r=RIGHE - righe_da_invertire; r<RIGHE; r++) {
-        for (c=0; c<COLONNE; c++) {
-            riquadro_t riquadro = campo_giocatore[r*COLONNE + c];
+    for (c=0; c<COLONNE; c++) {
+      riquadro_t riquadro = campo_giocatore[r*COLONNE + c];
 			if (riquadro==VUOTO)
-                campo_giocatore[r*COLONNE + c] = OCCUPATO;
-            else if (riquadro==OCCUPATO)
-                campo_giocatore[r*COLONNE + c] = VUOTO;
-			}
-	}
+        campo_giocatore[r*COLONNE + c] = OCCUPATO;
+        else if (riquadro==OCCUPATO)
+          campo_giocatore[r*COLONNE + c] = VUOTO;
+		  }
+	  }
 }
 
 /**
@@ -947,7 +937,7 @@ void inverti_campo_di_gioco(campo_di_gioco campo_giocatore, int RIGHE, int COLON
  * @return int* ritorna un puntatore ad un tetramino casuale 
  */
 int * tetramino_random(int colonna_random){
-	int tetramino_random = rand() % 7; /*genera un numero compreso tra 0 e 6*/
+  int tetramino_random = rand() % 7; /*genera un numero compreso tra 0 e 6*/
 	int rotazione_random = 0;
 	
 	/*logica scelta del tetramino: I = 0, J = 1, L = 2, O = 3, S = 4, T = 5, Z = 6*/
@@ -956,48 +946,55 @@ int * tetramino_random(int colonna_random){
 	  rotazione_random = rand() % 1; /*genera un numero compreso tra 0 a 1*/
 	  if(rotazione_random == 0 && colonna_random < 7)
 	    return I_;
-		else
-		  return I_180;
+		  else
+		    return I_180;
 	  }
 	  else if(tetramino_random == 1 && colonna_random < 8){
-		J_free--;
+		  J_free--;
 	    rotazione_random = rand() % 4; /*numero casuale tra 0 e 3*/
-		if(rotazione_random == 0)
-		  return J_;
-		  else if(rotazione_random == 1 && colonna_random < 9)
-		    return J_90;
-			else if(rotazione_random == 2 && colonna_random < 8)
-			  return J_180;
-			  else
-			    return J_270;
+		  if(rotazione_random == 0)
+		    return J_;
+		    else if(rotazione_random == 1 && colonna_random < 9)
+		      return J_90;
+			    else if(rotazione_random == 2 && colonna_random < 8)
+			      return J_180;
+			      else
+			        return J_270;
 		}
 	    else{
-		  Z_free--;
-		  rotazione_random = rand() % 2;
-		  if(rotazione_random == 0)
-		    return Z_;
-			else
-			  return Z_90;
-		}
+		    Z_free--;
+		    rotazione_random = rand() % 2;
+		    if(rotazione_random == 0)
+		      return Z_;
+			    else
+			    return Z_90;
+		  }
 }
 
+/**
+ * @brief Non utilizzata
+ * @param campo_cpu 
+ * @param colonna 
+ * @param riga 
+ * @return bool_t 
+ */
 bool_t controllo_verticale(campo_di_gioco campo_cpu, int colonna, int riga){
 	int r,c,i, spazio_libero;
 	int is_empty = 0;
 	for (c=colonna; c<colonna+1; c++) {
-      for (r=riga; r<riga +1; r++) {
-        for(i = 0; i< size; i++){
-		  spazio_libero = r*COLONNE + c;
-          riquadro_t riquadro = campo_cpu[spazio_libero];
-		  if(riquadro == VUOTO && campo_cpu[spazio_libero + 1] == OCCUPATO)
-		    is_empty++;
-		  if(is_empty == 4){
-            salva_tetramino(campo_cpu,I_,c);
-			return TRUE;
-		  }
-		}
+    for (r=riga; r<riga +1; r++) {
+      for(i = 0; i< size; i++){
+		    spazio_libero = r*COLONNE + c;
+        riquadro_t riquadro = campo_cpu[spazio_libero];
+		    if(riquadro == VUOTO && campo_cpu[spazio_libero + 1] == OCCUPATO)
+		      is_empty++;
+		    if(is_empty == 4){
+          salva_tetramino(campo_cpu,I_,c);
+		    	return TRUE;
+		      }
+		    }
+	    }
 	  }
-	}
 	return FALSE;
 }
 
@@ -1013,9 +1010,8 @@ int mossa_numero = 0;
  * @return bool_t 0 o 1 al 50% 
  * @note La funzione rand() genererà un numero dispari o pari con uguale probabilità.
  */
-bool_t rand50()
-{
-    return rand() & 1;
+bool_t rand50(){
+  return rand() & 1;
 }
 
 /**
@@ -1023,9 +1019,8 @@ bool_t rand50()
  * @return bool_t restituisce 0 12 volte su 100 e il restante 1
  * @note la funzione rand50 genera 1 o 0 con uguale probabilità quindi 0.5*0.5*0.5 = 0.125
  */
-bool_t rand75()
-{
-    return rand50() | rand50() || rand50();
+bool_t rand75(){
+  return rand50() | rand50() || rand50();
 }
 
 /**
@@ -1045,19 +1040,19 @@ void Cpu_colonna(campo_di_gioco campo_cpu, int RIGHE, int COLONNE){
   int random = rand();      /* Restituisce un numero intero pseudocasuale compreso tra 0 e RAND_MAX.*/
   
   if(rand75() == 1 ){ /*uguale a 1 l' 87.5% delle volte*/
-   salva_tetramino(campo_cpu,mosse_tetramino[mossa_numero],mosse_colonna[mossa_numero]);
-   mossa_numero++;
-   if(mossa_numero == 5)
-     mossa_numero = 0;
-	}
-	else{
-	  colonna_random = rand() % 10; /*genera un numero compreso tra 0 e 10*/
+    salva_tetramino(campo_cpu,mosse_tetramino[mossa_numero],mosse_colonna[mossa_numero]);
+    mossa_numero++;
+    if(mossa_numero == 5)
+      mossa_numero = 0;
+	  }
+	  else{
+	    colonna_random = rand() % 10; /*genera un numero compreso tra 0 e 10*/
 	  /** @note Alcune persone non piace questa formula perché utilizza i bit di ordine inferiore del numero dato da rand(),
        e nelle implementazioni più vecchie di numeri pseudo-casuali software questi erano spesso meno casuali
         rispetto ai bit di ordine elevato, ma su qualsiasi sistema moderno questo metodo dovrebbe andare bene.*/
-	  tetramino = tetramino_random(colonna_random);
-	  salva_tetramino(campo_cpu,tetramino,colonna_random);
-	}
+	    tetramino = tetramino_random(colonna_random);
+	    salva_tetramino(campo_cpu,tetramino,colonna_random);
+	    }
 }
 
 /**
@@ -1070,45 +1065,43 @@ void Cpu_colonna(campo_di_gioco campo_cpu, int RIGHE, int COLONNE){
  */
 void seleziona_CPU(campo_di_gioco campo_cpu, int RIGHE, int COLONNE)
 {
-	bool_t is_ok = FALSE;
+  bool_t is_ok = FALSE;
 	int scelta_colonna = -1;
 	int * tetramino;
 
 	/*inserisco un ciclo while per selezionare la colonna e il tetramino corretto e utilizzabile*/
 	while (is_ok == FALSE){
-      /*Schermata di caricamento molto semplice*/
+    /*Schermata di caricamento molto semplice*/
 	  printf("Sto pensando");
-	   int i,j,a;
-       for (i = 0; i < 10; i++){
-		   for(j=0; j < 100000000; j++)
-		     a = j;
-           printf(".");
-       }
-       printf("\n");
-       
-	   Cpu_colonna(campo_cpu, RIGHE, COLONNE);
+	  int i,j,a;
+    for (i = 0; i < 10; i++){
+		  for(j=0; j < 100000000; j++)
+		    a = j;
+        printf(".");
+      }
+    printf("\n");
+    Cpu_colonna(campo_cpu, RIGHE, COLONNE);
 
-	   return;
-
-	  }
+    return;
+    }
 }
 
 /**
- * @brief Funzione usata a scopo di test, inserisce 3 righe piene fino alla colonna 7.
- * @note usata per testare l'inversione del campo avversario
- * @param campo_giocatore campo giocatore 1
- * @param RIGHE numero righe campo giocatore 1, portate a -3 per riempire 3 righe
- * @param COLONNE numero colonne giocatore 1 portate a -2 per riempore 8 colonne
- */
+* @brief Funzione usata a scopo di test, inserisce 3 righe piene fino alla colonna 7.
+* @note usata per testare l'inversione del campo avversario
+* @param campo_giocatore campo giocatore 1
+* @param RIGHE numero righe campo giocatore 1, portate a -3 per riempire 3 righe
+* @param COLONNE numero colonne giocatore 1 portate a -2 per riempore 8 colonne
+* */
 void TEST_INVERTI(campo_di_gioco campo_giocatore, int RIGHE, int COLONNE){
 	int r,c;
 	for (r=RIGHE - 3; r<RIGHE; r++) {
-        for (c=0; c<COLONNE - 2; c++) {
-            riquadro_t riquadro = campo_giocatore[r*COLONNE + c];
+    for (c=0; c<COLONNE - 2; c++) {
+      riquadro_t riquadro = campo_giocatore[r*COLONNE + c];
 			if (riquadro==VUOTO)
-                campo_giocatore[r*COLONNE + c] = OCCUPATO;
+        campo_giocatore[r*COLONNE + c] = OCCUPATO;
 			}
-	}
+	  }
 }
 
 /**
@@ -1120,29 +1113,27 @@ void TEST_INVERTI(campo_di_gioco campo_giocatore, int RIGHE, int COLONNE){
  * @return bool_t ritorna il valore TRUE se uno dei giocatori vince, FALSE se non c'è una vittoria
  */
 bool_t Controlla_vittoria(int punteggio_1, int punteggio_2, int turno){
-	if(punteggio_1 >= Punteggio_massimo){
-      printf("Complimenti Giocatore 1 hai raggiunto %d punti, HAI VINTO! arrivederci!\n", Punteggio_massimo);
+  if(punteggio_1 >= Punteggio_massimo){
+    printf("Complimenti Giocatore 1 hai raggiunto %d punti, HAI VINTO! arrivederci!\n", Punteggio_massimo);
 	  return TRUE;
-      }
+    }
 	  else if(punteggio_2 >= Punteggio_massimo){
-		printf("Complimenti Giocatore 2 hai raggiunto %d punti, HAI VINTO! arrivederci!\n", Punteggio_massimo);
-		return TRUE;
-		}
+		  printf("Complimenti Giocatore 2 hai raggiunto %d punti, HAI VINTO! arrivederci!\n", Punteggio_massimo);
+		  return TRUE;
+		  }
 	
 	if(Perdita_uscita_campo != FALSE && turno == 2){
 	  printf("%40s%2s%40s\n"," ","**"," ");
-      printf("Complimenti Giocatore 2 il Giocatore 1 è uscito dal campo, HAI VINTO! arrivederci!\n");
+    printf("Complimenti Giocatore 2 il Giocatore 1 è uscito dal campo, HAI VINTO! arrivederci!\n");
 	  printf("%40s%2s%40s\n"," ","**"," ");
 	  return TRUE;
     }
 	if(Perdita_uscita_campo != FALSE && turno == 1){
 	  printf("%40s%2s%40s\n"," ","**"," ");
-      printf("Complimenti Giocatore 1 il Giocatore 2 è uscito dal campo, HAI VINTO! arrivederci!\n");
+    printf("Complimenti Giocatore 1 il Giocatore 2 è uscito dal campo, HAI VINTO! arrivederci!\n");
 	  printf("%40s%2s%40s\n"," ","**"," ");
 	  return TRUE;
     }
-
-	  
 	/*Perdita per fine dei tetramini*/
 	if(I_free <= 0 && J_free <= 0 && L_free <= 0 && O_free <= 0 
 	&& S_free <= 0 && T_free <= 0 && Z_free <= 0){
@@ -1150,13 +1141,13 @@ bool_t Controlla_vittoria(int punteggio_1, int punteggio_2, int turno){
 	  if(punteggio_1 > punteggio_2)
 	    printf("GIOCATORE 1, Complimenti\n");
 	    else if(punteggio_2 < punteggio_1)
-		  printf("GIOCATORE 2, Complimenti\n");
-		  else
-		    printf("PAREGGIO, Complimenti a tutti e due\n");
-	return TRUE;
-	}
+		    printf("GIOCATORE 2, Complimenti\n");
+		    else
+		      printf("PAREGGIO, Complimenti a tutti e due\n");
+	  return TRUE;
+	  }
 
-	return FALSE;
+  return FALSE;
 }
 
 /**
@@ -1188,12 +1179,12 @@ void test(campo_di_gioco piano, int RIGHE, int COLONNE){
 	printf("\n\n---TEST----\n\n");
 	int r, c, count = 0;
     for (r=0; r<RIGHE; r++) {
-        for (c=0; c<COLONNE; c++) {
-            printf("%4d", count);
-            count++;
+      for (c=0; c<COLONNE; c++) {
+        printf("%4d", count);
+        count++;
         }
-        printf("\n"); 
-    }
+      printf("\n"); 
+      }
 }
 
 /*************************************************//**
@@ -1204,8 +1195,8 @@ void test(campo_di_gioco piano, int RIGHE, int COLONNE){
 *	di errore quando il codice e' sbagliato.                    
 *****************************************************/
 
-int main()
-{
+int main(){
+
 /** Variabili per utilizzo del menu: 
 * @param fine_gioco indica quando il main chiudo il ciclo e finisce il gioco
 * @param select indica che voce del menu ho selezionato
@@ -1228,7 +1219,7 @@ int main()
   int bonus = 0;
   bool_t vittoria = FALSE;
 
-/** creo i campi da gioco del giocatore 1 e 2 
+/** creo i campi da gioco del giocatore 1 e 2, predispongo memoria per tutto il campo 10*15 = 149 caselle 
  * @param campo_giocatore_1 puntatore al campo del giocatore 1
  * @param campo_giocatore_2 puntatore al campo del giocatore 2
  */
@@ -1242,7 +1233,6 @@ int main()
   init(campo_giocatore_1, RIGHE, COLONNE);
   init(campo_giocatore_2, RIGHE, COLONNE);
  
-  
   /** @brief messaggio di benvenuto */
   printf("\n                                 BENVENUTI IN\n\n");
   printf(" /////////////////// XXXXX  XXXXX  XXXXX  XXXX    X    	X   X  ///////////////////\n");
@@ -1263,32 +1253,31 @@ do
     printf("Ciao :), In quanti giocate?\n\n");
     printf("1. Single Player - Un solo giocatore\n");
     printf("2. Multiplayer - due giocatori\n");
-	printf("3. CPU vs Player\n");
+	  printf("3. CPU vs Player\n");
     printf("Scelta: ");
     scanf(" %d", &giocatori);
 	  while (getchar() != '\n') /*salta alla fine della riga*/
 	    ;
     printf("\n");
-	switch (giocatori)
-      {
-        case 1: printf("Giochi da solo, bene!\n");
-                break;
-        case 2: printf("Giochi in compagnia, bene!\n");
-                TEST_INVERTI(campo_giocatore_2, RIGHE, COLONNE);
-                raddoppia_tetramini(); /*Raddopia il numero di tetramini per il multiplayer*/
-				break;
-		case 3: printf("Ti piace la sfida!\n");
-		        raddoppia_tetramini(); /*Raddopia il numero di tetramini per il multiplayer*/
-                break;
-        default: printf("!!! ATTENZIONE !!!:\tScelta sbagliata. Selezionane un altra.\n");
-		      
+	  switch (giocatori)
+    {
+      case 1: printf("Giochi da solo, bene!\n");
+              break;
+      case 2: printf("Giochi in compagnia, bene!\n");
+              /*TEST_INVERTI(campo_giocatore_2, RIGHE, COLONNE);*/ /*Inserire solo per scopo di test*/
+              raddoppia_tetramini(); /*Raddopia il numero di tetramini per il multiplayer*/
+              break;
+		  case 3: printf("Ti piace la sfida!\n");
+              raddoppia_tetramini(); /*Raddopia il numero di tetramini per il multiplayer*/
+              break;
+      default: printf("!!! ATTENZIONE !!!:\tScelta sbagliata. Selezionane un altra.\n");  
       }
     }
 
-if(giocatori == SINGLE_PLAYER)
+  if(giocatori == SINGLE_PLAYER)
   {
     punteggio_1 = punteggio_1 + calcola_punti(campo_giocatore_1,RIGHE, COLONNE);
-	stampa(campo_giocatore_1,campo_giocatore_2, RIGHE, COLONNE, SINGLE_PLAYER);
+	  stampa(campo_giocatore_1,campo_giocatore_2, RIGHE, COLONNE, SINGLE_PLAYER);
   	printf("Turno del giocatore 1.\nPunteggio: %d.\n\n", punteggio_1);
 
     printf("Menu\n\n");
@@ -1302,43 +1291,40 @@ if(giocatori == SINGLE_PLAYER)
 		  ;
     printf("\n");
 	
-      switch (select)
-      {
-        case 1: seleziona_tetramino(campo_giocatore_1, RIGHE, COLONNE, 1);
+    switch (select)
+    {
+      case 1: seleziona_tetramino(campo_giocatore_1, RIGHE, COLONNE, 1);
               break;
-        case 2: /*altra operazione*/
+      case 2: /*altra operazione*/
               break;
-        case 3: printf("Arrivederci\n");
-	          fine_gioco = TRUE; 
+      case 3: printf("Arrivederci\n");
+	            fine_gioco = TRUE; 
               break;
-        default: printf("!!! ATTENZIONE !!!:\tScelta sbagliata. Selezionane un altra.\n"); /*Cambio turno in modo da continuare il ciclo sul giocatore attuale*/
-		      
+      default: printf("!!! ATTENZIONE !!!:\tScelta sbagliata. Selezionane un altra.\n"); /*Cambio turno in modo da continuare il ciclo sul giocatore attuale*/   
       }
+    
     if(punteggio_1 >= 50){
-	   vittoria = TRUE;
-       printf("Complimenti hai raggiunto 50 punti, arrivederci!\n");
-    }
+	    vittoria = TRUE;
+      printf("Complimenti hai raggiunto 50 punti, arrivederci!\n");
+      }
 	/*Perdita per uscita dal campo*/
-	if(Perdita_uscita_campo != FALSE){
+	  if(Perdita_uscita_campo != FALSE){
       vittoria = TRUE;
       printf("HAI PERSO! Sei uscito dal campo arrivederci!\n");
       }
-	
-	if(vittoria != FALSE)
-	  fine_gioco = TRUE;
+	  if(vittoria != FALSE)
+	    fine_gioco = TRUE;
   }
 
-if(giocatori == MULTI_PLAYER)   
-{ 
-  	if(turno == 1)
-	{
-	  stampa(campo_giocatore_1,campo_giocatore_2, RIGHE, COLONNE, MULTI_PLAYER);
+  if(giocatori == MULTI_PLAYER){ 
+    if(turno == 1){
+	    stampa(campo_giocatore_1,campo_giocatore_2, RIGHE, COLONNE, MULTI_PLAYER);
   	  printf("Turno del giocatore 1.\nPunteggio: %d.\n\n", punteggio_1);
-    }
-	  else{
-		stampa(campo_giocatore_1,campo_giocatore_2, RIGHE, COLONNE, MULTI_PLAYER);
+      }
+	    else{
+		    stampa(campo_giocatore_1,campo_giocatore_2, RIGHE, COLONNE, MULTI_PLAYER);
       	printf("Turno del giocatore 2.\nPunteggio: %d.\n\n", punteggio_2);
-	    }
+	      }
     printf("Menu\n\n");
     printf("1. Seleziona tetramino\n");
     printf("2. Pezzi disponibili\n");
@@ -1350,63 +1336,59 @@ if(giocatori == MULTI_PLAYER)
 		  ;
     printf("\n");
 	
-      switch (select)
-      {
-        case 1: if (turno == 1){
-                  seleziona_tetramino(campo_giocatore_1, RIGHE, COLONNE, turno);
-                  bonus = calcola_punti(campo_giocatore_1,RIGHE, COLONNE);
-                  punteggio_1 = punteggio_1 + bonus;
-                  turno = 2;
-                  }
-                  else if(turno == 2){
-                    seleziona_tetramino(campo_giocatore_2, RIGHE, COLONNE, turno);
-					bonus = calcola_punti(campo_giocatore_2,RIGHE, COLONNE);
-                    punteggio_2 = punteggio_2 + bonus;
+    switch (select){
+      case 1: if (turno == 1){
+                seleziona_tetramino(campo_giocatore_1, RIGHE, COLONNE, turno);
+                bonus = calcola_punti(campo_giocatore_1,RIGHE, COLONNE);
+                punteggio_1 = punteggio_1 + bonus;
+                turno = 2;
+                }
+                else if(turno == 2){
+                  seleziona_tetramino(campo_giocatore_2, RIGHE, COLONNE, turno);
+					        bonus = calcola_punti(campo_giocatore_2,RIGHE, COLONNE);
+                  punteggio_2 = punteggio_2 + bonus;
    		            turno = 1;
-                    }
+                  }
               break;
-        case 2: Visualizza_pezzi_disponibili();
+      case 2: Visualizza_pezzi_disponibili();
               break;
-        case 3: printf("Arrivederci\n");
-	          fine_gioco = TRUE; 
+      case 3: printf("Arrivederci\n");
+	            fine_gioco = TRUE; 
               break;
-
-        default: printf("!!! ATTENZIONE !!!:\tScelta sbagliata. Salti il turno!.\n"); /*Cambio turno per scelta sbagliata*/
-		         if(turno == 1)
-                   turno = 2;
-		           else
+      default: printf("!!! ATTENZIONE !!!:\tScelta sbagliata. Salti il turno!.\n"); /*Cambio turno per scelta sbagliata*/
+		           if(turno == 1)
+                 turno = 2;
+		             else
    		             turno = 1;
-              break;
+               break;
       }
 /**Controllo Vittoria dopo i 50 punti e Perdita per uscita dal campo*/
-	     vittoria = Controlla_vittoria(punteggio_1,punteggio_2,turno);
+	vittoria = Controlla_vittoria(punteggio_1,punteggio_2,turno);
 
 /*la variabile inverti_campo diventa TRUE nella funzione calcola punti e quindi chiamo funzione inverti campo da gioco*/
-	  if(inverti_campo != FALSE && turno == 1 && vittoria != TRUE){
-	     inverti_campo = FALSE;
-		 printf("%40s%2s%40s\n"," ","**"," ");
-         printf("Il Giocatore 2 ha cancellato 3 o più righe, Campo giocatore 2 sarà invertito!\n");
-		 printf("%40s%2s%40s\n"," ","**"," ");
-		 if(bonus == 12)  /*vuol dire che ho cacellato 4 righe*/
-		   inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 4);
-		   else /*vuol dire che ho cancellato 3 righe*/
-		     inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 3);
-         }
-	  if(inverti_campo != FALSE && turno == 2 && vittoria != TRUE){
-	     inverti_campo = FALSE;
-		 printf("%40s%2s%40s\n"," ","**"," ");
-         printf("Il Giocatore 1 ha cancellato 3 o più righe, Campo giocatore 2 sarà invertito!\n");
-		 printf("%40s%2s%40s\n"," ","**"," ");
-		 if(bonus == 12)  /*vuol dire che ho cacellato 4 righe*/
-		   inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 4);
-		   else /*vuol dire che ho cancellato 3 righe*/
-		     inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 3);
-         }
+	if(inverti_campo != FALSE && turno == 1 && vittoria != TRUE){
+	  inverti_campo = FALSE;
+		printf("%40s%2s%40s\n"," ","**"," ");
+    printf("Il Giocatore 2 ha cancellato 3 o più righe, Campo giocatore 2 sarà invertito!\n");
+		printf("%40s%2s%40s\n"," ","**"," ");
+	  if(bonus == 12)  /*vuol dire che ho cacellato 4 righe*/
+		  inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 4);
+		  else /*vuol dire che ho cancellato 3 righe*/
+		    inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 3);
+    }
+	if(inverti_campo != FALSE && turno == 2 && vittoria != TRUE){
+	  inverti_campo = FALSE;
+		printf("%40s%2s%40s\n"," ","**"," ");
+    printf("Il Giocatore 1 ha cancellato 3 o più righe, Campo giocatore 2 sarà invertito!\n");
+		printf("%40s%2s%40s\n"," ","**"," ");
+		if(bonus == 12)  /*vuol dire che ho cacellato 4 righe*/
+		  inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 4);
+		  else /*vuol dire che ho cancellato 3 righe*/
+		    inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 3);
+    }
 
-
-	  if(vittoria != FALSE)
-	     fine_gioco = TRUE;
-      
+	if(vittoria != FALSE)
+	  fine_gioco = TRUE;  
 }  
 
 if(giocatori == CPU_PLAYER)   
