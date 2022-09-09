@@ -929,10 +929,12 @@ void raddoppia_tetramini(){
  * @param campo_giocatore punta al campo di gioco del giocatore 1 o 2 in base al turno
  * @param RIGHE numero di righe del campo di gioco
  * @param COLONNE numero di colonne del campo di gioco
+ * @param righe_da_invertire numero di righe da invertire nella parte più bassa del campo di gioco
+ * @note il massimo numero di righe cancellabili è 4 con un tetramino I verticale
  */
-void inverti_campo_di_gioco(campo_di_gioco campo_giocatore, int RIGHE, int COLONNE){
+void inverti_campo_di_gioco(campo_di_gioco campo_giocatore, int RIGHE, int COLONNE, int righe_da_invertire){
 	int r,c;
-	for (r=RIGHE - 3; r<RIGHE; r++) {
+	for (r=RIGHE - righe_da_invertire; r<RIGHE; r++) {
         for (c=0; c<COLONNE; c++) {
             riquadro_t riquadro = campo_giocatore[r*COLONNE + c];
 			if (riquadro==VUOTO)
@@ -1223,10 +1225,12 @@ int main()
 /** Variabili per il punteggio dei giocatori: 
 * @param punteggio_1 indica il punteggio del giocatore 1
 * @param punteggio_2 indica il punteggio del giocatore 2
+* @param bonus Usato per calcolare il numero di righe da invertire
 * @param vittoria indica che uno dei due giocatori ha vinto
 */
   int   punteggio_1 = 0;
   int   punteggio_2 = 0;
+  int bonus = 0;
   bool_t vittoria = FALSE;
 
 /** creo i campi da gioco del giocatore 1 e 2 
@@ -1273,12 +1277,13 @@ do
 	switch (giocatori)
       {
         case 1: printf("Giochi da solo, bene!\n");
-              break;
+                break;
         case 2: printf("Giochi in compagnia, bene!\n");
                 TEST_INVERTI(campo_giocatore_2, RIGHE, COLONNE);
                 raddoppia_tetramini(); /*Raddopia il numero di tetramini per il multiplayer*/
 				break;
 		case 3: printf("Ti piace la sfida!\n");
+		        raddoppia_tetramini(); /*Raddopia il numero di tetramini per il multiplayer*/
                 break;
         default: printf("!!! ATTENZIONE !!!:\tScelta sbagliata. Selezionane un altra.\n");
 		      
@@ -1354,12 +1359,14 @@ if(giocatori == MULTI_PLAYER)
       {
         case 1: if (turno == 1){
                   seleziona_tetramino(campo_giocatore_1, RIGHE, COLONNE, turno);
-                  punteggio_1 = punteggio_1 + calcola_punti(campo_giocatore_1,RIGHE, COLONNE);
+                  bonus = calcola_punti(campo_giocatore_1,RIGHE, COLONNE);
+                  punteggio_1 = punteggio_1 + bonus;
                   turno = 2;
                   }
                   else if(turno == 2){
                     seleziona_tetramino(campo_giocatore_2, RIGHE, COLONNE, turno);
-                    punteggio_2 = punteggio_2 + calcola_punti(campo_giocatore_2,RIGHE, COLONNE);
+					bonus = calcola_punti(campo_giocatore_2,RIGHE, COLONNE);
+                    punteggio_2 = punteggio_2 + bonus;
    		            turno = 1;
                     }
               break;
@@ -1385,14 +1392,20 @@ if(giocatori == MULTI_PLAYER)
 		 printf("%40s%2s%40s\n"," ","**"," ");
          printf("Il Giocatore 2 ha cancellato 3 o più righe, Campo giocatore 2 sarà invertito!\n");
 		 printf("%40s%2s%40s\n"," ","**"," ");
-		 inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE);
+		 if(bonus == 12)  /*vuol dire che ho cacellato 4 righe*/
+		   inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 4);
+		   else /*vuol dire che ho cancellato 3 righe*/
+		     inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 3);
          }
 	  if(inverti_campo != FALSE && turno == 2 && vittoria != TRUE){
 	     inverti_campo = FALSE;
 		 printf("%40s%2s%40s\n"," ","**"," ");
          printf("Il Giocatore 1 ha cancellato 3 o più righe, Campo giocatore 2 sarà invertito!\n");
 		 printf("%40s%2s%40s\n"," ","**"," ");
-		 inverti_campo_di_gioco(campo_giocatore_2, RIGHE, COLONNE);
+		 if(bonus == 12)  /*vuol dire che ho cacellato 4 righe*/
+		   inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 4);
+		   else /*vuol dire che ho cancellato 3 righe*/
+		     inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 3);
          }
 
 
@@ -1428,12 +1441,14 @@ if(giocatori == CPU_PLAYER)
       {
         case 1: if (turno == 1){
                   seleziona_tetramino(campo_giocatore_1, RIGHE, COLONNE, turno);
-                  punteggio_1 = punteggio_1 + calcola_punti(campo_giocatore_1,RIGHE, COLONNE);
+				  bonus = calcola_punti(campo_giocatore_1,RIGHE, COLONNE);
+                  punteggio_1 = punteggio_1 + bonus;
                   turno = 2;
                   }
                   else if(turno == 2){
                     seleziona_CPU(campo_giocatore_2, RIGHE, COLONNE);
-                    punteggio_2 = punteggio_2 + calcola_punti(campo_giocatore_2,RIGHE, COLONNE);
+					bonus = calcola_punti(campo_giocatore_2,RIGHE, COLONNE);
+                    punteggio_2 = punteggio_2 + bonus;
    		            turno = 1;
                     }
               break;
@@ -1459,14 +1474,20 @@ if(giocatori == CPU_PLAYER)
 		 printf("%40s%2s%40s\n"," ","**"," ");
          printf("Il Giocatore 2 ha cancellato 3 o più righe, Campo giocatore 2 sarà invertito!\n");
 		 printf("%40s%2s%40s\n"," ","**"," ");
-		 inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE);
+		 if(bonus == 12)  /*vuol dire che ho cacellato 4 righe*/
+		   inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 4);
+		   else /*vuol dire che ho cancellato 3 righe*/
+		     inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 3);
          }
 	  if(inverti_campo != FALSE && turno == 2 && vittoria != TRUE){
 	     inverti_campo = FALSE;
 		 printf("%40s%2s%40s\n"," ","**"," ");
          printf("Il Giocatore 1 ha cancellato 3 o più righe, Campo giocatore 2 sarà invertito!\n");
 		 printf("%40s%2s%40s\n"," ","**"," ");
-		 inverti_campo_di_gioco(campo_giocatore_2, RIGHE, COLONNE);
+		 if(bonus == 12)  /*vuol dire che ho cacellato 4 righe*/
+		   inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 4);
+		   else /*vuol dire che ho cancellato 3 righe*/
+		     inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 3);
          }
 
 
