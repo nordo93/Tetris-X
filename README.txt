@@ -5,7 +5,8 @@ MATRICOLA:         859569
 Sono l'unico componente del gruppo in quanto studente lavoratore.
 
 Il file sorgente principale è tetrix.c, l'unico altro file utile contente codice è tetramini.h.
-La cartella backup contiene file utili solo in fase di test e un file chiamato tetrix_OneFile.c,
+
+La cartella "trash_backup" contiene file utili solo in fase di test e un file chiamato tetrix_OneFile.c,
 contenete tutto il programma in un solo file (da usare solo in caso di problemi di compilazione).
 
 la documentazione di DoxyGen è nela cartella Doxy, ma nella cartella principale è presente un link " Documentazione doxygen " comodo per aprire la pagina web. 
