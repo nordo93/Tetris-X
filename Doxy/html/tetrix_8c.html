@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Include il manin e tutte le funzioni.  
+<p>Include il main e tutte le funzioni necessarie allo svolgimento della partita.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
@@ -86,12 +86,12 @@ Typedefs</h2></td></tr>
 <tr class="memitem:aa7f1ff8f4ac9b5f9dc398111841d9d77"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="tetrix_8c.html#aacae98a513bf46f84ca1f3554bae431b">riquadro</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#aa7f1ff8f4ac9b5f9dc398111841d9d77">riquadro_t</a></td></tr>
 <tr class="memdesc:aa7f1ff8f4ac9b5f9dc398111841d9d77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definisco un enumeratore per sapere lo stato della casella del piano di gioco.  <a href="tetrix_8c.html#aa7f1ff8f4ac9b5f9dc398111841d9d77">More...</a><br /></td></tr>
 <tr class="separator:aa7f1ff8f4ac9b5f9dc398111841d9d77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5a058fd5c1d22d70656dc12dac0c2a9"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="tetrix_8c.html#aa7f1ff8f4ac9b5f9dc398111841d9d77">riquadro_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#ac5a058fd5c1d22d70656dc12dac0c2a9">campo_di_gioco</a></td></tr>
-<tr class="memdesc:ac5a058fd5c1d22d70656dc12dac0c2a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">campo_di_gioco e' un puntatore che punt al campo di gioco  <a href="tetrix_8c.html#ac5a058fd5c1d22d70656dc12dac0c2a9">More...</a><br /></td></tr>
-<tr class="separator:ac5a058fd5c1d22d70656dc12dac0c2a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3a317bac4a25cedbce8bdb3a0e0d42d"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="tetrix_8c.html#a3c5c82810d69281c45ae525b29779848">bool_e</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#aa3a317bac4a25cedbce8bdb3a0e0d42d">bool_t</a></td></tr>
 <tr class="memdesc:aa3a317bac4a25cedbce8bdb3a0e0d42d"><td class="mdescLeft">&#160;</td><td class="mdescRight">uso questo enum per supportare il tipo bool anche su standard C89  <a href="tetrix_8c.html#aa3a317bac4a25cedbce8bdb3a0e0d42d">More...</a><br /></td></tr>
 <tr class="separator:aa3a317bac4a25cedbce8bdb3a0e0d42d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5a058fd5c1d22d70656dc12dac0c2a9"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="tetrix_8c.html#aa7f1ff8f4ac9b5f9dc398111841d9d77">riquadro_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#ac5a058fd5c1d22d70656dc12dac0c2a9">campo_di_gioco</a></td></tr>
+<tr class="memdesc:ac5a058fd5c1d22d70656dc12dac0c2a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">campo_di_gioco e' un puntatore che puntera poi al campo di gioco  <a href="tetrix_8c.html#ac5a058fd5c1d22d70656dc12dac0c2a9">More...</a><br /></td></tr>
+<tr class="separator:ac5a058fd5c1d22d70656dc12dac0c2a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -121,9 +121,9 @@ Functions</h2></td></tr>
 <tr class="memitem:abeb1901c55d057632a6bd4a45fe6d75b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#abeb1901c55d057632a6bd4a45fe6d75b">stampa_anteprima</a> (int colonna_scelta_dal_giocatore, int *tetramino)</td></tr>
 <tr class="memdesc:abeb1901c55d057632a6bd4a45fe6d75b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzione che uso per visualizzare un ateprima del tetramino scelto dal giocatore.  <a href="tetrix_8c.html#abeb1901c55d057632a6bd4a45fe6d75b">More...</a><br /></td></tr>
 <tr class="separator:abeb1901c55d057632a6bd4a45fe6d75b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2444104362cf4314a0b97fa2eaf0d58e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#a2444104362cf4314a0b97fa2eaf0d58e">verifica_uscita</a> (int *p, int righe_rimanenti, int colonna, int <a class="el" href="tetrix_8c.html#a18f5b9291b9589c18c9f53d9d3531b5c">contatto</a>)</td></tr>
-<tr class="memdesc:a2444104362cf4314a0b97fa2eaf0d58e"><td class="mdescLeft">&#160;</td><td class="mdescRight">verifica che il tetramino inserito non superi il limite di colonne e righe massime  <a href="tetrix_8c.html#a2444104362cf4314a0b97fa2eaf0d58e">More...</a><br /></td></tr>
-<tr class="separator:a2444104362cf4314a0b97fa2eaf0d58e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace23c55e1e32f671d5d4740e06f33201"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#ace23c55e1e32f671d5d4740e06f33201">verifica_uscita</a> (<a class="el" href="tetrix_8c.html#ac5a058fd5c1d22d70656dc12dac0c2a9">campo_di_gioco</a> piano, int *p, int righe_rimanenti, int colonna, int <a class="el" href="tetrix_8c.html#a18f5b9291b9589c18c9f53d9d3531b5c">contatto</a>)</td></tr>
+<tr class="memdesc:ace23c55e1e32f671d5d4740e06f33201"><td class="mdescLeft">&#160;</td><td class="mdescRight">verifica che il tetramino inserito non superi il limite di colonne e righe massime  <a href="tetrix_8c.html#ace23c55e1e32f671d5d4740e06f33201">More...</a><br /></td></tr>
+<tr class="separator:ace23c55e1e32f671d5d4740e06f33201"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a0b7e3b055bd38e37aa36052cbc1609"><td class="memItemLeft" align="right" valign="top"><a class="el" href="tetrix_8c.html#aa3a317bac4a25cedbce8bdb3a0e0d42d">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#a8a0b7e3b055bd38e37aa36052cbc1609">verifica_occupata</a> (<a class="el" href="tetrix_8c.html#ac5a058fd5c1d22d70656dc12dac0c2a9">campo_di_gioco</a> piano, int <a class="el" href="tetrix_8c.html#a10f58b6e2a1be6042acd8ecf38be8027">scelta</a>, int *p)</td></tr>
 <tr class="memdesc:a8a0b7e3b055bd38e37aa36052cbc1609"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se il tetramino inserito non vada a scrivere su una casella già occupata.  <a href="tetrix_8c.html#a8a0b7e3b055bd38e37aa36052cbc1609">More...</a><br /></td></tr>
 <tr class="separator:a8a0b7e3b055bd38e37aa36052cbc1609"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -157,14 +157,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a3db906a4d562c2e7b2e92b92849943ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#a3db906a4d562c2e7b2e92b92849943ca">raddoppia_tetramini</a> ()</td></tr>
 <tr class="memdesc:a3db906a4d562c2e7b2e92b92849943ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Usata nel Multiplayer In questa modalità si avranno il doppio di pezzi a disposizione.  <a href="tetrix_8c.html#a3db906a4d562c2e7b2e92b92849943ca">More...</a><br /></td></tr>
 <tr class="separator:a3db906a4d562c2e7b2e92b92849943ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa11dce9cbdbceb69cc11f68db2609547"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#aa11dce9cbdbceb69cc11f68db2609547">inverti_campo_di_gioco</a> (<a class="el" href="tetrix_8c.html#ac5a058fd5c1d22d70656dc12dac0c2a9">campo_di_gioco</a> campo_giocatore, int <a class="el" href="tetrix_8c.html#ae9f8d8d635995b45444dd02143e0a102">RIGHE</a>, int <a class="el" href="tetrix_8c.html#ae45bf4c0e6b1d99fc99e157f74cb1ea0">COLONNE</a>)</td></tr>
-<tr class="memdesc:aa11dce9cbdbceb69cc11f68db2609547"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nel caso il giocatore cancelli 3 o più linee con una singola mossa, la variabile inverti_campo diventa TRUE e il campo dell’avversario viene modificato invertendo il corrispondente numero di linee nella parte più bassa del campo di gioco: una posizione vuota diventa piena e viceversa. <br  />
-  <a href="tetrix_8c.html#aa11dce9cbdbceb69cc11f68db2609547">More...</a><br /></td></tr>
-<tr class="separator:aa11dce9cbdbceb69cc11f68db2609547"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a172b1261b5cc5365cbc0c7494716b78d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#a172b1261b5cc5365cbc0c7494716b78d">inverti_campo_di_gioco</a> (<a class="el" href="tetrix_8c.html#ac5a058fd5c1d22d70656dc12dac0c2a9">campo_di_gioco</a> campo_giocatore, int <a class="el" href="tetrix_8c.html#ae9f8d8d635995b45444dd02143e0a102">RIGHE</a>, int <a class="el" href="tetrix_8c.html#ae45bf4c0e6b1d99fc99e157f74cb1ea0">COLONNE</a>, int righe_da_invertire)</td></tr>
+<tr class="memdesc:a172b1261b5cc5365cbc0c7494716b78d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nel caso il giocatore cancelli 3 o più linee con una singola mossa, la variabile inverti_campo diventa TRUE e il campo dell’avversario viene modificato invertendo il corrispondente numero di linee nella parte più bassa del campo di gioco: una posizione vuota diventa piena e viceversa. <br  />
+  <a href="tetrix_8c.html#a172b1261b5cc5365cbc0c7494716b78d">More...</a><br /></td></tr>
+<tr class="separator:a172b1261b5cc5365cbc0c7494716b78d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d973462182b0b3a20de6905eff63793"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#a1d973462182b0b3a20de6905eff63793">tetramino_random</a> (int colonna_random)</td></tr>
 <tr class="memdesc:a1d973462182b0b3a20de6905eff63793"><td class="mdescLeft">&#160;</td><td class="mdescRight">funzione che seleziona un tetramino casuale in base alla colonna scelta.  <a href="tetrix_8c.html#a1d973462182b0b3a20de6905eff63793">More...</a><br /></td></tr>
 <tr class="separator:a1d973462182b0b3a20de6905eff63793"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50e68327f7ef40b1c9100aaa30d953cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="tetrix_8c.html#aa3a317bac4a25cedbce8bdb3a0e0d42d">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#a50e68327f7ef40b1c9100aaa30d953cf">controllo_verticale</a> (<a class="el" href="tetrix_8c.html#ac5a058fd5c1d22d70656dc12dac0c2a9">campo_di_gioco</a> campo_cpu, int colonna, int riga)</td></tr>
+<tr class="memdesc:a50e68327f7ef40b1c9100aaa30d953cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non utilizzata.  <a href="tetrix_8c.html#a50e68327f7ef40b1c9100aaa30d953cf">More...</a><br /></td></tr>
 <tr class="separator:a50e68327f7ef40b1c9100aaa30d953cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88e4f867eb8e5b012e3a4c98880bf276"><td class="memItemLeft" align="right" valign="top"><a class="el" href="tetrix_8c.html#aa3a317bac4a25cedbce8bdb3a0e0d42d">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#a88e4f867eb8e5b012e3a4c98880bf276">rand50</a> ()</td></tr>
 <tr class="memdesc:a88e4f867eb8e5b012e3a4c98880bf276"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzione casuale che restituisce 0 o 1 con uguale probabilità  <a href="tetrix_8c.html#a88e4f867eb8e5b012e3a4c98880bf276">More...</a><br /></td></tr>
@@ -216,10 +217,10 @@ Variables</h2></td></tr>
 <tr class="memitem:ae45bf4c0e6b1d99fc99e157f74cb1ea0"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#ae45bf4c0e6b1d99fc99e157f74cb1ea0">COLONNE</a> = <a class="el" href="tetramini_8h.html#ac5a3a1569e5f4d986ec6ece10286c08a">column</a></td></tr>
 <tr class="separator:ae45bf4c0e6b1d99fc99e157f74cb1ea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41c911f3da02a829ac482dd61c0d8528"><td class="memItemLeft" align="right" valign="top"><a class="el" href="tetrix_8c.html#aa3a317bac4a25cedbce8bdb3a0e0d42d">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#a41c911f3da02a829ac482dd61c0d8528">Perdita_uscita_campo</a> = <a class="el" href="tetrix_8c.html#a3c5c82810d69281c45ae525b29779848aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a></td></tr>
-<tr class="memdesc:a41c911f3da02a829ac482dd61c0d8528"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definisco variabili globali per l'errore di uscire dalle righe colonne Uguale a TRUE quando un giocatore esce dal campo e quindi dovrà perdere la partita.  <a href="tetrix_8c.html#a41c911f3da02a829ac482dd61c0d8528">More...</a><br /></td></tr>
+<tr class="memdesc:a41c911f3da02a829ac482dd61c0d8528"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definisco variabile globale per verificare uscita dal campo (sia da righe che colonne) Uguale a TRUE quando un giocatore esce dal campo e quindi dovrà perdere la partita.  <a href="tetrix_8c.html#a41c911f3da02a829ac482dd61c0d8528">More...</a><br /></td></tr>
 <tr class="separator:a41c911f3da02a829ac482dd61c0d8528"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a051ce5d94ece76dfba76cd03264c2486"><td class="memItemLeft" align="right" valign="top"><a class="el" href="tetrix_8c.html#aa3a317bac4a25cedbce8bdb3a0e0d42d">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#a051ce5d94ece76dfba76cd03264c2486">inverti_campo</a> = <a class="el" href="tetrix_8c.html#a3c5c82810d69281c45ae525b29779848aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a></td></tr>
-<tr class="memdesc:a051ce5d94ece76dfba76cd03264c2486"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definisco una variabile globale per il bonus da 3 punti o + per il multiplayer Uguale a TRUE quando uno dei due giocatori cancella 3 righe o + contemporanamente. Inverto quindi il campo dell'avversario.  <a href="tetrix_8c.html#a051ce5d94ece76dfba76cd03264c2486">More...</a><br /></td></tr>
+<tr class="memdesc:a051ce5d94ece76dfba76cd03264c2486"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definisco una variabile globale per il bonus da 3 punti o piu' per il multiplayer Uguale a TRUE quando uno dei due giocatori cancella 3 righe o piu' contemporanamente. Inverto quindi il campo dell'avversario.  <a href="tetrix_8c.html#a051ce5d94ece76dfba76cd03264c2486">More...</a><br /></td></tr>
 <tr class="separator:a051ce5d94ece76dfba76cd03264c2486"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66fec582ecf5254d8ea156495e2e509a"><td class="memItemLeft" align="right" valign="top">int *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#a66fec582ecf5254d8ea156495e2e509a">mosse_tetramino</a> [5] = {<a class="el" href="tetramini_8h.html#a486a6c33397876c16f1eed6ee6db9a6e">I_</a>,<a class="el" href="tetramini_8h.html#ababe806de57c7e08be051e69f74aa3be">O_</a>,<a class="el" href="tetramini_8h.html#ababe806de57c7e08be051e69f74aa3be">O_</a>,<a class="el" href="tetramini_8h.html#a486a6c33397876c16f1eed6ee6db9a6e">I_</a>,<a class="el" href="tetramini_8h.html#ababe806de57c7e08be051e69f74aa3be">O_</a>}</td></tr>
 <tr class="memdesc:a66fec582ecf5254d8ea156495e2e509a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sequenza di mosse predefinita della cpu.  <a href="tetrix_8c.html#a66fec582ecf5254d8ea156495e2e509a">More...</a><br /></td></tr>
@@ -232,11 +233,11 @@ Variables</h2></td></tr>
 <tr class="separator:a534d073608b5a61dc164f21df5cb8c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Include il manin e tutte le funzioni. </p>
+<div class="textblock"><p >Include il main e tutte le funzioni necessarie allo svolgimento della partita. </p>
 <dl class="section author"><dt>Author</dt><dd>Alessandro Cecchin (<a href="#" onclick="location.href='mai'+'lto:'+'859'+'86'+'9@s'+'tu'+'d.u'+'ni'+'ve.'+'it'; return false;">85986<span class="obfuscator">.nosp@m.</span>9@st<span class="obfuscator">.nosp@m.</span>ud.un<span class="obfuscator">.nosp@m.</span>ive.<span class="obfuscator">.nosp@m.</span>it</a>) </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.9.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2022-08-19</dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2022 </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright © 2007 Free Software Foundation, Inc. <a href="https://fsf.org/">https://fsf.org/</a> </dd></dl>
 </div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="aa3a317bac4a25cedbce8bdb3a0e0d42d" name="aa3a317bac4a25cedbce8bdb3a0e0d42d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa3a317bac4a25cedbce8bdb3a0e0d42d">&#9670;&nbsp;</a></span>bool_t</h2>
@@ -266,7 +267,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>campo_di_gioco e' un puntatore che punt al campo di gioco </p>
+<p>campo_di_gioco e' un puntatore che puntera poi al campo di gioco </p>
 
 </div>
 </div>
@@ -543,6 +544,17 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Non utilizzata. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">campo_cpu</td><td></td></tr>
+    <tr><td class="paramname">colonna</td><td></td></tr>
+    <tr><td class="paramname">riga</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool_t </dd></dl>
+
 </div>
 </div>
 <a id="ab3f8f66eb2a718d9bfcf6c92a9c9a6b3" name="ab3f8f66eb2a718d9bfcf6c92a9c9a6b3"></a>
@@ -578,9 +590,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Funzione usata dalla cpu per inserire il tetramino, molte volte inserisce i tetramini secondo questo ordine. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="tetrix_8c.html#a66fec582ecf5254d8ea156495e2e509a" title="Sequenza di mosse predefinita della cpu.">mosse_tetramino</a> in determinate colonne </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="tetrix_8c.html#a66fec582ecf5254d8ea156495e2e509a" title="Sequenza di mosse predefinita della cpu.">mosse_tetramino</a>[5] in determinate colonne </dd>
 <dd>
-<a class="el" href="tetrix_8c.html#aa16c627065a844ca6e9f953412930776" title="Sequenza di scelta colonna predefinita della cpu.">mosse_colonna</a>. Alcune volte (il 12 per cento delle volte) inserisce i tetramini casualmente.</dd></dl>
+<a class="el" href="tetrix_8c.html#aa16c627065a844ca6e9f953412930776" title="Sequenza di scelta colonna predefinita della cpu.">mosse_colonna</a> [5] . Alcune volte (il 12 per cento delle volte) inserisce i tetramini casualmente.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">campo_cpu</td><td>punta al campo di gioco della CPU. </td></tr>
@@ -638,8 +650,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aa11dce9cbdbceb69cc11f68db2609547" name="aa11dce9cbdbceb69cc11f68db2609547"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa11dce9cbdbceb69cc11f68db2609547">&#9670;&nbsp;</a></span>inverti_campo_di_gioco()</h2>
+<a id="a172b1261b5cc5365cbc0c7494716b78d" name="a172b1261b5cc5365cbc0c7494716b78d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a172b1261b5cc5365cbc0c7494716b78d">&#9670;&nbsp;</a></span>inverti_campo_di_gioco()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -660,7 +672,13 @@ Variables</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>COLONNE</em>&#160;</td>
+          <td class="paramname"><em>COLONNE</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>righe_da_invertire</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -677,9 +695,11 @@ Variables</h2></td></tr>
     <tr><td class="paramname">campo_giocatore</td><td>punta al campo di gioco del giocatore 1 o 2 in base al turno </td></tr>
     <tr><td class="paramname">RIGHE</td><td>numero di righe del campo di gioco </td></tr>
     <tr><td class="paramname">COLONNE</td><td>numero di colonne del campo di gioco </td></tr>
+    <tr><td class="paramname">righe_da_invertire</td><td>numero di righe da invertire nella parte più bassa del campo di gioco </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>il massimo numero di righe cancellabili è 4 con un tetramino I verticale </dd></dl>
 
 </div>
 </div>
@@ -716,11 +736,12 @@ Variables</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">punteggio_1</td><td>indica il punteggio del giocatore 1 </td></tr>
     <tr><td class="paramname">punteggio_2</td><td>indica il punteggio del giocatore 2 </td></tr>
+    <tr><td class="paramname">bonus</td><td>Usato per calcolare il numero di righe da invertire </td></tr>
     <tr><td class="paramname">vittoria</td><td>indica che uno dei due giocatori ha vinto</td></tr>
   </table>
   </dd>
 </dl>
-<p>creo i campi da gioco del giocatore 1 e 2 </p><dl class="params"><dt>Parameters</dt><dd>
+<p>creo i campi da gioco del giocatore 1 e 2, predispongo memoria per tutto il campo 10*15 = 149 caselle </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">campo_giocatore_1</td><td>puntatore al campo del giocatore 1 </td></tr>
     <tr><td class="paramname">campo_giocatore_2</td><td>puntatore al campo del giocatore 2</td></tr>
@@ -1052,7 +1073,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>è presente un return in caso di errore. in quel caso la variabile globale sarà TRUE </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="tetrix_8c.html#a41c911f3da02a829ac482dd61c0d8528" title="Definisco variabili globali per l&#39;errore di uscire dalle righe colonne Uguale a TRUE quando un giocat...">Perdita_uscita_campo</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="tetrix_8c.html#a41c911f3da02a829ac482dd61c0d8528" title="Definisco variabile globale per verificare uscita dal campo (sia da righe che colonne) Uguale a TRUE ...">Perdita_uscita_campo</a> </dd></dl>
 
 </div>
 </div>
@@ -1148,6 +1169,13 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
+<p >stampo un anteprima delle colonne su cui scende il tetramino esempio:<br  />
+OUTPUT:<br  />
+ _ _ _ _ <br  />
+ X _ _ _ <br  />
+ X X X _ <br  />
+ 6 7 8 9<br  />
+ </p>
 
 </div>
 </div>
@@ -1333,8 +1361,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a2444104362cf4314a0b97fa2eaf0d58e" name="a2444104362cf4314a0b97fa2eaf0d58e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2444104362cf4314a0b97fa2eaf0d58e">&#9670;&nbsp;</a></span>verifica_uscita()</h2>
+<a id="ace23c55e1e32f671d5d4740e06f33201" name="ace23c55e1e32f671d5d4740e06f33201"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace23c55e1e32f671d5d4740e06f33201">&#9670;&nbsp;</a></span>verifica_uscita()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1342,6 +1370,12 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int verifica_uscita </td>
           <td>(</td>
+          <td class="paramtype"><a class="el" href="tetrix_8c.html#ac5a058fd5c1d22d70656dc12dac0c2a9">campo_di_gioco</a>&#160;</td>
+          <td class="paramname"><em>piano</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">int *&#160;</td>
           <td class="paramname"><em>p</em>, </td>
         </tr>
@@ -1390,6 +1424,12 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
+<p>la variabile contatto indica dove il tetramino comincierà ad essere disegnato, quindi se quella casella è occupata: vuol dire che il tetramino è appoggiato ad un altro e quindi il numero di righe che occupa è minore. esempio: OUTPUT:<br  />
+X X _ TETRAMINO NON APPOGIATO AD UN ALTRO <br  />
+_ X _ <br  />
+_ X _ <br  />
+X X X <br  />
+</p>
 <dl class="section note"><dt>Note</dt><dd>if(*p == 1 &amp;&amp; sottrazione_riga == 0)</dd></dl>
 
 </div>
@@ -1440,8 +1480,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definisco una variabile globale per il bonus da 3 punti o + per il multiplayer Uguale a TRUE quando uno dei due giocatori cancella 3 righe o + contemporanamente. Inverto quindi il campo dell'avversario. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="tetrix_8c.html#aa11dce9cbdbceb69cc11f68db2609547" title="Nel caso il giocatore cancelli 3 o più linee con una singola mossa, la variabile inverti_campo divent...">inverti_campo_di_gioco</a> </dd></dl>
+<p>Definisco una variabile globale per il bonus da 3 punti o piu' per il multiplayer Uguale a TRUE quando uno dei due giocatori cancella 3 righe o piu' contemporanamente. Inverto quindi il campo dell'avversario. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="tetrix_8c.html#a172b1261b5cc5365cbc0c7494716b78d" title="Nel caso il giocatore cancelli 3 o più linee con una singola mossa, la variabile inverti_campo divent...">inverti_campo_di_gioco</a> </dd></dl>
 
 </div>
 </div>
@@ -1505,7 +1545,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definisco variabili globali per l'errore di uscire dalle righe colonne Uguale a TRUE quando un giocatore esce dal campo e quindi dovrà perdere la partita. </p>
+<p>Definisco variabile globale per verificare uscita dal campo (sia da righe che colonne) Uguale a TRUE quando un giocatore esce dal campo e quindi dovrà perdere la partita. </p>
 
 </div>
 </div>
