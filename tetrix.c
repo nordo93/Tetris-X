@@ -1030,6 +1030,7 @@ bool_t rand75(){
  * @param campo_cpu punta al campo di gioco della CPU.
  * @param RIGHE numero di righe del campo di gioco
  * @param COLONNE numero di colonne del campo di gioco
+ * @attention la strategia è molto semplice, consiste in una serie di mosse (5) determinate, l'unica differenza e che a volte viene inserito casualmente un tetramino diverso.
  */
 void Cpu_colonna(campo_di_gioco campo_cpu, int RIGHE, int COLONNE){
   int r, c, spazio_libero;
@@ -1041,6 +1042,11 @@ void Cpu_colonna(campo_di_gioco campo_cpu, int RIGHE, int COLONNE){
   
   if(rand75() == 1 ){ /*uguale a 1 l' 87.5% delle volte*/
     salva_tetramino(campo_cpu,mosse_tetramino[mossa_numero],mosse_colonna[mossa_numero]);
+    /*Diminuisco i tetramini disponibili*/
+    if(mossa_numero == 0 || mossa_numero == 3)
+      I_free--;
+      else if(mossa_numero == 1 || mossa_numero == 2 || mossa_numero == 4)
+        O_free--;
     mossa_numero++;
     if(mossa_numero == 5)
       mossa_numero = 0;
@@ -1270,7 +1276,9 @@ do
 		  case 3: printf("Ti piace la sfida!\n");
               raddoppia_tetramini(); /*Raddopia il numero di tetramini per il multiplayer*/
               break;
-      default: printf("!!! ATTENZIONE !!!:\tScelta sbagliata. Selezionane un altra.\n");  
+      default: printf("!!! ATTENZIONE !!!:\tScelta sbagliata. Selezionane un altra.\n");
+               giocatori = NOT_SELECTED;
+               break; 
       }
     }
 
@@ -1369,7 +1377,7 @@ do
 	if(inverti_campo != FALSE && turno == 1 && vittoria != TRUE){
 	  inverti_campo = FALSE;
 		printf("%40s%2s%40s\n"," ","**"," ");
-    printf("Il Giocatore 2 ha cancellato 3 o più righe, Campo giocatore 2 sarà invertito!\n");
+    printf("Il Giocatore 2 ha cancellato 3 o più righe, Campo giocatore 1 sarà invertito!\n");
 		printf("%40s%2s%40s\n"," ","**"," ");
 	  if(bonus == 12)  /*vuol dire che ho cacellato 4 righe*/
 		  inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 4);
@@ -1382,9 +1390,9 @@ do
     printf("Il Giocatore 1 ha cancellato 3 o più righe, Campo giocatore 2 sarà invertito!\n");
 		printf("%40s%2s%40s\n"," ","**"," ");
 		if(bonus == 12)  /*vuol dire che ho cacellato 4 righe*/
-		  inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 4);
+		  inverti_campo_di_gioco(campo_giocatore_2, RIGHE, COLONNE, 4);
 		  else /*vuol dire che ho cancellato 3 righe*/
-		    inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 3);
+		    inverti_campo_di_gioco(campo_giocatore_2, RIGHE, COLONNE, 3);
     }
 
 	if(vittoria != FALSE)
@@ -1462,9 +1470,9 @@ if(giocatori == CPU_PLAYER)
          printf("Il Giocatore 1 ha cancellato 3 o più righe, Campo giocatore 2 sarà invertito!\n");
 		 printf("%40s%2s%40s\n"," ","**"," ");
 		 if(bonus == 12)  /*vuol dire che ho cacellato 4 righe*/
-		   inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 4);
+		   inverti_campo_di_gioco(campo_giocatore_2, RIGHE, COLONNE, 4);
 		   else /*vuol dire che ho cancellato 3 righe*/
-		     inverti_campo_di_gioco(campo_giocatore_1, RIGHE, COLONNE, 3);
+		     inverti_campo_di_gioco(campo_giocatore_2, RIGHE, COLONNE, 3);
          }
 
 
