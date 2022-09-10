@@ -7,7 +7,8 @@
 X-Tetris è una versione avanzata del gioco originale del Tetris. Per le regole del tetris puoi visitare la pagine
 Wikipedia https://it.wikipedia.org/wiki/Tetris.
 
-- Autore Alessandro Cecchin
+- Autore Alessandro Cecchin Matricola 859869
+- Numero del gruppo: 25
 - Progetto per il corso IaP dell'Università di Venezia
 - ✨Magic ✨ click on image per andare alla pagina github
 
