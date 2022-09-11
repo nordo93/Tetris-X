@@ -69,11 +69,11 @@
 /**@{*//** Differenti versioni del tetramino I
 * @param I_free quanti tetramino I sono disponibili
 * @param I_ tetramino i in posizione base
-* @param I_180 tetramino i in posizione verticale
+* @param I_90 tetramino i in posizione verticale
 */
 int I_free = 20; /*Indico quanti pezzi sono disponibili di I*/
 int I_[size]={1,1,1,1};
-int I_180[size]={7,0,0,0};/**@}*/
+int I_90[size]={7,0,0,0};/**@}*/
 
 /**@{*//** Differenti versioni del tetramino J
 * @param J_free quanti tetramino J sono disponibili

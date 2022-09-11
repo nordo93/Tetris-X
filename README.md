@@ -54,7 +54,7 @@ immagine tetramini posizione 0 : https://upload.wikimedia.org/wikipedia/commons/
 
 
 ### - cosa vogliono dire i numeri all'interno degli array dei tetramini:
-1 = 1 bloccho occupato; 2 = 2 blocchi sovrapposti; 3 = 3 blocchi sovrapposti\n
+1 = 1 blocco occupato; 2 = 2 blocchi sovrapposti; 3 = 3 blocchi sovrapposti\n
 4 = 1 blocco vuoto e sopra di esso uno pien0; 5 = due blocchi vuoti e uno sopra di essi pieno\n
 6 = un blocco vuoto e sopra di esso due pieni; 7 = 4 blocchi sovrapposti uno all'altro\n
 \n
