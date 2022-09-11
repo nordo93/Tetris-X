@@ -19,7 +19,7 @@
 const int RIGHE = row;
 const int COLONNE = column;
 
-/** @brief Definisco un enumeratore per il numero di giocatori*/
+/** @brief Definisco un enumeratore per il numero di giocatori e modalità di gioco*/
 typedef enum giocatori
 {  
   SINGLE_PLAYER = 1,  /**< Quando la modalità selezionata è giocatore singolo*/
@@ -470,7 +470,7 @@ int * rotazione(char code, int colonna_scelta_dal_giocatore){
 	    case 1: p = I_;
 				is_ok = TRUE;
 				break;
-		case 2: p = I_180;
+		case 2: p = I_90;
 				is_ok = TRUE;
 				break;
 			
@@ -947,7 +947,7 @@ int * tetramino_random(int colonna_random){
 	  if(rotazione_random == 0 && colonna_random < 7)
 	    return I_;
 		  else
-		    return I_180;
+		    return I_90;
 	  }
 	  else if(tetramino_random == 1 && colonna_random < 8){
 		  J_free--;
@@ -1019,7 +1019,7 @@ bool_t rand50(){
  * @return bool_t restituisce 0 12 volte su 100 e il restante 1
  * @note la funzione rand50 genera 1 o 0 con uguale probabilità quindi 0.5*0.5*0.5 = 0.125
  */
-bool_t rand75(){
+bool_t rand87(){
   return rand50() | rand50() || rand50();
 }
 
@@ -1037,10 +1037,8 @@ void Cpu_colonna(campo_di_gioco campo_cpu, int RIGHE, int COLONNE){
   bool_t trovato = FALSE;
   int * tetramino = 0;
   int colonna_random;
-  srand(time(NULL));   /* iniziallizazione, dovrebbe essere chiamato solo una volta.*/
-  int random = rand();      /* Restituisce un numero intero pseudocasuale compreso tra 0 e RAND_MAX.*/
   
-  if(rand75() == 1 ){ /*uguale a 1 l' 87.5% delle volte*/
+  if(rand87() == 1 ){ /*uguale a 1 l' 87.5% delle volte*/
     salva_tetramino(campo_cpu,mosse_tetramino[mossa_numero],mosse_colonna[mossa_numero]);
     /*Diminuisco i tetramini disponibili*/
     if(mossa_numero == 0 || mossa_numero == 3)
