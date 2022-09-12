@@ -359,7 +359,7 @@ bool_t salva_tetramino (campo_di_gioco piano, int *p, int scelta_colonna){
     return FALSE;
     }
     if(scelta < 0){
-      printf("!!! ATTENZIONE !!!:\tHai perso la partita non hai posizionato correttamente un pezzo nel tuo campo di gioco. seleziona tutto da capo\n\n");
+      printf("!!! ATTENZIONE !!!:\tHai perso la partita non hai posizionato correttamente un pezzo nel tuo campo di gioco.\n\n");
       return FALSE;
       }
 
@@ -1116,13 +1116,17 @@ void TEST_INVERTI(campo_di_gioco campo_giocatore, int RIGHE, int COLONNE){
  * @brief Riceve i punteggi di uno o due giocatori e verifica se uno dei due ha vinto. 
  * controlla anche i tetramini disponibili perchè è una condizione di vittoria.
  * @param punteggio_1 il punteggio del giocatore 1
- * @param punteggio_2 il punteggio del giocatore 2
+ * @param punteggio_2 il punteggio del giocatore 2, in caso di giocatore singolo questo sarà -1
  * @param turno il turno indica quale giocatore sta giocando al momento 1 = giocatore 1 2 = giocatore 2
  * @return bool_t ritorna il valore TRUE se uno dei giocatori vince, FALSE se non c'è una vittoria
  */
 bool_t Controlla_vittoria(int punteggio_1, int punteggio_2, int turno){
+
   if(punteggio_1 >= Punteggio_massimo){
-    printf("Complimenti Giocatore 1 hai raggiunto %d punti, HAI VINTO! arrivederci!\n", Punteggio_massimo);
+    if(punteggio_2 == -1) /*Nel caso di giocatore singolo*/
+      printf("Complimenti hai raggiunto %d punti, arrivederci!\n", Punteggio_massimo);
+      else
+        printf("Complimenti Giocatore 1 hai raggiunto %d punti, HAI VINTO! arrivederci!\n", Punteggio_massimo);
 	  return TRUE;
     }
 	  else if(punteggio_2 >= Punteggio_massimo){
@@ -1130,6 +1134,14 @@ bool_t Controlla_vittoria(int punteggio_1, int punteggio_2, int turno){
 		  return TRUE;
 		  }
 	
+  /*Perdita per uscita dal campo in gicatore singolo*/
+  if(Perdita_uscita_campo != FALSE && punteggio_2 == -1){
+    printf("%40s%2s%40s\n"," ","**"," ");
+    printf("HAI PERSO! Sei uscito dal campo, arrivederci!\n");
+	  printf("%40s%2s%40s\n"," ","**"," ");
+	  return TRUE;
+  }
+
 	if(Perdita_uscita_campo != FALSE && turno == 2){
 	  printf("%40s%2s%40s\n"," ","**"," ");
     printf("Complimenti Giocatore 2 il Giocatore 1 è uscito dal campo, HAI VINTO! arrivederci!\n");
@@ -1145,6 +1157,11 @@ bool_t Controlla_vittoria(int punteggio_1, int punteggio_2, int turno){
 	/*Perdita per fine dei tetramini*/
 	if(I_free <= 0 && J_free <= 0 && L_free <= 0 && O_free <= 0 
 	&& S_free <= 0 && T_free <= 0 && Z_free <= 0){
+    /*In caso di giocatore singolo*/
+    if(punteggio_2 == -1){
+      printf("I tetramini sono finiti, HAI PERSO! Non hai raggiunto il punteggio per vincere.\n");
+      return TRUE;
+      }
 	  printf("I tetramini sono finiti!, vince il giocatore con il punteggio più alto : ");
 	  if(punteggio_1 > punteggio_2)
 	    printf("GIOCATORE 1, Complimenti\n");
@@ -1305,7 +1322,7 @@ do
     {
       case 1: seleziona_tetramino(campo_giocatore_1, RIGHE, COLONNE, 1);
               break;
-      case 2: /*altra operazione*/
+      case 2: Visualizza_pezzi_disponibili();
               break;
       case 3: printf("Arrivederci\n");
 	            fine_gioco = TRUE; 
@@ -1313,15 +1330,9 @@ do
       default: printf("!!! ATTENZIONE !!!:\tScelta sbagliata. Selezionane un altra.\n"); /*Cambio turno in modo da continuare il ciclo sul giocatore attuale*/   
       }
     
-    if(punteggio_1 >= 50){
-	    vittoria = TRUE;
-      printf("Complimenti hai raggiunto 50 punti, arrivederci!\n");
-      }
-	/*Perdita per uscita dal campo*/
-	  if(Perdita_uscita_campo != FALSE){
-      vittoria = TRUE;
-      printf("HAI PERSO! Sei uscito dal campo arrivederci!\n");
-      }
+    /**Controllo Vittoria dopo i 50 punti e Perdita per uscita dal campo In giocatore singolo punteggio_2 = -1*/
+	  vittoria = Controlla_vittoria(punteggio_1,-1,turno);
+    
 	  if(vittoria != FALSE)
 	    fine_gioco = TRUE;
   }
