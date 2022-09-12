@@ -15,6 +15,7 @@
 /** @include tetramini.h @see tetramini.h*/
 #include "tetramini.h"
 
+
 /** @brief Definisco delle costanti per il numero di righe e colonne*/
 const int RIGHE = row;
 const int COLONNE = column;
@@ -184,7 +185,7 @@ int verifica_uscita(campo_di_gioco piano,int *p, int righe_rimanenti, int colonn
 	 * */
     if(*p == 1 && sottrazione_riga == 0) /** @note if(*p == 1 && sottrazione_riga == 0)*/
 	  sottrazione_riga = 1;
-	  else if(( (*p == 2) && *(p - 1) == 4 && *(p - 2) != 4 ) || ( *p == 4 && *(p - 1) == 2 ) && piano[contatto + 2] == OCCUPATO ) /*Per il caso di t_180 appoggiato , *(p - 2) != 4 aggiunto per l_180 su superfice piana*/
+	  else if((( *p == 2 && *(p - 1) == 4 && *(p - 2) != 4 ) || ( *p == 4 && *(p - 1) == 2 )) && piano[contatto + 2] == OCCUPATO ) /*Per il caso di t_180 appoggiato , *(p - 2) != 4 aggiunto per l_180 su superfice piana*/
 	    sottrazione_riga = 1;
 	    else if(( *p == 3 && *(p - 1) == 4 ) && piano[contatto] == OCCUPATO ) /*Per il caso di t_270 appoggiato*/
 	      sottrazione_riga = 2;
@@ -192,7 +193,7 @@ int verifica_uscita(campo_di_gioco piano,int *p, int righe_rimanenti, int colonn
 	        sottrazione_riga = 2;
 	        else if(( *p == 4 && *(p - 1) == 3 ) && piano[contatto] != OCCUPATO ) /*Per il caso di t_270*/
 	          sottrazione_riga = 3;
-            else if(((*p == 2 || *p == 4) && *(p - 1) != 6 ) && piano[contatto] != OCCUPATO ) /*&& *(p - 1) == 6  per s verticale che occcupa 3 spazi*/
+            else if(((*p == 2 || *p == 4) && *(p - 1) != 6 && *(p - 2) != 2 ) && piano[contatto] != OCCUPATO ) /*&& *(p - 1) == 6  per s verticale che occcupa 3 spazi*/
 	            sottrazione_riga = 2;
 		            else if(( *p == 5 && *(p - 1) == 3 ) && piano[contatto - COLONNE + 1] == OCCUPATO ) /*Per J_180 appoggiato e j_90*/
 		              sottrazione_riga = 1;
@@ -210,6 +211,10 @@ int verifica_uscita(campo_di_gioco piano,int *p, int righe_rimanenti, int colonn
 				                      sottrazione_riga = 1;
 							                else if((*p == 2 && *(p - 1) == 6 ) && piano[contatto] == OCCUPATO)
  							                  sottrazione_riga = 2;
+                                else if(((*p == 2 || *p == 4) && *(p - 1) != 6 && *(p - 2) == 2 ) && piano[contatto + 1] != VUOTO) /*aggiunta per L_180 con colonna su seconda posizione*/
+                                  sottrazione_riga = 1;
+                                  else if((*p == 0 && *(p - 1) == 2 && *(p - 2) == 4) && piano[contatto + 1] ) /*aggiunto per j_180 con colonna nella seconda posizione e prima posizione vuota*/
+                                    sottrazione_riga = 1;
 				  
     p++;
 	}
