@@ -71,7 +71,7 @@
 * @param I_ tetramino i in posizione base
 * @param I_90 tetramino i in posizione verticale
 */
-int I_free = 1; /*Indico quanti pezzi sono disponibili di I*/
+int I_free = 20; /*Indico quanti pezzi sono disponibili di I*/
 int I_[size]={1,1,1,1};
 int I_90[size]={7,0,0,0};/**@}*/
 
@@ -81,7 +81,7 @@ int I_90[size]={7,0,0,0};/**@}*/
 * @param J_90 tetramino J ruotata di 90 gradi
 * @param J_180 tetramino J ruotata di 180 gradi
 * @param J_270 tetramino J ruotata di 270 gradi*/
-int J_free = 00;
+int J_free = 20;
 int J_[size]={2,1,1,0};
 int J_90[size]={3,5,0,0};
 int J_180[size]={4,4,2,0};
@@ -93,7 +93,7 @@ int J_270[size]={1,3,0,0};/**@}*/
  * @param L_90 tetramino L ruotata di 90 gradi
  * @param L_180 tetramino L ruotata di 180 gradi
  * @param L_270 tetramino L ruotata di 270 gradi */
-int L_free = 00;
+int L_free = 20;
 int L_[size]={1,1,2,0};
 int L_90[size]={3,1,0,0};
 int L_180[size]={2,4,4,0};
@@ -102,14 +102,14 @@ int L_270[size]={5,3,0,0};/**@}*/
 /**@{*//** Differenti versioni del tetramino O.
  * @param O_free Tetramini O disponibili 
  * @param O_ tetramino O in posizione base*/
-int O_free = 00;
+int O_free = 20;
 int O_[size]={2,2,0,0};/**@}*/
 
 /**@{*//** Differenti versioni del tetramino S.
  * @param S_free Tetramini S disponibili 
  * @param S_ tetramino S in posizione base
  * @param S_90 tetramino S ruotata di 90 gradi*/
-int S_free = 00;
+int S_free = 20;
 int S_[size]={1,2,4,0};
 int S_90[size]={6,2,0,0};/**@}*/
 
@@ -119,7 +119,7 @@ int S_90[size]={6,2,0,0};/**@}*/
  * @param T_90 tetramino T ruotata di 90 gradi
  * @param T_180 tetramino T ruotata di 180 gradi
  * @param T_270 tetramino T ruotata di 270 gradi */
-int T_free = 00;
+int T_free = 20;
 int T_[size]={1,2,1,0};
 int T_90[size]={3,4,0,0};
 int T_180[size]={4,2,4,0};
@@ -129,7 +129,7 @@ int T_270[size]={4,3,0,0};/**@}*/
  * @param Z_free Tetramini Z disponibili 
  * @param Z_ tetramino Z in posizione base
  * @param Z_90 tetramino Z ruotata di 90 gradi*/
-int Z_free = 00;
+int Z_free = 20;
 int Z_[size]={4,2,1,0};
 int Z_90[size]={2,6,0,0};/**@}*/
 

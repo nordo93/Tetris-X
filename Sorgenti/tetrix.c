@@ -964,15 +964,51 @@ int * tetramino_random(int colonna_random){
 			      return J_180;
 			      else
 			        return J_270;
-		}
-	    else{
-		    Z_free--;
-		    rotazione_random = rand() % 2;
-		    if(rotazione_random == 0)
-		      return Z_;
-			    else
-			    return Z_90;
 		  }
+	    else if(tetramino_random == 2 && colonna_random < 8){
+		    L_free--;
+	      rotazione_random = rand() % 4; /*numero casuale tra 0 e 3*/
+		    if(rotazione_random == 0)
+		      return L_;
+		      else if(rotazione_random == 1 && colonna_random < 9)
+		        return L_90;
+			      else if(rotazione_random == 2 && colonna_random < 8)
+			        return L_180;
+			        else
+			          return L_270;
+        }
+        else if(tetramino_random == 3 && colonna_random <= 8){
+          O_free--;
+          return O_;
+          }
+            else if(tetramino_random == 4 && colonna_random < 8){
+              S_free--;
+              rotazione_random = rand() % 1; /*genera un numero compreso tra 0 a 1*/
+	            if(rotazione_random == 0 && colonna_random < 8)
+	              return S_;
+		            else
+		              return S_90;
+              }
+              else if(tetramino_random == 5 && colonna_random < 8){
+		            T_free--;
+	              rotazione_random = rand() % 4; /*numero casuale tra 0 e 3*/
+		            if(rotazione_random == 0 && colonna_random < 8)
+		              return T_;
+		              else if(rotazione_random == 1 && colonna_random < 9)
+		                return T_90;
+			              else if(rotazione_random == 2 && colonna_random < 8)
+			                return T_180;
+			                  else
+			                    return T_270;
+                }
+                else if(tetramino_random == 6 && colonna_random < 8){
+                  Z_free--;
+                  rotazione_random = rand() % 1; /*genera un numero compreso tra 0 a 1*/
+	                if(rotazione_random == 0 && colonna_random < 8)
+	                  return Z_;
+		                  else
+		                   return Z_90;
+                  }
 }
 
 /**
