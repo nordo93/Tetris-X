@@ -192,24 +192,24 @@ int verifica_uscita(campo_di_gioco piano,int *p, int righe_rimanenti, int colonn
 	        sottrazione_riga = 2;
 	        else if(( *p == 4 && *(p - 1) == 3 ) && piano[contatto] != OCCUPATO ) /*Per il caso di t_270*/
 	          sottrazione_riga = 3;
-              else if(((*p == 2 || *p == 4) && *(p - 1) != 6 ) && piano[contatto] != OCCUPATO ) /*&& *(p - 1) == 6  per s verticale che occcupa 3 spazi*/
+            else if(((*p == 2 || *p == 4) && *(p - 1) != 6 ) && piano[contatto] != OCCUPATO ) /*&& *(p - 1) == 6  per s verticale che occcupa 3 spazi*/
 	            sottrazione_riga = 2;
-		        else if(( *p == 5 && *(p - 1) == 3 ) && piano[contatto - COLONNE + 1] == OCCUPATO ) /*Per J_180 appoggiato e j_90*/
-		          sottrazione_riga = 1;
-				  else if((*p == 6 && *(p - 1) == 2) && piano[contatto + 1] == OCCUPATO) /*aggiunto per z_90 verticale che poggia su tetramino*/
-				    sottrazione_riga = 2;
-		            else if((*p == 3 || *p == 5 || *p == 6) && piano[contatto - COLONNE] != OCCUPATO )
- 		              sottrazione_riga = 3;
-		              else if(*p == 7)
-		                sottrazione_riga = 4;
-			            else if((*p == 4 || *p == 5) && piano[contatto - COLONNE] != VUOTO )
-			              sottrazione_riga = 1;
-			              else if(*p == 6 && piano[contatto] != VUOTO)
-			                sottrazione_riga = 2;
-				            else if(*p == 4 && piano[contatto] != VUOTO) /*per t_180 a sx*/
-				            sottrazione_riga = 1;
-							  else if((*p == 2 && *(p - 1) == 6 ) && piano[contatto] == OCCUPATO)
- 							    sottrazione_riga = 2;
+		            else if(( *p == 5 && *(p - 1) == 3 ) && piano[contatto - COLONNE + 1] == OCCUPATO ) /*Per J_180 appoggiato e j_90*/
+		              sottrazione_riga = 1;
+				          else if((*p == 6 && *(p - 1) == 2) && piano[contatto + 1] == OCCUPATO) /*aggiunto per z_90 verticale che poggia su tetramino*/
+				            sottrazione_riga = 2;
+		                else if((*p == 3 || *p == 5 || *p == 6) && piano[contatto - COLONNE] != OCCUPATO )
+ 		                  sottrazione_riga = 3;
+		                  else if(*p == 7)
+		                    sottrazione_riga = 4;
+			                  else if((*p == 4 || *p == 5) && piano[contatto - COLONNE] != VUOTO )
+			                    sottrazione_riga = 1;
+			                    else if(*p == 6 && piano[contatto] != VUOTO)
+			                      sottrazione_riga = 2;
+				                    else if(*p == 4 && piano[contatto] != VUOTO) /*per t_180 a sx*/
+				                      sottrazione_riga = 1;
+							                else if((*p == 2 && *(p - 1) == 6 ) && piano[contatto] == OCCUPATO)
+ 							                  sottrazione_riga = 2;
 				  
     p++;
 	}
@@ -248,7 +248,7 @@ bool_t verifica_occupata (campo_di_gioco piano, int scelta, int * p){
 		  else if(*p == 3){
 			if(piano[scelta - COLONNE] == OCCUPATO ||
 			   piano[scelta - (COLONNE * 2)] == OCCUPATO) 
-               occupata = TRUE;
+         occupata = TRUE;
 			   }
 			  else if(*p == 4){
 			    if(piano[scelta - COLONNE] == OCCUPATO) occupata = TRUE;
@@ -260,11 +260,11 @@ bool_t verifica_occupata (campo_di_gioco piano, int scelta, int * p){
 				      if(piano[scelta] == OCCUPATO ||
 				        piano[scelta - COLONNE] == OCCUPATO ||
 				        piano[scelta - (COLONNE * 2)] == OCCUPATO ||
-						piano[scelta - (COLONNE * 3)] == OCCUPATO) occupata = TRUE;
+						    piano[scelta - (COLONNE * 3)] == OCCUPATO) occupata = TRUE;
 					      }
-					      else if(*p == 1){
-					      if(piano[scelta] == OCCUPATO) occupata = TRUE;
-						    }
+					        else if(*p == 1){
+					          if(piano[scelta] == OCCUPATO) occupata = TRUE;
+						        }
 			scelta++;
 			p++;
             }
@@ -295,23 +295,23 @@ int contatto (campo_di_gioco piano, int scelta_colonna, int *p){
         printf("trovato contatto a : %d\n", c + i);  /*printf inutile, lo tengo per eventuali errori nel codice*/
         if(*p == 4 || *p == 6){ /*Verifico se sotto il tetramino c'è qualcosa su cui appoggiare*/
           contatto = c;
-		  found = TRUE;
+		      found = TRUE;
           }
       	  else if (*p == 5 && found == FALSE ){
-		    contatto = c + COLONNE;
+		        contatto = c + COLONNE;
             found = TRUE;
               }
               else if(*inizio == 7){
-			  contatto = c - COLONNE;
-			  found = TRUE;
-			    }
-        	    else if (*p == 1 || *p == 2 || *p == 3){
+			          contatto = c - COLONNE;
+			          found = TRUE;
+			          }
+        	      else if (*p == 1 || *p == 2 || *p == 3){
                   contatto = c - COLONNE;
-				  contatto_minore = TRUE;
+				          contatto_minore = TRUE;
                   found = TRUE;
                   }   
-				  else
-				    i++; /*ottimizzo il ciclo perchè se c'è uno zero lo sarà anche il prossimo*/
+				          else
+				            i++; /*ottimizzo il ciclo perchè se c'è uno zero lo sarà anche il prossimo*/
 	    }
       p++;
 	  }
@@ -429,9 +429,9 @@ int * rotazione(char code, int colonna_scelta_dal_giocatore){
       printf("1. nessuna rotazione\n");
       printf("2. ruotare di 90 gradi\n");
       printf("3. ruotare di 180 gradi\n");
-	  printf("4. ruotare di 270 gradi\n");
-	  stampa_anteprima(colonna_scelta_dal_giocatore,J_);
-	  printf("Scelta: ");
+	    printf("4. ruotare di 270 gradi\n");
+	    stampa_anteprima(colonna_scelta_dal_giocatore,J_);
+	    printf("Scelta: ");
       scanf(" %d", &chose);
 		  while (getchar() != '\n') /*salta alla fine della riga*/
 		    ;
@@ -565,8 +565,8 @@ int * rotazione(char code, int colonna_scelta_dal_giocatore){
           printf("1. nessuna rotazione\n");
           printf("2. ruotare di 90 gradi\n");
           printf("3. ruotare di 180 gradi\n");
-	      printf("4. ruotare di 270 gradi\n");
-		  stampa_anteprima(colonna_scelta_dal_giocatore,T_);
+	        printf("4. ruotare di 270 gradi\n");
+		      stampa_anteprima(colonna_scelta_dal_giocatore,T_);
           printf("Scelta: ");
           scanf(" %d", &chose);
 		    while (getchar() != '\n') /*salta alla fine della riga*/
@@ -574,20 +574,20 @@ int * rotazione(char code, int colonna_scelta_dal_giocatore){
           printf("\n");
 	      
           switch(chose){
-	        case 1: p = T_;
-				    is_ok = TRUE;
-				    break;
-		    case 2: p = T_90;
-				    is_ok = TRUE;
-				    break;
-		    case 3: p = T_180;
-				    is_ok = TRUE;
-				    break;
-	        case 4: p = T_270;
-				    is_ok = TRUE;
-				    break;
-		    default: printf("Codice errato\n");
-		   }
+	          case 1: p = T_;
+				      is_ok = TRUE;
+				      break;
+		        case 2: p = T_90;
+				      is_ok = TRUE;
+				      break;
+		        case 3: p = T_180;
+				      is_ok = TRUE;
+				      break;
+	          case 4: p = T_270;
+				      is_ok = TRUE;
+				      break;
+		        default: printf("Codice errato\n");
+		        }
         printf("\n");
 	    }
       }
@@ -722,10 +722,10 @@ void seleziona_tetramino(campo_di_gioco piano, int RIGHE, int COLONNE, int turno
 
 	  printf("Seleziona la colonna dove inserire il tetramini:\n");
 	  printf("Scelta: ");
-      scanf(" %d", &scelta_colonna);
+    scanf(" %d", &scelta_colonna);
 		while (getchar() != '\n') /*salta alla fine della riga*/
 		  ;
-      printf("\n");
+    printf("\n");
 
 	  if( turno == 1 && scelta_colonna < 10 && scelta_colonna >= 0)
 	    is_ok = TRUE;   /*se il turno è del giocatore uno deve selezionare una colonna da 0 a 9*/

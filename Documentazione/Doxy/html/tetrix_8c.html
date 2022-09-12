@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>X-Tetris: C:/temp/Tetris-X/tetrix.c File Reference</title>
+<title>X-Tetris: C:/temp/Tetris-X/Sorgenti/tetrix.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -20,6 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo.PNG"/></td>
   <td id="projectalign">
    <div id="projectname">X-Tetris
    </div>
@@ -60,6 +61,10 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_63a4c4bb757747655084d4e8ee306faa.html">Sorgenti</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
@@ -67,7 +72,7 @@ $(function() {
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
-  <div class="headertitle"><div class="title">C:/temp/Tetris-X/tetrix.c File Reference</div></div>
+  <div class="headertitle"><div class="title">tetrix.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -81,7 +86,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a727a6f710e0f7bcf136b908b5cff365d"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="tetrix_8c.html#a62f731b0931d5118f6d2d1fa92f6f0fa">giocatori</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#a727a6f710e0f7bcf136b908b5cff365d">giocatori_t</a></td></tr>
-<tr class="memdesc:a727a6f710e0f7bcf136b908b5cff365d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definisco un enumeratore per il numero di giocatori.  <a href="tetrix_8c.html#a727a6f710e0f7bcf136b908b5cff365d">More...</a><br /></td></tr>
+<tr class="memdesc:a727a6f710e0f7bcf136b908b5cff365d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definisco un enumeratore per il numero di giocatori e modalità di gioco.  <a href="tetrix_8c.html#a727a6f710e0f7bcf136b908b5cff365d">More...</a><br /></td></tr>
 <tr class="separator:a727a6f710e0f7bcf136b908b5cff365d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7f1ff8f4ac9b5f9dc398111841d9d77"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="tetrix_8c.html#aacae98a513bf46f84ca1f3554bae431b">riquadro</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#aa7f1ff8f4ac9b5f9dc398111841d9d77">riquadro_t</a></td></tr>
 <tr class="memdesc:aa7f1ff8f4ac9b5f9dc398111841d9d77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definisco un enumeratore per sapere lo stato della casella del piano di gioco.  <a href="tetrix_8c.html#aa7f1ff8f4ac9b5f9dc398111841d9d77">More...</a><br /></td></tr>
@@ -100,7 +105,7 @@ Enumerations</h2></td></tr>
 , <a class="el" href="tetrix_8c.html#a62f731b0931d5118f6d2d1fa92f6f0faa616ede6b6f3a1d38a724d1168ddf1adf">NOT_SELECTED</a> = -99
 , <a class="el" href="tetrix_8c.html#a62f731b0931d5118f6d2d1fa92f6f0faa537108fa956a460fcb193c4e6416551e">CPU_PLAYER</a> = 3
  }</td></tr>
-<tr class="memdesc:a62f731b0931d5118f6d2d1fa92f6f0fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definisco un enumeratore per il numero di giocatori.  <a href="tetrix_8c.html#a62f731b0931d5118f6d2d1fa92f6f0fa">More...</a><br /></td></tr>
+<tr class="memdesc:a62f731b0931d5118f6d2d1fa92f6f0fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definisco un enumeratore per il numero di giocatori e modalità di gioco.  <a href="tetrix_8c.html#a62f731b0931d5118f6d2d1fa92f6f0fa">More...</a><br /></td></tr>
 <tr class="separator:a62f731b0931d5118f6d2d1fa92f6f0fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aacae98a513bf46f84ca1f3554bae431b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#aacae98a513bf46f84ca1f3554bae431b">riquadro</a> { <a class="el" href="tetrix_8c.html#aacae98a513bf46f84ca1f3554bae431baf9428c94346b50d578b820a28ca79855">VUOTO</a>
 , <a class="el" href="tetrix_8c.html#aacae98a513bf46f84ca1f3554bae431ba86eb6f31a721a0cffb9e409a63428cb7">OCCUPATO</a>
@@ -170,9 +175,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a88e4f867eb8e5b012e3a4c98880bf276"><td class="memItemLeft" align="right" valign="top"><a class="el" href="tetrix_8c.html#aa3a317bac4a25cedbce8bdb3a0e0d42d">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#a88e4f867eb8e5b012e3a4c98880bf276">rand50</a> ()</td></tr>
 <tr class="memdesc:a88e4f867eb8e5b012e3a4c98880bf276"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzione casuale che restituisce 0 o 1 con uguale probabilità  <a href="tetrix_8c.html#a88e4f867eb8e5b012e3a4c98880bf276">More...</a><br /></td></tr>
 <tr class="separator:a88e4f867eb8e5b012e3a4c98880bf276"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4eefadcc3b4b83e7161af6a35d00261c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="tetrix_8c.html#aa3a317bac4a25cedbce8bdb3a0e0d42d">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#a4eefadcc3b4b83e7161af6a35d00261c">rand75</a> ()</td></tr>
-<tr class="memdesc:a4eefadcc3b4b83e7161af6a35d00261c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzione casuale che restituisce 1 con 87,5% di probabilità e 0 con 12% di probabilità utilizzando.  <a href="tetrix_8c.html#a4eefadcc3b4b83e7161af6a35d00261c">More...</a><br /></td></tr>
-<tr class="separator:a4eefadcc3b4b83e7161af6a35d00261c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6a33ba210d83d1be7a9bd1952fa4ca0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="tetrix_8c.html#aa3a317bac4a25cedbce8bdb3a0e0d42d">bool_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#aa6a33ba210d83d1be7a9bd1952fa4ca0">rand87</a> ()</td></tr>
+<tr class="memdesc:aa6a33ba210d83d1be7a9bd1952fa4ca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzione casuale che restituisce 1 con 87,5% di probabilità e 0 con 12% di probabilità utilizzando.  <a href="tetrix_8c.html#aa6a33ba210d83d1be7a9bd1952fa4ca0">More...</a><br /></td></tr>
+<tr class="separator:aa6a33ba210d83d1be7a9bd1952fa4ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3f8f66eb2a718d9bfcf6c92a9c9a6b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tetrix_8c.html#ab3f8f66eb2a718d9bfcf6c92a9c9a6b3">Cpu_colonna</a> (<a class="el" href="tetrix_8c.html#ac5a058fd5c1d22d70656dc12dac0c2a9">campo_di_gioco</a> campo_cpu, int <a class="el" href="tetrix_8c.html#ae9f8d8d635995b45444dd02143e0a102">RIGHE</a>, int <a class="el" href="tetrix_8c.html#ae45bf4c0e6b1d99fc99e157f74cb1ea0">COLONNE</a>)</td></tr>
 <tr class="memdesc:ab3f8f66eb2a718d9bfcf6c92a9c9a6b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Funzione usata dalla cpu per inserire il tetramino, molte volte inserisce i tetramini secondo questo ordine.  <a href="tetrix_8c.html#ab3f8f66eb2a718d9bfcf6c92a9c9a6b3">More...</a><br /></td></tr>
 <tr class="separator:ab3f8f66eb2a718d9bfcf6c92a9c9a6b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -283,7 +288,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definisco un enumeratore per il numero di giocatori. </p>
+<p>Definisco un enumeratore per il numero di giocatori e modalità di gioco. </p>
 
 </div>
 </div>
@@ -338,7 +343,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definisco un enumeratore per il numero di giocatori. </p>
+<p>Definisco un enumeratore per il numero di giocatori e modalità di gioco. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a62f731b0931d5118f6d2d1fa92f6f0faae0c9d3e5c71ae4b23a63b36eaac2f918" name="a62f731b0931d5118f6d2d1fa92f6f0faae0c9d3e5c71ae4b23a63b36eaac2f918"></a>SINGLE_PLAYER&#160;</td><td class="fielddoc"><p >Quando la modalità selezionata è giocatore singolo </p>
 </td></tr>
@@ -601,6 +606,7 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section attention"><dt>Attention</dt><dd>la strategia è molto semplice, consiste in una serie di mosse (5) determinate, l'unica differenza e che a volte viene inserito casualmente un tetramino diverso. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Alcune persone non piace questa formula perché utilizza i bit di ordine inferiore del numero dato da rand(), e nelle implementazioni più vecchie di numeri pseudo-casuali software questi erano spesso meno casuali rispetto ai bit di ordine elevato, ma su qualsiasi sistema moderno questo metodo dovrebbe andare bene.</dd></dl>
 
 </div>
@@ -795,14 +801,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a4eefadcc3b4b83e7161af6a35d00261c" name="a4eefadcc3b4b83e7161af6a35d00261c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4eefadcc3b4b83e7161af6a35d00261c">&#9670;&nbsp;</a></span>rand75()</h2>
+<a id="aa6a33ba210d83d1be7a9bd1952fa4ca0" name="aa6a33ba210d83d1be7a9bd1952fa4ca0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6a33ba210d83d1be7a9bd1952fa4ca0">&#9670;&nbsp;</a></span>rand87()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="tetrix_8c.html#aa3a317bac4a25cedbce8bdb3a0e0d42d">bool_t</a> rand75 </td>
+          <td class="memname"><a class="el" href="tetrix_8c.html#aa3a317bac4a25cedbce8bdb3a0e0d42d">bool_t</a> rand87 </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
