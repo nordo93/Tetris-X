@@ -161,7 +161,7 @@ int verifica_uscita(campo_di_gioco piano,int *p, int righe_rimanenti, int colonn
   * Verifico se il tetramino ha un valore diverso da 0, quindi se occupa una colonna
   */
   if(contatto <= 0)
-    printf("");
+    ;
   for(i=0; i < size; i++){
 
     if(*p != 0)
@@ -184,7 +184,7 @@ int verifica_uscita(campo_di_gioco piano,int *p, int righe_rimanenti, int colonn
 	 * */
     if(*p == 1 && sottrazione_riga == 0) /** @note if(*p == 1 && sottrazione_riga == 0)*/
 	  sottrazione_riga = 1;
-	  else if(( *p == 2 && *(p - 1) == 4 && *(p - 2) != 4 ) || ( *p == 4 && *(p - 1) == 2 ) && piano[contatto + 2] == OCCUPATO ) /*Per il caso di t_180 appoggiato , *(p - 2) != 4 aggiunto per l_180 su superfice piana*/
+	  else if(( (*p == 2) && *(p - 1) == 4 && *(p - 2) != 4 ) || ( *p == 4 && *(p - 1) == 2 ) && piano[contatto + 2] == OCCUPATO ) /*Per il caso di t_180 appoggiato , *(p - 2) != 4 aggiunto per l_180 su superfice piana*/
 	    sottrazione_riga = 1;
 	    else if(( *p == 3 && *(p - 1) == 4 ) && piano[contatto] == OCCUPATO ) /*Per il caso di t_270 appoggiato*/
 	      sottrazione_riga = 2;
@@ -340,10 +340,10 @@ int contatto (campo_di_gioco piano, int scelta_colonna, int *p){
  * @return bool_t FALSE se il giocatore è uscito da righe o colonne, TRUE se è andato tutto bene
  */
 bool_t salva_tetramino (campo_di_gioco piano, int *p, int scelta_colonna){
-  int r, c, i;
-  bool_t is_ok = FALSE, occupata = FALSE;
-  r = RIGHE;
-  c = scelta_colonna;
+  int i;
+  bool_t occupata = FALSE;
+  
+  
   int scelta = contatto(piano, scelta_colonna, p);
   int * inizio = p; /*salvo l'inizio del mio tetramino*/
 
@@ -366,7 +366,7 @@ bool_t salva_tetramino (campo_di_gioco piano, int *p, int scelta_colonna){
   occupata = verifica_occupata(piano, scelta, p);
 
   if(occupata == FALSE){
-    is_ok == TRUE;
+    
     for(i = 0; i<size; i++){
       /*******************************************************
       *  scelta rappresenta la selezione attuale nel piano   *
@@ -564,7 +564,7 @@ int * rotazione(char code, int colonna_scelta_dal_giocatore){
 		printf("\n");
 	    }
       }
-      else if( code = 't'){
+      else if( code == 't'){
         while( is_ok == FALSE ){
           printf("1. nessuna rotazione\n");
           printf("2. ruotare di 90 gradi\n");
@@ -719,7 +719,7 @@ int * scelta (int colonna_scelta_dal_giocatore){
 void seleziona_tetramino(campo_di_gioco piano, int RIGHE, int COLONNE, int turno){
   bool_t is_ok = FALSE;
   int scelta_colonna = -1;
-	int tetramino[size] = {1,1,1,1};
+	
 
 	/*inserisco un ciclo while per selezionare la colonna e il tetramino corretto e utilizzabile*/
 	while (is_ok == FALSE){
@@ -742,7 +742,7 @@ void seleziona_tetramino(campo_di_gioco piano, int RIGHE, int COLONNE, int turno
     /*Se seleziono colonna corretta allora avanzo*/
 	  if ( is_ok == TRUE ){
 	    int *p;
-      int i;
+      
       /*scelgo a quale tetramino punterà il mio puntatore*/ 
 	    p = scelta(scelta_colonna);
         
@@ -768,7 +768,7 @@ void seleziona_tetramino(campo_di_gioco piano, int RIGHE, int COLONNE, int turno
  * @param colonna la colonna a cui siamo arrivati, non la utilizzo ma è stata inserita per sviluppi futuri
  */
 void rimuovi_riga(campo_di_gioco piano, int riga_punto, int colonna){
-  int r= 1, c = 0, i;
+  int r= 1, c = 0;
 	/*vado a rimuovere la riga completata*/
   for (c=0; c<COLONNE; c++) {
     riquadro_t riquadro = VUOTO;
@@ -1008,7 +1008,7 @@ int * tetramino_random(int colonna_random){
 	                  return Z_;
 		                  else
 		                   return Z_90;
-                  }
+                  } else return I_90;
 }
 
 /**
@@ -1073,8 +1073,8 @@ bool_t rand87(){
  * @attention la strategia è molto semplice, consiste in una serie di mosse (5) determinate, l'unica differenza e che a volte viene inserito casualmente un tetramino diverso.
  */
 void Cpu_colonna(campo_di_gioco campo_cpu, int RIGHE, int COLONNE){
-  int r, c, spazio_libero;
-  bool_t trovato = FALSE;
+  
+  
   int * tetramino = 0;
   int colonna_random;
   
@@ -1110,8 +1110,8 @@ void Cpu_colonna(campo_di_gioco campo_cpu, int RIGHE, int COLONNE){
 void seleziona_CPU(campo_di_gioco campo_cpu, int RIGHE, int COLONNE)
 {
   bool_t is_ok = FALSE;
-	int scelta_colonna = -1;
-	int * tetramino;
+	
+	
 
 	/*inserisco un ciclo while per selezionare la colonna e il tetramino corretto e utilizzabile*/
 	while (is_ok == FALSE){
