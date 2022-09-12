@@ -297,9 +297,13 @@ int contatto (campo_di_gioco piano, int scelta_colonna, int *p){
           contatto = c;
 		      found = TRUE;
           }
-      	  else if (*p == 5 && found == FALSE ){
-		        contatto = c + COLONNE;
-            found = TRUE;
+          else if(*p == 5 && c >= 140){  /*Nel caso di J_90 che arriva fino in fondo*/
+			      contatto = c;
+			      found = TRUE;
+			      }
+      	    else if (*p == 5 && found == FALSE ){
+		          contatto = c + COLONNE;
+              found = TRUE;
               }
               else if(*inizio == 7){
 			          contatto = c - COLONNE;

@@ -9,9 +9,10 @@ Il file sorgente principale è tetrix.c, l'unico altro file utile contente codic
 La cartella "trash_backup" contiene file utili solo in fase di test e un file chiamato tetrix_OneFile.c,
 contenete tutto il programma in un solo file (da usare solo in caso di problemi di compilazione).
 
-la documentazione di DoxyGen è nela cartella Doxy, ma nella cartella principale è presente un link " Documentazione doxygen " comodo per aprire la pagina web. 
+la documentazione di DoxyGen è nela cartella Documentazione\Doxy, cartella principale è presente un link " Documentazione doxygen " comodo per aprire la pagina web.
+Visto che probabilmente questo link non è funzionante in altri pc, il file dell'homepage principale è contenuto qui :  "..\Documentazione\Doxy\html\index.html"
 
-Il file README.md contiene la pagina principale di github, il nome è predefinito e avrei preferito cambiarlo per non confonderlo con questo.
+Il file README.md contiene la pagina principale di github e Doxygen, il nome è predefinito e avrei preferito cambiarlo per non confonderlo con questo.
 Ho utilizzato Github per il comodo controllo di versione e mi permetteva di tenere il mio progetto in ordine e controllato.
 
 Visto questo la cartella contiene anche i file di git dentro la cartella .git ma possono essere ignorati.
