@@ -324,7 +324,7 @@ Riceve i punteggi di uno o due giocatori e verifica se uno dei due ha vinto. con
 \begin{DoxyParams}{Parameters}
 {\em punteggio\+\_\+1} & il punteggio del giocatore 1 \\
 \hline
-{\em punteggio\+\_\+2} & il punteggio del giocatore 2 \\
+{\em punteggio\+\_\+2} & il punteggio del giocatore 2, in caso di giocatore singolo questo sarà -\/1 \\
 \hline
 {\em turno} & il turno indica quale giocatore sta giocando al momento 1 = giocatore 1 2 = giocatore 2 \\
 \hline
@@ -475,6 +475,8 @@ inizializzare i campi da gioco \begin{DoxySeeAlso}{See also}
 \mbox{\hyperlink{tetrix_8c_a5888954e236254cc7e6ff5cffedbf90f}{init(campo\+\_\+di\+\_\+gioco piano, int riga, int colonna)}}
 \end{DoxySeeAlso}
 messaggio di benvenuto
+
+Controllo Vittoria dopo i 50 punti e Perdita per uscita dal campo In giocatore singolo punteggio\+\_\+2 = -\/1
 
 Controllo Vittoria dopo i 50 punti e Perdita per uscita dal campo
 

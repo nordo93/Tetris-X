@@ -508,7 +508,7 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">punteggio_1</td><td>il punteggio del giocatore 1 </td></tr>
-    <tr><td class="paramname">punteggio_2</td><td>il punteggio del giocatore 2 </td></tr>
+    <tr><td class="paramname">punteggio_2</td><td>il punteggio del giocatore 2, in caso di giocatore singolo questo sarà -1 </td></tr>
     <tr><td class="paramname">turno</td><td>il turno indica quale giocatore sta giocando al momento 1 = giocatore 1 2 = giocatore 2 </td></tr>
   </table>
   </dd>
@@ -756,6 +756,7 @@ Variables</h2></td></tr>
 </dl>
 <p>inizializzare i campi da gioco </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="tetrix_8c.html#a5888954e236254cc7e6ff5cffedbf90f" title="Inizializza il campo da gioco a tutto vuoto.">init(campo_di_gioco piano, int riga, int colonna)</a></dd></dl>
 <p>messaggio di benvenuto</p>
+<p >Controllo Vittoria dopo i 50 punti e Perdita per uscita dal campo In giocatore singolo punteggio_2 = -1</p>
 <p >Controllo Vittoria dopo i 50 punti e Perdita per uscita dal campo</p>
 <p >Controllo Vittoria dopo i 50 punti e Perdita per uscita dal campo</p>
 
