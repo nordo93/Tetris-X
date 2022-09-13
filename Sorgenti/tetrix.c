@@ -534,25 +534,25 @@ int * rotazione(char code, int colonna_scelta_dal_giocatore){
       else if( code == 's'){
         while( is_ok == FALSE ){
           printf("1. i orrizzontale\n");
-	      printf("2. i verticale\n");
-		  stampa_anteprima(colonna_scelta_dal_giocatore,S_);
-	      printf("Scelta: ");
+	        printf("2. i verticale\n");
+		      stampa_anteprima(colonna_scelta_dal_giocatore,S_);
+	        printf("Scelta: ");
           scanf(" %d", &chose);
-		    while (getchar() != '\n') /*salta alla fine della riga*/
-		      ;
+		      while (getchar() != '\n') /*salta alla fine della riga*/
+		        ;
           printf("\n");
 
-	      switch(chose){
-	        case 1: p = S_;
-				    is_ok = TRUE;
-				    break;
-		    case 2: p = S_90;
-				    is_ok = TRUE;
-				    break;
-		    default: printf("Codice errato\n");
-		    }
-		printf("\n");
-	    }
+	        switch(chose){
+	          case 1: p = S_;
+				      is_ok = TRUE;
+				      break;
+		        case 2: p = S_90;
+				      is_ok = TRUE;
+				      break;
+		        default: printf("Codice errato\n");
+		        }
+		    printf("\n");
+	      }
       }
       else if( code == 'z'){
         while( is_ok == FALSE ){;
