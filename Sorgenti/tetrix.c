@@ -306,21 +306,29 @@ int contatto (campo_di_gioco piano, int scelta_colonna, int *p){
 			      contatto = c;
 			      found = TRUE;
 			      }
-      	    else if (*p == 5 && found == FALSE ){
-		          contatto = c + COLONNE;
+            else if(*p == 5 && *(p-1) == 3 && piano[c + COLONNE] == OCCUPATO){ /*Nel caso di j_90 appogiato su tetramino t_*/
+              contatto = c;
               found = TRUE;
               }
-              else if(*inizio == 7){
-			          contatto = c - COLONNE;
-			          found = TRUE;
-			          }
-        	      else if (*p == 1 || *p == 2 || *p == 3){
-                  contatto = c - COLONNE;
-				          contatto_minore = TRUE;
-                  found = TRUE;
-                  }   
-				          else
-				            i++; /*ottimizzo il ciclo perchè se c'è uno zero lo sarà anche il prossimo*/
+              else if(*p == 5 && *(p+1) == 3 && piano[c + COLONNE + 1] == OCCUPATO){ /*Nel caso di l_270 appogiato su tetramino t_*/
+              contatto = c;
+              found = TRUE;
+              }
+      	      else if (*p == 5 && found == FALSE ){
+		            contatto = c + COLONNE;
+                found = TRUE;
+                }
+                else if(*inizio == 7){
+			            contatto = c - COLONNE;
+			            found = TRUE;
+			            }
+        	        else if (*p == 1 || *p == 2 || *p == 3){
+                    contatto = c - COLONNE;
+				            contatto_minore = TRUE;
+                    found = TRUE;
+                    }   
+				            else
+				              i++; /*ottimizzo il ciclo perchè se c'è uno zero lo sarà anche il prossimo*/
 	    }
       p++;
 	  }
