@@ -1,7 +1,7 @@
 # X-tetris
 ## X-Tetris is an advanced version of the original Tetris game
 
-[![N|Solid](https://upload.wikimedia.org/wikipedia/commons/3/39/Tetrominoes_IJLO_STZ_Worlds.svg)](https://github.com/nordo93/X-Tetris)
+[![N|Solid](https://upload.wikimedia.org/wikipedia/commons/3/39/Tetrominoes_IJLO_STZ_Worlds.svg)](https://github.com/nordo93/Tetris-X)
 
 
 X-Tetris è una versione avanzata del gioco originale del Tetris. Per le regole del tetris puoi visitare la pagine
