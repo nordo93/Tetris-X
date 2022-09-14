@@ -88,4 +88,4 @@ Install Chocolatey package manager and then install make with the command choco 
 Download the project from here or via git clone
 
 ##Documentation
-Doxygen documentation of the project is available.
+Doxygen documentation of the project is available : https://github.com/nordo93/Tetris-X
