@@ -75,7 +75,7 @@ X _ _ _\n
 X _ _ _\n
 0 1 2 3\n
 
-##Setup (eng)
+## Setup (eng)
 To run this project, compile it using make command.
 
 For Windows users:
@@ -87,5 +87,5 @@ Install Chocolatey package manager and then install make with the command choco 
 
 Download the project from here or via git clone
 
-##Documentation
-Doxygen documentation of the project is available : https://nordo93.github.io/
+## Documentation
+Doxygen documentation of the project is available :  https://nordo93.github.io/
