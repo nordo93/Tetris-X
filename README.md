@@ -74,3 +74,18 @@ X X _ _\n
 X _ _ _\n
 X _ _ _\n
 0 1 2 3\n
+
+##Setup (eng)
+To run this project, compile it using make command.
+
+For Windows users:
+Install Mingw-w64
+
+You need to edit the PATH variable. You can access the System Control Center by pressing Windows Key + Pause.
+
+Install Chocolatey package manager and then install make with the command choco install make
+
+Download the project from here or via git clone
+
+##Documentation
+Doxygen documentation of the project is available.
